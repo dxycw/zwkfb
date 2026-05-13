@@ -44,23 +44,23 @@ dependencyResolutionManagement {
 dependencies {
     
     // 如果使用多平台Jetpack Compose Multiplatform，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb:0.0.1")
+    implementation("com.github.dxycw.zwkfb:zwkfb:0.0.2")
     
     // 如果使用 Android Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.0.1")
+    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.0.2")
     
     // 如果使用 Windows Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.0.1")
+    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.0.2")
     
     // 以下平台可以用，但目前不推荐使用
     
     // 如果使用 IOS Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.0.1")
-    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.0.1")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.0.2")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.0.2")
     
     // 如果使用 Web Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.0.1")
-    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.0.1")
+    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.0.2")
+    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.0.2")
     
 }
 ```
@@ -85,7 +85,7 @@ dependencies {
 
 > [!CAUTION]
 >
->* 项目>=0.0.1版本：
+>* 项目>=0.0.2版本：
 >   因为 org.jetbrains.compose 的 [1.11.0-alpha02](https://github.com/JetBrains/compose-multiplatform/releases/tag/v1.11.0-alpha02) 版本以后去掉了ios的“x86_64”平台，所以本项目也去掉 了ios的“x86_64”平台的依赖项，所以在项目中使用时去掉ios的“x86_64”平台的依赖；
 >
 >   ```kotlin
@@ -102,7 +102,12 @@ dependencies {
 
 # 更新内容
 
-## 0.0.1
+## 0.0.2
 
+* 使用 Android Studio 软件开发；
 * 创建项目，发布第一个版本；
 * 完善项目文档，添加使用方法、平台支持、依赖库等信息；
+
+## 0.0.1
+
+* 本版本不能用；
