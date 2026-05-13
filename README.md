@@ -85,17 +85,18 @@ dependencies {
 
 > [!CAUTION]
 >
->  * 项目>=0.0.1版本：
-     >     因为 org.jetbrains.compose 的 [1.11.0-alpha02](https://github.com/JetBrains/compose-multiplatform/releases/tag/v1.11.0-alpha02) 版本以后去掉了ios的“x86_64”平台，所以本项目也去掉 了ios的“x86_64”平台的依赖项，所以在项目中使用时去掉ios的“x86_64”平台的依赖；
-     >
-     >     ```kotlin
->     listOf(
->     //    iosX64(),   // 去掉“x86_64”平台的依赖项，所以在项目中使用时去掉“x86_64”平台的依赖；
->         iosArm64(),
->         iosSimulatorArm64()
->     ).forEach { iosTarget ->
->         // 略
->     }
+>* 项目>=0.0.1版本：
+>   因为 org.jetbrains.compose 的 [1.11.0-alpha02](https://github.com/JetBrains/compose-multiplatform/releases/tag/v1.11.0-alpha02) 版本以后去掉了ios的“x86_64”平台，所以本项目也去掉 了ios的“x86_64”平台的依赖项，所以在项目中使用时去掉ios的“x86_64”平台的依赖；
+>
+>   ```kotlin
+>   listOf(
+>   //    iosX64(),   // 去掉“x86_64”平台的依赖项，所以在项目中使用时去掉“x86_64”平台的依赖；
+>       iosArm64(),
+>       iosSimulatorArm64()
+>   ).forEach { iosTarget ->
+>       // 略
+>   }
+>   ```
 
 
 
