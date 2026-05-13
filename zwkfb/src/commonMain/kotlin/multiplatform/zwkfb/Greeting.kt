@@ -1,4 +1,4 @@
-package com.dxyc.zwkfb
+package multiplatform.zwkfb
 
 class Greeting {
     private val platform = getPlatform()

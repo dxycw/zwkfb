@@ -1,3 +1,8 @@
 package multiplatform.zwkfb
 
-expect fun platform(): String
+interface Platform {
+    val name: String
+    val platform: String
+}
+
+expect fun getPlatform(): Platform

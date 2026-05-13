@@ -9,7 +9,7 @@
 
 [![GitHub](https://jitpack.io/v/dxycw/zwkfb.svg)](https://jitpack.io/#dxycw/multiplatform-zwkfb)
 [![Kotlin](https://img.shields.io/badge/kotlin-v2.3.20-blue.svg?logo=kotlin)](http://kotlinlang.org)
-[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.10.3-blue)](https://github.com/JetBrains/compose-multiplatform)
+[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.11.0-beta03-blue)](https://github.com/JetBrains/compose-multiplatform)
 
 ![badge-android](http://img.shields.io/badge/platform-android-6EDB8D.svg?style=flat)
 ![badge-ios](http://img.shields.io/badge/platform-ios-CDCDCD.svg?style=flat)
@@ -33,7 +33,7 @@ dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         mavenCentral()
-        maven { url = uri("https://jitpack.io") }  // 添加 JitPack 仓库
+        maven("https://jitpack.io")  // 添加 JitPack 仓库
     }
 }
 ```
@@ -44,23 +44,23 @@ dependencyResolutionManagement {
 dependencies {
     
     // 如果使用多平台Jetpack Compose Multiplatform，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb:0.0.2")
+    implementation("com.github.dxycw.zwkfb:zwkfb:0.0.3")
     
     // 如果使用 Android Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.0.2")
+    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.0.3")
     
     // 如果使用 Windows Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.0.2")
+    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.0.3")
     
     // 以下平台可以用，但目前不推荐使用
     
     // 如果使用 IOS Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.0.2")
-    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.0.2")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.0.3")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.0.3")
     
     // 如果使用 Web Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.0.2")
-    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.0.2")
+    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.0.3")
+    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.0.3")
     
 }
 ```
@@ -84,7 +84,17 @@ dependencies {
 * 本项目所有平台[示例代码](https://gitee.com/dxycw/zwkfb-multiplatform#%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95)；
 
 > [!CAUTION]
+> 
+>* 项目>=0.0.3版本：
+>     从本版本开始修复 Web(js\wasm-js)平台运行报错的Bug（请升级到0.0.3版本以上，否则Web平台无法运行）；
 >
+>     注意：请修改项目 `gradle` 文件夹里面的 `libs.versions.toml` 文件中 `composeMultiplatform` 的版本为 `1.11.0-beta03` 否则Web平台无法运行。
+>    ```toml
+>    [versions]
+>    # ...
+>    composeMultiplatform = "1.11.0-beta03"  # 把它改成 1.11.0-beta03
+>    # ...
+>    ```
 >* 项目>=0.0.2版本：
 >   因为 org.jetbrains.compose 的 [1.11.0-alpha02](https://github.com/JetBrains/compose-multiplatform/releases/tag/v1.11.0-alpha02) 版本以后去掉了ios的“x86_64”平台，所以本项目也去掉 了ios的“x86_64”平台的依赖项，所以在项目中使用时去掉ios的“x86_64”平台的依赖；
 >
@@ -101,6 +111,24 @@ dependencies {
 
 
 # 更新内容
+
+## 0.0.3
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 更新 插件 org.jetbrains.compose 版本为 1.11.0-beta03；
+* 请修改项目 `gradle` 文件夹里面的 `libs.versions.toml` 文件中 `composeMultiplatform` 的版本为 `1.11.0-beta03`否则Web平台无法运行；
+* 添加 Multiplatform平台的 四个“文本()” 函数组件；
+* 添加 Multiplatform平台的 “本地文本样式” 属性函数；
+* 添加 Multiplatform平台的 “提供文本样式()” 函数；
+* 更新 Multiplatform平台的 org.jetbrains.compose.runtime:runtime 依赖库版本为 1.11.0-beta03；
+* 更新 Multiplatform平台的 org.jetbrains.compose.foundation:foundation 依赖库版本为 1.11.0-beta03；
+* 更新 Multiplatform平台的 org.jetbrains.compose.material3:material3 依赖库版本为 1.11.0-alpha07；
+* 更新 Multiplatform平台的 org.jetbrains.compose.ui:ui 依赖库版本为 1.11.0-beta03；
+* 更新 Multiplatform平台的 org.jetbrains.compose.ui:ui-tooling-preview 依赖库版本为 1.11.0-beta03；
+* 更新 Multiplatform平台的 org.jetbrains.compose.ui:ui-graphics 依赖库版本为 1.11.0-beta03；
+* 更新 Multiplatform平台的 org.jetbrains.compose.components:components-resources 依赖库版本为 1.11.0-beta03；
+* 更新 Multiplatform平台的 org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose 依赖库版本为 2.10.0；
+* 更新 Multiplatform平台的 org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose 依赖库版本为 2.10.0；
 
 ## 0.0.2
 

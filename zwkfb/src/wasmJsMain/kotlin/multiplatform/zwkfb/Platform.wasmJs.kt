@@ -1,3 +1,9 @@
 package multiplatform.zwkfb
 
-actual fun platform(): String = "wasmJs"
+
+class WasmPlatform: Platform {
+    override val name: String = "Web with Kotlin/Wasm"
+    override val platform: String = "wasmJs"
+}
+
+actual fun getPlatform(): Platform = WasmPlatform()
