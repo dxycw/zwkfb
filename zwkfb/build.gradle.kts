@@ -100,6 +100,13 @@ kotlin {
             }
         }
 
+        val desktopMain by getting{
+            dependencies {
+                implementation(compose.desktop.currentOs)
+            }
+        }
+
+
         iosMain {
             dependencies {
                 // Add iOS-specific dependencies here. This a source set created by Kotlin Gradle
