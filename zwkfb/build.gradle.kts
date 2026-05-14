@@ -106,7 +106,6 @@ kotlin {
             }
         }
 
-
         iosMain {
             dependencies {
                 // Add iOS-specific dependencies here. This a source set created by Kotlin Gradle
@@ -116,6 +115,15 @@ kotlin {
                 // KMP dependencies declared in commonMain.
             }
         }
+
+        jsMain {
+            dependencies {}
+        }
+
+        wasmJsMain {
+            dependencies {}
+        }
+
     }
 
 }
