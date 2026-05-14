@@ -44,23 +44,23 @@ dependencyResolutionManagement {
 dependencies {
     
     // 如果使用多平台Jetpack Compose Multiplatform，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb:0.0.4")
+    implementation("com.github.dxycw.zwkfb:zwkfb:0.0.5")
     
     // 如果使用 Android Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.0.4")
+    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.0.5")
     
     // 如果使用 Windows Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.0.4")
+    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.0.5")
     
     // 以下平台可以用，但目前不推荐使用
     
     // 如果使用 IOS Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.0.4")
-    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.0.4")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.0.5")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.0.5")
     
     // 如果使用 Web Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.0.4")
-    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.0.4")
+    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.0.5")
+    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.0.5")
     
 }
 ```
@@ -118,6 +118,18 @@ dependencies {
 
 
 # 更新内容
+
+## 0.0.5
+
+* 添加 Multiplatform平台的 “修饰符”、三个“布局()”、“多重测量布局()”、“徽章盒子()”、“徽章()”、“水平分隔线()”、“垂直分隔线()”、“分隔线()” 对象类；
+* 添加 Multiplatform平台的 七个“动画可见性()” 函数；
+* 添加 Multiplatform平台的 “动画可见性范围” 接口类；
+* 添加 Multiplatform平台的 “组合修饰符” 函数类；
+* 添加 Multiplatform平台的 “徽章默认值”、“分隔线默认值”、“进入退出状态” 对象类；
+* 添加 Android平台的 ComponentActivity类的“置内容()” 函数；
+* 添加 Android平台的 “本地活动” 属性函数；
+* 更新 androidx.test:runner 依赖库版本为 1.7.0；
+* 更新 androidx.test:core 依赖库版本为 1.7.0；
 
 ## 0.0.4
 
