@@ -19,6 +19,7 @@ import org.jetbrains.compose.resources.painterResource
 
 import zwkfbmultiplatform.composeapp.generated.resources.Res
 import zwkfbmultiplatform.composeapp.generated.resources.compose_multiplatform
+import 安卓x.组合.材质3.文本
 
 @Composable
 @Preview
@@ -33,7 +34,7 @@ fun App() {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Button(onClick = { showContent = !showContent }) {
-                Text("Click me!")
+                文本("Click me!")
             }
             AnimatedVisibility(showContent) {
                 val greeting = remember { Greeting().greet() }

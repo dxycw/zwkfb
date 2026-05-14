@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -17,6 +18,10 @@ kotlin {
         compileSdk = 36
         minSdk = 24
 
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
+        }
+
         withHostTestBuilder {}
 
         withDeviceTestBuilder { sourceSetTreeName = "test" }.configure {
@@ -34,7 +39,11 @@ kotlin {
         }
     }
 
-    jvm("desktop")
+    jvm("desktop") {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
+        }
+    }
 
     js {
         browser()
@@ -65,8 +74,8 @@ kotlin {
                 api("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.10.0")
                 api("org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose:2.10.0")
                 // 图标库，包含 org.jetbrains.compose.material:material-icons-core 里面的图标
-//                api("org.jetbrains.compose.material:material-icons-extended:1.7.3")
-//                api("org.jetbrains.androidx.navigation:navigation-compose:2.9.2")
+                api("org.jetbrains.compose.material:material-icons-extended:1.7.3")
+                api("org.jetbrains.androidx.navigation:navigation-compose:2.9.2")
 
             }
         }
@@ -79,9 +88,7 @@ kotlin {
 
         androidMain {
             dependencies {
-                // Add Android-specific dependencies here. Note that this source set depends on
-                // commonMain by default and will correctly pull the Android artifacts of any KMP
-                // dependencies declared in commonMain.
+                api("androidx.activity:activity-compose:1.13.0")
             }
         }
 

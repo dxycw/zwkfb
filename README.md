@@ -44,23 +44,23 @@ dependencyResolutionManagement {
 dependencies {
     
     // 如果使用多平台Jetpack Compose Multiplatform，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb:0.0.3")
+    implementation("com.github.dxycw.zwkfb:zwkfb:0.0.4")
     
     // 如果使用 Android Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.0.3")
+    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.0.4")
     
     // 如果使用 Windows Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.0.3")
+    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.0.4")
     
     // 以下平台可以用，但目前不推荐使用
     
     // 如果使用 IOS Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.0.3")
-    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.0.3")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.0.4")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.0.4")
     
     // 如果使用 Web Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.0.3")
-    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.0.3")
+    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.0.4")
+    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.0.4")
     
 }
 ```
@@ -85,16 +85,20 @@ dependencies {
 
 > [!CAUTION]
 > 
->* 项目>=0.0.3版本：
->     从本版本开始修复 Web(js\wasm-js)平台运行报错的Bug（请升级到0.0.3版本以上，否则Web平台无法运行）；
+>* 项目>=0.0.4版本：
+>    从本版本开始 Android平台 和 Desktop平台 的 jvmTarget 修改为 JVM_11；
 >
->     注意：请修改项目 `gradle` 文件夹里面的 `libs.versions.toml` 文件中 `composeMultiplatform` 的版本为 `1.11.0-beta03` 否则Web平台无法运行。
+>* 项目>=0.0.3版本：
+>    从本版本开始修复 Web(js\wasm-js)平台运行报错的Bug（请升级到0.0.3版本以上，否则Web平台无法运行）；
+>
+>    注意：请修改项目 `gradle` 文件夹里面的 `libs.versions.toml` 文件中 `composeMultiplatform` 的版本为 `1.11.0-beta03` 否则Web平台无法运行。
 >    ```toml
 >    [versions]
 >    # ...
 >    composeMultiplatform = "1.11.0-beta03"  # 把它改成 1.11.0-beta03
 >    # ...
 >    ```
+>   
 >* 项目>=0.0.2版本：
 >   因为 org.jetbrains.compose 的 [1.11.0-alpha02](https://github.com/JetBrains/compose-multiplatform/releases/tag/v1.11.0-alpha02) 版本以后去掉了ios的“x86_64”平台，所以本项目也去掉 了ios的“x86_64”平台的依赖项，所以在项目中使用时去掉ios的“x86_64”平台的依赖；
 >
@@ -107,10 +111,26 @@ dependencies {
 >       // 略
 >   }
 >   ```
+>   
+>* 项目==0.0.1版本：
+>   本版本不能用；
 
 
 
 # 更新内容
+
+## 0.0.4
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 添加 Multiplatform平台的 两个“按钮()”、两个“凸起按钮()”、两个“填充色调按钮()”、两个“轮廓按钮()”、两个“文本按钮()”、“列()”、“行()”、两个“盒子()”、“间隔器()”、两个“画布()”、“选择容器()”、“禁用选择()”  函数组件；
+* 添加 Multiplatform平台的 “是否系统深色主题()” 函数；
+* 添加 Multiplatform平台的 “按钮默认值” 对象函数；
+* 添加 Multiplatform平台的 “按钮颜色”、“按钮形状” 类；
+* 添加 Multiplatform平台的 “列范围”、“行范围”、“盒子范围” 接口类；
+* 添加 Multiplatform平台的 org.jetbrains.compose.material:material-icons-extended 依赖库版本为 1.7.3；
+* 添加 Multiplatform平台的 org.jetbrains.androidx.navigation:navigation-compose 依赖库版本为 2.9.2；
+* 添加 Android平台的 androidx.activity:activity-compose 依赖库版本为 1.13.0；
+* 修改 Android平台 和 Desktop平台的 jvmTarget 为 JVM_11；
 
 ## 0.0.3
 
