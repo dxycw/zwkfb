@@ -21,8 +21,10 @@
 
 > [!NOTE]
 >
-> 如果你使用的是Android平台的xml布局项目，请使用[zwkfb_view](https://github.com/dxycw/zwkfb_view)项目。
-
+> 如果你使用的是Android平台的xml布局项目，请使用[zwkfb-view](https://github.com/dxycw/zwkfb-view)项目。
+>
+> 如果你使用的是Jetpack Compose项目，请使用[zwkfb-compose](https://github.com/dxycw/zwkfb-compose)（注意：此项目已经停更了目前还可以使用，也可以使用Compose Multiplatform项目）。
+>
 
 # 使用方法
 
@@ -44,23 +46,23 @@ dependencyResolutionManagement {
 dependencies {
     
     // 如果使用多平台Jetpack Compose Multiplatform，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb:0.0.5")
+    implementation("com.github.dxycw.zwkfb:zwkfb:0.0.6")
     
     // 如果使用 Android Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.0.5")
+    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.0.6")
     
     // 如果使用 Windows Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.0.5")
+    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.0.6")
     
     // 以下平台可以用，但目前不推荐使用
     
     // 如果使用 IOS Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.0.5")
-    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.0.5")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.0.6")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.0.6")
     
     // 如果使用 Web Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.0.5")
-    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.0.5")
+    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.0.6")
+    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.0.6")
     
 }
 ```
@@ -119,9 +121,19 @@ dependencies {
 
 # 更新内容
 
+## 0.0.6
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 添加 Multiplatform平台的 “脚手架()”、四个“表面()”、三个“图像()”、两个“基础文本()”、两个“材质主题()”、“材质表现主题()” 函数组件；
+* 添加 Multiplatform平台的 “本地绝对色调阴影” 属性函数；
+* 添加 Multiplatform平台的 “脚手架默认值”、“悬浮位置”、“材质主题” 对象类；
+* 添加 Android平台的 两个“安卓视图()” 函数组件；
+* 添加 Android平台的 “无操作更新” 属性函数；
+* 添加 Android平台的 “动态浅色颜色方案()”、“动态深色颜色方案()” 函数；
+
 ## 0.0.5
 
-* 添加 Multiplatform平台的 “修饰符”、三个“布局()”、“多重测量布局()”、“徽章盒子()”、“徽章()”、“水平分隔线()”、“垂直分隔线()”、“分隔线()” 对象类；
+* 添加 Multiplatform平台的 “修饰符”、三个“布局()”、“多重测量布局()”、“徽章盒子()”、“徽章()”、“水平分隔线()”、“垂直分隔线()”、“分隔线()” 函数组件；
 * 添加 Multiplatform平台的 七个“动画可见性()” 函数；
 * 添加 Multiplatform平台的 “动画可见性范围” 接口类；
 * 添加 Multiplatform平台的 “组合修饰符” 函数类；
