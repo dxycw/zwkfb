@@ -1,4 +1,3 @@
-
 <div align="center">
 
 <h1>
@@ -24,7 +23,6 @@
 > 如果你使用的是Android平台的xml布局项目，请使用[zwkfb-view](https://github.com/dxycw/zwkfb-view)项目。
 >
 > 如果你使用的是Jetpack Compose项目，请使用[zwkfb-compose](https://github.com/dxycw/zwkfb-compose)（注意：此项目已经停更了目前还可以使用，也可以使用Compose Multiplatform项目）。
->
 
 # 使用方法
 
@@ -46,23 +44,23 @@ dependencyResolutionManagement {
 dependencies {
     
     // 如果使用多平台Jetpack Compose Multiplatform，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb:0.0.6")
+    implementation("com.github.dxycw.zwkfb:zwkfb:0.0.7")
     
     // 如果使用 Android Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.0.6")
+    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.0.7")
     
     // 如果使用 Windows Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.0.6")
+    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.0.7")
     
     // 以下平台可以用，但目前不推荐使用
     
     // 如果使用 IOS Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.0.6")
-    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.0.6")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.0.7")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.0.7")
     
     // 如果使用 Web Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.0.6")
-    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.0.6")
+    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.0.7")
+    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.0.7")
     
 }
 ```
@@ -120,6 +118,14 @@ dependencies {
 
 
 # 更新内容
+
+## 0.0.7
+
+* 添加 Multiplatform平台的 两个“图标按钮()”、两个“图标切换按钮()”、两个“填充图标按钮()”、两个“填充图标切换按钮()”、两个“填充色调图标按钮()”、两个“填充色调图标切换按钮()”、两个“轮廓图标按钮()”、两个“轮廓图标切换按钮()”、四个“图标()” 函数组件；
+* 添加 Multiplatform平台的 “图标按钮颜色集”、“图标切换按钮颜色集”、“图标按钮形状集”、“图标切换按钮形状集” 函数类；
+* 更新 Multiplatform平台的 org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose 依赖库版本为 2.11.0-alpha03；
+* 更新 Multiplatform平台的 org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose 依赖库版本为 2.11.0-alpha03；
+* 更新 org.jetbrains.compose.hot-reload 插件版本为 1.1.1；
 
 ## 0.0.6
 

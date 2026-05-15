@@ -91,7 +91,7 @@ android {
         minSdk = 24
         targetSdk = 36
         versionCode = 1
-        versionName = "1.0"
+        versionName = "0.0.1"
     }
 
     // ABI分割
@@ -150,7 +150,13 @@ compose.desktop {
         mainClass = "com.dxyc.zwkfb.MainKt"
 
         nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            targetFormats(
+                TargetFormat.Dmg,      // macOS
+                TargetFormat.Msi,      // Windows
+                TargetFormat.Exe,      // Windows 可执行文件
+                TargetFormat.Deb,      // Linux Debian
+                TargetFormat.Rpm       // Linux RedHat
+            )
             packageName = "中文开发包"
             packageVersion = "1.0.0"
         }
