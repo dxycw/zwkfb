@@ -44,23 +44,23 @@ dependencyResolutionManagement {
 dependencies {
     
     // 如果使用多平台Jetpack Compose Multiplatform，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb:0.0.7")
+    implementation("com.github.dxycw.zwkfb:zwkfb:0.0.8")
     
     // 如果使用 Android Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.0.7")
+    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.0.8")
     
     // 如果使用 Windows Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.0.7")
+    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.0.8")
     
     // 以下平台可以用，但目前不推荐使用
     
     // 如果使用 IOS Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.0.7")
-    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.0.7")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.0.8")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.0.8")
     
     // 如果使用 Web Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.0.7")
-    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.0.7")
+    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.0.8")
+    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.0.8")
     
 }
 ```
@@ -118,6 +118,15 @@ dependencies {
 
 
 # 更新内容
+
+## 0.0.8
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 添加 Multiplatform平台的 两个“卡片()”、两个“凸起卡片()”、两个“轮廓卡片()”、“提示条主机()”、两个“按钮组()” 函数组件；
+* 添加 Multiplatform平台的 “卡片默认值”、“提示条结果”、“提示条持续时间”、“按钮组默认值” 对象类；
+* 添加 Multiplatform平台的 “卡片颜色集”、“提示条主机状态”、“按钮组菜单状态” 函数类；
+* 添加 Multiplatform平台的 “按钮组范围” 接口类；
+* 删除老库[multiplatform-zwkfb](https://github.com/dxycw/multiplatform-zwkfb)；
 
 ## 0.0.7
 
