@@ -24,6 +24,8 @@ dependencyResolutionManagement {
             }
         }
         mavenCentral()
+//        maven { url = uri("https://jitpack.io") } // 添加 JitPack 仓库
+//        maven { url = uri("https://maven.mozilla.org/maven2") } // 使用org.mozilla.geckoview依赖库需要添加此仓库
     }
 }
 
@@ -33,5 +35,6 @@ plugins {
 
 rootProject.name = "ZwkfbMultiplatform"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 include(":composeApp")
 include(":zwkfb")

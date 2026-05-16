@@ -62,20 +62,22 @@ kotlin {
                 implementation(libs.kotlin.stdlib)
                 // Add KMP dependencies here
 
-                api("org.jetbrains.compose.runtime:runtime:1.11.0-beta03")
-                api("org.jetbrains.compose.foundation:foundation:1.11.0-beta03")
+                api("org.jetbrains.compose.runtime:runtime:1.11.0")
+                api("org.jetbrains.compose.foundation:foundation:1.11.0")
                 //     api("org.jetbrains.compose.material:material:1.11.0-rc01")
                 api("org.jetbrains.compose.material3:material3:1.11.0-alpha07")
-                api("org.jetbrains.compose.ui:ui:1.11.0-beta03")
-                api("org.jetbrains.compose.ui:ui-tooling-preview:1.11.0-beta03")
-                api("org.jetbrains.compose.ui:ui-graphics:1.11.0-beta03")
-                api("org.jetbrains.compose.components:components-resources:1.11.0-beta03")
+                api("org.jetbrains.compose.ui:ui:1.11.0")
+                api("org.jetbrains.compose.ui:ui-tooling-preview:1.11.0")
+                api("org.jetbrains.compose.ui:ui-graphics:1.11.0")
+                api("org.jetbrains.compose.components:components-resources:1.11.0")
 
-                api("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.10.0")
-                api("org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose:2.10.0")
+                api("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.11.0-beta01")
+                api("org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose:2.11.0-beta01")
                 // 图标库，包含 org.jetbrains.compose.material:material-icons-core 里面的图标
                 api("org.jetbrains.compose.material:material-icons-extended:1.7.3")
                 api("org.jetbrains.androidx.navigation:navigation-compose:2.9.2")
+
+//                api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
 
             }
         }
@@ -89,6 +91,11 @@ kotlin {
         androidMain {
             dependencies {
                 api("androidx.activity:activity-compose:1.13.0")
+
+                // 本库的预览界面依赖库，
+//                implementation("org.jetbrains.compose.ui:ui-tooling:1.11.0-rc01")
+//                implementation("androidx.customview:customview-poolingcontainer:1.0.0")
+//                implementation("androidx.emoji2:emoji2:1.5.0")
             }
         }
 
