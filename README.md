@@ -44,23 +44,23 @@ dependencyResolutionManagement {
 dependencies {
     
     // 如果使用多平台Jetpack Compose Multiplatform，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb:0.0.8")
+    implementation("com.github.dxycw.zwkfb:zwkfb:0.0.9")
     
     // 如果使用 Android Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.0.8")
+    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.0.9")
     
     // 如果使用 Windows Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.0.8")
+    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.0.9")
     
     // 以下平台可以用，但目前不推荐使用
     
     // 如果使用 IOS Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.0.8")
-    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.0.8")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.0.9")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.0.9")
     
     // 如果使用 Web Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.0.8")
-    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.0.8")
+    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.0.9")
+    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.0.9")
     
 }
 ```
@@ -118,6 +118,14 @@ dependencies {
 
 
 # 更新内容
+
+## 0.0.9
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息，并添加导入新项目时的注意事项；
+* 添加 Multiplatform平台的 三个“文本字段()”、三个“基础文本字段()”、三个“轮廓文本字段()” 函数组件；
+* 添加 Multiplatform平台的 “文本字段默认值”、“轮廓文本字段默认值”、“文本字段标签位置” 对象类；
+* 添加 Multiplatform平台的 “文本字段颜色集” 函数类；
+* 添加 Multiplatform平台的 “文本字段标签范围” 接口类；
 
 ## 0.0.8
 
