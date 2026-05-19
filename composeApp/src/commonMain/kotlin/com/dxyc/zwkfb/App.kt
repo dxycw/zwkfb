@@ -3,15 +3,24 @@ package com.dxyc.zwkfb
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicSecureTextField
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.foundation.text.input.TextObfuscationMode
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Coffee
 import androidx.compose.material.icons.filled.Restaurant
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material.icons.filled.Work
 import androidx.compose.material.icons.outlined.Coffee
 import androidx.compose.material.icons.outlined.Restaurant
+import androidx.compose.material.icons.outlined.Visibility
+import androidx.compose.material.icons.outlined.VisibilityOff
 import androidx.compose.material.icons.outlined.Work
 import androidx.compose.material3.*
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,6 +35,7 @@ import zwkfbmultiplatform.composeapp.generated.resources.compose_multiplatform
 import 安卓x.组合.动画.动画可见性
 import 安卓x.组合.基础.图像
 import 安卓x.组合.基础.布局.列
+import 安卓x.组合.基础.文本.基础安全文本字段
 import 安卓x.组合.基础.文本.基础文本字段
 import 安卓x.组合.材质3.*
 
@@ -124,7 +134,52 @@ fun App(内容: @Composable () -> Unit = {  }) {
                     },
                     标签 = { 文本("测试") }
                 )
-                darkColorScheme()
+
+                val 测试值1 = remember { TextFieldState("测试") }
+
+                var 图标状态 by remember {
+                    mutableStateOf(Icons.Filled.Visibility)
+                }
+
+                安全文本字段(
+                    状态 = 测试值1,
+                    标签 = { 文本("测试") },
+                )
+
+                基础安全文本字段(
+                    状态 = 测试值1,
+                )
+
+                轮廓安全文本字段(
+                    状态 = 测试值1,
+                    标签 = { 文本("测试") },
+                    尾随图标 = {
+                        图标按钮(
+                            单击回调 = {
+                                图标状态 = when (图标状态) {
+                                    Icons.Filled.Visibility -> Icons.Filled.VisibilityOff
+                                    else -> Icons.Filled.Visibility
+                                }
+                            }
+                        ) {
+                            图标(
+                                图像矢量 = 图标状态,
+                                内容描述 = null,
+                            )
+                        }
+                    }
+                )
+
+
+                PullToRefreshBox(
+                    isRefreshing = true,
+                    onRefresh = {
+
+                    }
+                ){
+                    Text("Hello World")
+                }
+
                 MultiSelectConnectedButtonGroupSample()
             }
         }
@@ -163,7 +218,7 @@ fun MultiSelectConnectedButtonGroupSample() {
         Modifier.padding(horizontal = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(ButtonGroupDefaults.ConnectedSpaceBetween),
     ) {
-        val modifiers = listOf(Modifier.weight(1f), Modifier.weight(1.5f), Modifier.weight(1f))
+        val modifiers = listOf(Modifier.weight(1f), Modifier.weight(1f), Modifier.weight(1f))
         options.forEachIndexed { index, label ->
             ToggleButton(
                 checked = checked[index],

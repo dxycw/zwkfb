@@ -17,7 +17,6 @@
 
 </div>
 
-
 > [!NOTE]
 >
 > 如果你使用的是Android平台的xml布局项目，请使用[zwkfb-view](https://github.com/dxycw/zwkfb-view)项目。
@@ -44,23 +43,23 @@ dependencyResolutionManagement {
 dependencies {
     
     // 如果使用多平台Jetpack Compose Multiplatform，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb:0.1.0")
+    implementation("com.github.dxycw.zwkfb:zwkfb:0.1.1")
     
     // 如果使用 Android Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.1.0")
+    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.1.1")
     
     // 如果使用 Windows Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.1.0")
+    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.1.1")
     
     // 以下平台可以用，但目前不推荐使用
     
     // 如果使用 IOS Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.1.0")
-    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.1.0")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.1.1")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.1.1")
     
     // 如果使用 Web Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.1.0")
-    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.1.0")
+    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.1.1")
+    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.1.1")
     
 }
 ```
@@ -115,14 +114,22 @@ dependencies {
 >* 项目==0.0.1版本：
 >   本版本不能用；
 
-
-
 # 更新内容
+
+## 0.1.1
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 添加 Multiplatform平台的 两个“提示条()”、“安全文本字段()”、“轮廓安全文本字段()”、“基础安全文本字段()”、“下拉刷新盒子()” 函数组件；
+* 添加 Multiplatform平台的 “提示条默认值”、“文本混淆模式”、“下拉刷新默认值” 对象类；
+* 添加 Multiplatform平台的 “键盘选项” 函数类；
+* 添加 Multiplatform平台的 “下拉刷新状态” 接口类；
+* 添加 Multiplatform平台的 “记住下拉刷新状态()”、“下拉刷新状态()” 函数；
+* 添加 Multiplatform平台的 Modifier “下拉刷新()” 函数；
 
 ## 0.1.0
 
-* 优化 项目文档，完善使用方法、平台支持、依赖库等信息，并添加导入新项目时的注意事项；
-* 更新 gradle 版本为 9.4.1（请升级到9.4.1版本以上，否则项目无法编译Android平台）；
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 更新 gradle 版本为 9.4.1；
 * 更新 Multiplatform平台的 org.jetbrains.compose.runtime:runtime 依赖库版本为 1.11.0；
 * 更新 Multiplatform平台的 org.jetbrains.compose.foundation:foundation 依赖库版本为 1.11.0；
 * 更新 Multiplatform平台的 org.jetbrains.compose.ui:ui 依赖库版本为 1.11.0；
