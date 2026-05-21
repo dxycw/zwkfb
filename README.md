@@ -43,23 +43,23 @@ dependencyResolutionManagement {
 dependencies {
     
     // 如果使用多平台Jetpack Compose Multiplatform，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb:0.1.1")
+    implementation("com.github.dxycw.zwkfb:zwkfb:0.1.2")
     
     // 如果使用 Android Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.1.1")
+    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.1.2")
     
     // 如果使用 Windows Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.1.1")
+    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.1.2")
     
     // 以下平台可以用，但目前不推荐使用
     
     // 如果使用 IOS Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.1.1")
-    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.1.1")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.1.2")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.1.2")
     
     // 如果使用 Web Jetpack Compose，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.1.1")
-    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.1.1")
+    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.1.2")
+    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.1.2")
     
 }
 ```
