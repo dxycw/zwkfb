@@ -1,4 +1,4 @@
-package com.zwkfb.multiplatform.ui.theme
+package com.dxyc.zwkfb.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

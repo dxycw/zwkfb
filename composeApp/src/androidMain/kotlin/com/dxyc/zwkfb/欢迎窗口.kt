@@ -38,7 +38,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.zwkfb.multiplatform.ui.theme.AppTheme
+import com.dxyc.zwkfb.ui.theme.AppTheme
 import 安卓x.组合.材质3.文本
 
 class 欢迎窗口 : ComponentActivity() {
@@ -60,7 +60,6 @@ class 欢迎窗口 : ComponentActivity() {
 @SuppressLint("ComposableNaming")
 @Composable
 fun 欢迎界面() {
-
     AppTheme(){
         Scaffold(
             floatingActionButton = {

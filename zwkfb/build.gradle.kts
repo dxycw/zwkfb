@@ -77,7 +77,7 @@ kotlin {
                 api("org.jetbrains.compose.material:material-icons-extended:1.7.3")
                 api("org.jetbrains.androidx.navigation:navigation-compose:2.9.2")
 
-//                api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
+                api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
 
             }
         }
@@ -91,6 +91,9 @@ kotlin {
         androidMain {
             dependencies {
                 api("androidx.activity:activity-compose:1.13.0")
+
+                api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.11.0")
+
 
                 // 本库的预览界面依赖库，
 //                implementation("org.jetbrains.compose.ui:ui-tooling:1.11.0-rc01")
@@ -110,16 +113,16 @@ kotlin {
         val desktopMain by getting{
             dependencies {
                 implementation(compose.desktop.currentOs)
+
+                api("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.11.0")
+//                api("org.jetbrains.kotlinx:kotlinx-coroutines-javafx:1.11.0")
+
             }
         }
 
         iosMain {
             dependencies {
-                // Add iOS-specific dependencies here. This a source set created by Kotlin Gradle
-                // Plugin (KGP) that each specific iOS target (e.g., iosX64) depends on as
-                // part of KMP’s default source set hierarchy. Note that this source set depends
-                // on common by default and will correctly pull the iOS artifacts of any
-                // KMP dependencies declared in commonMain.
+
             }
         }
 

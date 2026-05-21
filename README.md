@@ -116,6 +116,16 @@ dependencies {
 
 # 更新内容
 
+## 0.1.2
+
+* 迁移到 Gradle 守护进程工具链；
+* 添加 Multiplatform平台的 “本地色调阴影已启用” 属性函数；
+* 添加 Multiplatform平台的 三个“颜色方案()”、“浅色颜色方案()”、“深色颜色方案()”、“内容颜色为()”、“表现性浅色颜色方案()” 函数；
+* 添加 Multiplatform平台的 ColorScheme “复制()”、“内容颜色为()”、“表面颜色在阴影()” 函数；
+* 添加 Multiplatform平台的 org.jetbrains.kotlinx:kotlinx-coroutines-core 依赖库版本为 1.11.0；
+* 添加 Android平台的 org.jetbrains.kotlinx:kotlinx-coroutines-android 依赖库版本为 1.11.0；
+* 添加 Desktop平台的 org.jetbrains.kotlinx:kotlinx-coroutines-swing 依赖库版本为 1.11.0；
+
 ## 0.1.1
 
 * 优化 项目文档，完善使用方法、平台支持、依赖库等信息；

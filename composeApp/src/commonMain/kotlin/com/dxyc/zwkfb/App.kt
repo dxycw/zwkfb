@@ -1,8 +1,11 @@
 package com.dxyc.zwkfb
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicSecureTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.input.TextFieldState
@@ -24,9 +27,13 @@ import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import kotlinx.coroutines.launch
 import multiplatform.zwkfb.Greeting
 import org.jetbrains.compose.resources.painterResource
@@ -171,14 +178,28 @@ fun App(内容: @Composable () -> Unit = {  }) {
                 )
 
 
-                PullToRefreshBox(
-                    isRefreshing = true,
-                    onRefresh = {
+//                Dialog(
+//                    onDismissRequest = {}
+//                ) {
+//                    卡片 (
+//                        修饰符 = Modifier
+//                            .fillMaxWidth()
+//                            .height(200.dp)
+//                            .padding(16.dp),
+//                        形状 = RoundedCornerShape(16.dp),
+//                    ) {
+//                        文本(
+//                            文本 = "这是一个测试对话框",
+//                            修饰符 = Modifier
+//                                .fillMaxSize()
+//                                .wrapContentSize(Alignment.Center),
+//                            文本对齐 = TextAlign.Center,
+//                        )
+//                    }
+//                }
 
-                    }
-                ){
-                    Text("Hello World")
-                }
+                LinearProgressIndicator()
+
 
                 MultiSelectConnectedButtonGroupSample()
             }
