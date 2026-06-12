@@ -1,0 +1,52 @@
+package 安卓x.组合.材质3.令牌
+
+internal object 深色令牌 {
+    val Background = 调色板令牌.Neutral6
+    val Error = 调色板令牌.Error80
+    val ErrorContainer = 调色板令牌.Error30
+    val InverseOnSurface = 调色板令牌.Neutral20
+    val InversePrimary = 调色板令牌.Primary40
+    val InverseSurface = 调色板令牌.Neutral90
+    val OnBackground = 调色板令牌.Neutral90
+    val OnError = 调色板令牌.Error20
+    val OnErrorContainer = 调色板令牌.Error90
+    val OnPrimary = 调色板令牌.Primary20
+    val OnPrimaryContainer = 调色板令牌.Primary90
+    val OnPrimaryFixed = 调色板令牌.Primary10
+    val OnPrimaryFixedVariant = 调色板令牌.Primary30
+    val OnSecondary = 调色板令牌.Secondary20
+    val OnSecondaryContainer = 调色板令牌.Secondary90
+    val OnSecondaryFixed = 调色板令牌.Secondary10
+    val OnSecondaryFixedVariant = 调色板令牌.Secondary30
+    val OnSurface = 调色板令牌.Neutral90
+    val OnSurfaceVariant = 调色板令牌.NeutralVariant80
+    val OnTertiary = 调色板令牌.Tertiary20
+    val OnTertiaryContainer = 调色板令牌.Tertiary90
+    val OnTertiaryFixed = 调色板令牌.Tertiary10
+    val OnTertiaryFixedVariant = 调色板令牌.Tertiary30
+    val Outline = 调色板令牌.NeutralVariant60
+    val OutlineVariant = 调色板令牌.NeutralVariant30
+    val Primary = 调色板令牌.Primary80
+    val PrimaryContainer = 调色板令牌.Primary30
+    val PrimaryFixed = 调色板令牌.Primary90
+    val PrimaryFixedDim = 调色板令牌.Primary80
+    val Scrim = 调色板令牌.Neutral0
+    val Secondary = 调色板令牌.Secondary80
+    val SecondaryContainer = 调色板令牌.Secondary30
+    val SecondaryFixed = 调色板令牌.Secondary90
+    val SecondaryFixedDim = 调色板令牌.Secondary80
+    val Surface = 调色板令牌.Neutral6
+    val SurfaceBright = 调色板令牌.Neutral24
+    val SurfaceContainer = 调色板令牌.Neutral12
+    val SurfaceContainerHigh = 调色板令牌.Neutral17
+    val SurfaceContainerHighest = 调色板令牌.Neutral22
+    val SurfaceContainerLow = 调色板令牌.Neutral10
+    val SurfaceContainerLowest = 调色板令牌.Neutral4
+    val SurfaceDim = 调色板令牌.Neutral6
+    val SurfaceTint = Primary
+    val SurfaceVariant = 调色板令牌.NeutralVariant30
+    val Tertiary = 调色板令牌.Tertiary80
+    val TertiaryContainer = 调色板令牌.Tertiary30
+    val TertiaryFixed = 调色板令牌.Tertiary90
+    val TertiaryFixedDim = 调色板令牌.Tertiary80
+}
