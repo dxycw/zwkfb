@@ -24,67 +24,73 @@ import com.sun.jna.Native
 import com.sun.jna.WString
 import com.sun.jna.platform.win32.WinDef
 import com.sun.jna.win32.W32APIOptions
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 
-// 使用 Unicode 版本（W 后缀）的 Windows API
-interface User32 : W32APIOptions {
-    // Unicode 版本，接收宽字符（WCHAR*）
-    fun FindWindowW(lpClassName: WString?, lpWindowName: WString?): WinDef.HWND?
-    fun GetWindowTextW(hWnd: WinDef.HWND?, lpString: CharArray, nMaxCount: Int): Int
-    // 获取窗口标题所需的长度
-    fun GetWindowTextLengthW(hWnd: WinDef.HWND?): Int
-
-    companion object {
-        val INSTANCE: User32 = Native.load(
-            "user32",
-            User32::class.java,
-            W32APIOptions.UNICODE_OPTIONS  // 关键：使用 Unicode 选项
-        )
-    }
-}
-
-fun main() = application {
-    Window(
-        onCloseRequest = ::exitApplication,
-        title = "JNA Unicode Demo"
-    ) {
-        var windowTitle by remember { mutableStateOf("点击按钮获取窗口标题") }
-
-        Column(
-            modifier = Modifier.fillMaxSize().padding(16.dp),
-            verticalArrangement = Arrangement.Center
-        ) {
-            Button(onClick = {
-                // 使用 WString 传递 Unicode 字符串
-                val hWnd = User32.INSTANCE.FindWindowW(WString("Notepad"), null)
-
-                if (hWnd != null) {
-                    // 先获取标题长度
-                    val length = User32.INSTANCE.GetWindowTextLengthW(hWnd)
-                    if (length > 0) {
-                        // 分配足够大的 CharArray（WCHAR 是 2 字节）
-                        val buffer = CharArray(length + 1)
-                        User32.INSTANCE.GetWindowTextW(hWnd, buffer, buffer.size)
-                        val rawTitle = String(buffer).trimEnd('\u0000')
-                        windowTitle = rawTitle.substringBefore(" - Notepad")
-                    } else {
-                        windowTitle = "窗口无标题"
-                    }
-                } else {
-                    windowTitle = "未找到记事本窗口"
-                }
-            }) {
-                Text("获取记事本窗口标题")
-            }
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            Text(
-                text = "标题: $windowTitle",
-                style = MaterialTheme.typography.bodyLarge
-            )
-        }
-    }
-}
+//// 使用 Unicode 版本（W 后缀）的 Windows API
+//interface User32 : W32APIOptions {
+//    // Unicode 版本，接收宽字符（WCHAR*）
+//    fun FindWindowW(lpClassName: WString?, lpWindowName: WString?): WinDef.HWND?
+//    fun GetWindowTextW(hWnd: WinDef.HWND?, lpString: CharArray, nMaxCount: Int): Int
+//    // 获取窗口标题所需的长度
+//    fun GetWindowTextLengthW(hWnd: WinDef.HWND?): Int
+//
+//    companion object {
+//        val INSTANCE: User32 = Native.load(
+//            "user32",
+//            User32::class.java,
+//            W32APIOptions.UNICODE_OPTIONS  // 关键：使用 Unicode 选项
+//        )
+//    }
+//}
+//
+//fun main() = application {
+//    Window(
+//        onCloseRequest = ::exitApplication,
+//        title = "JNA Unicode Demo"
+//    ) {
+//        var windowTitle by remember { mutableStateOf("点击按钮获取窗口标题") }
+//
+//        Column(
+//            modifier = Modifier.fillMaxSize().padding(16.dp),
+//            verticalArrangement = Arrangement.Center
+//        ) {
+//            Button(onClick = {
+//                // 使用 WString 传递 Unicode 字符串
+//                val hWnd = User32.INSTANCE.FindWindowW(WString("Notepad"), null)
+//
+//                if (hWnd != null) {
+//                    // 先获取标题长度
+//                    val length = User32.INSTANCE.GetWindowTextLengthW(hWnd)
+//                    if (length > 0) {
+//                        // 分配足够大的 CharArray（WCHAR 是 2 字节）
+//                        val buffer = CharArray(length + 1)
+//                        User32.INSTANCE.GetWindowTextW(hWnd, buffer, buffer.size)
+//                        val rawTitle = String(buffer).trimEnd('\u0000')
+//                        windowTitle = rawTitle.substringBefore(" - Notepad")
+//                    } else {
+//                        windowTitle = "窗口无标题"
+//                    }
+//                } else {
+//                    windowTitle = "未找到记事本窗口"
+//                }
+//            }) {
+//                Text("获取记事本窗口标题")
+//            }
+//
+//            Spacer(modifier = Modifier.height(16.dp))
+//
+//            Text(
+//                text = "标题: $windowTitle",
+//                style = MaterialTheme.typography.bodyLarge
+//            )
+//        }
+//    }
+//}
 
 //fun main() = application {
 //    Window(
@@ -149,16 +155,16 @@ fun main() = application {
 //}
 
 
-//package com.dxyc.zwkfb
-//
 //import androidx.compose.ui.window.Window
 //import androidx.compose.ui.window.application
-//
-//fun main() = application {
-//    Window(
-//        onCloseRequest = ::exitApplication,
-//        title = "Zwkfbmultiplatform",
-//    ) {
-//        App()
-//    }
-//}
+
+fun main() = application {
+    Window(
+        onCloseRequest = ::exitApplication,
+        title = "中文开发包",
+    ) {
+        App()
+    }
+}
+
+

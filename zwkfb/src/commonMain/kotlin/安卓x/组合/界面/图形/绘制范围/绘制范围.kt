@@ -26,11 +26,16 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.DrawStyle
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.clipPath
+import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.graphics.drawscope.draw
+import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.drawscope.inset
 import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.graphics.drawscope.rotateRad
+import androidx.compose.ui.graphics.drawscope.scale
 import androidx.compose.ui.graphics.drawscope.translate
+import androidx.compose.ui.graphics.drawscope.withTransform
 import androidx.compose.ui.graphics.layer.GraphicsLayer
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.IntOffset
@@ -115,239 +120,115 @@ inline fun DrawScope.旋转弧度(
     块: DrawScope.() -> Unit,
 ) = this.rotateRad(radians = 弧度, pivot = 枢轴, block = 块)
 
-///**
-// * Add an axis-aligned scale to the current transform, scaling by the first argument in the
-// * horizontal direction and the second in the vertical direction at the given pivot coordinate. The
-// * pivot coordinate remains unchanged by the scale transformation. After this method is invoked, the
-// * coordinate space is returned to the state before the scale was applied.
-// *
-// * @param scaleX The amount to scale in X
-// * @param scaleY The amount to scale in Y
-// * @param pivot The coordinate for the pivot point, defaults to the center of the coordinate space
-// * @param block lambda used to issue drawing commands within the scaled coordinate space
-// */
-//inline fun DrawScope.scale(
-//    scaleX: Float,
-//    scaleY: Float,
-//    pivot: Offset = center,
-//    block: DrawScope.() -> Unit,
-//) = withTransform({ scale(scaleX, scaleY, pivot) }, block)
-//
-///**
-// * Add an axis-aligned scale to the current transform, scaling both the horizontal direction and the
-// * vertical direction at the given pivot coordinate. The pivot coordinate remains unchanged by the
-// * scale transformation. After this method is invoked, the coordinate space is returned to the state
-// * before the scale was applied.
-// *
-// * @param scale The amount to scale uniformly in both directions
-// * @param pivot The coordinate for the pivot point, defaults to the center of the coordinate space
-// * @param block lambda used to issue drawing commands within the scaled coordinate space
-// */
-//inline fun DrawScope.scale(scale: Float, pivot: Offset = center, block: DrawScope.() -> Unit) =
-//    withTransform({ scale(scale, scale, pivot) }, block)
-//
-///**
-// * Reduces the clip region to the intersection of the current clip and the given rectangle indicated
-// * by the given left, top, right and bottom bounds. This provides a callback to issue drawing
-// * commands within the clipped region. After this method is invoked, this clip is no longer applied.
-// *
-// * Use [ClipOp.Difference] to subtract the provided rectangle from the current clip.
-// *
-// * @param left Left bound of the rectangle to clip
-// * @param top Top bound of the rectangle to clip
-// * @param right Right bound of the rectangle to clip
-// * @param bottom Bottom bound of the rectangle to clip
-// * @param clipOp Clipping operation to conduct on the given bounds, defaults to [ClipOp.Intersect]
-// * @param block Lambda callback with this CanvasScope as a receiver scope to issue drawing commands
-// *   within the provided clip
-// */
-//inline fun DrawScope.clipRect(
-//    left: Float = 0.0f,
-//    top: Float = 0.0f,
-//    right: Float = size.width,
-//    bottom: Float = size.height,
-//    clipOp: ClipOp = ClipOp.Intersect,
-//    block: DrawScope.() -> Unit,
-//) = withTransform({ clipRect(left, top, right, bottom, clipOp) }, block)
-//
-///**
-// * Reduces the clip region to the intersection of the current clip and the given path. This method
-// * provides a callback to issue drawing commands within the region defined by the clipped path.
-// * After this method is invoked, this clip is no longer applied.
-// *
-// * @param path Shape to clip drawing content within
-// * @param clipOp Clipping operation to conduct on the given bounds, defaults to [ClipOp.Intersect]
-// * @param block Lambda callback with this CanvasScope as a receiver scope to issue drawing commands
-// *   within the provided clip
-// */
-//inline fun DrawScope.clipPath(
-//    path: Path,
-//    clipOp: ClipOp = ClipOp.Intersect,
-//    block: DrawScope.() -> Unit,
-//) = withTransform({ clipPath(path, clipOp) }, block)
-//
-///**
-// * Provides access to draw directly with the underlying [Canvas]. This is helpful for situations to
-// * re-use alternative drawing logic in combination with [DrawScope]
-// *
-// * @param block Lambda callback to issue drawing commands on the provided [Canvas]
-// */
-//inline fun DrawScope.drawIntoCanvas(block: (Canvas) -> Unit) = block(drawContext.canvas)
-//
-///**
-// * Perform 1 or more transformations and execute drawing commands with the specified transformations
-// * applied. After this call is complete, the transformation before this call was made is restored
-// *
-// * @param transformBlock Callback invoked to issue transformations to be made before the drawing
-// *   operations are issued
-// * @param drawBlock Callback invoked to issue drawing operations after the transformations are
-// *   applied
-// */
-//inline fun DrawScope.withTransform(
-//    transformBlock: DrawTransform.() -> Unit,
-//    drawBlock: DrawScope.() -> Unit,
-//) =
-//    with(drawContext) {
-//        // Transformation can include inset calls which change the drawing area
-//        // so cache the previous size before the transformation is done
-//        // and reset it afterwards
-//        val previousSize = size
-//        canvas.save()
-//        try {
-//            transformBlock(transform)
-//            drawBlock()
-//        } finally {
-//            canvas.restore()
-//            size = previousSize
-//        }
-//    }
-//
-//
-///**
-// * Draws into the provided [Canvas] with the commands specified in the lambda with this [DrawScope]
-// * as a receiver
-// *
-// * @param density [Density] used to assist in conversions of density independent pixels to raw
-// *   pixels to draw
-// * @param layoutDirection [LayoutDirection] of the layout being drawn in.
-// * @param canvas target canvas to render into
-// * @param size bounds relative to the current canvas translation in which the [DrawScope] should
-// *   draw within
-// * @param graphicsLayer Current [GraphicsLayer] we are drawing into. Might be null if the [canvas]
-// *   is not provided by a [GraphicsLayer], for example in the case of a software-accelerated drawing
-// * @param block lambda that is called to issue drawing commands on this [DrawScope]
-// */
-//inline fun DrawScope.draw(
-//    density: Density,
-//    layoutDirection: LayoutDirection,
-//    canvas: Canvas,
-//    size: Size,
-//    graphicsLayer: GraphicsLayer? = null,
-//    block: DrawScope.() -> Unit,
-//) {
-//    // Remember the previous drawing parameters in case we are temporarily re-directing our
-//    // drawing to a separate Layer/RenderNode only to draw that content back into the original
-//    // Canvas. If there is no previous canvas that was being drawing into, this ends up
-//    // resetting these parameters back to defaults defensively
-//    val prevDensity = drawContext.density
-//    val prevLayoutDirection = drawContext.layoutDirection
-//    val prevCanvas = drawContext.canvas
-//    val prevSize = drawContext.size
-//    val prevLayer = drawContext.graphicsLayer
-//    drawContext.apply {
-//        this.density = density
-//        this.layoutDirection = layoutDirection
-//        this.canvas = canvas
-//        this.size = size
-//        this.graphicsLayer = graphicsLayer
-//    }
-//    canvas.save()
-//    try {
-//        this.block()
-//    } finally {
-//        canvas.restore()
-//        drawContext.apply {
-//            this.density = prevDensity
-//            this.layoutDirection = prevLayoutDirection
-//            this.canvas = prevCanvas
-//            this.size = prevSize
-//            this.graphicsLayer = prevLayer
-//        }
-//    }
-//}
-//
-//
-///**
-// * Draws into the provided [Canvas] with the commands specified in the lambda with this [DrawScope]
-// * as a receiver
-// *
-// * @param density [Density] used to assist in conversions of density independent pixels to raw
-// *   pixels to draw
-// * @param layoutDirection [LayoutDirection] of the layout being drawn in.
-// * @param canvas target canvas to render into
-// * @param size bounds relative to the current canvas translation in which the [DrawScope] should
-// *   draw within
-// * @param graphicsLayer Current [GraphicsLayer] we are drawing into. Might be null if the [canvas]
-// *   is not provided by a [GraphicsLayer], for example in the case of a software-accelerated drawing
-// * @param block lambda that is called to issue drawing commands on this [DrawScope]
-// */
-//inline fun 绘制范围.draw(
-//    density: Density,
-//    layoutDirection: LayoutDirection,
-//    canvas: Canvas,
-//    size: Size,
-//    graphicsLayer: GraphicsLayer? = null,
-//    block: 绘制范围.() -> Unit,
-//) {
-//    // Remember the previous drawing parameters in case we are temporarily re-directing our
-//    // drawing to a separate Layer/RenderNode only to draw that content back into the original
-//    // Canvas. If there is no previous canvas that was being drawing into, this ends up
-//    // resetting these parameters back to defaults defensively
-//    val prevDensity = drawContext.density
-//    val prevLayoutDirection = drawContext.layoutDirection
-//    val prevCanvas = drawContext.canvas
-//    val prevSize = drawContext.size
-//    val prevLayer = drawContext.graphicsLayer
-//    drawContext.apply {
-//        this.density = density
-//        this.layoutDirection = layoutDirection
-//        this.canvas = canvas
-//        this.size = size
-//        this.graphicsLayer = graphicsLayer
-//    }
-//    canvas.save()
-//    try {
-//        this.block()
-//    } finally {
-//        canvas.restore()
-//        drawContext.apply {
-//            this.density = prevDensity
-//            this.layoutDirection = prevLayoutDirection
-//            this.canvas = prevCanvas
-//            this.size = prevSize
-//            this.graphicsLayer = prevLayer
-//        }
-//    }
-//}
-//
-//
-//fun GraphicsLayer.记录(
-//    size: IntSize = this.size.toIntSize(),
-//    block: DrawScope.() -> Unit,
-//) =
-//    record(this, this.layoutDirection, size) {
-//        this.draw(
-//            // we can use this@record.drawContext directly as the values in this@DrawScope
-//            // and this@record are the same
-//            drawContext.density,
-//            drawContext.layoutDirection,
-//            drawContext.canvas,
-//            drawContext.size,
-//            drawContext.graphicsLayer,
-//            block,
-//        )
-//    }
-//
+/**
+ * 在当前变换中添加一个轴对齐的缩放，以第一个参数在水平方向、第二个参数在垂直方向进行缩放，并以给定的枢轴坐标为基准。
+ * 枢轴坐标在缩放变换中保持不变。调用此方法后，坐标空间将恢复到应用缩放之前的状态。
+ *
+ * @param 缩放X X 轴方向的缩放比例。
+ * @param 缩放Y Y 轴方向的缩放比例。
+ * @param 枢轴 枢轴点的坐标，默认为坐标空间的中心。
+ * @param 块 用于在缩放后的坐标空间内发出绘制命令的 lambda。
+ */
+inline fun DrawScope.缩放(
+    缩放X: Float,
+    缩放Y: Float,
+    枢轴: Offset = center,
+    块: DrawScope.() -> Unit,
+) = this.scale(scaleX = 缩放X, scaleY = 缩放Y, pivot = 枢轴, block = 块)
+
+/**
+ * 在当前变换中添加一个轴对齐的缩放，以给定的枢轴坐标为基准，同时在水平方向和垂直方向进行缩放。枢轴坐标在缩放变换中保持不变。
+ * 调用此方法后，坐标空间将恢复到应用缩放之前的状态。
+ *
+ * @param 缩放 在两个方向上均匀缩放的量。
+ * @param 枢轴 枢轴点的坐标，默认为坐标空间的中心。
+ * @param 块 用于在缩放后的坐标空间内发出绘制命令的 lambda。
+ */
+inline fun DrawScope.缩放(缩放: Float, 枢轴: Offset = center, 块: DrawScope.() -> Unit) =
+    this.scale(scale = 缩放, pivot = 枢轴, block = 块)
+
+/**
+ * 将裁剪区域缩减为当前裁剪区域与由给定的左、上、右、下边界所指定的矩形的交集。此方法提供一个回调，用于在裁剪区域内发出绘制命令。
+ * 调用此方法后，此裁剪不再生效。
+ *
+ * 使用 [ClipOp.Difference] 从当前裁剪区域中减去所提供的矩形。
+ *
+ * @param 左 要裁剪的矩形的左边界。
+ * @param 上 要裁剪的矩形的上边界。
+ * @param 右 要裁剪的矩形的右边界。
+ * @param 下 要裁剪的矩形的下边界。
+ * @param 裁剪操作 对给定边界执行的裁剪操作，默认为 [ClipOp.Intersect]。
+ * @param 块 以当前 CanvasScope 作为接收器上下文的 Lambda 回调，用于在提供的裁剪区域内发出绘制命令。
+ */
+inline fun DrawScope.裁剪矩形(
+    左: Float = 0.0f,
+    上: Float = 0.0f,
+    右: Float = size.width,
+    下: Float = size.height,
+    裁剪操作: ClipOp = ClipOp.Intersect,
+    块: DrawScope.() -> Unit,
+) = this.clipRect(left = 左, top = 上, right = 右, bottom = 下, clipOp = 裁剪操作, block = 块)
+
+/**
+ * 将裁剪区域缩减为当前裁剪区域与给定路径的交集。此方法提供一个回调，用于在由裁剪路径定义的区域内发出绘制命令。调用此方法后，此裁剪不再生效。
+ *
+ * @param 路径 用于裁剪绘制内容的形状。
+ * @param 裁剪操作 对给定边界执行的裁剪操作，默认为 [ClipOp.Intersect]。
+ * @param 块 以当前 CanvasScope 作为接收器上下文的 Lambda 回调，用于在提供的裁剪区域内发出绘制命令。
+ */
+inline fun DrawScope.裁剪路径(
+    路径: Path,
+    裁剪操作: ClipOp = ClipOp.Intersect,
+    块: DrawScope.() -> Unit,
+) = this.clipPath(path = 路径, clipOp = 裁剪操作, block = 块)
+
+/**
+ * 提供直接使用底层 [Canvas] 进行绘制的访问权限。这对于需要结合 [DrawScope] 复用其他绘制逻辑的场景很有帮助。
+ *
+ * @param 块 用于在提供的 [Canvas] 上发出绘制命令的 Lambda 回调。
+ */
+inline fun DrawScope.绘制到画布(块: (Canvas) -> Unit) = this.drawIntoCanvas(block = 块)
+
+/**
+ * 执行一个或多个变换，并使用所应用的指定变换执行绘制命令。此调用完成后，将恢复此调用之前的变换。
+ *
+ * @param 转换块 在绘制操作发出之前，调用此回调来执行要应用的变换。
+ * @param 绘制块 在变换应用之后，调用此回调来发出绘制操作。
+ */
+inline fun DrawScope.带转换(
+    转换块: DrawTransform.() -> Unit,
+    绘制块: DrawScope.() -> Unit,
+) = this.withTransform(transformBlock = 转换块, drawBlock = 绘制块)
+
+
+/**
+ * 使用以当前 [DrawScope] 作为接收器的 lambda 中指定的命令，在提供的 [Canvas] 上进行绘制。
+ *
+ * @param 密度 用于辅助将密度无关像素转换为原始像素以进行绘制的 [Density]。
+ * @param 布局方向 所绘制布局的 [LayoutDirection]。
+ * @param 画布 标画布，用于渲染输出。
+ * @param 大小 [DrawScope] 应在其中绘制的边界，相对于当前画布的平移坐标。
+ * @param 图形图层 我们正在绘制到的当前 [GraphicsLayer]。如果 [画布] 不是由 [GraphicsLayer] 提供的，
+ * 则可能为 null，例如在软件加速绘制的情况下。
+ * @param 块 在此 [DrawScope] 上发出绘制命令时调用的 lambda。
+ */
+inline fun DrawScope.绘制(
+    密度: Density,
+    布局方向: LayoutDirection,
+    画布: Canvas,
+    大小: Size,
+    图形图层: GraphicsLayer? = null,
+    块: DrawScope.() -> Unit,
+) = this.draw(
+    density = 密度,
+    layoutDirection = 布局方向,
+    canvas = 画布,
+    size = 大小,
+    graphicsLayer = 图形图层,
+    block = 块,
+)
+
+
 ///**
 // * Creates a scoped drawing environment with the provided [Canvas]. This provides a declarative,
 // * stateless API to draw shapes and paths without requiring consumers to maintain underlying
@@ -905,48 +786,44 @@ inline fun DrawScope.旋转弧度(
 //        val DefaultFilterQuality: FilterQuality = FilterQuality.Low
 //    }
 //}
-//
-///**
-// * [DrawStyle] that provides information for drawing content with a stroke
-// *
-// * @param width Configure the width of the stroke in pixels
-// * @param miter Set the stroke miter value. This is used to control the behavior of miter joins when
-// *   the joins angle is sharp. This value must be >= 0
-// * @param cap Return the paint's Cap, controlling how the start and end of stroked lines and paths
-// *   are treated. The default is [StrokeCap.Butt]
-// * @param join Set's the treatment where lines and curve segments join on a stroked path. The
-// *   default is [StrokeJoin.Miter]
-// * @param pathEffect Effect to apply to the stroke, null indicates a solid stroke line is to be
-// *   drawn
-// */
-//fun 描边(
-//    width: Float = 0.0f,
-//    miter: Float = Stroke.DefaultMiter,
-//    cap: StrokeCap = Stroke.DefaultCap,
-//    join: StrokeJoin = Stroke.DefaultJoin,
-//    pathEffect: PathEffect? = null,
-//) =
-//    Stroke(
-//        width = width,
-//        miter = miter,
-//        cap = cap,
-//        join = join,
-//        pathEffect = pathEffect,
-//    )
-//
-//
-//object 描边{
-//
-//    /** Width to indicate a hairline stroke of 1 pixel */
-//    const val HairlineWidth = Stroke.HairlineWidth
-//
-//    /** Default miter length used in combination with joins */
-//    const val DefaultMiter: Float = Stroke.DefaultMiter
-//
-//    /** Default cap used for line endings */
-//    val DefaultCap = Stroke.DefaultCap
-//
-//    /** Default join style used for connections between line and curve segments */
-//    val DefaultJoin = Stroke.DefaultJoin
-//
-//}
+
+/**
+ * 提供用于以描边方式绘制内容的信息的 [DrawStyle]。
+ *
+ * @param 宽度 以像素为单位配置描边的宽度。
+ * @param 斜接 设置描边斜接值。用于控制当连接角度较尖锐时斜接连接的行为。此值必须 >= 0。
+ * @param 端点 返回画笔的 Cap，控制描边线条和路径的起点和终点的处理方式。默认为 [StrokeCap.Butt]。
+ * @param 连接 设置描边路径中线条和曲线段连接处的处理方式。默认为 [StrokeJoin.Miter]。
+ * @param 路径效果 应用于描边的效果，null 表示绘制实心描边线条。
+ */
+fun 描边(
+    宽度: Float = 0.0f,
+    斜接: Float = Stroke.DefaultMiter,
+    端点: StrokeCap = Stroke.DefaultCap,
+    连接: StrokeJoin = Stroke.DefaultJoin,
+    路径效果: PathEffect? = null,
+) =
+    Stroke(
+        width = 宽度,
+        miter = 斜接,
+        cap = 端点,
+        join = 连接,
+        pathEffect = 路径效果,
+    )
+
+
+object 描边{
+
+    /** 表示 1 像素细线描边的宽度。*/
+    const val 细线宽度 = Stroke.HairlineWidth
+
+    /** 与连接方式配合使用的默认斜接长度。 */
+    const val 默认斜接: Float = Stroke.DefaultMiter
+
+    /** 用于线条末端的默认端帽。 */
+    val 默认端点 = Stroke.DefaultCap
+
+    /** 用于线条和曲线段之间连接的默认连接样式。 */
+    val 默认连接 = Stroke.DefaultJoin
+
+}

@@ -8,7 +8,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.DatePicker
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.PrimaryTabRow
@@ -18,6 +21,8 @@ import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.material3.TimePicker
+import androidx.compose.material3.TimePickerLayoutType
+import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.material3.rememberTimePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -37,6 +42,8 @@ import org.jetbrains.compose.resources.painterResource
 import zwkfbmultiplatform.app.shared.generated.resources.Res
 import zwkfbmultiplatform.app.shared.generated.resources.compose_multiplatform
 import 安卓x.组合.材质3.分段按钮颜色集
+import 安卓x.组合.材质3.文本
+import 安卓x.组合.材质3.记住时间选择器状态
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -48,6 +55,7 @@ fun App() {
             modifier = Modifier
 //                .background(MaterialTheme.colorScheme.primaryContainer)
                 .safeContentPadding()
+//                .verticalScroll(rememberScrollState())
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
@@ -107,10 +115,11 @@ fun App() {
                 }
             }
 
-            val 状态 = rememberTimePickerState()
-            TimePicker(
+            val 状态 = rememberDatePickerState()
+            DatePicker(
                 state = 状态,
             )
+
         }
     }
 }
