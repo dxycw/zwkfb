@@ -6,6 +6,7 @@ import androidx.compose.material3.DatePickerColors
 import androidx.compose.material3.DatePickerDefaults
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.material3.DatePickerDialog
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
@@ -30,6 +31,7 @@ import androidx.compose.ui.window.DialogProperties
  * @param 内容 对话框的内容（例如一个 [DatePicker]）。
  */
 @Suppress("ComposableNaming")
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun 日期选择器对话框(
     关闭请求回调: () -> Unit,
