@@ -113,12 +113,13 @@ val ModalBottomSheetProperties.是否应关闭单击外部回调: Boolean
 
 
 /** [模态底部面板] 的默认值 */
+@Suppress("EXPECT_ACTUAL_CLASSIFIERS_ARE_IN_BETA_WARNING")
 @Immutable
 @ExperimentalMaterial3Api
-object 模态底部面板默认值 { // ModalBottomSheetDefaults
+expect object 模态底部面板默认值 { // ModalBottomSheetDefaults
 
     /**  用于自定义 [模态底部面板] 行为的属性。 */
-    val 属性集: ModalBottomSheetProperties = ModalBottomSheetDefaults.properties
+    val 属性集: ModalBottomSheetProperties
 
 }
 

@@ -35,9 +35,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import 安卓x.组合.基础.文本.基础文本字段
 
-/**
- * 包含 [文本字段] 使用的默认值。有关 [轮廓文本字段] 使用的默认值，请参见 [文本字段默认值]。
- */
+/** 包含 [文本字段] 使用的默认值。有关 [轮廓文本字段] 使用的默认值，请参见 [文本字段默认值]。*/
 @Immutable
 object 文本字段默认值 { // TextFieldDefaults
 
@@ -626,9 +624,7 @@ object 文本字段默认值 { // TextFieldDefaults
             start = 开始, top = 上, end = 结束, bottom = 下,)
 }
 
-/**
- * 包含 [轮廓文本字段] 使用的默认值。有关 [文本字段] 使用的默认值，请参见 [文本字段默认值]。
- */
+/** 包含 [轮廓文本字段] 使用的默认值。有关 [文本字段] 使用的默认值，请参见 [文本字段默认值]。*/
 @Immutable
 object 轮廓文本字段默认值 { // OutlinedTextFieldDefaults
 
@@ -1515,11 +1511,25 @@ constructor(
 
 /** 标签相对于文本字段的位置。 */
 object 文本字段标签位置{ // TextFieldLabelPosition
+    /**
+     * 根据 Material 规范定义的默认标签位置。
+     *
+     * 对于 [文本字段]，标签位于文本字段容器内部。对于 [轮廓文本字段]，标签在展开时位于文本字段容器内部，在最小化时切入边框。
+     *
+     * @param 始终最小化 是否始终保持文本字段的标签为最小化状态。如果为 `false`，当文本字段未聚焦且为空时，标签将展开以占据输入区域。
+     * 如果为 `true`，则允许在文本字段未聚焦且为空时，与标签一起显示占位提示文本、前缀和后缀。
+     * @param 最小化对齐方式 文本字段最小化时的标签水平对齐方式。
+     * @param 展开对齐方式 文本字段展开时的标签水平对齐方式。
+     */
     fun 已附加(
         始终最小化: Boolean = false,
         最小化对齐方式: Alignment.Horizontal = Alignment.Start,
         展开对齐方式: Alignment.Horizontal = Alignment.Start
-    ) = TextFieldLabelPosition.Attached(alwaysMinimize = 始终最小化, minimizedAlignment = 最小化对齐方式, expandedAlignment = 展开对齐方式)
+    ) = TextFieldLabelPosition.Attached(
+        alwaysMinimize = 始终最小化,
+        minimizedAlignment = 最小化对齐方式,
+        expandedAlignment = 展开对齐方式
+    )
 
     fun 上方(
         对齐: Alignment.Horizontal = Alignment.Start
@@ -1599,5 +1609,6 @@ interface 文本字段标签范围 { // TextFieldLabelScope
      * 当使用从 [LocalTextStyle] 读取的组件（如默认的 [文本]）时，标签动画由框架自动处理。
      * 此 [标签最小化进度] 值可用于与默认动画协调配合其他动画。
      */
-    @get:FloatRange(from = 0.0, to = 1.0) val 标签最小化进度: Float // labelMinimizedProgress
+    @get:FloatRange(from = 0.0, to = 1.0)
+    val 标签最小化进度: Float // labelMinimizedProgress
 }

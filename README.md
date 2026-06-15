@@ -49,23 +49,23 @@ dependencyResolutionManagement {
 dependencies {
     
     // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb:0.2.0")
+    implementation("com.github.dxycw.zwkfb:zwkfb:0.2.1")
     
     // 如果使用 Android Jetpack Compose 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.2.0")
+    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.2.1")
     
     // 如果使用 Desktop Jetpack Compose 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.2.0")
+    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.2.1")
     
     // 以下平台可以用，但目前不推荐使用
     
     // 如果使用 IOS Jetpack Compose 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.2.0")
-    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.2.0")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.2.1")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.2.1")
     
     // 如果使用 Web Jetpack Compose 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.2.0")
-    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.2.0")
+    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.2.1")
+    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.2.1")
     
 }
 ```
@@ -84,7 +84,11 @@ dependencies {
 
 * 本项目所有平台[使用的依赖库](%E6%96%87%E6%A1%A3/%E4%BD%BF%E7%94%A8%E7%9A%84%E4%BE%9D%E8%B5%96%E5%BA%93.md)；
 
-**5、示例代码：**
+**5、打包体积压缩：**
+
+* 本项目所有平台[打包体积压缩](%E6%96%87%E6%A1%A3/%E6%89%93%E5%8C%85%E4%BD%93%E7%A7%AF%E5%8E%8B%E7%BC%A9.md)；
+
+**6、示例代码：**
 
 * 本项目所有平台[示例代码](https://gitee.com/dxycw/zwkfb-multiplatform#%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95)；
 
@@ -99,6 +103,18 @@ dependencies {
 >   从本版本发布开始请使用 Jetpack Compose Multiplatform 的新项目模板。
 
 # 更新内容
+
+## 0.2.1
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息，添加了“打包体积压缩”；
+* 添加 Multiplatform平台的 “日期范围选择器()”、“日期选择器对话框()”、“时间选择器对话框()”、两个“标签页()”、“前导图标标签页()” 函数组件；
+* 添加 Multiplatform平台的 “记住日期范围选择器状态()”、“日期范围选择器状态()” 函数；
+* 添加 Multiplatform平台的 “日期范围选择器默认值”、“时间选择器对话框默认值”、“时间选择器显示模式” 对象类；
+* 添加 Multiplatform平台的 “日期范围选择器状态” 接口类；
+* 添加 Multiplatform平台的 DateRangePickerState “已选择开始日期毫秒”、“已选择结束日期毫秒”、“显示月份毫秒”、“显示模式”、“年份范围”、“可选择日期”、“语言环境” 属性函数；
+* 添加 Multiplatform平台的 DateRangePickerState “置选择()” 函数；
+* 添加 Android平台的 三个“模态底部面板属性集()” 函数；
+* 添加 Android平台的 模态底部面板默认值 “属性集()” 函数；
 
 ## 0.2.0
 

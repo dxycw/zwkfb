@@ -36,7 +36,7 @@ import androidx.compose.ui.window.DialogProperties
  * @param 文本 文本，用于呈现与对话框用途相关的详细信息。
  * @param 形状 定义此对话框容器的形状
  * @param 容器颜色 此对话框背景所使用的颜色。使用 [Color.Transparent] 表示无颜色（透明）。
- * @param 	图标内容颜色 图标使用的内容颜色。
+ * @param 图标内容颜色 图标使用的内容颜色。
  * @param 标题内容颜色 标题使用的内容颜色。
  * @param 文本内容颜色 文本使用的内容颜色。
  * @param 色调阴影 当 [容器颜色] 为 [ColorScheme.surface] 时，会在容器上方叠加一层半透明的主题色。

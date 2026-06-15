@@ -2,6 +2,7 @@ package com.dxyc.zwkfb
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,8 +13,12 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.DatePicker
+import androidx.compose.material3.DatePickerDialog
+import androidx.compose.material3.DateRangePicker
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheetDefaults
+import androidx.compose.material3.ModalBottomSheetProperties
 import androidx.compose.material3.PrimaryTabRow
 import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
@@ -21,8 +26,10 @@ import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.material3.TimePicker
+import androidx.compose.material3.TimePickerDialog
 import androidx.compose.material3.TimePickerLayoutType
 import androidx.compose.material3.rememberDatePickerState
+import androidx.compose.material3.rememberDateRangePickerState
 import androidx.compose.material3.rememberTimePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -43,6 +50,8 @@ import zwkfbmultiplatform.app.shared.generated.resources.Res
 import zwkfbmultiplatform.app.shared.generated.resources.compose_multiplatform
 import 安卓x.组合.材质3.分段按钮颜色集
 import 安卓x.组合.材质3.文本
+import 安卓x.组合.材质3.日期范围选择器
+import 安卓x.组合.材质3.日期选择器对话框
 import 安卓x.组合.材质3.记住时间选择器状态
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -114,11 +123,6 @@ fun App() {
                     Text("Compose: $greeting")
                 }
             }
-
-            val 状态 = rememberDatePickerState()
-            DatePicker(
-                state = 状态,
-            )
 
         }
     }
