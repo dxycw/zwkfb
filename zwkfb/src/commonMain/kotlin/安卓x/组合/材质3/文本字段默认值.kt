@@ -26,6 +26,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
@@ -1098,419 +1099,317 @@ object 轮廓文本字段默认值 { // OutlinedTextFieldDefaults
  * @constructor 使用任意颜色创建实例。有关 [文本字段] 使用的默认颜色，请参见 [TextFieldDefaults.colors]。有关 [轮廓文本字段]
  * 使用的默认颜色，请参见 [OutlinedTextFieldDefaults.colors]。
  */
-@Immutable
-class 文本字段颜色集 // TextFieldColors
-constructor(
-    val 聚焦文本颜色: Color,
-    val 未聚焦文本颜色: Color,
-    val 禁用文本颜色: Color,
-    val 错误文本颜色: Color,
-    val 聚焦容器颜色: Color,
-    val 未聚焦容器颜色: Color,
-    val 禁用容器颜色: Color,
-    val 错误容器颜色: Color,
-    val 光标颜色: Color,
-    val 错误光标颜色: Color,
-    val 文本选择颜色集: TextSelectionColors,
-    val 聚焦指示器颜色: Color,
-    val 未聚焦指示器颜色: Color,
-    val 禁用指示器颜色: Color,
-    val 错误指示器颜色: Color,
-    val 聚焦前导图标颜色: Color,
-    val 未聚焦前导图标颜色: Color,
-    val 禁用前导图标颜色: Color,
-    val 错误前导图标颜色: Color,
-    val 聚焦尾随图标颜色: Color,
-    val 未聚焦尾随图标颜色: Color,
-    val 禁用尾随图标颜色: Color,
-    val 错误尾随图标颜色: Color,
-    val 聚焦标签颜色: Color,
-    val 未聚焦标签颜色: Color,
-    val 禁用标签颜色: Color,
-    val 错误标签颜色: Color,
-    val 聚焦占位符颜色: Color,
-    val 未聚焦占位符颜色: Color,
-    val 禁用占位符颜色: Color,
-    val 错误占位符颜色: Color,
-    val 聚焦辅助文本颜色: Color,
-    val 未聚焦辅助文本颜色: Color,
-    val 禁用辅助文本颜色: Color,
-    val 错误辅助文本颜色: Color,
-    val 聚焦前缀颜色: Color,
-    val 未聚焦前缀颜色: Color,
-    val 禁用前缀颜色: Color,
-    val 错误前缀颜色: Color,
-    val 聚焦后缀颜色: Color,
-    val 未聚焦后缀颜色: Color,
-    val 禁用后缀颜色: Color,
-    val 错误后缀颜色: Color,
-) {
+fun 文本字段颜色集(
+    聚焦文本颜色: Color,
+    未聚焦文本颜色: Color,
+    禁用文本颜色: Color,
+    错误文本颜色: Color,
+    聚焦容器颜色: Color,
+    未聚焦容器颜色: Color,
+    禁用容器颜色: Color,
+    错误容器颜色: Color,
+    光标颜色: Color,
+    错误光标颜色: Color,
+    文本选择颜色集: TextSelectionColors,
+    聚焦指示器颜色: Color,
+    未聚焦指示器颜色: Color,
+    禁用指示器颜色: Color,
+    错误指示器颜色: Color,
+    聚焦前导图标颜色: Color,
+    未聚焦前导图标颜色: Color,
+    禁用前导图标颜色: Color,
+    错误前导图标颜色: Color,
+    聚焦尾随图标颜色: Color,
+    未聚焦尾随图标颜色: Color,
+    禁用尾随图标颜色: Color,
+    错误尾随图标颜色: Color,
+    聚焦标签颜色: Color,
+    未聚焦标签颜色: Color,
+    禁用标签颜色: Color,
+    错误标签颜色: Color,
+    聚焦占位符颜色: Color,
+    未聚焦占位符颜色: Color,
+    禁用占位符颜色: Color,
+    错误占位符颜色: Color,
+    聚焦辅助文本颜色: Color,
+    未聚焦辅助文本颜色: Color,
+    禁用辅助文本颜色: Color,
+    错误辅助文本颜色: Color,
+    聚焦前缀颜色: Color,
+    未聚焦前缀颜色: Color,
+    禁用前缀颜色: Color,
+    错误前缀颜色: Color,
+    聚焦后缀颜色: Color,
+    未聚焦后缀颜色: Color,
+    禁用后缀颜色: Color,
+    错误后缀颜色: Color,
+) =
+    TextFieldColors(
+        focusedTextColor = 聚焦文本颜色,
+        unfocusedTextColor = 未聚焦文本颜色,
+        disabledTextColor = 禁用文本颜色,
+        errorTextColor = 错误文本颜色,
+        focusedContainerColor = 聚焦容器颜色,
+        unfocusedContainerColor = 未聚焦容器颜色,
+        disabledContainerColor = 禁用容器颜色,
+        errorContainerColor = 错误容器颜色,
+        cursorColor = 光标颜色,
+        errorCursorColor = 错误光标颜色,
+        textSelectionColors = 文本选择颜色集,
+        focusedIndicatorColor = 聚焦指示器颜色,
+        unfocusedIndicatorColor = 未聚焦指示器颜色,
+        disabledIndicatorColor = 禁用指示器颜色,
+        errorIndicatorColor = 错误指示器颜色,
+        focusedLeadingIconColor = 聚焦前导图标颜色,
+        unfocusedLeadingIconColor = 未聚焦前导图标颜色,
+        disabledLeadingIconColor = 禁用前导图标颜色,
+        errorLeadingIconColor = 错误前导图标颜色,
+        focusedTrailingIconColor = 聚焦尾随图标颜色,
+        unfocusedTrailingIconColor = 未聚焦尾随图标颜色,
+        disabledTrailingIconColor = 禁用尾随图标颜色,
+        errorTrailingIconColor = 错误尾随图标颜色,
+        focusedLabelColor = 聚焦标签颜色,
+        unfocusedLabelColor = 未聚焦标签颜色,
+        disabledLabelColor = 禁用标签颜色,
+        errorLabelColor = 错误标签颜色,
+        focusedPlaceholderColor = 聚焦占位符颜色,
+        unfocusedPlaceholderColor = 未聚焦占位符颜色,
+        disabledPlaceholderColor = 禁用占位符颜色,
+        errorPlaceholderColor = 错误占位符颜色,
+        focusedSupportingTextColor = 聚焦辅助文本颜色,
+        unfocusedSupportingTextColor = 未聚焦辅助文本颜色,
+        disabledSupportingTextColor = 禁用辅助文本颜色,
+        errorSupportingTextColor = 错误辅助文本颜色,
+        focusedPrefixColor = 聚焦前缀颜色,
+        unfocusedPrefixColor = 未聚焦前缀颜色,
+        disabledPrefixColor = 禁用前缀颜色,
+        errorPrefixColor = 错误前缀颜色,
+        focusedSuffixColor = 聚焦后缀颜色,
+        unfocusedSuffixColor = 未聚焦后缀颜色,
+        disabledSuffixColor = 禁用后缀颜色,
+        errorSuffixColor = 错误后缀颜色,
+    )
 
-    /** 返回此 ChipColors 的副本，可选择性地覆盖部分值。这里使用 Color.Unspecified 表示"使用源对象中的值"。*/
-    fun 复制(
-        focusedTextColor: Color = this.聚焦文本颜色,
-        unfocusedTextColor: Color = this.未聚焦文本颜色,
-        disabledTextColor: Color = this.禁用文本颜色,
-        errorTextColor: Color = this.错误文本颜色,
-        focusedContainerColor: Color = this.聚焦容器颜色,
-        unfocusedContainerColor: Color = this.未聚焦容器颜色,
-        disabledContainerColor: Color = this.禁用容器颜色,
-        errorContainerColor: Color = this.错误容器颜色,
-        cursorColor: Color = this.光标颜色,
-        errorCursorColor: Color = this.错误光标颜色,
-        textSelectionColors: TextSelectionColors? = this.文本选择颜色集,
-        focusedIndicatorColor: Color = this.聚焦指示器颜色,
-        unfocusedIndicatorColor: Color = this.未聚焦指示器颜色,
-        disabledIndicatorColor: Color = this.禁用指示器颜色,
-        errorIndicatorColor: Color = this.错误指示器颜色,
-        focusedLeadingIconColor: Color = this.聚焦前导图标颜色,
-        unfocusedLeadingIconColor: Color = this.未聚焦前导图标颜色,
-        disabledLeadingIconColor: Color = this.禁用前导图标颜色,
-        errorLeadingIconColor: Color = this.错误前导图标颜色,
-        focusedTrailingIconColor: Color = this.聚焦尾随图标颜色,
-        unfocusedTrailingIconColor: Color = this.未聚焦尾随图标颜色,
-        disabledTrailingIconColor: Color = this.禁用尾随图标颜色,
-        errorTrailingIconColor: Color = this.错误尾随图标颜色,
-        focusedLabelColor: Color = this.聚焦标签颜色,
-        unfocusedLabelColor: Color = this.未聚焦标签颜色,
-        disabledLabelColor: Color = this.禁用标签颜色,
-        errorLabelColor: Color = this.错误标签颜色,
-        focusedPlaceholderColor: Color = this.聚焦占位符颜色,
-        unfocusedPlaceholderColor: Color = this.未聚焦占位符颜色,
-        disabledPlaceholderColor: Color = this.禁用占位符颜色,
-        errorPlaceholderColor: Color = this.错误占位符颜色,
-        focusedSupportingTextColor: Color = this.聚焦辅助文本颜色,
-        unfocusedSupportingTextColor: Color = this.未聚焦辅助文本颜色,
-        disabledSupportingTextColor: Color = this.禁用辅助文本颜色,
-        errorSupportingTextColor: Color = this.错误辅助文本颜色,
-        focusedPrefixColor: Color = this.聚焦前缀颜色,
-        unfocusedPrefixColor: Color = this.未聚焦前缀颜色,
-        disabledPrefixColor: Color = this.禁用前缀颜色,
-        errorPrefixColor: Color = this.错误前缀颜色,
-        focusedSuffixColor: Color = this.聚焦后缀颜色,
-        unfocusedSuffixColor: Color = this.未聚焦后缀颜色,
-        disabledSuffixColor: Color = this.禁用后缀颜色,
-        errorSuffixColor: Color = this.错误后缀颜色,
-    ) =
-        TextFieldColors(
-            focusedTextColor.takeOrElse { this.聚焦文本颜色 },
-            unfocusedTextColor.takeOrElse { this.未聚焦文本颜色 },
-            disabledTextColor.takeOrElse { this.禁用文本颜色 },
-            errorTextColor.takeOrElse { this.错误文本颜色 },
-            focusedContainerColor.takeOrElse { this.聚焦容器颜色 },
-            unfocusedContainerColor.takeOrElse { this.未聚焦容器颜色 },
-            disabledContainerColor.takeOrElse { this.禁用容器颜色 },
-            errorContainerColor.takeOrElse { this.错误容器颜色 },
-            cursorColor.takeOrElse { this.光标颜色 },
-            errorCursorColor.takeOrElse { this.错误光标颜色 },
-            textSelectionColors.takeOrElse { this.文本选择颜色集 },
-            focusedIndicatorColor.takeOrElse { this.聚焦指示器颜色 },
-            unfocusedIndicatorColor.takeOrElse { this.未聚焦指示器颜色 },
-            disabledIndicatorColor.takeOrElse { this.禁用指示器颜色 },
-            errorIndicatorColor.takeOrElse { this.错误指示器颜色 },
-            focusedLeadingIconColor.takeOrElse { this.聚焦前导图标颜色 },
-            unfocusedLeadingIconColor.takeOrElse { this.未聚焦前导图标颜色 },
-            disabledLeadingIconColor.takeOrElse { this.禁用前导图标颜色 },
-            errorLeadingIconColor.takeOrElse { this.错误前导图标颜色 },
-            focusedTrailingIconColor.takeOrElse { this.聚焦尾随图标颜色 },
-            unfocusedTrailingIconColor.takeOrElse { this.未聚焦尾随图标颜色 },
-            disabledTrailingIconColor.takeOrElse { this.禁用尾随图标颜色 },
-            errorTrailingIconColor.takeOrElse { this.错误尾随图标颜色 },
-            focusedLabelColor.takeOrElse { this.聚焦标签颜色 },
-            unfocusedLabelColor.takeOrElse { this.未聚焦标签颜色 },
-            disabledLabelColor.takeOrElse { this.禁用标签颜色 },
-            errorLabelColor.takeOrElse { this.错误标签颜色 },
-            focusedPlaceholderColor.takeOrElse { this.聚焦占位符颜色 },
-            unfocusedPlaceholderColor.takeOrElse { this.未聚焦占位符颜色 },
-            disabledPlaceholderColor.takeOrElse { this.禁用占位符颜色 },
-            errorPlaceholderColor.takeOrElse { this.错误占位符颜色 },
-            focusedSupportingTextColor.takeOrElse { this.聚焦辅助文本颜色 },
-            unfocusedSupportingTextColor.takeOrElse { this.未聚焦辅助文本颜色 },
-            disabledSupportingTextColor.takeOrElse { this.禁用辅助文本颜色 },
-            errorSupportingTextColor.takeOrElse { this.错误辅助文本颜色 },
-            focusedPrefixColor.takeOrElse { this.聚焦前缀颜色 },
-            unfocusedPrefixColor.takeOrElse { this.未聚焦前缀颜色 },
-            disabledPrefixColor.takeOrElse { this.禁用前缀颜色 },
-            errorPrefixColor.takeOrElse { this.错误前缀颜色 },
-            focusedSuffixColor.takeOrElse { this.聚焦后缀颜色 },
-            unfocusedSuffixColor.takeOrElse { this.未聚焦后缀颜色 },
-            disabledSuffixColor.takeOrElse { this.禁用后缀颜色 },
-            errorSuffixColor.takeOrElse { this.错误后缀颜色 },
-        )
+/** 返回此 ChipColors 的副本，可选择性地覆盖部分值。这里使用 Color.Unspecified 表示"使用源对象中的值"。*/
+fun TextFieldColors.复制(
+    聚焦文本颜色: Color = this.focusedTextColor,
+    未聚焦文本颜色: Color = this.unfocusedTextColor,
+    禁用文本颜色: Color = this.disabledTextColor,
+    错误文本颜色: Color = this.errorTextColor,
+    聚焦容器颜色: Color = this.focusedContainerColor,
+    未聚焦容器颜色: Color = this.unfocusedContainerColor,
+    禁用容器颜色: Color = this.disabledContainerColor,
+    错误容器颜色: Color = this.errorContainerColor,
+    光标颜色: Color = this.cursorColor,
+    错误光标颜色: Color = this.errorCursorColor,
+    文本选择颜色集: TextSelectionColors? = this.textSelectionColors,
+    聚焦指示器颜色: Color = this.focusedIndicatorColor,
+    未聚焦指示器颜色: Color = this.unfocusedIndicatorColor,
+    禁用指示器颜色: Color = this.disabledIndicatorColor,
+    错误指示器颜色: Color = this.errorIndicatorColor,
+    聚焦前导图标颜色: Color = this.focusedLeadingIconColor,
+    未聚焦前导图标颜色: Color = this.unfocusedLeadingIconColor,
+    禁用前导图标颜色: Color = this.disabledLeadingIconColor,
+    错误前导图标颜色: Color = this.errorLeadingIconColor,
+    聚焦尾随图标颜色: Color = this.focusedTrailingIconColor,
+    未聚焦尾随图标颜色: Color = this.unfocusedTrailingIconColor,
+    禁用尾随图标颜色: Color = this.disabledTrailingIconColor,
+    错误尾随图标颜色: Color = this.errorTrailingIconColor,
+    聚焦标签颜色: Color = this.focusedLabelColor,
+    未聚焦标签颜色: Color = this.unfocusedLabelColor,
+    禁用标签颜色: Color = this.disabledLabelColor,
+    错误标签颜色: Color = this.errorLabelColor,
+    聚焦占位符颜色: Color = this.focusedPlaceholderColor,
+    未聚焦占位符颜色: Color = this.unfocusedPlaceholderColor,
+    禁用占位符颜色: Color = this.disabledPlaceholderColor,
+    错误占位符颜色: Color = this.errorPlaceholderColor,
+    聚焦辅助文本颜色: Color = this.focusedSupportingTextColor,
+    未聚焦辅助文本颜色: Color = this.unfocusedSupportingTextColor,
+    禁用辅助文本颜色: Color = this.disabledSupportingTextColor,
+    错误辅助文本颜色: Color = this.errorSupportingTextColor,
+    聚焦前缀颜色: Color = this.focusedPrefixColor,
+    未聚焦前缀颜色: Color = this.unfocusedPrefixColor,
+    禁用前缀颜色: Color = this.disabledPrefixColor,
+    错误前缀颜色: Color = this.errorPrefixColor,
+    聚焦后缀颜色: Color = this.focusedSuffixColor,
+    未聚焦后缀颜色: Color = this.unfocusedSuffixColor,
+    禁用后缀颜色: Color = this.disabledSuffixColor,
+    错误后缀颜色: Color = this.errorSuffixColor,
+) =
+    this.copy(
+        focusedTextColor = 聚焦文本颜色,
+        unfocusedTextColor = 未聚焦文本颜色,
+        disabledTextColor = 禁用文本颜色,
+        errorTextColor = 错误文本颜色,
+        focusedContainerColor = 聚焦容器颜色,
+        unfocusedContainerColor = 未聚焦容器颜色,
+        disabledContainerColor = 禁用容器颜色,
+        errorContainerColor = 错误容器颜色,
+        cursorColor = 光标颜色,
+        errorCursorColor = 错误光标颜色,
+        textSelectionColors = 文本选择颜色集,
+        focusedIndicatorColor = 聚焦指示器颜色,
+        unfocusedIndicatorColor = 未聚焦指示器颜色,
+        disabledIndicatorColor = 禁用指示器颜色,
+        errorIndicatorColor = 错误指示器颜色,
+        focusedLeadingIconColor = 聚焦前导图标颜色,
+        unfocusedLeadingIconColor = 未聚焦前导图标颜色,
+        disabledLeadingIconColor = 禁用前导图标颜色,
+        errorLeadingIconColor = 错误前导图标颜色,
+        focusedTrailingIconColor = 聚焦尾随图标颜色,
+        unfocusedTrailingIconColor = 未聚焦尾随图标颜色,
+        disabledTrailingIconColor = 禁用尾随图标颜色,
+        errorTrailingIconColor = 错误尾随图标颜色,
+        focusedLabelColor = 聚焦标签颜色,
+        unfocusedLabelColor = 未聚焦标签颜色,
+        disabledLabelColor = 禁用标签颜色,
+        errorLabelColor = 错误标签颜色,
+        focusedPlaceholderColor = 聚焦占位符颜色,
+        unfocusedPlaceholderColor = 未聚焦占位符颜色,
+        disabledPlaceholderColor = 禁用占位符颜色,
+        errorPlaceholderColor = 错误占位符颜色,
+        focusedSupportingTextColor = 聚焦辅助文本颜色,
+        unfocusedSupportingTextColor = 未聚焦辅助文本颜色,
+        disabledSupportingTextColor = 禁用辅助文本颜色,
+        errorSupportingTextColor = 错误辅助文本颜色,
+        focusedPrefixColor = 聚焦前缀颜色,
+        unfocusedPrefixColor = 未聚焦前缀颜色,
+        disabledPrefixColor = 禁用前缀颜色,
+        errorPrefixColor = 错误前缀颜色,
+        focusedSuffixColor = 聚焦后缀颜色,
+        unfocusedSuffixColor = 未聚焦后缀颜色,
+        disabledSuffixColor = 禁用后缀颜色,
+        errorSuffixColor = 错误后缀颜色,
+    )
 
-    internal fun TextSelectionColors?.takeOrElse(
-        block: () -> TextSelectionColors
-    ): TextSelectionColors = this ?: block()
 
-    /**
-     * 表示此文本字段前置图标所使用的颜色。
-     *
-     * @param 已启用 文本字段是否启用
-     * @param 是否错误 文本字段当前值是否处于错误状态
-     * @param 已聚焦 文本字段是否处于聚焦状态
-     */
-    @Stable
-    fun 前导图标颜色(已启用: Boolean, 是否错误: Boolean, 已聚焦: Boolean): Color =
-        when {
-            !已启用 -> 禁用前导图标颜色
-            是否错误 -> 错误前导图标颜色
-            已聚焦 -> 聚焦前导图标颜色
-            else -> 未聚焦前导图标颜色
-        }
+//=========================================================================
 
-    /**
-     * 表示此文本字段后置图标所使用的颜色。
-     *
-     * @param 已启用 文本字段是否启用
-     * @param 是否错误 文本字段当前值是否处于错误状态
-     * @param 已聚焦 文本字段是否处于聚焦状态
-     */
-    @Stable
-    fun 尾随图标颜色(已启用: Boolean, 是否错误: Boolean, 已聚焦: Boolean): Color =
-        when {
-            !已启用 -> 禁用尾随图标颜色
-            是否错误 -> 错误尾随图标颜色
-            已聚焦 -> 聚焦尾随图标颜色
-            else -> 未聚焦尾随图标颜色
-        }
+/**
+ * 表示此文本字段前置图标所使用的颜色。
+ *
+ * @param 已启用 文本字段是否启用
+ * @param 是否错误 文本字段当前值是否处于错误状态
+ * @param 已聚焦 文本字段是否处于聚焦状态
+ */
+@Stable
+fun TextFieldColors.前导图标颜色(已启用: Boolean, 是否错误: Boolean, 已聚焦: Boolean): Color =
+    this.leadingIconColor(enabled = 已启用, isError = 是否错误, focused = 已聚焦)
 
-    /**
-     * 表示此文本字段边框指示器所使用的颜色。
-     *
-     * @param 已启用 文本字段是否启用
-     * @param 是否错误 文本字段当前值是否处于错误状态
-     * @param 已聚焦 文本字段是否处于聚焦状态
-     */
-    @Stable
-    fun 指示器颜色(已启用: Boolean, 是否错误: Boolean, 已聚焦: Boolean): Color =
-        when {
-            !已启用 -> 禁用指示器颜色
-            是否错误 -> 错误指示器颜色
-            已聚焦 -> 聚焦指示器颜色
-            else -> 未聚焦指示器颜色
-        }
+/**
+ * 表示此文本字段后置图标所使用的颜色。
+ *
+ * @param 已启用 文本字段是否启用
+ * @param 是否错误 文本字段当前值是否处于错误状态
+ * @param 已聚焦 文本字段是否处于聚焦状态
+ */
+@Stable
+fun TextFieldColors.尾随图标颜色(已启用: Boolean, 是否错误: Boolean, 已聚焦: Boolean): Color =
+    this.trailingIconColor(enabled = 已启用, isError = 是否错误, focused = 已聚焦)
 
-    /**
-     * 表示此文本字段的容器颜色。
-     *
-     * @param 已启用 文本字段是否启用
-     * @param 是否错误 文本字段当前值是否处于错误状态
-     * @param 已聚焦 文本字段是否处于聚焦状态
-     */
-    @Stable
-    fun 容器颜色(已启用: Boolean, 是否错误: Boolean, 已聚焦: Boolean): Color =
-        when {
-            !已启用 -> 禁用容器颜色
-            是否错误 -> 错误容器颜色
-            已聚焦 -> 聚焦容器颜色
-            else -> 未聚焦容器颜色
-        }
+/**
+ * 表示此文本字段边框指示器所使用的颜色。
+ *
+ * @param 已启用 文本字段是否启用
+ * @param 是否错误 文本字段当前值是否处于错误状态
+ * @param 已聚焦 文本字段是否处于聚焦状态
+ */
+@Stable
+fun TextFieldColors.指示器颜色(已启用: Boolean, 是否错误: Boolean, 已聚焦: Boolean): Color =
+    this.indicatorColor(enabled = 已启用, isError = 是否错误, focused = 已聚焦)
 
-    /**
-     * 表示此文本字段占位提示文本所使用的颜色。
-     *
-     * @param 已启用 文本字段是否启用
-     * @param 是否错误 文本字段当前值是否处于错误状态
-     * @param 已聚焦 文本字段是否处于聚焦状态
-     */
-    @Stable
-    fun 占位符颜色(已启用: Boolean, 是否错误: Boolean, 已聚焦: Boolean): Color =
-        when {
-            !已启用 -> 禁用占位符颜色
-            是否错误 -> 错误占位符颜色
-            已聚焦 -> 聚焦占位符颜色
-            else -> 未聚焦占位符颜色
-        }
+/**
+ * 表示此文本字段的容器颜色。
+ *
+ * @param 已启用 文本字段是否启用
+ * @param 是否错误 文本字段当前值是否处于错误状态
+ * @param 已聚焦 文本字段是否处于聚焦状态
+ */
+@Stable
+fun TextFieldColors.容器颜色(已启用: Boolean, 是否错误: Boolean, 已聚焦: Boolean): Color =
+    this.containerColor(enabled = 已启用, isError = 是否错误, focused = 已聚焦)
 
-    /**
-     * 表示此文本字段标签所使用的颜色。
-     *
-     * @param 已启用 文本字段是否启用
-     * @param 是否错误 文本字段当前值是否处于错误状态
-     * @param 已聚焦 文本字段是否处于聚焦状态
-     */
-    @Stable
-    fun 标签颜色(已启用: Boolean, 是否错误: Boolean, 已聚焦: Boolean): Color =
-        when {
-            !已启用 -> 禁用标签颜色
-            是否错误 -> 错误标签颜色
-            已聚焦 -> 聚焦标签颜色
-            else -> 未聚焦标签颜色
-        }
+/**
+ * 表示此文本字段占位提示文本所使用的颜色。
+ *
+ * @param 已启用 文本字段是否启用
+ * @param 是否错误 文本字段当前值是否处于错误状态
+ * @param 已聚焦 文本字段是否处于聚焦状态
+ */
+@Stable
+fun TextFieldColors.占位符颜色(已启用: Boolean, 是否错误: Boolean, 已聚焦: Boolean): Color =
+    this.placeholderColor(enabled = 已启用, isError = 是否错误, focused = 已聚焦)
 
-    /**
-     * 表示此文本字段输入框所使用的颜色。
-     *
-     * @param 已启用 文本字段是否启用
-     * @param 是否错误 文本字段当前值是否处于错误状态
-     * @param 已聚焦 文本字段是否处于聚焦状态
-     */
-    @Stable
-    fun 文本颜色(已启用: Boolean, 是否错误: Boolean, 已聚焦: Boolean): Color =
-        when {
-            !已启用 -> 禁用文本颜色
-            是否错误 -> 错误文本颜色
-            已聚焦 -> 聚焦文本颜色
-            else -> 未聚焦文本颜色
-        }
+/**
+ * 表示此文本字段标签所使用的颜色。
+ *
+ * @param 已启用 文本字段是否启用
+ * @param 是否错误 文本字段当前值是否处于错误状态
+ * @param 已聚焦 文本字段是否处于聚焦状态
+ */
+@Stable
+fun TextFieldColors.标签颜色(已启用: Boolean, 是否错误: Boolean, 已聚焦: Boolean): Color =
+    this.labelColor(enabled = 已启用, isError = 是否错误, focused = 已聚焦)
 
-    /**
-     * 表示此文本字段辅助文本所使用的颜色。
-     *
-     * @param 已启用 文本字段是否启用
-     * @param 是否错误 文本字段当前值是否处于错误状态
-     * @param 已聚焦 文本字段是否处于聚焦状态
-     */
-    @Stable
-    fun 辅助文本颜色(已启用: Boolean, 是否错误: Boolean, 已聚焦: Boolean): Color =
-        when {
-            !已启用 -> 禁用辅助文本颜色
-            是否错误 -> 错误辅助文本颜色
-            已聚焦 -> 聚焦辅助文本颜色
-            else -> 未聚焦辅助文本颜色
-        }
+/**
+ * 表示此文本字段输入框所使用的颜色。
+ *
+ * @param 已启用 文本字段是否启用
+ * @param 是否错误 文本字段当前值是否处于错误状态
+ * @param 已聚焦 文本字段是否处于聚焦状态
+ */
+@Stable
+fun TextFieldColors.文本颜色(已启用: Boolean, 是否错误: Boolean, 已聚焦: Boolean): Color =
+    this.textColor(enabled = 已启用, isError = 是否错误, focused = 已聚焦)
 
-    /**
-     * 表示此文本字段前缀所使用的颜色。
-     *
-     * @param 已启用 文本字段是否启用
-     * @param 是否错误 文本字段当前值是否处于错误状态
-     * @param 已聚焦 文本字段是否处于聚焦状态
-     */
-    @Stable
-    fun 前缀颜色(已启用: Boolean, 是否错误: Boolean, 已聚焦: Boolean): Color =
-        when {
-            !已启用 -> 禁用前缀颜色
-            是否错误 -> 错误前缀颜色
-            已聚焦 -> 聚焦前缀颜色
-            else -> 未聚焦前缀颜色
-        }
+/**
+ * 表示此文本字段辅助文本所使用的颜色。
+ *
+ * @param 已启用 文本字段是否启用
+ * @param 是否错误 文本字段当前值是否处于错误状态
+ * @param 已聚焦 文本字段是否处于聚焦状态
+ */
+@Stable
+fun TextFieldColors.辅助文本颜色(已启用: Boolean, 是否错误: Boolean, 已聚焦: Boolean): Color =
+    this.supportingTextColor(enabled = 已启用, isError = 是否错误, focused = 已聚焦)
 
-    /**
-     * 表示此文本字段后缀所使用的颜色。
-     *
-     * @param 已启用 文本字段是否启用
-     * @param 是否错误 文本字段当前值是否处于错误状态
-     * @param 已聚焦 文本字段是否处于聚焦状态
-     */
-    @Stable
-    fun 后缀颜色(已启用: Boolean, 是否错误: Boolean, 已聚焦: Boolean): Color =
-        when {
-            !已启用 -> 禁用后缀颜色
-            是否错误 -> 错误后缀颜色
-            已聚焦 -> 聚焦后缀颜色
-            else -> 未聚焦后缀颜色
-        }
+/**
+ * 表示此文本字段前缀所使用的颜色。
+ *
+ * @param 已启用 文本字段是否启用
+ * @param 是否错误 文本字段当前值是否处于错误状态
+ * @param 已聚焦 文本字段是否处于聚焦状态
+ */
+@Stable
+fun TextFieldColors.前缀颜色(已启用: Boolean, 是否错误: Boolean, 已聚焦: Boolean): Color =
+    this.prefixColor(enabled = 已启用, isError = 是否错误, focused = 已聚焦)
 
-    /**
-     * 表示此文本字段光标所使用的颜色。
-     *
-     * @param 是否错误 文本字段当前值是否处于错误状态
-     */
-    @Stable
-    fun 光标颜色(是否错误: Boolean): Color = if (是否错误) 错误光标颜色 else 光标颜色
+/**
+ * 表示此文本字段后缀所使用的颜色。
+ *
+ * @param 已启用 文本字段是否启用
+ * @param 是否错误 文本字段当前值是否处于错误状态
+ * @param 已聚焦 文本字段是否处于聚焦状态
+ */
+@Stable
+fun TextFieldColors.后缀颜色(已启用: Boolean, 是否错误: Boolean, 已聚焦: Boolean): Color =
+    this.suffixColor(enabled = 已启用, isError = 是否错误, focused = 已聚焦)
 
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other == null || other !is TextFieldColors) return false
+/**
+ * 表示此文本字段光标所使用的颜色。
+ *
+ * @param 是否错误 文本字段当前值是否处于错误状态
+ */
+@Stable
+fun TextFieldColors.光标颜色(是否错误: Boolean): Color = this.cursorColor(isError = 是否错误)
 
-        if (聚焦文本颜色 != other.focusedTextColor) return false
-        if (未聚焦文本颜色 != other.unfocusedTextColor) return false
-        if (禁用文本颜色 != other.disabledTextColor) return false
-        if (错误文本颜色 != other.errorTextColor) return false
-        if (聚焦容器颜色 != other.focusedContainerColor) return false
-        if (未聚焦容器颜色 != other.unfocusedContainerColor) return false
-        if (禁用容器颜色 != other.disabledContainerColor) return false
-        if (错误容器颜色 != other.errorContainerColor) return false
-        if (光标颜色 != other.cursorColor) return false
-        if (错误光标颜色 != other.errorCursorColor) return false
-        if (文本选择颜色集 != other.textSelectionColors) return false
-        if (聚焦指示器颜色 != other.focusedIndicatorColor) return false
-        if (未聚焦指示器颜色 != other.unfocusedIndicatorColor) return false
-        if (禁用指示器颜色 != other.disabledIndicatorColor) return false
-        if (错误指示器颜色 != other.errorIndicatorColor) return false
-        if (聚焦前导图标颜色 != other.focusedLeadingIconColor) return false
-        if (未聚焦前导图标颜色 != other.unfocusedLeadingIconColor) return false
-        if (禁用前导图标颜色 != other.disabledLeadingIconColor) return false
-        if (错误前导图标颜色 != other.errorLeadingIconColor) return false
-        if (聚焦尾随图标颜色 != other.focusedTrailingIconColor) return false
-        if (未聚焦尾随图标颜色 != other.unfocusedTrailingIconColor) return false
-        if (禁用尾随图标颜色 != other.disabledTrailingIconColor) return false
-        if (错误尾随图标颜色 != other.errorTrailingIconColor) return false
-        if (聚焦标签颜色 != other.focusedLabelColor) return false
-        if (未聚焦标签颜色 != other.unfocusedLabelColor) return false
-        if (禁用标签颜色 != other.disabledLabelColor) return false
-        if (错误标签颜色 != other.errorLabelColor) return false
-        if (聚焦占位符颜色 != other.focusedPlaceholderColor) return false
-        if (未聚焦占位符颜色 != other.unfocusedPlaceholderColor) return false
-        if (禁用占位符颜色 != other.disabledPlaceholderColor) return false
-        if (错误占位符颜色 != other.errorPlaceholderColor) return false
-        if (聚焦辅助文本颜色 != other.focusedSupportingTextColor) return false
-        if (未聚焦辅助文本颜色 != other.unfocusedSupportingTextColor) return false
-        if (禁用辅助文本颜色 != other.disabledSupportingTextColor) return false
-        if (错误辅助文本颜色 != other.errorSupportingTextColor) return false
-        if (聚焦前缀颜色 != other.focusedPrefixColor) return false
-        if (未聚焦前缀颜色 != other.unfocusedPrefixColor) return false
-        if (禁用前缀颜色 != other.disabledPrefixColor) return false
-        if (错误前缀颜色 != other.errorPrefixColor) return false
-        if (聚焦后缀颜色 != other.focusedSuffixColor) return false
-        if (未聚焦后缀颜色 != other.unfocusedSuffixColor) return false
-        if (禁用后缀颜色 != other.disabledSuffixColor) return false
-        if (错误后缀颜色 != other.errorSuffixColor) return false
 
-        return true
-    }
+//=========================================================================
 
-    override fun hashCode(): Int {
-        var result = 聚焦文本颜色.hashCode()
-        result = 31 * result + 未聚焦文本颜色.hashCode()
-        result = 31 * result + 禁用文本颜色.hashCode()
-        result = 31 * result + 错误文本颜色.hashCode()
-        result = 31 * result + 聚焦容器颜色.hashCode()
-        result = 31 * result + 未聚焦容器颜色.hashCode()
-        result = 31 * result + 禁用容器颜色.hashCode()
-        result = 31 * result + 错误容器颜色.hashCode()
-        result = 31 * result + 光标颜色.hashCode()
-        result = 31 * result + 错误光标颜色.hashCode()
-        result = 31 * result + 文本选择颜色集.hashCode()
-        result = 31 * result + 聚焦指示器颜色.hashCode()
-        result = 31 * result + 未聚焦指示器颜色.hashCode()
-        result = 31 * result + 禁用指示器颜色.hashCode()
-        result = 31 * result + 错误指示器颜色.hashCode()
-        result = 31 * result + 聚焦前导图标颜色.hashCode()
-        result = 31 * result + 未聚焦前导图标颜色.hashCode()
-        result = 31 * result + 禁用前导图标颜色.hashCode()
-        result = 31 * result + 错误前导图标颜色.hashCode()
-        result = 31 * result + 聚焦尾随图标颜色.hashCode()
-        result = 31 * result + 未聚焦尾随图标颜色.hashCode()
-        result = 31 * result + 禁用尾随图标颜色.hashCode()
-        result = 31 * result + 错误尾随图标颜色.hashCode()
-        result = 31 * result + 聚焦标签颜色.hashCode()
-        result = 31 * result + 未聚焦标签颜色.hashCode()
-        result = 31 * result + 禁用标签颜色.hashCode()
-        result = 31 * result + 错误标签颜色.hashCode()
-        result = 31 * result + 聚焦占位符颜色.hashCode()
-        result = 31 * result + 未聚焦占位符颜色.hashCode()
-        result = 31 * result + 禁用占位符颜色.hashCode()
-        result = 31 * result + 错误占位符颜色.hashCode()
-        result = 31 * result + 聚焦辅助文本颜色.hashCode()
-        result = 31 * result + 未聚焦辅助文本颜色.hashCode()
-        result = 31 * result + 禁用辅助文本颜色.hashCode()
-        result = 31 * result + 错误辅助文本颜色.hashCode()
-        result = 31 * result + 聚焦前缀颜色.hashCode()
-        result = 31 * result + 未聚焦前缀颜色.hashCode()
-        result = 31 * result + 禁用前缀颜色.hashCode()
-        result = 31 * result + 错误前缀颜色.hashCode()
-        result = 31 * result + 聚焦后缀颜色.hashCode()
-        result = 31 * result + 未聚焦后缀颜色.hashCode()
-        result = 31 * result + 禁用后缀颜色.hashCode()
-        result = 31 * result + 错误后缀颜色.hashCode()
-        return result
-    }
-}
 
 /** 标签相对于文本字段的位置。 */
 object 文本字段标签位置{ // TextFieldLabelPosition
+
     /**
      * 根据 Material 规范定义的默认标签位置。
      *
@@ -1531,74 +1430,29 @@ object 文本字段标签位置{ // TextFieldLabelPosition
         expandedAlignment = 展开对齐方式
     )
 
+    @get:Suppress("GetterSetterNames")
+    val TextFieldLabelPosition.Attached.始终最小化: Boolean
+        get() = this.alwaysMinimize
+
+    val TextFieldLabelPosition.Attached.最小化对齐方式: Alignment.Horizontal
+        get() = this.minimizedAlignment
+    val TextFieldLabelPosition.Attached.展开对齐方式: Alignment.Horizontal
+        get() = this.expandedAlignment
+
+    /**
+     * 标签位于文本字段容器的上方和外部。这使得标签始终保持最小化状态。
+     *
+     * @param 对齐 标签的对齐方式。
+     */
     fun 上方(
         对齐: Alignment.Horizontal = Alignment.Start
     ) = TextFieldLabelPosition.Above(alignment = 对齐)
+
+    val TextFieldLabelPosition.Above.对齐: Alignment.Horizontal
+        get() = this.alignment
+
 }
-//abstract class 文本字段标签位置 private constructor() { // TextFieldLabelPosition
-//    /**
-//     * 根据 Material 规范定义的默认标签位置。
-//     *
-//     * 对于 [文本字段]，标签位于文本字段容器内部。对于 [轮廓文本字段]，标签在展开时位于文本字段容器内部，在最小化时切入边框。
-//     *
-//     * @param 始终最小化 是否始终保持文本字段的标签为最小化状态。如果为 `false`，当文本字段未聚焦且为空时，标签将展开以占据输入区域。
-//     * 如果为 `true`，则允许在文本字段未聚焦且为空时，与标签一起显示占位提示文本、前缀和后缀。
-//     * @param 最小化对齐方式 文本字段最小化时的标签水平对齐方式。
-//     * @param 展开对齐方式 文本字段展开时的标签水平对齐方式。
-//     */
-//    class 已附加(
-//        @get:Suppress("GetterSetterNames") val 始终最小化: Boolean = false,
-//        val 最小化对齐方式: Alignment.Horizontal = Alignment.Start,
-//        val 展开对齐方式: Alignment.Horizontal = Alignment.Start,
-//    ) : 文本字段标签位置() {
-//        override fun equals(other: Any?): Boolean {
-//            if (this === other) return true
-//            if (other !is 已附加) return false
-//
-//            if (始终最小化  != other.始终最小化) return false
-//            if (最小化对齐方式 != other.最小化对齐方式) return false
-//            if (展开对齐方式 != other.展开对齐方式) return false
-//
-//            return true
-//        }
-//
-//        override fun hashCode(): Int {
-//            var result = 始终最小化.hashCode()
-//            result = 31 * result + 最小化对齐方式.hashCode()
-//            result = 31 * result + 展开对齐方式.hashCode()
-//            return result
-//        }
-//
-//        override fun toString(): String {
-//            return "已附加(" +
-//                    "始终最小化=$始终最小化, " +
-//                    "最小化对齐方式=$最小化对齐方式, " +
-//                    "展开对齐方式=$展开对齐方式" +
-//                    ")"
-//        }
-//    }
-//
-//    /**
-//     * 标签位于文本字段容器的上方和外部。这使得标签始终保持最小化状态。
-//     *
-//     * @param 对齐 标签的对齐方式。
-//     */
-//    class 上方(val 对齐: Alignment.Horizontal = Alignment.Start) : 文本字段标签位置() {
-//        override fun equals(other: Any?): Boolean {
-//            if (this === other) return true
-//            if (other !is 上方) return false
-//
-//            return 对齐 == other.对齐
-//        }
-//
-//        override fun hashCode(): Int {
-//            return 对齐.hashCode()
-//        }
-//
-//        override fun toString(): String = "上方(对齐=$对齐)"
-//    }
-//
-//}
+
 
 /**  [文本字段] 或 [轮廓文本字段] 标签的作用域。 */
 @Stable
@@ -1612,3 +1466,13 @@ interface 文本字段标签范围 { // TextFieldLabelScope
     @get:FloatRange(from = 0.0, to = 1.0)
     val 标签最小化进度: Float // labelMinimizedProgress
 }
+
+/**
+ * 标签在展开尺寸和最小化尺寸之间的动画进度，其中 0 表示展开的标签，1 表示最小化的标签。
+ *
+ * 当使用从 [LocalTextStyle] 读取的组件（如默认的 [文本]）时，标签动画由框架自动处理。
+ * 此 [标签最小化进度] 值可用于与默认动画协调配合其他动画。
+ */
+@get:FloatRange(from = 0.0, to = 1.0)
+val TextFieldLabelScope.标签最小化进度: Float
+    get() = this.labelMinimizedProgress

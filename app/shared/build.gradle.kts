@@ -52,6 +52,7 @@ kotlin {
         }
         commonMain.dependencies {
             api(projects.core)
+            // 测试
             implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)
             implementation(libs.compose.material3)
@@ -60,6 +61,8 @@ kotlin {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation("org.jetbrains.compose.material:material-icons-extended:1.7.3")
+            implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.2")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

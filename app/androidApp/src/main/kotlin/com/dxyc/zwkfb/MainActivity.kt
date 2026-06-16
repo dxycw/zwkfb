@@ -19,7 +19,6 @@ import androidx.compose.ui.*
 import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.SecureFlagPolicy
 import com.dxyc.zwkfb.ui.theme.AppTheme
 import kotlinx.coroutines.launch
 import 安卓x.组合.基础.布局.列
@@ -110,12 +109,12 @@ fun Home(上下文 : Activity? = LocalActivity.current) {
                     TriStateCheckbox(
                         state = 状态,
                         onClick = {
-                            if (状态 == ToggleableState.Off) {
-                                状态 = ToggleableState.On
+                            状态 = if (状态 == ToggleableState.Off) {
+                                ToggleableState.On
                             } else if (状态 == ToggleableState.On) {
-                                状态 = ToggleableState.Indeterminate
+                                ToggleableState.Indeterminate
                             } else {
-                                状态 = ToggleableState.Off
+                                ToggleableState.Off
                             }
                         }
                     )

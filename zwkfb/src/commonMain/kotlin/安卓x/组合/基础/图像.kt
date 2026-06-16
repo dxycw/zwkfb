@@ -29,8 +29,8 @@ import androidx.compose.ui.layout.ContentScale
  * @param 对齐 用于将 [ImageBitmap] 放置在由宽度和高度定义的给定边界内的可选对齐参数。
  * @param 内容缩放 用于确定在边界尺寸与 [ImageBitmap] 固有尺寸不同时，所使用的宽高比缩放方式的可选缩放参数。
  * @param 透明度 在 [ImageBitmap] 渲染到屏幕上时应用的可选不透明度。
- * @param 颜色滤镜 在 [ImageBitmap] 渲染到屏幕上时应用的可选颜色滤镜。
- * @param 滤镜质量 当 [位图] 被缩放并绘制到目标区域时应用的采样算法。默认值是 [FilterQuality.Low]，它使用双线性采样算法进行缩放。
+ * @param 颜色过滤器 在 [ImageBitmap] 渲染到屏幕上时应用的可选颜色滤镜。
+ * @param 过滤器质量 当 [位图] 被缩放并绘制到目标区域时应用的采样算法。默认值是 [FilterQuality.Low]，它使用双线性采样算法进行缩放。
  */
 @Suppress("ComposableNaming")
 @Composable
@@ -42,8 +42,8 @@ fun 图像(
     对齐: Alignment = Alignment.Center,
     内容缩放: ContentScale = ContentScale.Fit,
     透明度: Float = DefaultAlpha,
-    颜色滤镜: ColorFilter? = null,
-    滤镜质量: FilterQuality = DefaultFilterQuality,
+    颜色过滤器: ColorFilter? = null,
+    过滤器质量: FilterQuality = DefaultFilterQuality,
 ) {
     Image(
         bitmap = 位图,
@@ -52,8 +52,8 @@ fun 图像(
         alignment = 对齐,
         contentScale = 内容缩放,
         alpha = 透明度,
-        colorFilter = 颜色滤镜,
-        filterQuality = 滤镜质量,
+        colorFilter = 颜色过滤器,
+        filterQuality = 过滤器质量,
     )
 }
 
@@ -68,7 +68,7 @@ fun 图像(
  * @param 对齐 用于将 [ImageVector] 放置在由宽度和高度定义的给定边界内的可选对齐参数。
  * @param 内容缩放 用于确定在边界尺寸与 [ImageVector] 固有尺寸不同时，所使用的宽高比缩放方式的可选缩放参数。
  * @param 透明度 在 [ImageVector] 渲染到屏幕上时应用的可选不透明度。
- * @param 颜色滤镜 在 [ImageVector] 渲染到屏幕上时应用的可选颜色滤镜。
+ * @param 颜色过滤器 在 [ImageVector] 渲染到屏幕上时应用的可选颜色滤镜。
  */
 @Suppress("ComposableNaming")
 @Composable
@@ -80,7 +80,7 @@ fun 图像(
     对齐: Alignment = Alignment.Center,
     内容缩放: ContentScale = ContentScale.Fit,
     透明度: Float = DefaultAlpha,
-    颜色滤镜: ColorFilter? = null,
+    颜色过滤器: ColorFilter? = null,
 ) =
     Image(
         imageVector = 图像矢量,
@@ -89,7 +89,7 @@ fun 图像(
         alignment = 对齐,
         contentScale = 内容缩放,
         alpha = 透明度,
-        colorFilter = 颜色滤镜,
+        colorFilter = 颜色过滤器,
     )
 
 /**
@@ -107,7 +107,7 @@ fun 图像(
  * @param 对齐 用于将 [Painter] 放置在由宽度和高度定义的给定边界内的可选对齐参数。
  * @param 内容缩放 用于确定在边界尺寸与 [Painter] 固有尺寸不同时，所使用的宽高比缩放方式的可选缩放参数。
  * @param 透明度 在 [Painter] 渲染到屏幕上时应用的可选不透明度。默认值会将 [Painter] 渲染为完全不透明。
- * @param 颜色滤镜 在 [Painter] 渲染到屏幕上时应用的可选颜色滤镜。
+ * @param 颜色过滤器 在 [Painter] 渲染到屏幕上时应用的可选颜色滤镜。
  */
 @Suppress("ComposableNaming")
 @Composable
@@ -118,7 +118,7 @@ fun 图像(
     对齐: Alignment = Alignment.Center,
     内容缩放: ContentScale = ContentScale.Fit,
     透明度: Float = DefaultAlpha,
-    颜色滤镜: ColorFilter? = null,
+    颜色过滤器: ColorFilter? = null,
 ) {
     Image(
         painter = 绘制器,
@@ -127,6 +127,6 @@ fun 图像(
         alignment = 对齐,
         contentScale = 内容缩放,
         alpha = 透明度,
-        colorFilter = 颜色滤镜,
+        colorFilter = 颜色过滤器,
     )
 }

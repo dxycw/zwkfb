@@ -4,7 +4,6 @@ import androidx.compose.ui.graphics.drawscope.DrawContext
 import androidx.compose.ui.graphics.drawscope.DrawScopeMarker
 import androidx.compose.ui.graphics.drawscope.DrawTransform
 import androidx.annotation.FloatRange
-import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.geometry.center
@@ -19,7 +18,6 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.Paint
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathEffect
-import androidx.compose.ui.graphics.PointMode
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.drawscope.DrawScope
@@ -41,7 +39,6 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.LayoutDirection
-import androidx.compose.ui.unit.toIntSize
 import kotlin.Float
 
 /**
@@ -229,207 +226,169 @@ inline fun DrawScope.绘制(
 )
 
 
-///**
-// * Creates a scoped drawing environment with the provided [Canvas]. This provides a declarative,
-// * stateless API to draw shapes and paths without requiring consumers to maintain underlying
-// * [Canvas] state information. [DrawScope] implementations are also provided sizing information and
-// * transformations are done relative to the local translation. That is left and top coordinates are
-// * always the origin and the right and bottom coordinates are always the specified width and height
-// * respectively. Drawing content is not clipped, so it is possible to draw outside of the specified
-// * bounds.
-// */
-//@DrawScopeMarker
-//interface 绘制范围 : Density { // DrawScope
-//
-//    /**
-//     * The current [DrawContext] that contains the dependencies needed to create the drawing
-//     * environment
-//     */
-//    val drawContext: DrawContext
-//
-//    /** Center of the current bounds of the drawing environment */
-//    val center: Offset
-//        get() = drawContext.size.center
-//
-//    /** Provides the dimensions of the current drawing environment */
-//    val size: Size
-//        get() = drawContext.size
-//
-//    /** The layout direction of the layout being drawn in. */
-//    val layoutDirection: LayoutDirection
-//
-//    /**
-//     * Draws a line between the given points using the given paint. The line is stroked.
-//     *
-//     * @param brush the color or fill to be applied to the line
-//     * @param start first point of the line to be drawn
-//     * @param end second point of the line to be drawn
-//     * @param strokeWidth stroke width to apply to the line
-//     * @param cap treatment applied to the ends of the line segment
-//     * @param pathEffect optional effect or pattern to apply to the line
-//     * @param alpha opacity to be applied to the [brush] from 0.0f to 1.0f representing fully
-//     *   transparent to fully opaque respectively
-//     * @param colorFilter ColorFilter to apply to the [brush] when drawn into the destination
-//     * @param blendMode the blending algorithm to apply to the [brush]
-//     */
-//    fun drawLine(
-//        brush: Brush,
-//        start: Offset,
-//        end: Offset,
-//        strokeWidth: Float = Stroke.HairlineWidth,
-//        cap: StrokeCap = Stroke.DefaultCap,
-//        pathEffect: PathEffect? = null,
-//        @FloatRange(from = 0.0, to = 1.0) alpha: Float = 1.0f,
-//        colorFilter: ColorFilter? = null,
-//        blendMode: BlendMode = DefaultBlendMode,
-//    )
-//
-//    /**
-//     * Draws a line between the given points using the given paint. The line is stroked.
-//     *
-//     * @param color the color to be applied to the line
-//     * @param start first point of the line to be drawn
-//     * @param end second point of the line to be drawn
-//     * @param strokeWidth The stroke width to apply to the line
-//     * @param cap treatment applied to the ends of the line segment
-//     * @param pathEffect optional effect or pattern to apply to the line
-//     * @param alpha opacity to be applied to the [color] from 0.0f to 1.0f representing fully
-//     *   transparent to fully opaque respectively
-//     * @param colorFilter ColorFilter to apply to the [color] when drawn into the destination
-//     * @param blendMode the blending algorithm to apply to the [color]
-//     */
-//    fun drawLine(
-//        color: Color,
-//        start: Offset,
-//        end: Offset,
-//        strokeWidth: Float = Stroke.HairlineWidth,
-//        cap: StrokeCap = Stroke.DefaultCap,
-//        pathEffect: PathEffect? = null,
-//        @FloatRange(from = 0.0, to = 1.0) alpha: Float = 1.0f,
-//        colorFilter: ColorFilter? = null,
-//        blendMode: BlendMode = DefaultBlendMode,
-//    )
-//
-//    /**
-//     * Draws a rectangle with the given offset and size. If no offset from the top left is provided,
-//     * it is drawn starting from the origin of the current translation. If no size is provided, the
-//     * size of the current environment is used.
-//     *
-//     * @param brush The color or fill to be applied to the rectangle
-//     * @param topLeft Offset from the local origin of 0, 0 relative to the current translation
-//     * @param size Dimensions of the rectangle to draw
-//     * @param alpha Opacity to be applied to the [brush] from 0.0f to 1.0f representing fully
-//     *   transparent to fully opaque respectively
-//     * @param style Whether or not the rectangle is stroked or filled in
-//     * @param colorFilter ColorFilter to apply to the [brush] when drawn into the destination
-//     * @param blendMode Blending algorithm to apply to destination
-//     */
-//    fun drawRect(
-//        brush: Brush,
-//        topLeft: Offset = Offset.Zero,
-//        size: Size = this.size.offsetSize(topLeft),
-//        @FloatRange(from = 0.0, to = 1.0) alpha: Float = 1.0f,
-//        style: DrawStyle = Fill,
-//        colorFilter: ColorFilter? = null,
-//        blendMode: BlendMode = DefaultBlendMode,
-//    )
-//
-//    /**
-//     * Draws a rectangle with the given offset and size. If no offset from the top left is provided,
-//     * it is drawn starting from the origin of the current translation. If no size is provided, the
-//     * size of the current environment is used.
-//     *
-//     * @param color The color to be applied to the rectangle
-//     * @param topLeft Offset from the local origin of 0, 0 relative to the current translation
-//     * @param size Dimensions of the rectangle to draw
-//     * @param alpha Opacity to be applied to the [color] from 0.0f to 1.0f representing fully
-//     *   transparent to fully opaque respectively
-//     * @param style Whether or not the rectangle is stroked or filled in
-//     * @param colorFilter ColorFilter to apply to the [color] source pixels
-//     * @param blendMode Blending algorithm to apply to destination
-//     */
-//    fun drawRect(
-//        color: Color,
-//        topLeft: Offset = Offset.Zero,
-//        size: Size = this.size.offsetSize(topLeft),
-//        @FloatRange(from = 0.0, to = 1.0) alpha: Float = 1.0f,
-//        style: DrawStyle = Fill,
-//        colorFilter: ColorFilter? = null,
-//        blendMode: BlendMode = DefaultBlendMode,
-//    )
-//
-//    /**
-//     * Draws the given [ImageBitmap] into the canvas with its top-left corner at the given [Offset].
-//     * The image is composited into the canvas using the given [Paint].
-//     *
-//     * @param image The [ImageBitmap] to draw
-//     * @param topLeft Offset from the local origin of 0, 0 relative to the current translation
-//     * @param alpha Opacity to be applied to [image] from 0.0f to 1.0f representing fully
-//     *   transparent to fully opaque respectively
-//     * @param style Specifies whether the image is to be drawn filled in or as a rectangular stroke
-//     * @param colorFilter ColorFilter to apply to the [image] when drawn into the destination
-//     * @param blendMode Blending algorithm to apply to destination
-//     */
-//    fun drawImage(
-//        image: ImageBitmap,
-//        topLeft: Offset = Offset.Zero,
-//        @FloatRange(from = 0.0, to = 1.0) alpha: Float = 1.0f,
-//        style: DrawStyle = Fill,
-//        colorFilter: ColorFilter? = null,
-//        blendMode: BlendMode = DefaultBlendMode,
-//    )
-//
-//
-//    /**
-//     * Draws the subset of the given image described by the `src` argument into the canvas in the
-//     * axis-aligned rectangle given by the `dst` argument.
-//     *
-//     * If no src rect is provided, the entire image is scaled into the corresponding destination
-//     * bounds
-//     *
-//     * @param image The source image to draw
-//     * @param srcOffset Optional offset representing the top left offset of the source image to
-//     *   draw, this defaults to the origin of [image]
-//     * @param srcSize Optional dimensions of the source image to draw relative to [srcOffset], this
-//     *   defaults the width and height of [image]
-//     * @param dstOffset Optional offset representing the top left offset of the destination to draw
-//     *   the given image, this defaults to the origin of the current translation tarting top left
-//     *   offset in the destination to draw the image
-//     * @param dstSize Optional dimensions of the destination to draw, this defaults to [srcSize]
-//     * @param alpha Opacity to be applied to [image] from 0.0f to 1.0f representing fully
-//     *   transparent to fully opaque respectively
-//     * @param style Specifies whether the image is to be drawn filled in or as a rectangular stroke
-//     * @param colorFilter ColorFilter to apply to the [image] when drawn into the destination
-//     * @param blendMode Blending algorithm to apply to destination
-//     * @param filterQuality Sampling algorithm applied to the [image] when it is scaled and drawn
-//     *   into the destination. The default is [FilterQuality.Low] which scales using a bilinear
-//     *   sampling algorithm
-//     */
-//    fun drawImage(
-//        image: ImageBitmap,
-//        srcOffset: IntOffset = IntOffset.Zero,
-//        srcSize: IntSize = IntSize(image.width, image.height),
-//        dstOffset: IntOffset = IntOffset.Zero,
-//        dstSize: IntSize = srcSize,
-//        @FloatRange(from = 0.0, to = 1.0) alpha: Float = 1.0f,
-//        style: DrawStyle = Fill,
-//        colorFilter: ColorFilter? = null,
-//        blendMode: BlendMode = DefaultBlendMode,
-//        filterQuality: FilterQuality = DefaultFilterQuality,
-//    ) {
-//        drawImage(
-//            image = image,
-//            srcOffset = srcOffset,
-//            srcSize = srcSize,
-//            dstOffset = dstOffset,
-//            dstSize = dstSize,
-//            alpha = alpha,
-//            style = style,
-//            colorFilter = colorFilter,
-//            blendMode = blendMode,
-//        )
-//    }
-//
+/**
+ * 使用提供的 [Canvas] 创建一个作用域绘图环境。这提供了一种声明式、无状态的 API，用于绘制形状和路径，而无需使用者维护底层
+ * [Canvas] 状态信息。[DrawScope] 实现还提供了尺寸信息，并且变换是相对于本地平移进行的。即左侧和顶部坐标始终为原点，
+ * 右侧和底部坐标始终分别为指定的宽度和高度。绘制内容不会被裁剪，因此可以在指定边界之外进行绘制。
+ */
+@DrawScopeMarker
+interface 绘制范围 : Density { // DrawScope
+
+    /** 包含创建绘图环境所需依赖项的当前 [DrawContext]。*/
+    val 绘制上下文: DrawContext // drawContext
+
+    /** 当前绘图环境边界的中心点 */
+    val 中心: Offset // center
+        get() = 绘制上下文.size.center
+
+    /** 提供当前绘图环境的尺寸 */
+    val 大小: Size // size
+        get() = 绘制上下文.size
+
+    /** 正在绘制的布局的布局方向 */
+    val 布局方向: LayoutDirection // layoutDirection
+
+    /**
+     * 使用给定的画笔在给定点之间绘制一条线。该线为描边样式。
+     *
+     * @param 画刷 应用于线条的颜色或填充
+     * @param 起始 要绘制的线条的第一个点
+     * @param 结束 要绘制的线条的第二个点
+     * @param 描边宽度 应用于线条的描边宽度
+     * @param 端点 应用于线段端点的处理方式
+     * @param 路径效果 应用于线条的可选效果或图案
+     * @param 透明度 应用于 [画刷] 的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+     * @param 颜色过滤器 绘制到目标时应用于 [画刷] 的 ColorFilter
+     * @param 混合模式 应用于 [画刷] 的混合算法
+     */
+    fun 绘制线条(
+        画刷: Brush,
+        起始: Offset,
+        结束: Offset,
+        描边宽度: Float = Stroke.HairlineWidth,
+        端点: StrokeCap = Stroke.DefaultCap,
+        路径效果: PathEffect? = null,
+        @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+        颜色过滤器: ColorFilter? = null,
+        混合模式: BlendMode = DrawScope.DefaultBlendMode,
+    )
+
+    /**
+     * 使用给定的画笔在给定点之间绘制一条线。该线为描边样式。
+     *
+     * @param 颜色 应用于线条的颜色
+     * @param 起始 要绘制的线条的第一个点
+     * @param 结束 要绘制的线条的第二个点
+     * @param 描边宽度 应用于线条的描边宽度
+     * @param 端点 应用于线段端点的处理方式
+     * @param 路径效果 应用于线条的可选效果或图案
+     * @param 透明度 应用于 [颜色] 的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+     * @param 颜色过滤器 绘制到目标时应用于 [颜色] 的 ColorFilter
+     * @param 混合模式 应用于 [颜色] 的混合算法
+     */
+    fun 绘制线条(
+        颜色: Color,
+        起始: Offset,
+        结束: Offset,
+        描边宽度: Float = Stroke.HairlineWidth,
+        端点: StrokeCap = Stroke.DefaultCap,
+        路径效果: PathEffect? = null,
+        @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+        颜色过滤器: ColorFilter? = null,
+        混合模式: BlendMode = DrawScope.DefaultBlendMode,
+    )
+
+    /**
+     * 使用给定的偏移量和尺寸绘制矩形。如果未提供相对于左上角的偏移量，则从当前平移的原点开始绘制。如果未提供尺寸，则使用当前环境的尺寸。
+     *
+     * @param 画刷 应用于矩形的颜色或填充
+     * @param 左上角 相对于当前平移的本地原点 (0, 0) 的偏移量
+     * @param 大小 要绘制的矩形的尺寸
+     * @param 透明度 应用于 [画刷] 的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+     * @param 样式 矩形是描边还是填充
+     * @param 颜色过滤器 绘制到目标时应用于 [画刷] 的 ColorFilter
+     * @param 混合模式 应用于目标的混合算法
+     */
+    fun 绘制矩形(
+        画刷: Brush,
+        左上角: Offset = Offset.Zero,
+        大小: Size = this.大小.offsetSize(左上角),
+        @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+        样式: DrawStyle = Fill,
+        颜色过滤器: ColorFilter? = null,
+        混合模式: BlendMode = DrawScope.DefaultBlendMode,
+    )
+
+    /**
+     * 使用给定的偏移量和尺寸绘制矩形。如果未提供相对于左上角的偏移量，则从当前平移的原点开始绘制。如果未提供尺寸，则使用当前环境的尺寸。
+     *
+     * @param 颜色 应用于矩形的颜色
+     * @param 左上角 相对于当前平移的本地原点 (0, 0) 的偏移量
+     * @param 大小 要绘制的矩形的尺寸
+     * @param 透明度 应用于 [颜色] 的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+     * @param 样式 矩形是描边还是填充
+     * @param 颜色过滤器 应用于 [颜色] 源像素的颜色滤镜
+     * @param 混合模式 应用于目标的混合算法
+     */
+    fun 绘制矩形(
+        颜色: Color,
+        左上角: Offset = Offset.Zero,
+        大小: Size = this.大小.offsetSize(左上角),
+        @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+        样式: DrawStyle = Fill,
+        颜色过滤器: ColorFilter? = null,
+        混合模式: BlendMode = DrawScope.DefaultBlendMode,
+    )
+
+    /**
+     * 使用给定的 [Paint] 将 [ImageBitmap] 绘制到画布中，其左上角位于给定的 [Offset] 处。图像通过给定的 [Paint] 合成到画布上。
+     *
+     * @param 图像 要绘制的 [ImageBitmap]
+     * @param 左上角 相对于当前平移的本地原点 (0, 0) 的偏移量
+     * @param 透明度 应用于 [图像] 的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+     * @param 样式 指定图像是填充绘制还是作为矩形描边绘制
+     * @param 颜色过滤器 绘制到目标时应用于 [图像] 的 ColorFilter
+     * @param 混合模式 应用于目标的混合算法
+     */
+    fun 绘制图像(
+        图像: ImageBitmap,
+        左上角: Offset = Offset.Zero,
+        @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+        样式: DrawStyle = Fill,
+        颜色过滤器: ColorFilter? = null,
+        混合模式: BlendMode = DrawScope.DefaultBlendMode,
+    )
+
+    /**
+     * 将给定图像中由 `src` 参数描述的子集绘制到画布中由 `dst` 参数指定的轴对齐矩形区域内。
+     *
+     * 如果未提供 src 矩形，则整个图像将缩放到对应的目标边界内。
+     *
+     * @param 图像 要绘制的源图像
+     * @param 源偏移量 表示要绘制的源图像左上角的偏移量，默认为 [图像] 的原点。
+     * @param 源大小 要绘制的源图像相对于 [源偏移量] 的可选尺寸，默认为 [图像] 的宽度和高度。
+     * @param 目标偏移量 表示在目标中绘制给定图像的左上角偏移量，默认为当前平移的原点。
+     * @param 目标大小 要绘制的目标的可选尺寸，默认为 [源大小]。
+     * @param 透明度 应用于 [图像] 的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+     * @param 样式 指定图像是填充绘制还是作为矩形描边绘制
+     * @param 颜色过滤器 绘制到目标时应用于 [图像] 的 ColorFilter
+     * @param 混合模式 应用于目标的混合算法
+     * @param 过滤器质量 应用于 [图像] 缩放并绘制到目标时的采样算法。默认为 [FilterQuality.Low]，使用双线性采样算法进行缩放。
+     */
+    fun 绘制图像(
+        图像: ImageBitmap,
+        源偏移量: IntOffset = IntOffset.Zero,
+        源大小: IntSize = IntSize(图像.width, 图像.height),
+        目标偏移量: IntOffset = IntOffset.Zero,
+        目标大小: IntSize = 源大小,
+        @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+        样式: DrawStyle = Fill,
+        颜色过滤器: ColorFilter? = null,
+        混合模式: BlendMode = DrawScope.DefaultBlendMode,
+        过滤器质量: FilterQuality = DrawScope.DefaultFilterQuality,
+    )
+
+
 //    /**
 //     * Draws a rounded rectangle with the provided size, offset and radii for the x and y axis
 //     * respectively. This rectangle is drawn with the provided [Brush] parameter and is filled or
@@ -765,27 +724,252 @@ inline fun DrawScope.绘制(
 //                block,
 //            )
 //        }
-//
-//
-//    /** Helper method to offset the provided size with the offset in box width and height */
-//    private fun Size.offsetSize(offset: Offset): Size =
-//        Size(this.width - offset.x, this.height - offset.y)
-//
-//    companion object {
-//
-//        /**
-//         * Default blending mode used for each drawing operation. This ensures that content is drawn
-//         * on top of the pixels in the destination
-//         */
-//        val DefaultBlendMode: BlendMode = BlendMode.SrcOver
-//
-//        /**
-//         * Default FilterQuality used for determining the filtering algorithm to apply when scaling
-//         * [ImageBitmap] objects. Maps to the default behavior of bilinear filtering
-//         */
-//        val DefaultFilterQuality: FilterQuality = FilterQuality.Low
-//    }
-//}
+
+    /** 辅助方法，用于在框宽和框高方向上偏移所提供的尺寸。 */
+    private fun Size.offsetSize(offset: Offset): Size =
+        Size(this.width - offset.x, this.height - offset.y)
+
+    companion object {
+
+        /** 每个绘制操作使用的默认混合模式。这确保内容绘制在目标像素的上方。 */
+        val 默认混合模式: BlendMode = DrawScope.DefaultBlendMode
+
+        /** 确定缩放 [ImageBitmap] 对象时应用的过滤算法的默认 FilterQuality。对应双线性过滤的默认行为。 */
+        val 默认过滤质量: FilterQuality = DrawScope.DefaultFilterQuality
+    }
+
+}
+
+
+//=============================================================================================
+
+/** 包含创建绘图环境所需依赖项的当前 [DrawContext]。*/
+val DrawScope.绘制上下文: DrawContext
+    get() = this.drawContext
+
+/** 当前绘图环境边界的中心点 */
+val DrawScope.中心: Offset // center
+    get() = this.center
+
+/** 提供当前绘图环境的尺寸 */
+val DrawScope.大小: Size // size
+    get() = this.size
+
+/** 正在绘制的布局的布局方向 */
+val DrawScope.布局方向: LayoutDirection
+    get() = this.layoutDirection
+
+
+/**
+ * 使用给定的画笔在给定点之间绘制一条线。该线为描边样式。
+ *
+ * @param 画刷 应用于线条的颜色或填充
+ * @param 起始 要绘制的线条的第一个点
+ * @param 结束 要绘制的线条的第二个点
+ * @param 描边宽度 应用于线条的描边宽度
+ * @param 端点 应用于线段端点的处理方式
+ * @param 路径效果 应用于线条的可选效果或图案
+ * @param 透明度 应用于 [画刷] 的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+ * @param 颜色过滤器 绘制到目标时应用于 [画刷] 的 ColorFilter
+ * @param 混合模式 应用于 [画刷] 的混合算法
+ */
+fun DrawScope.绘制线条(
+    画刷: Brush,
+    起始: Offset,
+    结束: Offset,
+    描边宽度: Float = Stroke.HairlineWidth,
+    端点: StrokeCap = Stroke.DefaultCap,
+    路径效果: PathEffect? = null,
+    @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+    颜色过滤器: ColorFilter? = null,
+    混合模式: BlendMode = DrawScope.DefaultBlendMode,
+) =
+    this.drawLine(
+        brush = 画刷,
+        start = 起始,
+        end = 结束,
+        strokeWidth = 描边宽度,
+        cap = 端点,
+        pathEffect = 路径效果,
+        alpha = 透明度,
+        colorFilter = 颜色过滤器,
+        blendMode = 混合模式,
+    )
+
+/**
+ * 使用给定的画笔在给定点之间绘制一条线。该线为描边样式。
+ *
+ * @param 颜色 应用于线条的颜色
+ * @param 起始 要绘制的线条的第一个点
+ * @param 结束 要绘制的线条的第二个点
+ * @param 描边宽度 应用于线条的描边宽度
+ * @param 端点 应用于线段端点的处理方式
+ * @param 路径效果 应用于线条的可选效果或图案
+ * @param 透明度 应用于 [颜色] 的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+ * @param 颜色过滤器 绘制到目标时应用于 [颜色] 的 ColorFilter
+ * @param 混合模式 应用于 [颜色] 的混合算法
+ */
+fun DrawScope.绘制线条(
+    颜色: Color,
+    起始: Offset,
+    结束: Offset,
+    描边宽度: Float = Stroke.HairlineWidth,
+    端点: StrokeCap = Stroke.DefaultCap,
+    路径效果: PathEffect? = null,
+    @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+    颜色过滤器: ColorFilter? = null,
+    混合模式: BlendMode = DrawScope.DefaultBlendMode,
+) =
+    this.drawLine(
+        color = 颜色,
+        start = 起始,
+        end = 结束,
+        strokeWidth = 描边宽度,
+        cap = 端点,
+        pathEffect = 路径效果,
+        alpha = 透明度,
+        colorFilter = 颜色过滤器,
+        blendMode = 混合模式,
+    )
+
+
+/**
+ * 使用给定的偏移量和尺寸绘制矩形。如果未提供相对于左上角的偏移量，则从当前平移的原点开始绘制。如果未提供尺寸，则使用当前环境的尺寸。
+ *
+ * @param 画刷 应用于矩形的颜色或填充
+ * @param 左上角 相对于当前平移的本地原点 (0, 0) 的偏移量
+ * @param 大小 要绘制的矩形的尺寸
+ * @param 透明度 应用于 [画刷] 的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+ * @param 样式 矩形是描边还是填充
+ * @param 颜色过滤器 绘制到目标时应用于 [画刷] 的 ColorFilter
+ * @param 混合模式 应用于目标的混合算法
+ */
+fun DrawScope.绘制矩形(
+    画刷: Brush,
+    左上角: Offset = Offset.Zero,
+    大小: Size = this.size.offsetSize(左上角),
+    @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+    样式: DrawStyle = Fill,
+    颜色过滤器: ColorFilter? = null,
+    混合模式: BlendMode = DrawScope.DefaultBlendMode,
+) =
+    this.drawRect(
+        brush = 画刷,
+        topLeft = 左上角,
+        size = 大小,
+        alpha = 透明度,
+        style = 样式,
+        colorFilter = 颜色过滤器,
+        blendMode = 混合模式,
+    )
+
+/**
+ * 使用给定的偏移量和尺寸绘制矩形。如果未提供相对于左上角的偏移量，则从当前平移的原点开始绘制。如果未提供尺寸，则使用当前环境的尺寸。
+ *
+ * @param 颜色 应用于矩形的颜色
+ * @param 左上角 相对于当前平移的本地原点 (0, 0) 的偏移量
+ * @param 大小 要绘制的矩形的尺寸
+ * @param 透明度 应用于 [颜色] 的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+ * @param 样式 矩形是描边还是填充
+ * @param 颜色过滤器 应用于 [颜色] 源像素的颜色滤镜
+ * @param 混合模式 应用于目标的混合算法
+ */
+fun DrawScope.绘制矩形(
+    颜色: Color,
+    左上角: Offset = Offset.Zero,
+    大小: Size = this.size.offsetSize(左上角),
+    @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+    样式: DrawStyle = Fill,
+    颜色过滤器: ColorFilter? = null,
+    混合模式: BlendMode = DrawScope.DefaultBlendMode,
+) =
+    this.drawRect(
+        color = 颜色,
+        topLeft = 左上角,
+        size = 大小,
+        alpha = 透明度,
+        style = 样式,
+        colorFilter = 颜色过滤器,
+        blendMode = 混合模式,
+    )
+
+
+/**
+ * 使用给定的 [Paint] 将 [ImageBitmap] 绘制到画布中，其左上角位于给定的 [Offset] 处。图像通过给定的 [Paint] 合成到画布上。
+ *
+ * @param 图像 要绘制的 [ImageBitmap]
+ * @param 左上角 相对于当前平移的本地原点 (0, 0) 的偏移量
+ * @param 透明度 应用于 [图像] 的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+ * @param 样式 指定图像是填充绘制还是作为矩形描边绘制
+ * @param 颜色过滤器 绘制到目标时应用于 [图像] 的 ColorFilter
+ * @param 混合模式 应用于目标的混合算法
+ */
+fun DrawScope.绘制图像(
+    图像: ImageBitmap,
+    左上角: Offset = Offset.Zero,
+    @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+    样式: DrawStyle = Fill,
+    颜色过滤器: ColorFilter? = null,
+    混合模式: BlendMode = DrawScope.DefaultBlendMode,
+) =
+    this.drawImage(
+        image = 图像,
+        topLeft = 左上角,
+        alpha = 透明度,
+        style = 样式,
+        colorFilter = 颜色过滤器,
+        blendMode = 混合模式,
+    )
+
+/**
+ * 将给定图像中由 `src` 参数描述的子集绘制到画布中由 `dst` 参数指定的轴对齐矩形区域内。
+ *
+ * 如果未提供 src 矩形，则整个图像将缩放到对应的目标边界内。
+ *
+ * @param 图像 要绘制的源图像
+ * @param 源偏移量 表示要绘制的源图像左上角的偏移量，默认为 [图像] 的原点。
+ * @param 源大小 要绘制的源图像相对于 [源偏移量] 的可选尺寸，默认为 [图像] 的宽度和高度。
+ * @param 目标偏移量 表示在目标中绘制给定图像的左上角偏移量，默认为当前平移的原点。
+ * @param 目标大小 要绘制的目标的可选尺寸，默认为 [源大小]。
+ * @param 透明度 应用于 [图像] 的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+ * @param 样式 指定图像是填充绘制还是作为矩形描边绘制
+ * @param 颜色过滤器 绘制到目标时应用于 [图像] 的 ColorFilter
+ * @param 混合模式 应用于目标的混合算法
+ * @param 过滤器质量 应用于 [图像] 缩放并绘制到目标时的采样算法。默认为 [FilterQuality.Low]，使用双线性采样算法进行缩放。
+ */
+fun DrawScope.绘制图像(
+    图像: ImageBitmap,
+    源偏移量: IntOffset = IntOffset.Zero,
+    源大小: IntSize = IntSize(图像.width, 图像.height),
+    目标偏移量: IntOffset = IntOffset.Zero,
+    目标大小: IntSize = 源大小,
+    @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+    样式: DrawStyle = Fill,
+    颜色过滤器: ColorFilter? = null,
+    混合模式: BlendMode = DrawScope.DefaultBlendMode,
+    过滤器质量: FilterQuality = DrawScope.DefaultFilterQuality,
+) =
+    this.drawImage(
+        image = 图像,
+        srcOffset = 源偏移量,
+        srcSize = 源大小,
+        dstOffset = 目标偏移量,
+        dstSize = 目标大小,
+        alpha = 透明度,
+        style = 样式,
+        colorFilter = 颜色过滤器,
+        blendMode = 混合模式,
+        filterQuality = 过滤器质量,
+    )
+
+
+//=============================================================================================
+
+/** 辅助方法，用于在框宽和框高方向上偏移所提供的尺寸。 */
+private fun Size.offsetSize(offset: Offset): Size =
+    Size(this.width - offset.x, this.height - offset.y)
+
+//=============================================================================================
 
 /**
  * 提供用于以描边方式绘制内容的信息的 [DrawStyle]。

@@ -48,7 +48,7 @@ import 安卓x.组合.基础.文本.输入.默认
  * [Density] 作用域为创建给定文本布局时所使用的那个。
  * @param 交互源 表示此 TextField 的 [Interaction] 流的 [MutableInteractionSource]。如果你想观察 [Interaction]
  * 并根据不同的 [Interaction] 自定义此 TextField 的外观或行为，可以创建并传入你自己 remember 的 [MutableInteractionSource]。
- * @param 光标画笔 用于绘制光标的 [Brush]。如果提供的是 [Color.Unspecified] 的 [SolidColor]，则不会绘制光标。
+ * @param 光标画刷 用于绘制光标的 [Brush]。如果提供的是 [Color.Unspecified] 的 [SolidColor]，则不会绘制光标。
  * @param 装饰器 允许在文本字段周围添加装饰，如图标、占位符、辅助提示信息等，并自动扩大文本字段的点击目标区域。
  * @param 文本混淆模式 确定隐藏输入文本的方法。
  * @param 文本混淆字符 隐藏文本时使用的字符。当 [文本混淆模式] 设置为 [TextObfuscationMode.Visible] 时，此设置无效。
@@ -68,7 +68,7 @@ fun 基础安全文本字段(
     键盘操作回调: KeyboardActionHandler? = null,
     文本布局回调: (Density.(getResult: () -> TextLayoutResult?) -> Unit)? = null,
     交互源: MutableInteractionSource? = null,
-    光标画笔: Brush = SolidColor(Color.Black),
+    光标画刷: Brush = SolidColor(Color.Black),
     装饰器: TextFieldDecorator? = null,
     // 最后一个参数不能是函数类型，除非它被设计为常用作尾随 lambda。
     文本混淆模式: TextObfuscationMode = TextObfuscationMode.默认,
@@ -86,7 +86,7 @@ fun 基础安全文本字段(
         onKeyboardAction = 键盘操作回调,
         onTextLayout = 文本布局回调,
         interactionSource = 交互源,
-        cursorBrush = 光标画笔,
+        cursorBrush = 光标画刷,
         decorator = 装饰器,
         // 最后一个参数不能是函数类型，除非它被设计为常用作尾随 lambda。
         textObfuscationMode = 文本混淆模式,

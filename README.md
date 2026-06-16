@@ -49,23 +49,23 @@ dependencyResolutionManagement {
 dependencies {
     
     // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb:0.2.1")
+    implementation("com.github.dxycw.zwkfb:zwkfb:0.2.2")
     
     // 如果使用 Android Jetpack Compose 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.2.1")
+    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.2.2")
     
     // 如果使用 Desktop Jetpack Compose 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.2.1")
+    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.2.2")
     
     // 以下平台可以用，但目前不推荐使用
     
     // 如果使用 IOS Jetpack Compose 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.2.1")
-    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.2.1")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.2.2")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.2.2")
     
     // 如果使用 Web Jetpack Compose 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.2.1")
-    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.2.1")
+    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.2.2")
+    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.2.2")
     
 }
 ```
@@ -103,6 +103,20 @@ dependencies {
 >   从本版本发布开始请使用 Jetpack Compose Multiplatform 的新项目模板。
 
 # 更新内容
+
+## 0.2.2
+
+* 添加 Multiplatform平台的 “主标签页行()”、“次标签页行()”、“主可滚动标签页行()”、“次可滚动标签页行()”、“标签页行()”、“可滚动标签页行()”、四个“导航主机()” 函数组件；
+* 添加 Multiplatform平台的 “文本字段颜色集()” 函数；
+* 添加 Multiplatform平台的 “标签页行默认值” 对象类；
+* 添加 Multiplatform平台的 “标签页指示器范围”、“绘制范围” 接口类；
+* 添加 Multiplatform平台的 TextFieldColors “复制()”、“前导图标颜色()”、“尾随图标颜色()”、“指示器颜色()”、“容器颜色()”、“占位符颜色()”、“标签颜色()”、“文本颜色()”、“辅助文本颜色()”、“前缀颜色()”、“后缀颜色()”、“光标颜色()” 函数；
+* 添加 Multiplatform平台的 文本字段标签位置 “始终最小化”、“最小化对齐方式”、“展开对齐方式”、“对齐” 属性函数；
+* 添加 Multiplatform平台的 TextFieldLabelScope “标签最小化进度” 属性函数；
+* 添加 Multiplatform平台的 TabPosition “左”、“宽度”、“内容宽度”、“右” 属性函数；
+* 添加 Multiplatform平台的 DrawScope “绘制上下文”、“中心”、“大小”、“布局方向” 属性函数；
+* 添加 Multiplatform平台的 DrawScope 两个“绘制线条()”、两个“绘制矩形()”、两个“绘制图像()” 函数；
+* 添加 Multiplatform平台的 Modifier 两个“背景()”、两个“可单击()”、两个“组合可单击()”、“可单击没有波纹()”、“可单击变灰()” 函数；
 
 ## 0.2.1
 

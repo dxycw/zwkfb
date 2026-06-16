@@ -24,7 +24,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.Density
 
 private object 基本文本字段默认值 {
-    val 光标画笔 = SolidColor(Color.Black)
+    val 光标画刷 = SolidColor(Color.Black)
 }
 
 /**
@@ -65,7 +65,7 @@ private object 基本文本字段默认值 {
  * 是创建该文本布局时所使用的那个。
  * @param 交互源 表示此 TextField 的 [Interaction] 流的 [MutableInteractionSource]。
  * 如果你想观察 [Interaction] 并为不同的 [Interaction] 自定义此 TextField 的外观/行为，可以创建并传入你自己记住的 [MutableInteractionSource]。
- * @param 光标画笔 用于绘制光标的 [Brush]。如果提供的是带有 [Color.Unspecified] 的 [SolidColor]，则不会绘制光标。
+ * @param 光标画刷 用于绘制光标的 [Brush]。如果提供的是带有 [Color.Unspecified] 的 [SolidColor]，则不会绘制光标。
  * @param 输出转换  用于转换文本字段内容呈现方式的 [OutputTransformation]。
  * @param 装饰器 允许在文本字段周围添加装饰，例如图标、占位提示文本、辅助信息等，并自动增大文本字段的点击目标区域。
  * @param 滚动状态 管理 TextField 水平或垂直滚动的滚动状态。如果 [行限制] 为 [SingleLine]，则该文本字段被视为单行，具有水平滚动行为；
@@ -86,7 +86,7 @@ fun 基础文本字段(
     行限制: TextFieldLineLimits = TextFieldLineLimits.Default,
     文本布局回调: (Density.(getResult: () -> TextLayoutResult?) -> Unit)? = null,
     交互源: MutableInteractionSource? = null,
-    光标画笔: Brush = 基本文本字段默认值.光标画笔,
+    光标画刷: Brush = 基本文本字段默认值.光标画刷,
     输出转换: OutputTransformation? = null,
     装饰器: TextFieldDecorator? = null,
     滚动状态: ScrollState = rememberScrollState(),
@@ -104,7 +104,7 @@ fun 基础文本字段(
         lineLimits = 行限制,
         onTextLayout = 文本布局回调,
         interactionSource = 交互源,
-        cursorBrush = 光标画笔,
+        cursorBrush = 光标画刷,
         outputTransformation = 输出转换,
         decorator = 装饰器,
         scrollState = 滚动状态,
@@ -148,7 +148,7 @@ fun 基础文本字段(
  * 该回调可用于为文本添加额外的装饰或功能，例如在文本周围绘制光标或选区。
  * @param 交互源 可选的提升式 [MutableInteractionSource]，用于观察和发送此文本字段的 [Interaction]。
  * 你可以使用它来更改文本字段的外观，或在不同状态下预览文本字段。请注意，即使传入 `null`，交互仍会在内部发生。
- * @param 光标画笔 用于绘制光标的 [Brush]。如果提供的是带有 [Color.Unspecified] 的 [SolidColor]，则不会绘制光标。
+ * @param 光标画刷 用于绘制光标的 [Brush]。如果提供的是带有 [Color.Unspecified] 的 [SolidColor]，则不会绘制光标。
  * @param 装饰盒子 可组合项 lambda，允许在文本字段周围添加装饰，例如图标、占位提示文本、辅助信息等，并自动增大文本字段的点击目标区域。
  * 为了让你能够控制内部文本字段相对于装饰的位置，文本字段实现会将一个由框架控制的可组合参数 "innerTextField" 传入你提供的
  * decorationBox lambda 中。你必须恰好调用一次 innerTextField。
@@ -170,7 +170,7 @@ fun 基础文本字段(
     视觉转换: VisualTransformation = VisualTransformation.None,
     文本布局回调: (TextLayoutResult) -> Unit = {},
     交互源: MutableInteractionSource? = null,
-    光标画笔: Brush = SolidColor(Color.Black),
+    光标画刷: Brush = SolidColor(Color.Black),
     装饰盒子: @Composable (innerTextField: @Composable () -> Unit) -> Unit =
         @Composable { innerTextField -> innerTextField() },
 ) {
@@ -189,7 +189,7 @@ fun 基础文本字段(
         visualTransformation = 视觉转换,
         onTextLayout = 文本布局回调,
         interactionSource = 交互源,
-        cursorBrush = 光标画笔,
+        cursorBrush = 光标画刷,
         decorationBox = 装饰盒子,
     )
 }
@@ -228,7 +228,7 @@ fun 基础文本字段(
  * 该回调可用于为文本添加额外的装饰或功能，例如在文本周围绘制光标或选区。
  * @param 交互源 可选的提升式 [MutableInteractionSource]，用于观察和发送此文本字段的 [Interaction]。
  * 你可以使用它来更改文本字段的外观，或在不同状态下预览文本字段。请注意，即使传入 `null`，交互仍会在内部发生。
- * @param 光标画笔 用于绘制光标的 [Brush]。如果提供的是带有 [Color.Unspecified] 的 [SolidColor]，则不会绘制光标。
+ * @param 光标画刷 用于绘制光标的 [Brush]。如果提供的是带有 [Color.Unspecified] 的 [SolidColor]，则不会绘制光标。
  * @param 装饰盒子 可组合项 lambda，允许在文本字段周围添加装饰，例如图标、占位提示文本、辅助信息等，并自动增大文本字段的点击目标区域。
  * 为了让你能够控制内部文本字段相对于装饰的位置，文本字段实现会将一个由框架控制的可组合参数 "innerTextField" 传入你提供的
  * decorationBox lambda 中。你必须恰好调用一次 innerTextField。
@@ -250,7 +250,7 @@ fun 基础文本字段(
     视觉转换: VisualTransformation = VisualTransformation.None,
     文本布局回调: (TextLayoutResult) -> Unit = {},
     交互源: MutableInteractionSource? = null,
-    光标画笔: Brush = SolidColor(Color.Black),
+    光标画刷: Brush = SolidColor(Color.Black),
     装饰盒子: @Composable (innerTextField: @Composable () -> Unit) -> Unit =
         @Composable { innerTextField -> innerTextField() },
 ) {
@@ -269,7 +269,7 @@ fun 基础文本字段(
         visualTransformation = 视觉转换,
         onTextLayout = 文本布局回调,
         interactionSource = 交互源,
-        cursorBrush = 光标画笔,
+        cursorBrush = 光标画刷,
         decorationBox = 装饰盒子,
     )
 }

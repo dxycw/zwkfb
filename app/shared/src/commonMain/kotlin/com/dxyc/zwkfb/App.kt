@@ -2,46 +2,28 @@ package com.dxyc.zwkfb
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.navigation.compose.NavHost
 import androidx.compose.material3.Button
-import androidx.compose.material3.DatePicker
-import androidx.compose.material3.DatePickerDialog
-import androidx.compose.material3.DateRangePicker
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ModalBottomSheetDefaults
-import androidx.compose.material3.ModalBottomSheetProperties
-import androidx.compose.material3.PrimaryTabRow
 import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.SingleChoiceSegmentedButtonRow
-import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
-import androidx.compose.material3.TimePicker
-import androidx.compose.material3.TimePickerDialog
-import androidx.compose.material3.TimePickerLayoutType
-import androidx.compose.material3.rememberDatePickerState
-import androidx.compose.material3.rememberDateRangePickerState
-import androidx.compose.material3.rememberTimePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import multiplatform.zwkfb.Greeting
@@ -49,12 +31,7 @@ import org.jetbrains.compose.resources.painterResource
 import zwkfbmultiplatform.app.shared.generated.resources.Res
 import zwkfbmultiplatform.app.shared.generated.resources.compose_multiplatform
 import 安卓x.组合.材质3.分段按钮颜色集
-import 安卓x.组合.材质3.文本
-import 安卓x.组合.材质3.日期范围选择器
-import 安卓x.组合.材质3.日期选择器对话框
-import 安卓x.组合.材质3.记住时间选择器状态
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Preview
 fun App() {
@@ -62,51 +39,17 @@ fun App() {
         var showContent by remember { mutableStateOf(false) }
         Column(
             modifier = Modifier
-//                .background(MaterialTheme.colorScheme.primaryContainer)
                 .safeContentPadding()
 //                .verticalScroll(rememberScrollState())
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            var selectedDestination by rememberSaveable { mutableIntStateOf(0) }
-
-            PrimaryTabRow(
-                selectedTabIndex = selectedDestination,
-                modifier = Modifier.padding(10.dp),
-                containerColor = Color.Transparent,
-                divider = {  },
-            ) {
-                Tab(
-                    selected = selectedDestination == 0,
-                    onClick = {
-                        selectedDestination = 0
-                    },
-                    text = {
-                        Text(
-                            text = "${0 + 1}",
-                            maxLines = 2,
-                            overflow = TextOverflow.Ellipsis
-                        )
-                    }
-                )
-                Tab(
-                    selected = selectedDestination == 1,
-                    onClick = {
-                        selectedDestination = 1
-                    },
-                    text = {
-                        Text(
-                            text = "${0 + 2}",
-                            maxLines = 2,
-                            overflow = TextOverflow.Ellipsis
-                        )
-                    }
-                )
-            }
 
             SingleChoiceSegmentedButton()
 
-            Button(onClick = { showContent = !showContent }) {
+            Button(
+                onClick = { showContent = !showContent },
+            ) {
                 Text("点击我！")
             }
             AnimatedVisibility(showContent) {
@@ -123,7 +66,6 @@ fun App() {
                     Text("Compose: $greeting")
                 }
             }
-
         }
     }
 }
