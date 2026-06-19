@@ -26,8 +26,6 @@
 > [!NOTE]
 >
 > 如果你使用的是 Android平台的xml布局项目，请使用[zwkfb-view](https://github.com/dxycw/zwkfb-view)项目。
->
-> 如果你使用的是 Jetpack Compose 项目，请使用[zwkfb-compose](https://github.com/dxycw/zwkfb-compose)（注意：此项目已经停更了目前还可以使用，也可以使用 Jetpack Compose Multiplatform项目）。
 
 # 使用方法
 
@@ -49,23 +47,23 @@ dependencyResolutionManagement {
 dependencies {
     
     // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb:0.2.2")
+    implementation("com.github.dxycw.zwkfb:zwkfb:0.2.3")
     
     // 如果使用 Android Jetpack Compose 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.2.2")
+    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.2.3")
     
     // 如果使用 Desktop Jetpack Compose 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.2.2")
+    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.2.3")
     
     // 以下平台可以用，但目前不推荐使用
     
     // 如果使用 IOS Jetpack Compose 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.2.2")
-    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.2.2")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.2.3")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.2.3")
     
     // 如果使用 Web Jetpack Compose 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.2.2")
-    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.2.2")
+    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.2.3")
+    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.2.3")
     
 }
 ```
@@ -103,6 +101,18 @@ dependencies {
 >   从本版本发布开始请使用 Jetpack Compose Multiplatform 的新项目模板。
 
 # 更新内容
+
+## 0.2.3
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 添加 Multiplatform平台的 三个“下拉逐渐缩小隐藏动画()”、“记住导航控制器()”、三个“组件变灰()” 函数；
+* 添加 Multiplatform平台的 NavController “当前返回栈条目状态()” 函数；
+* 添加 Multiplatform平台的 NavGraphBuilder 三个“可组合()”、五个“导航()”、三个“对话框()” 函数；
+* 添加 Multiplatform平台的 DrawScope 两个“绘制圆角矩形()”、两个“绘制圆形()”、两个“绘制椭圆形()” 函数；
+* 添加 Multiplatform平台的 Modifier “旋转动画()”、“滑动回弹()” 函数；
+* 添加 Android平台的 三个“下拉逐渐缩小隐藏动画并启动活动()”、“修复网页打开编辑框键盘显示的Bug()” 函数；
+* 添加 Desktop平台的 com.formdev:flatlaf 依赖库版本为 3.7.1；
+* 删除老库[zwkfb-compose](https://github.com/dxycw/zwkfb-compose)；
 
 ## 0.2.2
 
@@ -144,7 +154,7 @@ dependencies {
 * 添加 Multiplatform平台的 DatePickerFormatter “格式化月份年份()”、“格式化日期()” 函数；
 * 添加 Multiplatform平台的 DatePickerColors “复制()” 函数；
 * 添加 Multiplatform平台的 DrawScope 两个“缩放()”、“裁剪矩形()”、“裁剪路径()”、“绘制到画布()”、“带转换()”、“绘制()” 函数；
-  
+
 # 老版本更新内容
 
 * [0.0.x系列更新日志](%E6%96%87%E6%A1%A3/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97/0.0.x%E7%B3%BB%E5%88%97%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97.md)

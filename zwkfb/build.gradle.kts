@@ -85,6 +85,10 @@ kotlin {
 
                 api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
 
+                // Composables UI 是一套现代化、完全可访问的 Jetpack Compose 和 Compose 多平台组件集合。
+                // https://composables.com/ui/docs/overview
+//                api("com.composables:ui:0.1.0")
+
             }
         }
 
@@ -122,6 +126,18 @@ kotlin {
                 // JNA Platform（包含 Windows API、POSIX 等封装）
                 api("net.java.dev.jna:jna-platform:5.19.0")
 
+
+                api("com.formdev:flatlaf:3.7.1")
+//                api("com.formdev:flatlaf-extras:3.7.1")
+//                api("com.formdev:flatlaf-intellij-themes:3.7.1")
+//                api("com.formdev:flatlaf-jide-oss:3.7.1")
+//                api("com.formdev:flatlaf-swingx:3.7.1")
+//                api("com.formdev:flatlaf-fonts-inter:4.1")
+//                api("com.formdev:flatlaf-fonts-jetbrains-mono:2.304")
+//                api("com.formdev:flatlaf-fonts-roboto:2.137")
+//                api("com.formdev:flatlaf-fonts-roboto-mono:3.000")
+
+
 //                val platform = when {
 //                    org.gradle.internal.os.OperatingSystem.current().isWindows -> "win"
 //                    org.gradle.internal.os.OperatingSystem.current().isMacOsX ->
@@ -155,7 +171,6 @@ kotlin {
         wasmJsMain {
             dependencies {}
         }
-
 
     }
 

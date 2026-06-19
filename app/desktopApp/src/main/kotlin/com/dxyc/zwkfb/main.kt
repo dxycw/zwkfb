@@ -1,36 +1,5 @@
 package com.dxyc.zwkfb
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Window
-import androidx.compose.ui.window.WindowPosition
-import androidx.compose.ui.window.WindowState
-import androidx.compose.ui.window.application
-import com.sun.jna.Native
-import com.sun.jna.WString
-import com.sun.jna.platform.win32.WinDef
-import com.sun.jna.win32.W32APIOptions
-import java.text.DateFormat
-import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.LocalTime
-import java.time.format.DateTimeFormatter
-import java.util.Locale
-
 //// 使用 Unicode 版本（W 后缀）的 Windows API
 //interface User32 : W32APIOptions {
 //    // Unicode 版本，接收宽字符（WCHAR*）
@@ -154,17 +123,122 @@ import java.util.Locale
 //    }
 //}
 
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.KeyShortcut
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.window.MenuBar
+import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.application
+import com.formdev.flatlaf.FlatLightLaf
+import java.awt.Color
+import java.awt.Insets
+import javax.swing.UIManager
 
-//import androidx.compose.ui.window.Window
-//import androidx.compose.ui.window.application
 
 fun main() = application {
+
+    // ===== 菜单栏顶级菜单（JMenu）的圆角选中效果 =====
+    UIManager.put("MenuBar.margin", Insets(5, 0, 5, 0))
+    UIManager.put("MenuBar.selectionArc", 10) // 圆角直径（半径=4）
+    UIManager.put("MenuBar.selectionInsets", Insets(10, 5, 10, 5)) // 普通菜单栏边距
+    UIManager.put("MenuBar.selectionEmbeddedInsets", Insets(8, 3, 8, 3)) // 嵌入标题栏时的边距
+    UIManager.put("MenuBar.itemMargins", Insets(10, 10, 10, 10)) // 菜单项文字边距
+
+
+    // 颜色配置（IntelliJ Light 风格）
+    UIManager.put("MenuBar.hoverBackground", Color(0xE8E8E8)) // 悬停背景色（浅灰）
+    UIManager.put("MenuBar.selectionBackground", Color(0xD4D4D4)) // 选中背景色（稍深）
+    UIManager.put("MenuBar.selectionForeground", Color(0x000000)) // 选中文字色
+
+    // 可选：菜单栏底部边框颜色
+    UIManager.put("MenuBar.borderColor", Color(0xC9C9C9))
+
+
+    // ===== 弹出菜单项（JMenu）的圆角选中效果 =====
+    UIManager.put("Menu.selectionArc", 10)
+    UIManager.put("Menu.selectionInsets", Insets(0, 5, 0, 5))
+    UIManager.put("Menu.margin", Insets(5, 12, 5, 12))
+    UIManager.put("Menu.selectionBackground", Color(0xE8E8E8))
+    UIManager.put("Menu.selectionForeground", Color(0x000000))
+
+    // ===== 弹出菜单项（JMenuItem）的圆角选中效果 =====
+    UIManager.put("MenuItem.selectionArc", 10)
+    UIManager.put("MenuItem.selectionInsets", Insets(0, 5, 0, 5))
+    UIManager.put("MenuItem.margin", Insets(5, 12, 5, 12))
+    UIManager.put("MenuItem.selectionBackground", Color(0xE8E8E8))
+    UIManager.put("MenuItem.selectionForeground", Color(0x000000))
+
+
+//    UIManager.put("CheckBoxMenuBar.margin", Insets(10, 10, 10, 10))
+//    UIManager.put("RadioButtonMenuBar.margin", Insets(10, 10, 10, 10))
+//    UIManager.put("CheckBoxMenu.margin", Insets(10, 10, 10, 10))
+//    UIManager.put("RadioButtonMenu.margin", Insets(10, 10, 10, 10))
+//
+//    UIManager.put("CheckBoxMenuItem.margin", Insets(0, 5, 0, 5))
+//    UIManager.put("RadioButtonMenuItem.margin", Insets(0, 5, 0, 5))
+
+    // 系统属性配置（必须在任何 Swing 组件创建前）
+    System.setProperty("flatlaf.useWindowDecorations", "true")
+    System.setProperty("flatlaf.menuBarEmbedded", "true")
+
+    // 初始化主题
+    FlatLightLaf.setup()
+
     Window(
         onCloseRequest = ::exitApplication,
         title = "中文开发包",
+        icon = painterResource("drawable/compose-multiplatform.xml")
     ) {
+
+        // 场景 2：自定义标题栏高度
+        this.window.getRootPane().putClientProperty("JRootPane.titleBarHeight", 45);
+
+        MenuBar {
+            Menu("<html>文件(<u>F</u>)</html>", mnemonic = 'F') { // 文件(F̲)
+                Menu("<html>新建(<u>N</u>)</html>"){
+                    Item(
+                        "<html>新建项目(<u>N</u>)</html>",
+                        shortcut = KeyShortcut(key = Key.N, ctrl = true, alt = true)
+                    ){}
+                    Item("<html>打开项目(<u>O</u>)</html>"){}
+                    Item("<html>保存项目(<u>S</u>)</html>"){}
+                }
+                Item(
+                    "<html>打开项目(<u>O</u>)</html>",
+                    icon = painterResource("drawable/compose-multiplatform.xml"),
+                    shortcut = KeyShortcut(key = Key.O, ctrl = true, alt = true)
+                ){}
+                Separator()
+                Item(
+                    "<html>保存项目(<u>S</u>)</html>",
+                    icon = painterResource("drawable/compose-multiplatform.xml"),
+                    shortcut = KeyShortcut(key = Key.S, ctrl = true, alt = true)
+                ){}
+                Item("<html>退出(<u>X</u>)</html>"){
+                    exitApplication()
+                }
+            }
+            Menu("<html>编辑(<u>E</u>)</html>", mnemonic = 'E') { // 编辑(E̲)
+                Item("新建"){}
+                Item("打开"){}
+                Item("保存"){}
+                Item("退出"){}
+            }
+            Menu("<html>视图(<u>V</u>)</html>", mnemonic = 'V') { // 视图(V̲)
+                Item("新建"){}
+                Item("打开"){}
+                Item("保存"){}
+                Item("退出"){}
+            }
+        }
+
         App()
     }
 }
+
+
+
+
+
 
 

@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.size
-import androidx.navigation.compose.NavHost
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SegmentedButton
@@ -23,26 +22,28 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import multiplatform.zwkfb.Greeting
 import org.jetbrains.compose.resources.painterResource
 import zwkfbmultiplatform.app.shared.generated.resources.Res
 import zwkfbmultiplatform.app.shared.generated.resources.compose_multiplatform
+
 import 安卓x.组合.材质3.分段按钮颜色集
+import 自定义.组合.动画.下拉逐渐缩小隐藏动画
+
 
 @Composable
 @Preview
 fun App() {
     MaterialTheme {
         var showContent by remember { mutableStateOf(false) }
-        Column(
-            modifier = Modifier
+        下拉逐渐缩小隐藏动画(
+            修饰符 = Modifier
                 .safeContentPadding()
 //                .verticalScroll(rememberScrollState())
                 .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
+            水平对齐 = Alignment.CenterHorizontally,
         ) {
 
             SingleChoiceSegmentedButton()
@@ -66,6 +67,8 @@ fun App() {
                     Text("Compose: $greeting")
                 }
             }
+
+
         }
     }
 }

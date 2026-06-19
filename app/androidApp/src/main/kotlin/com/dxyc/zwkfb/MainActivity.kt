@@ -87,12 +87,6 @@ fun Home(上下文 : Activity? = LocalActivity.current) {
                         文本(文本 = "显示")
                     }
 
-                    图标按钮(单击回调 = {}){
-                        图标(
-                            图像矢量 = Icons.Filled.ArrowDropDown,
-                            内容描述 = null
-                        )
-                    }
                     var 状态2 by remember { mutableStateOf(false) }
                     RadioButton(
                         selected = 状态2,
@@ -137,7 +131,6 @@ fun Home(上下文 : Activity? = LocalActivity.current) {
                     }
 
                     App()
-
                 }
 
             }

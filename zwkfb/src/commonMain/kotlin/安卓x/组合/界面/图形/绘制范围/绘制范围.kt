@@ -4,6 +4,7 @@ import androidx.compose.ui.graphics.drawscope.DrawContext
 import androidx.compose.ui.graphics.drawscope.DrawScopeMarker
 import androidx.compose.ui.graphics.drawscope.DrawTransform
 import androidx.annotation.FloatRange
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.geometry.center
@@ -389,153 +390,137 @@ interface 绘制范围 : Density { // DrawScope
     )
 
 
-//    /**
-//     * Draws a rounded rectangle with the provided size, offset and radii for the x and y axis
-//     * respectively. This rectangle is drawn with the provided [Brush] parameter and is filled or
-//     * stroked based on the given [DrawStyle]
-//     *
-//     * @param brush The color or fill to be applied to the rounded rectangle
-//     * @param topLeft Offset from the local origin of 0, 0 relative to the current translation
-//     * @param size Dimensions of the rectangle to draw
-//     * @param cornerRadius Corner radius of the rounded rectangle, negative radii values are clamped
-//     *   to 0
-//     * @param alpha Opacity to be applied to rounded rectangle from 0.0f to 1.0f representing fully
-//     *   transparent to fully opaque respectively
-//     * @param style Specifies whether the rounded rectangle is stroked or filled in
-//     * @param colorFilter ColorFilter to apply to the [brush] when drawn into the destination
-//     * @param blendMode Blending algorithm to be applied to the brush
-//     */
-//    fun drawRoundRect(
-//        brush: Brush,
-//        topLeft: Offset = Offset.Zero,
-//        size: Size = this.size.offsetSize(topLeft),
-//        cornerRadius: CornerRadius = CornerRadius.Zero,
-//        @FloatRange(from = 0.0, to = 1.0) alpha: Float = 1.0f,
-//        style: DrawStyle = Fill,
-//        colorFilter: ColorFilter? = null,
-//        blendMode: BlendMode = DefaultBlendMode,
-//    )
-//
-//    /**
-//     * Draws a rounded rectangle with the given [Paint]. Whether the rectangle is filled or stroked
-//     * (or both) is controlled by [Paint.style].
-//     *
-//     * @param color The color to be applied to the rounded rectangle
-//     * @param topLeft Offset from the local origin of 0, 0 relative to the current translation
-//     * @param size Dimensions of the rectangle to draw
-//     * @param cornerRadius Corner radius of the rounded rectangle, negative radii values are clamped
-//     *   to 0
-//     * @param alpha Opacity to be applied to rounded rectangle from 0.0f to 1.0f representing fully
-//     *   transparent to fully opaque respectively
-//     * @param style Specifies whether the rounded rectangle is stroked or filled in
-//     * @param colorFilter ColorFilter to apply to the [color] when drawn into the destination
-//     * @param blendMode Blending algorithm to be applied to the color
-//     */
-//    fun drawRoundRect(
-//        color: Color,
-//        topLeft: Offset = Offset.Zero,
-//        size: Size = this.size.offsetSize(topLeft),
-//        cornerRadius: CornerRadius = CornerRadius.Zero,
-//        style: DrawStyle = Fill,
-//        @FloatRange(from = 0.0, to = 1.0) alpha: Float = 1.0f,
-//        colorFilter: ColorFilter? = null,
-//        blendMode: BlendMode = DefaultBlendMode,
-//    )
-//
-//    /**
-//     * Draws a circle at the provided center coordinate and radius. If no center point is provided
-//     * the center of the bounds is used.
-//     *
-//     * @param brush The color or fill to be applied to the circle
-//     * @param radius The radius of the circle
-//     * @param center The center coordinate where the circle is to be drawn
-//     * @param alpha Opacity to be applied to the circle from 0.0f to 1.0f representing fully
-//     *   transparent to fully opaque respectively
-//     * @param style Whether or not the circle is stroked or filled in
-//     * @param colorFilter ColorFilter to apply to the [brush] when drawn into the destination
-//     * @param blendMode Blending algorithm to be applied to the brush
-//     */
-//    fun drawCircle(
-//        brush: Brush,
-//        radius: Float = size.minDimension / 2.0f,
-//        center: Offset = this.center,
-//        @FloatRange(from = 0.0, to = 1.0) alpha: Float = 1.0f,
-//        style: DrawStyle = Fill,
-//        colorFilter: ColorFilter? = null,
-//        blendMode: BlendMode = DefaultBlendMode,
-//    )
-//
-//    /**
-//     * Draws a circle at the provided center coordinate and radius. If no center point is provided
-//     * the center of the bounds is used.
-//     *
-//     * @param color The color or fill to be applied to the circle
-//     * @param radius The radius of the circle
-//     * @param center The center coordinate where the circle is to be drawn
-//     * @param alpha Opacity to be applied to the circle from 0.0f to 1.0f representing fully
-//     *   transparent to fully opaque respectively
-//     * @param style Whether or not the circle is stroked or filled in
-//     * @param colorFilter ColorFilter to apply to the [color] when drawn into the destination
-//     * @param blendMode Blending algorithm to be applied to the brush
-//     */
-//    fun drawCircle(
-//        color: Color,
-//        radius: Float = size.minDimension / 2.0f,
-//        center: Offset = this.center,
-//        @FloatRange(from = 0.0, to = 1.0) alpha: Float = 1.0f,
-//        style: DrawStyle = Fill,
-//        colorFilter: ColorFilter? = null,
-//        blendMode: BlendMode = DefaultBlendMode,
-//    )
-//
-//    /**
-//     * Draws an oval with the given offset and size. If no offset from the top left is provided, it
-//     * is drawn starting from the origin of the current translation. If no size is provided, the
-//     * size of the current environment is used.
-//     *
-//     * @param brush Color or fill to be applied to the oval
-//     * @param topLeft Offset from the local origin of 0, 0 relative to the current translation
-//     * @param size Dimensions of the rectangle to draw
-//     * @param alpha Opacity to be applied to the oval from 0.0f to 1.0f representing fully
-//     *   transparent to fully opaque respectively
-//     * @param style Whether or not the oval is stroked or filled in
-//     * @param colorFilter ColorFilter to apply to the [brush] when drawn into the destination
-//     * @param blendMode Blending algorithm to be applied to the brush
-//     */
-//    fun drawOval(
-//        brush: Brush,
-//        topLeft: Offset = Offset.Zero,
-//        size: Size = this.size.offsetSize(topLeft),
-//        @FloatRange(from = 0.0, to = 1.0) alpha: Float = 1.0f,
-//        style: DrawStyle = Fill,
-//        colorFilter: ColorFilter? = null,
-//        blendMode: BlendMode = DefaultBlendMode,
-//    )
-//
-//    /**
-//     * Draws an oval with the given offset and size. If no offset from the top left is provided, it
-//     * is drawn starting from the origin of the current translation. If no size is provided, the
-//     * size of the current environment is used.
-//     *
-//     * @param color Color to be applied to the oval
-//     * @param topLeft Offset from the local origin of 0, 0 relative to the current translation
-//     * @param size Dimensions of the rectangle to draw
-//     * @param alpha Opacity to be applied to the oval from 0.0f to 1.0f representing fully
-//     *   transparent to fully opaque respectively
-//     * @param style Whether or not the oval is stroked or filled in
-//     * @param colorFilter ColorFilter to apply to the [color] when drawn into the destination
-//     * @param blendMode Blending algorithm to be applied to the brush
-//     */
-//    fun drawOval(
-//        color: Color,
-//        topLeft: Offset = Offset.Zero,
-//        size: Size = this.size.offsetSize(topLeft),
-//        @FloatRange(from = 0.0, to = 1.0) alpha: Float = 1.0f,
-//        style: DrawStyle = Fill,
-//        colorFilter: ColorFilter? = null,
-//        blendMode: BlendMode = DefaultBlendMode,
-//    )
-//
+    /**
+     * 使用提供的尺寸、偏移量以及 x 轴和 y 轴的圆角半径分别绘制一个圆角矩形。该矩形使用提供的 [Brush] 参数绘制，
+     * 并根据给定的 [DrawStyle] 进行填充或描边。
+     *
+     * @param 画刷 要应用到圆角矩形的颜色或填充
+     * @param 左上角 相对于当前变换，从本地原点 (0, 0) 的偏移量
+     * @param 大小 要绘制的矩形的尺寸
+     * @param 圆角半径 圆角矩形的圆角半径，负值将被钳制到 0
+     * @param 透明度 要应用到圆角矩形的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+     * @param 样式 指定圆角矩形是描边还是填充
+     * @param 颜色过滤器 绘制到目标时应用到 [画刷] 的色彩滤镜
+     * @param 混合模式 要应用到画刷的混合算法
+     */
+    fun 绘制圆角矩形(
+        画刷: Brush,
+        左上角: Offset = Offset.Zero,
+        大小: Size = this.大小.offsetSize(左上角),
+        圆角半径: CornerRadius = CornerRadius.Zero,
+        @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+        样式: DrawStyle = Fill,
+        颜色过滤器: ColorFilter? = null,
+        混合模式: BlendMode = DrawScope.DefaultBlendMode,
+    )
+
+    /**
+     * 使用给定的 [Paint] 绘制一个圆角矩形。矩形是填充还是描边（或两者兼有）由 [Paint.style] 控制。
+     *
+     * @param 颜色 要应用到圆角矩形的颜色
+     * @param 左上角 相对于当前变换，从本地原点 (0, 0) 的偏移量
+     * @param 大小 要绘制的矩形的尺寸
+     * @param 圆角半径 圆角矩形的圆角半径，负值将被钳制到 0
+     * @param 透明度 要应用到圆角矩形的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+     * @param 样式 指定圆角矩形是描边还是填充
+     * @param 颜色过滤器 绘制到目标时应用到 [颜色] 的色彩滤镜
+     * @param 混合模式 要应用到颜色的混合算法
+     */
+    fun 绘制圆角矩形(
+        颜色: Color,
+        左上角: Offset = Offset.Zero,
+        大小: Size = this.大小.offsetSize(左上角),
+        圆角半径: CornerRadius = CornerRadius.Zero,
+        样式: DrawStyle = Fill,
+        @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+        颜色过滤器: ColorFilter? = null,
+        混合模式: BlendMode = DrawScope.DefaultBlendMode,
+    )
+
+    /**
+     * 在提供的中心坐标和半径处绘制圆形。如果未提供中心点，则使用边界的中心。
+     *
+     * @param 画刷 要应用到圆形的颜色或填充
+     * @param 半径 圆形的半径
+     * @param 中心 要绘制圆形的中心坐标
+     * @param 透明度 要应用到圆形的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+     * @param 样式 指定圆形是描边还是填充
+     * @param 颜色过滤器 绘制到目标时应用到 [画刷] 的色彩滤镜
+     * @param 混合模式 要应用到画刷的混合算法
+     */
+    fun 绘制圆形(
+        画刷: Brush,
+        半径: Float = this.大小.minDimension / 2.0f,
+        中心: Offset = this.中心,
+        @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+        样式: DrawStyle = Fill,
+        颜色过滤器: ColorFilter? = null,
+        混合模式: BlendMode = DrawScope.DefaultBlendMode,
+    )
+
+    /**
+     * 在提供的中心坐标和半径处绘制圆形。如果未提供中心点，则使用边界的中心。
+     *
+     * @param 颜色 要应用到圆形的颜色或填充
+     * @param 半径 圆形的半径
+     * @param 中心 要绘制圆形的中心坐标
+     * @param 透明度 要应用到圆形的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+     * @param 样式 指定圆形是描边还是填充
+     * @param 颜色过滤器 绘制到目标时应用到 [颜色] 的色彩滤镜
+     * @param 混合模式 要应用到画刷的混合算法
+     */
+    fun 绘制圆形(
+        颜色: Color,
+        半径: Float = this.大小.minDimension / 2.0f,
+        中心: Offset = this.中心,
+        @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+        样式: DrawStyle = Fill,
+        颜色过滤器: ColorFilter? = null,
+        混合模式: BlendMode = DrawScope.DefaultBlendMode,
+    )
+
+    /**
+     * 使用给定的偏移量和尺寸绘制椭圆形。如果未提供相对于左上角的偏移量，则从当前变换的原点开始绘制。如果未提供尺寸，则使用当前环境的尺寸。
+     *
+     * @param 画刷 要应用到椭圆形的颜色或填充
+     * @param 左上角 相对于当前变换，从本地原点 (0, 0) 的偏移量
+     * @param 大小 要绘制的矩形的尺寸
+     * @param 透明度 要应用到椭圆形的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+     * @param 样式 指定椭圆形是描边还是填充
+     * @param 颜色过滤器 绘制到目标时应用到 [画刷] 的色彩滤镜
+     * @param 混合模式 要应用到画刷的混合算法
+     */
+    fun 绘制椭圆形(
+        画刷: Brush,
+        左上角: Offset = Offset.Zero,
+        大小: Size = this.大小.offsetSize(左上角),
+        @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+        样式: DrawStyle = Fill,
+        颜色过滤器: ColorFilter? = null,
+        混合模式: BlendMode = DrawScope.DefaultBlendMode,
+    )
+
+    /**
+     * 使用给定的偏移量和尺寸绘制椭圆形。如果未提供相对于左上角的偏移量，则从当前变换的原点开始绘制。如果未提供尺寸，则使用当前环境的尺寸。
+     *
+     * @param 颜色 要应用到椭圆形的颜色
+     * @param 左上角 相对于当前变换，从本地原点 (0, 0) 的偏移量
+     * @param 大小 要绘制的矩形的尺寸
+     * @param 透明度 要应用到椭圆形的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+     * @param 样式 指定椭圆形是描边还是填充
+     * @param 颜色过滤器 绘制到目标时应用到 [颜色] 的色彩滤镜
+     * @param 混合模式 要应用到画刷的混合算法
+     */
+    fun 绘制椭圆形(
+        颜色: Color,
+        左上角: Offset = Offset.Zero,
+        大小: Size = this.大小.offsetSize(左上角),
+        @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+        样式: DrawStyle = Fill,
+        颜色过滤器: ColorFilter? = null,
+        混合模式: BlendMode = DrawScope.DefaultBlendMode,
+    )
+
 //    /**
 //     * Draw an arc scaled to fit inside the given rectangle. It starts from startAngle degrees
 //     * around the oval up to startAngle + sweepAngle degrees around the oval, with zero degrees
@@ -962,6 +947,195 @@ fun DrawScope.绘制图像(
         filterQuality = 过滤器质量,
     )
 
+
+/**
+ * 使用提供的尺寸、偏移量以及 x 轴和 y 轴的圆角半径分别绘制一个圆角矩形。该矩形使用提供的 [Brush] 参数绘制，
+ * 并根据给定的 [DrawStyle] 进行填充或描边。
+ *
+ * @param 画刷 要应用到圆角矩形的颜色或填充
+ * @param 左上角 相对于当前变换，从本地原点 (0, 0) 的偏移量
+ * @param 大小 要绘制的矩形的尺寸
+ * @param 圆角半径 圆角矩形的圆角半径，负值将被钳制到 0
+ * @param 透明度 要应用到圆角矩形的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+ * @param 样式 指定圆角矩形是描边还是填充
+ * @param 颜色过滤器 绘制到目标时应用到 [画刷] 的色彩滤镜
+ * @param 混合模式 要应用到画刷的混合算法
+ */
+fun DrawScope.绘制圆角矩形(
+    画刷: Brush,
+    左上角: Offset = Offset.Zero,
+    大小: Size = this.size.offsetSize(左上角),
+    圆角半径: CornerRadius = CornerRadius.Zero,
+    @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+    样式: DrawStyle = Fill,
+    颜色过滤器: ColorFilter? = null,
+    混合模式: BlendMode = DrawScope.DefaultBlendMode,
+) =
+    this.drawRoundRect(
+        brush = 画刷,
+        topLeft = 左上角,
+        size = 大小,
+        cornerRadius = 圆角半径,
+        alpha = 透明度,
+        style = 样式,
+        colorFilter = 颜色过滤器,
+        blendMode = 混合模式,
+    )
+
+/**
+ * 使用给定的 [Paint] 绘制一个圆角矩形。矩形是填充还是描边（或两者兼有）由 [Paint.style] 控制。
+ *
+ * @param 颜色 要应用到圆角矩形的颜色
+ * @param 左上角 相对于当前变换，从本地原点 (0, 0) 的偏移量
+ * @param 大小 要绘制的矩形的尺寸
+ * @param 圆角半径 圆角矩形的圆角半径，负值将被钳制到 0
+ * @param 透明度 要应用到圆角矩形的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+ * @param 样式 指定圆角矩形是描边还是填充
+ * @param 颜色过滤器 绘制到目标时应用到 [颜色] 的色彩滤镜
+ * @param 混合模式 要应用到颜色的混合算法
+ */
+fun DrawScope.绘制圆角矩形(
+    颜色: Color,
+    左上角: Offset = Offset.Zero,
+    大小: Size = this.size.offsetSize(左上角),
+    圆角半径: CornerRadius = CornerRadius.Zero,
+    样式: DrawStyle = Fill,
+    @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+    颜色过滤器: ColorFilter? = null,
+    混合模式: BlendMode = DrawScope.DefaultBlendMode,
+) =
+    this.drawRoundRect(
+        color = 颜色,
+        topLeft = 左上角,
+        size = 大小,
+        cornerRadius = 圆角半径,
+        style = 样式,
+        alpha = 透明度,
+        colorFilter = 颜色过滤器,
+        blendMode = 混合模式,
+    )
+
+
+/**
+ * 在提供的中心坐标和半径处绘制圆形。如果未提供中心点，则使用边界的中心。
+ *
+ * @param 画刷 要应用到圆形的颜色或填充
+ * @param 半径 圆形的半径
+ * @param 中心 要绘制圆形的中心坐标
+ * @param 透明度 要应用到圆形的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+ * @param 样式 指定圆形是描边还是填充
+ * @param 颜色过滤器 绘制到目标时应用到 [画刷] 的色彩滤镜
+ * @param 混合模式 要应用到画刷的混合算法
+ */
+fun DrawScope.绘制圆形(
+    画刷: Brush,
+    半径: Float = this.size.minDimension / 2.0f,
+    中心: Offset = this.center,
+    @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+    样式: DrawStyle = Fill,
+    颜色过滤器: ColorFilter? = null,
+    混合模式: BlendMode = DrawScope.DefaultBlendMode,
+) =
+    this.drawCircle(
+        brush = 画刷,
+        radius = 半径,
+        center = 中心,
+        alpha = 透明度,
+        style = 样式,
+        colorFilter = 颜色过滤器,
+        blendMode = 混合模式,
+    )
+
+/**
+ * 在提供的中心坐标和半径处绘制圆形。如果未提供中心点，则使用边界的中心。
+ *
+ * @param 颜色 要应用到圆形的颜色或填充
+ * @param 半径 圆形的半径
+ * @param 中心 要绘制圆形的中心坐标
+ * @param 透明度 要应用到圆形的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+ * @param 样式 指定圆形是描边还是填充
+ * @param 颜色过滤器 绘制到目标时应用到 [颜色] 的色彩滤镜
+ * @param 混合模式 要应用到画刷的混合算法
+ */
+fun DrawScope.绘制圆形(
+    颜色: Color,
+    半径: Float = this.size.minDimension / 2.0f,
+    中心: Offset = this.center,
+    @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+    样式: DrawStyle = Fill,
+    颜色过滤器: ColorFilter? = null,
+    混合模式: BlendMode = DrawScope.DefaultBlendMode,
+) =
+    this.drawCircle(
+        color = 颜色,
+        radius = 半径,
+        center = 中心,
+        alpha = 透明度,
+        style = 样式,
+        colorFilter = 颜色过滤器,
+        blendMode = 混合模式,
+    )
+
+
+/**
+ * 使用给定的偏移量和尺寸绘制椭圆形。如果未提供相对于左上角的偏移量，则从当前变换的原点开始绘制。如果未提供尺寸，则使用当前环境的尺寸。
+ *
+ * @param 画刷 要应用到椭圆形的颜色或填充
+ * @param 左上角 相对于当前变换，从本地原点 (0, 0) 的偏移量
+ * @param 大小 要绘制的矩形的尺寸
+ * @param 透明度 要应用到椭圆形的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+ * @param 样式 指定椭圆形是描边还是填充
+ * @param 颜色过滤器 绘制到目标时应用到 [画刷] 的色彩滤镜
+ * @param 混合模式 要应用到画刷的混合算法
+ */
+fun DrawScope.绘制椭圆形(
+    画刷: Brush,
+    左上角: Offset = Offset.Zero,
+    大小: Size = this.size.offsetSize(左上角),
+    @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+    样式: DrawStyle = Fill,
+    颜色过滤器: ColorFilter? = null,
+    混合模式: BlendMode = DrawScope.DefaultBlendMode,
+) =
+    this.drawOval(
+        brush = 画刷,
+        topLeft = 左上角,
+        size = 大小,
+        alpha = 透明度,
+        style = 样式,
+        colorFilter = 颜色过滤器,
+        blendMode = 混合模式,
+    )
+
+/**
+ * 使用给定的偏移量和尺寸绘制椭圆形。如果未提供相对于左上角的偏移量，则从当前变换的原点开始绘制。如果未提供尺寸，则使用当前环境的尺寸。
+ *
+ * @param 颜色 要应用到椭圆形的颜色
+ * @param 左上角 相对于当前变换，从本地原点 (0, 0) 的偏移量
+ * @param 大小 要绘制的矩形的尺寸
+ * @param 透明度 要应用到椭圆形的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+ * @param 样式 指定椭圆形是描边还是填充
+ * @param 颜色过滤器 绘制到目标时应用到 [颜色] 的色彩滤镜
+ * @param 混合模式 要应用到画刷的混合算法
+ */
+fun DrawScope.绘制椭圆形(
+    颜色: Color,
+    左上角: Offset = Offset.Zero,
+    大小: Size = this.size.offsetSize(左上角),
+    @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+    样式: DrawStyle = Fill,
+    颜色过滤器: ColorFilter? = null,
+    混合模式: BlendMode = DrawScope.DefaultBlendMode,
+) =
+    this.drawOval(
+        color = 颜色,
+        topLeft = 左上角,
+        size = 大小,
+        alpha = 透明度,
+        style = 样式,
+        colorFilter = 颜色过滤器,
+        blendMode = 混合模式,
+    )
 
 //=============================================================================================
 
