@@ -11,7 +11,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -83,35 +82,13 @@ fun Home(上下文 : Activity? = LocalActivity.current) {
                 ) {
 //                    ClickToLoadLinear()
 
-                    按钮(单击回调 = { 显示日期选择器 = !显示日期选择器 }) {
+                    按钮(
+                        单击回调 = {
+                            显示日期选择器 = !显示日期选择器
+                        }
+                    ) {
                         文本(文本 = "显示")
                     }
-
-                    var 状态2 by remember { mutableStateOf(false) }
-                    RadioButton(
-                        selected = 状态2,
-                        onClick = { 状态2 = !状态2 }
-                    )
-
-                    var 状态1 by remember { mutableStateOf(false) }
-                    Checkbox(
-                        checked = 状态1,
-                        onCheckedChange = { 状态1 = it }
-                    )
-
-                    var 状态 by remember { mutableStateOf(ToggleableState.Indeterminate) }
-                    TriStateCheckbox(
-                        state = 状态,
-                        onClick = {
-                            状态 = if (状态 == ToggleableState.Off) {
-                                ToggleableState.On
-                            } else if (状态 == ToggleableState.On) {
-                                ToggleableState.Indeterminate
-                            } else {
-                                ToggleableState.Off
-                            }
-                        }
-                    )
                     
                     val primaryColor = MaterialTheme.colorScheme.primary
                     val r = (primaryColor.red * 255).toInt()
@@ -136,7 +113,6 @@ fun Home(上下文 : Activity? = LocalActivity.current) {
             }
 
             if (显示日期选择器) {
-
                 ModalBottomSheet (
                     onDismissRequest = { 显示日期选择器 = false },
                     dragHandle = null
@@ -152,7 +128,6 @@ fun Home(上下文 : Activity? = LocalActivity.current) {
                         )
                     }
                 }
-
             }
 
         }

@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.SingleChoiceSegmentedButtonRow
@@ -30,6 +32,7 @@ import zwkfbmultiplatform.app.shared.generated.resources.Res
 import zwkfbmultiplatform.app.shared.generated.resources.compose_multiplatform
 
 import 安卓x.组合.材质3.分段按钮颜色集
+import 安卓x.组合.材质3.图标
 import 自定义.组合.动画.下拉逐渐缩小隐藏动画
 
 
@@ -48,11 +51,8 @@ fun App() {
 
             SingleChoiceSegmentedButton()
 
-            Button(
-                onClick = { showContent = !showContent },
-            ) {
-                Text("点击我！")
-            }
+            Button(onClick = { showContent = !showContent },
+            ) { Text("点击我！") }
             AnimatedVisibility(showContent) {
                 val greeting = remember { Greeting().greet() }
                 Column(
@@ -68,8 +68,8 @@ fun App() {
                 }
             }
 
-
         }
+
     }
 }
 

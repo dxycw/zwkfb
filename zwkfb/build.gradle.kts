@@ -122,14 +122,17 @@ kotlin {
 //                api("org.jetbrains.kotlinx:kotlinx-coroutines-javafx:1.11.0")
 
                 // JNA 核心库
-                api("net.java.dev.jna:jna:5.19.0")
+                api("net.java.dev.jna:jna:5.19.1")
                 // JNA Platform（包含 Windows API、POSIX 等封装）
-                api("net.java.dev.jna:jna-platform:5.19.0")
+                api("net.java.dev.jna:jna-platform:5.19.1")
 
 
+                // 是 FlatLaf —— 一个现代化的 Java Swing 跨平台 Look and Feel（外观与感觉）库。它提供类似 IntelliJ IDEA 的扁平化、高 DPI 支持、深色/浅色主题，并支持自定义主题。
                 api("com.formdev:flatlaf:3.7.1")
-//                api("com.formdev:flatlaf-extras:3.7.1")
-//                api("com.formdev:flatlaf-intellij-themes:3.7.1")
+                // 是 FlatLaf 官方提供的扩展组件包，包含 Swing 标准库中没有的额外 UI 组件和工具类，用于增强 FlatLaf 主题下的桌面应用体验。
+                api("com.formdev:flatlaf-extras:3.7.1")
+                // 是 FlatLaf 官方提供的 IntelliJ IDEA 主题包，包含 JetBrains 系列 IDE 的多种经典配色方案（如 Darcula、One Dark、Material 等），用于 Swing/JavaFX 桌面应用。
+                api("com.formdev:flatlaf-intellij-themes:3.7.1")
 //                api("com.formdev:flatlaf-jide-oss:3.7.1")
 //                api("com.formdev:flatlaf-swingx:3.7.1")
 //                api("com.formdev:flatlaf-fonts-inter:4.1")
@@ -164,7 +167,7 @@ kotlin {
 
         jsMain {
             dependencies {
-                api("org.jetbrains.kotlin-wrappers:kotlin-browser:2026.6.3")
+                api("org.jetbrains.kotlin-wrappers:kotlin-browser:2026.6.5")
             }
         }
 

@@ -47,23 +47,23 @@ dependencyResolutionManagement {
 dependencies {
     
     // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb:0.2.3")
+    implementation("com.github.dxycw.zwkfb:zwkfb:0.2.4")
     
     // 如果使用 Android Jetpack Compose 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.2.3")
+    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.2.4")
     
     // 如果使用 Desktop Jetpack Compose 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.2.3")
+    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.2.4")
     
     // 以下平台可以用，但目前不推荐使用
     
     // 如果使用 IOS Jetpack Compose 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.2.3")
-    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.2.3")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.2.4")
+    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.2.4")
     
     // 如果使用 Web Jetpack Compose 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.2.3")
-    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.2.3")
+    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.2.4")
+    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.2.4")
     
 }
 ```
@@ -88,7 +88,7 @@ dependencies {
 
 **6、示例代码：**
 
-* 本项目所有平台[示例代码](https://gitee.com/dxycw/zwkfb-multiplatform#%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95)；
+* 本项目所有平台[示例代码](https://gitee.com/dxycw/zwkfb-jiaocheng)；
 
 > [!CAUTION]
 >
@@ -101,6 +101,23 @@ dependencies {
 >   从本版本发布开始请使用 Jetpack Compose Multiplatform 的新项目模板。
 
 # 更新内容
+
+## 0.2.4
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 添加 Multiplatform平台的 “单选按钮()”、两个“复选框()”、两个“三态复选框()”、“导航栏()” 函数组件；
+* 添加 Multiplatform平台的 “本地导航栏覆盖” 属性函数；
+* 添加 Multiplatform平台的 “单选按钮颜色集()”、两个“复选框颜色集()”、“导航栏项颜色集()” 函数；
+* 添加 Multiplatform平台的 “单选按钮默认值”、“复选框默认值”、“导航栏默认值”、“导航栏项默认值” 对象类；
+* 添加 Multiplatform平台的 RadioButtonColors “复制()” 函数；
+* 添加 Multiplatform平台的 CheckboxColors “复制()” 函数；
+* 添加 Multiplatform平台的 RowScope “导航栏项()” 函数；
+* 添加 Multiplatform平台的 NavigationBarItemColors “复制()” 函数；
+* 添加 Desktop平台的 com.formdev:flatlaf-extras 依赖库版本为 3.7.1；
+* 添加 Desktop平台的 com.formdev:flatlaf-intellij-themes 依赖库版本为 3.7.1；
+* 添加 Desktop平台的 net.java.dev.jna:jna 依赖库版本为 5.19.1；
+* 添加 Desktop平台的 net.java.dev.jna:jna-platform 依赖库版本为 5.19.1；
+* 更新 Web的js平台的 org.jetbrains.kotlin-wrappers:kotlin-browser 依赖库版本为 2026.6.5；
 
 ## 0.2.3
 
