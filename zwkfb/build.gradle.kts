@@ -149,14 +149,15 @@ kotlin {
 //                        if (System.getProperty("os.arch") == "aarch64") "linux-aarch64" else "linux"
 //                    else -> throw GradleException("Unsupported platform")
 //                }
-//
-//                // 所有 JavaFX 模块，带平台分类器
-//                listOf(
-//                    "javafx-base","javafx-graphics", "javafx-controls", "javafx-fxml",
-//                    "javafx-web", "javafx-media", "javafx-swing"
-//                ).forEach { module ->
-//                    api("org.openjfx:$module:21:$platform")
-//                }
+
+                // 所有 JavaFX 模块，带平台分类器
+//                api("org.openjfx:javafx-base:21:$platform")
+//                api("org.openjfx:javafx-graphics:21:$platform")
+//                api("org.openjfx:javafx-controls:21:$platform")
+//                api("org.openjfx:javafx-fxml:21:$platform")
+//                api("org.openjfx:javafx-web:21:$platform")
+//                api("org.openjfx:javafx-media:21:$platform")
+//                api("org.openjfx:javafx-swing:21:$platform")
 
             }
         }

@@ -9,8 +9,6 @@ import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.SingleChoiceSegmentedButtonRow
@@ -30,9 +28,8 @@ import multiplatform.zwkfb.Greeting
 import org.jetbrains.compose.resources.painterResource
 import zwkfbmultiplatform.app.shared.generated.resources.Res
 import zwkfbmultiplatform.app.shared.generated.resources.compose_multiplatform
-
 import 安卓x.组合.材质3.分段按钮颜色集
-import 安卓x.组合.材质3.图标
+import 安卓x.组合.材质3.开关
 import 自定义.组合.动画.下拉逐渐缩小隐藏动画
 
 
@@ -67,6 +64,13 @@ fun App() {
                     Text("Compose: $greeting")
                 }
             }
+
+            开关(
+                已选中 = showContent,
+                已选中改变回调 = { 已选中 ->
+                    showContent = 已选中
+                }
+            )
 
         }
 

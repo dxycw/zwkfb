@@ -123,11 +123,14 @@ package com.dxyc.zwkfb
 //    }
 //}
 
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.KeyShortcut
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.window.MenuBar
 import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.WindowPosition
+import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
 import com.formdev.flatlaf.FlatLightLaf
 import java.awt.Color
@@ -186,6 +189,7 @@ fun main() = application {
 
     Window(
         onCloseRequest = ::exitApplication,
+        state = WindowState(position = WindowPosition.Aligned(Alignment.Center)),
         title = "中文开发包",
         icon = painterResource("drawable/compose-multiplatform.xml")
     ) {

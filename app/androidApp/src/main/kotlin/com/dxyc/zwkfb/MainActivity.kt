@@ -15,7 +15,6 @@ import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
-import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.dxyc.zwkfb.ui.theme.AppTheme
@@ -145,7 +144,7 @@ fun SimpleDrawer() {
         drawerContent = {
             ModalDrawerSheet {
                 Text("抽屉标题", modifier = Modifier.padding(16.dp))
-                Divider()
+                HorizontalDivider()
                 NavigationDrawerItem(
                     label = { Text("首页") },
                     selected = true,

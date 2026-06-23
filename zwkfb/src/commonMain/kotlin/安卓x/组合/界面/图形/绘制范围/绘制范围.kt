@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.Paint
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathEffect
+import androidx.compose.ui.graphics.PointMode
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.drawscope.DrawScope
@@ -521,178 +522,162 @@ interface 绘制范围 : Density { // DrawScope
         混合模式: BlendMode = DrawScope.DefaultBlendMode,
     )
 
-//    /**
-//     * Draw an arc scaled to fit inside the given rectangle. It starts from startAngle degrees
-//     * around the oval up to startAngle + sweepAngle degrees around the oval, with zero degrees
-//     * being the point on the right hand side of the oval that crosses the horizontal line that
-//     * intersects the center of the rectangle and with positive angles going clockwise around the
-//     * oval. If useCenter is true, the arc is closed back to the center, forming a circle sector.
-//     * Otherwise, the arc is not closed, forming a circle segment.
-//     *
-//     * @param brush Color or fill to be applied to the arc
-//     * @param topLeft Offset from the local origin of 0, 0 relative to the current translation
-//     * @param size Dimensions of the arc to draw
-//     * @param startAngle Starting angle in degrees. 0 represents 3 o'clock
-//     * @param sweepAngle Size of the arc in degrees that is drawn clockwise relative to [startAngle]
-//     * @param useCenter Flag indicating if the arc is to close the center of the bounds
-//     * @param alpha Opacity to be applied to the arc from 0.0f to 1.0f representing fully
-//     *   transparent to fully opaque respectively
-//     * @param style Whether or not the arc is stroked or filled in
-//     * @param colorFilter ColorFilter to apply to the [brush] when drawn into the destination
-//     * @param blendMode Blending algorithm to be applied to the arc when it is drawn
-//     */
-//    fun drawArc(
-//        brush: Brush,
-//        startAngle: Float,
-//        sweepAngle: Float,
-//        useCenter: Boolean,
-//        topLeft: Offset = Offset.Zero,
-//        size: Size = this.size.offsetSize(topLeft),
-//        @FloatRange(from = 0.0, to = 1.0) alpha: Float = 1.0f,
-//        style: DrawStyle = Fill,
-//        colorFilter: ColorFilter? = null,
-//        blendMode: BlendMode = DefaultBlendMode,
-//    )
-//
-//    /**
-//     * Draw an arc scaled to fit inside the given rectangle. It starts from startAngle degrees
-//     * around the oval up to startAngle + sweepAngle degrees around the oval, with zero degrees
-//     * being the point on the right hand side of the oval that crosses the horizontal line that
-//     * intersects the center of the rectangle and with positive angles going clockwise around the
-//     * oval. If useCenter is true, the arc is closed back to the center, forming a circle sector.
-//     * Otherwise, the arc is not closed, forming a circle segment.
-//     *
-//     * @param color Color to be applied to the arc
-//     * @param topLeft Offset from the local origin of 0, 0 relative to the current translation
-//     * @param size Dimensions of the arc to draw
-//     * @param startAngle Starting angle in degrees. 0 represents 3 o'clock
-//     * @param sweepAngle Size of the arc in degrees that is drawn clockwise relative to [startAngle]
-//     * @param useCenter Flag indicating if the arc is to close the center of the bounds
-//     * @param alpha Opacity to be applied to the arc from 0.0f to 1.0f representing fully
-//     *   transparent to fully opaque respectively
-//     * @param style Whether or not the arc is stroked or filled in
-//     * @param colorFilter ColorFilter to apply to the [color] when drawn into the destination
-//     * @param blendMode Blending algorithm to be applied to the arc when it is drawn
-//     */
-//    fun drawArc(
-//        color: Color,
-//        startAngle: Float,
-//        sweepAngle: Float,
-//        useCenter: Boolean,
-//        topLeft: Offset = Offset.Zero,
-//        size: Size = this.size.offsetSize(topLeft),
-//        @FloatRange(from = 0.0, to = 1.0) alpha: Float = 1.0f,
-//        style: DrawStyle = Fill,
-//        colorFilter: ColorFilter? = null,
-//        blendMode: BlendMode = DefaultBlendMode,
-//    )
-//
-//    /**
-//     * Draws the given [Path] with the given [Color]. Whether this shape is filled or stroked (or
-//     * both) is controlled by [DrawStyle]. If the path is filled, then subpaths within it are
-//     * implicitly closed (see [Path.close]).
-//     *
-//     * @param path Path to draw
-//     * @param color Color to be applied to the path
-//     * @param alpha Opacity to be applied to the path from 0.0f to 1.0f representing fully
-//     *   transparent to fully opaque respectively
-//     * @param style Whether or not the path is stroked or filled in
-//     * @param colorFilter ColorFilter to apply to the [color] when drawn into the destination
-//     * @param blendMode Blending algorithm to be applied to the path when it is drawn
-//     */
-//    fun drawPath(
-//        path: Path,
-//        color: Color,
-//        @FloatRange(from = 0.0, to = 1.0) alpha: Float = 1.0f,
-//        style: DrawStyle = Fill,
-//        colorFilter: ColorFilter? = null,
-//        blendMode: BlendMode = DefaultBlendMode,
-//    )
-//
-//    /**
-//     * Draws the given [Path] with the given [Color]. Whether this shape is filled or stroked (or
-//     * both) is controlled by [DrawStyle]. If the path is filled, then subpaths within it are
-//     * implicitly closed (see [Path.close]).
-//     *
-//     * @param path Path to draw
-//     * @param brush Brush to be applied to the path
-//     * @param alpha Opacity to be applied to the path from 0.0f to 1.0f representing fully
-//     *   transparent to fully opaque respectively
-//     * @param style Whether or not the path is stroked or filled in
-//     * @param colorFilter ColorFilter to apply to the [brush] when drawn into the destination
-//     * @param blendMode Blending algorithm to be applied to the path when it is drawn
-//     */
-//    fun drawPath(
-//        path: Path,
-//        brush: Brush,
-//        @FloatRange(from = 0.0, to = 1.0) alpha: Float = 1.0f,
-//        style: DrawStyle = Fill,
-//        colorFilter: ColorFilter? = null,
-//        blendMode: BlendMode = DefaultBlendMode,
-//    )
-//
-//    /**
-//     * Draws a sequence of points according to the given [PointMode].
-//     *
-//     * The `points` argument is interpreted as offsets from the origin.
-//     *
-//     * @param points List of points to draw with the specified [PointMode]
-//     * @param pointMode [PointMode] used to indicate how the points are to be drawn
-//     * @param color Color to be applied to the points
-//     * @param alpha Opacity to be applied to the path from 0.0f to 1.0f representing fully
-//     *   transparent to fully opaque respectively
-//     * @param strokeWidth The stroke width to apply to the line
-//     * @param cap Treatment applied to the ends of the line segment
-//     * @param pathEffect optional effect or pattern to apply to the point
-//     * @param colorFilter ColorFilter to apply to the [color] when drawn into the destination
-//     * @param blendMode Blending algorithm to be applied to the path when it is drawn
-//     */
-//    fun drawPoints(
-//        points: List<Offset>,
-//        pointMode: PointMode,
-//        color: Color,
-//        strokeWidth: Float = Stroke.HairlineWidth,
-//        cap: StrokeCap = StrokeCap.Butt,
-//        pathEffect: PathEffect? = null,
-//        @FloatRange(from = 0.0, to = 1.0) alpha: Float = 1.0f,
-//        colorFilter: ColorFilter? = null,
-//        blendMode: BlendMode = DefaultBlendMode,
-//    )
-//
-//    /**
-//     * Draws a sequence of points according to the given [PointMode].
-//     *
-//     * The `points` argument is interpreted as offsets from the origin.
-//     *
-//     * @param points List of points to draw with the specified [PointMode]
-//     * @param pointMode [PointMode] used to indicate how the points are to be drawn
-//     * @param brush Brush to be applied to the points
-//     * @param strokeWidth The stroke width to apply to the line
-//     * @param cap Treatment applied to the ends of the line segment
-//     * @param pathEffect optional effect or pattern to apply to the points
-//     * @param alpha Opacity to be applied to the path from 0.0f to 1.0f representing fully
-//     *   transparent to fully opaque respectively.
-//     * @param colorFilter ColorFilter to apply to the [brush] when drawn into the destination
-//     * @param blendMode Blending algorithm to be applied to the path when it is drawn
-//     */
-//    fun drawPoints(
-//        points: List<Offset>,
-//        pointMode: PointMode,
-//        brush: Brush,
-//        strokeWidth: Float = Stroke.HairlineWidth,
-//        cap: StrokeCap = StrokeCap.Butt,
-//        pathEffect: PathEffect? = null,
-//        @FloatRange(from = 0.0, to = 1.0) alpha: Float = 1.0f,
-//        colorFilter: ColorFilter? = null,
-//        blendMode: BlendMode = DefaultBlendMode,
-//    )
-//
-//    /**
-//     * Record the corresponding drawing commands for this [GraphicsLayer] instance using the
-//     * [Density], [LayoutDirection] and [IntSize] from the provided [DrawScope] as defaults. This
-//     * will retarget the underlying canvas of the provided DrawScope to draw within the layer itself
-//     * and reset it to the original canvas on the conclusion of this method call.
-//     */
+    /**
+     * 绘制一个按比例缩放以适配给定矩形内部的圆弧。它从椭圆上 `起始角度` 度处开始，到椭圆上 `起始角度` + `扫描角度`
+     * 度处结束，其中零度是椭圆右侧与穿过矩形中心的水平线相交的点，正角度沿椭圆顺时针方向增加。如果 `使用中心` 为 true，
+     * 则圆弧会闭合回中心，形成一个扇形；否则圆弧不闭合，形成一个弓形。
+     *
+     * @param 画刷 要应用于圆弧的颜色或填充。
+     * @param 左上角 相对于当前平移，从局部原点 (0, 0) 的偏移量。
+     * @param 大小 要绘制的圆弧的尺寸。
+     * @param 起始角度 起始角度，以度为单位。0 表示 3 点钟方向。
+     * @param 扫描角度 相对于 [起始角度] 顺时针绘制的圆弧大小，以度为单位。
+     * @param 使用中心 指示圆弧是否闭合回边界中心的标志。
+     * @param 透明度 要应用于圆弧的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+     * @param 样式 圆弧是描边还是填充。
+     * @param 颜色过滤器 绘制到目标时应用于 [画刷] 的 ColorFilter。
+     * @param 混合模式 绘制圆弧时要应用的混合算法。
+     */
+    fun 绘制圆弧(
+        画刷: Brush,
+        起始角度: Float,
+        扫描角度: Float,
+        使用中心: Boolean,
+        左上角: Offset = Offset.Zero,
+        大小: Size = this.大小.offsetSize(左上角),
+        @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+        样式: DrawStyle = Fill,
+        颜色过滤器: ColorFilter? = null,
+        混合模式: BlendMode = DrawScope.DefaultBlendMode,
+    )
+
+    /**
+     * 绘制一个按比例缩放以适配给定矩形内部的圆弧。它从椭圆上 `起始角度` 度处开始，到椭圆上 `起始角度` + `扫描角度`
+     * 度处结束，其中零度是椭圆右侧与穿过矩形中心的水平线相交的点，正角度沿椭圆顺时针方向增加。如果 `使用中心` 为 true，
+     * 则圆弧会闭合回中心，形成一个扇形；否则圆弧不闭合，形成一个弓形。
+     *
+     * @param 颜色 要应用于圆弧的颜色。
+     * @param 左上角 相对于当前平移，从局部原点 (0, 0) 的偏移量。
+     * @param 大小 要绘制的圆弧的尺寸。
+     * @param 起始角度 起始角度，以度为单位。0 表示 3 点钟方向。
+     * @param 扫描角度 相对于 [起始角度] 顺时针绘制的圆弧大小，以度为单位。
+     * @param 使用中心 指示圆弧是否闭合回边界中心的标志。
+     * @param 透明度 要应用于圆弧的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+     * @param 样式 圆弧是描边还是填充。
+     * @param 颜色过滤器 绘制到目标时应用于 [颜色] 的 ColorFilter。
+     * @param 混合模式 绘制圆弧时要应用的混合算法。
+     */
+    fun 绘制圆弧(
+        颜色: Color,
+        起始角度: Float,
+        扫描角度: Float,
+        使用中心: Boolean,
+        左上角: Offset = Offset.Zero,
+        大小: Size = this.大小.offsetSize(左上角),
+        @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+        样式: DrawStyle = Fill,
+        颜色过滤器: ColorFilter? = null,
+        混合模式: BlendMode = DrawScope.DefaultBlendMode,
+    )
+
+    /**
+     * 使用给定的 [Color] 绘制指定的 [Path]。该形状是填充还是描边（或两者兼有）由 [DrawStyle] 控制。如果路径被填充，
+     * 则其中的子路径会被隐式闭合（请参阅 [Path.close]）。
+     *
+     * @param 路径 要绘制的路径
+     * @param 颜色 要应用于路径的颜色
+     * @param 透明度 要应用于路径的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+     * @param 样式 路径是描边还是填充
+     * @param 颜色过滤器 绘制到目标时应用于 [颜色] 的 ColorFilter。
+     * @param 混合模式 绘制路径时要应用的混合算法。
+     */
+    fun 绘制路径(
+        路径: Path,
+        颜色: Color,
+        @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+        样式: DrawStyle = Fill,
+        颜色过滤器: ColorFilter? = null,
+        混合模式: BlendMode = DrawScope.DefaultBlendMode,
+    )
+
+    /**
+     * 使用给定的 [Color] 绘制指定的 [Path]。该形状是填充还是描边（或两者兼有）由 [DrawStyle] 控制。如果路径被填充，
+     * 则其中的子路径会被隐式闭合（请参阅 [Path.close]）。
+     *
+     * @param 路径 要绘制的路径
+     * @param 画刷 要应用于路径的画刷
+     * @param 透明度 要应用于路径的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+     * @param 样式 路径是描边还是填充
+     * @param 颜色过滤器 绘制到目标时应用于 [画刷] 的 ColorFilter。
+     * @param 混合模式 绘制路径时要应用的混合算法。
+     */
+    fun 绘制路径(
+        路径: Path,
+        画刷: Brush,
+        @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+        样式: DrawStyle = Fill,
+        颜色过滤器: ColorFilter? = null,
+        混合模式: BlendMode = DrawScope.DefaultBlendMode,
+    )
+
+    /**
+     * 根据给定的 [PointMode] 绘制一系列点。
+     *
+     * `点集` 参数被解释为相对于原点的偏移量。
+     *
+     * @param 点集 使用指定的 [PointMode] 绘制的点列表。
+     * @param 点模式 用于指示如何绘制点的 [PointMode]。
+     * @param 颜色 要应用于点的颜色。
+     * @param 透明度 要应用于路径的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+     * @param 描边宽度 应用于线条的描边宽度。
+     * @param 端点 应用于线段端点的处理方式。
+     * @param 路径效果 要应用于点的可选效果或图案。
+     * @param 颜色过滤器 绘制到目标时应用于 [颜色] 的 ColorFilter。
+     * @param 混合模式 绘制路径时要应用的混合算法。
+     */
+    fun 绘制点集(
+        点集: List<Offset>,
+        点模式: PointMode,
+        颜色: Color,
+        描边宽度: Float = Stroke.HairlineWidth,
+        端点: StrokeCap = StrokeCap.Butt,
+        路径效果: PathEffect? = null,
+        @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+        颜色过滤器: ColorFilter? = null,
+        混合模式: BlendMode = DrawScope.DefaultBlendMode,
+    )
+
+    /**
+     * 根据给定的 [PointMode] 绘制一系列点。
+     *
+     * `点集` 参数被解释为相对于原点的偏移量。
+     *
+     * @param 点集 使用指定的 [PointMode] 绘制的点列表。
+     * @param 点模式 用于指示如何绘制点的 [PointMode]。
+     * @param 画刷 要应用于点的画刷。
+     * @param 描边宽度 应用于线条的描边宽度。
+     * @param 端点 应用于线段端点的处理方式。
+     * @param 路径效果 要应用于点的可选效果或图案。
+     * @param 透明度 要应用于路径的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+     * @param 颜色过滤器 绘制到目标时应用于 [画刷] 的 ColorFilter。
+     * @param 混合模式 绘制路径时要应用的混合算法。
+     */
+    fun 绘制点集(
+        点集: List<Offset>,
+        点模式: PointMode,
+        画刷: Brush,
+        描边宽度: Float = Stroke.HairlineWidth,
+        端点: StrokeCap = StrokeCap.Butt,
+        路径效果: PathEffect? = null,
+        @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+        颜色过滤器: ColorFilter? = null,
+        混合模式: BlendMode = DrawScope.DefaultBlendMode,
+    )
+
+    /**
+     *  使用提供的 [DrawScope] 中的 [Density]、[LayoutDirection] 和 [IntSize] 作为默认值，记录此 [GraphicsLayer]
+     *  实例对应的绘制命令。这会将提供的 DrawScope 的底层画布重定向到在该图层内部进行绘制，并在方法调用结束时将其重置为原始画布。
+     */
 //    fun GraphicsLayer.记录(
 //        size: IntSize = this@绘制范围.size.toIntSize(),
 //        block: 绘制范围.() -> Unit,
@@ -1133,6 +1118,224 @@ fun DrawScope.绘制椭圆形(
         size = 大小,
         alpha = 透明度,
         style = 样式,
+        colorFilter = 颜色过滤器,
+        blendMode = 混合模式,
+    )
+
+
+
+/**
+ * 绘制一个按比例缩放以适配给定矩形内部的圆弧。它从椭圆上 `起始角度` 度处开始，到椭圆上 `起始角度` + `扫描角度`
+ * 度处结束，其中零度是椭圆右侧与穿过矩形中心的水平线相交的点，正角度沿椭圆顺时针方向增加。如果 `使用中心` 为 true，
+ * 则圆弧会闭合回中心，形成一个扇形；否则圆弧不闭合，形成一个弓形。
+ *
+ * @param 画刷 要应用于圆弧的颜色或填充。
+ * @param 左上角 相对于当前平移，从局部原点 (0, 0) 的偏移量。
+ * @param 大小 要绘制的圆弧的尺寸。
+ * @param 起始角度 起始角度，以度为单位。0 表示 3 点钟方向。
+ * @param 扫描角度 相对于 [起始角度] 顺时针绘制的圆弧大小，以度为单位。
+ * @param 使用中心 指示圆弧是否闭合回边界中心的标志。
+ * @param 透明度 要应用于圆弧的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+ * @param 样式 圆弧是描边还是填充。
+ * @param 颜色过滤器 绘制到目标时应用于 [画刷] 的 ColorFilter。
+ * @param 混合模式 绘制圆弧时要应用的混合算法。
+ */
+fun DrawScope.绘制圆弧(
+    画刷: Brush,
+    起始角度: Float,
+    扫描角度: Float,
+    使用中心: Boolean,
+    左上角: Offset = Offset.Zero,
+    大小: Size = this.size.offsetSize(左上角),
+    @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+    样式: DrawStyle = Fill,
+    颜色过滤器: ColorFilter? = null,
+    混合模式: BlendMode = DrawScope.DefaultBlendMode,
+) =
+    this.drawArc(
+        brush = 画刷,
+        startAngle = 起始角度,
+        sweepAngle = 扫描角度,
+        useCenter = 使用中心,
+        topLeft = 左上角,
+        size = 大小,
+        alpha = 透明度,
+        style = 样式,
+        colorFilter = 颜色过滤器,
+        blendMode = 混合模式,
+    )
+
+/**
+ * 绘制一个按比例缩放以适配给定矩形内部的圆弧。它从椭圆上 `起始角度` 度处开始，到椭圆上 `起始角度` + `扫描角度`
+ * 度处结束，其中零度是椭圆右侧与穿过矩形中心的水平线相交的点，正角度沿椭圆顺时针方向增加。如果 `使用中心` 为 true，
+ * 则圆弧会闭合回中心，形成一个扇形；否则圆弧不闭合，形成一个弓形。
+ *
+ * @param 颜色 要应用于圆弧的颜色。
+ * @param 左上角 相对于当前平移，从局部原点 (0, 0) 的偏移量。
+ * @param 大小 要绘制的圆弧的尺寸。
+ * @param 起始角度 起始角度，以度为单位。0 表示 3 点钟方向。
+ * @param 扫描角度 相对于 [起始角度] 顺时针绘制的圆弧大小，以度为单位。
+ * @param 使用中心 指示圆弧是否闭合回边界中心的标志。
+ * @param 透明度 要应用于圆弧的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+ * @param 样式 圆弧是描边还是填充。
+ * @param 颜色过滤器 绘制到目标时应用于 [颜色] 的 ColorFilter。
+ * @param 混合模式 绘制圆弧时要应用的混合算法。
+ */
+fun DrawScope.绘制圆弧(
+    颜色: Color,
+    起始角度: Float,
+    扫描角度: Float,
+    使用中心: Boolean,
+    左上角: Offset = Offset.Zero,
+    大小: Size = this.size.offsetSize(左上角),
+    @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+    样式: DrawStyle = Fill,
+    颜色过滤器: ColorFilter? = null,
+    混合模式: BlendMode = DrawScope.DefaultBlendMode,
+) =
+    this.drawArc(
+        color = 颜色,
+        startAngle = 起始角度,
+        sweepAngle = 扫描角度,
+        useCenter = 使用中心,
+        topLeft = 左上角,
+        size = 大小,
+        alpha = 透明度,
+        style = 样式,
+        colorFilter = 颜色过滤器,
+        blendMode = 混合模式,
+    )
+
+
+/**
+ * 使用给定的 [Color] 绘制指定的 [Path]。该形状是填充还是描边（或两者兼有）由 [DrawStyle] 控制。如果路径被填充，
+ * 则其中的子路径会被隐式闭合（请参阅 [Path.close]）。
+ *
+ * @param 路径 要绘制的路径
+ * @param 颜色 要应用于路径的颜色
+ * @param 透明度 要应用于路径的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+ * @param 样式 路径是描边还是填充
+ * @param 颜色过滤器 绘制到目标时应用于 [颜色] 的 ColorFilter。
+ * @param 混合模式 绘制路径时要应用的混合算法。
+ */
+fun DrawScope.绘制路径(
+    路径: Path,
+    颜色: Color,
+    @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+    样式: DrawStyle = Fill,
+    颜色过滤器: ColorFilter? = null,
+    混合模式: BlendMode = DrawScope.DefaultBlendMode,
+) =
+    this.drawPath(
+        path = 路径,
+        color = 颜色,
+        alpha = 透明度,
+        style = 样式,
+        colorFilter = 颜色过滤器,
+        blendMode = 混合模式,
+    )
+
+/**
+ * 使用给定的 [Color] 绘制指定的 [Path]。该形状是填充还是描边（或两者兼有）由 [DrawStyle] 控制。如果路径被填充，
+ * 则其中的子路径会被隐式闭合（请参阅 [Path.close]）。
+ *
+ * @param 路径 要绘制的路径
+ * @param 画刷 要应用于路径的画刷
+ * @param 透明度 要应用于路径的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+ * @param 样式 路径是描边还是填充
+ * @param 颜色过滤器 绘制到目标时应用于 [画刷] 的 ColorFilter。
+ * @param 混合模式 绘制路径时要应用的混合算法。
+ */
+fun DrawScope.绘制路径(
+    路径: Path,
+    画刷: Brush,
+    @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+    样式: DrawStyle = Fill,
+    颜色过滤器: ColorFilter? = null,
+    混合模式: BlendMode = DrawScope.DefaultBlendMode,
+) =
+    this.drawPath(
+        path = 路径,
+        brush = 画刷,
+        alpha = 透明度,
+        style = 样式,
+        colorFilter = 颜色过滤器,
+        blendMode = 混合模式,
+    )
+
+
+/**
+ * 根据给定的 [PointMode] 绘制一系列点。
+ *
+ * `点集` 参数被解释为相对于原点的偏移量。
+ *
+ * @param 点集 使用指定的 [PointMode] 绘制的点列表。
+ * @param 点模式 用于指示如何绘制点的 [PointMode]。
+ * @param 颜色 要应用于点的颜色。
+ * @param 透明度 要应用于路径的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+ * @param 描边宽度 应用于线条的描边宽度。
+ * @param 端点 应用于线段端点的处理方式。
+ * @param 路径效果 要应用于点的可选效果或图案。
+ * @param 颜色过滤器 绘制到目标时应用于 [颜色] 的 ColorFilter。
+ * @param 混合模式 绘制路径时要应用的混合算法。
+ */
+fun DrawScope.绘制点集(
+    点集: List<Offset>,
+    点模式: PointMode,
+    颜色: Color,
+    描边宽度: Float = Stroke.HairlineWidth,
+    端点: StrokeCap = StrokeCap.Butt,
+    路径效果: PathEffect? = null,
+    @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+    颜色过滤器: ColorFilter? = null,
+    混合模式: BlendMode = DrawScope.DefaultBlendMode,
+) =
+    this.drawPoints(
+        points = 点集,
+        pointMode = 点模式,
+        color = 颜色,
+        strokeWidth = 描边宽度,
+        cap = 端点,
+        pathEffect = 路径效果,
+        alpha = 透明度,
+        colorFilter = 颜色过滤器,
+        blendMode = 混合模式,
+    )
+
+/**
+ * 根据给定的 [PointMode] 绘制一系列点。
+ *
+ * `点集` 参数被解释为相对于原点的偏移量。
+ *
+ * @param 点集 使用指定的 [PointMode] 绘制的点列表。
+ * @param 点模式 用于指示如何绘制点的 [PointMode]。
+ * @param 画刷 要应用于点的画刷。
+ * @param 描边宽度 应用于线条的描边宽度。
+ * @param 端点 应用于线段端点的处理方式。
+ * @param 路径效果 要应用于点的可选效果或图案。
+ * @param 透明度 要应用于路径的不透明度，范围从 0.0f 到 1.0f，分别表示完全透明到完全不透明。
+ * @param 颜色过滤器 绘制到目标时应用于 [画刷] 的 ColorFilter。
+ * @param 混合模式 绘制路径时要应用的混合算法。
+ */
+fun DrawScope.绘制点集(
+    点集: List<Offset>,
+    点模式: PointMode,
+    画刷: Brush,
+    描边宽度: Float = Stroke.HairlineWidth,
+    端点: StrokeCap = StrokeCap.Butt,
+    路径效果: PathEffect? = null,
+    @FloatRange(from = 0.0, to = 1.0) 透明度: Float = 1.0f,
+    颜色过滤器: ColorFilter? = null,
+    混合模式: BlendMode = DrawScope.DefaultBlendMode,
+) =
+    this.drawPoints(
+        points = 点集,
+        pointMode = 点模式,
+        brush = 画刷,
+        strokeWidth = 描边宽度,
+        cap = 端点,
+        pathEffect = 路径效果,
+        alpha = 透明度,
         colorFilter = 颜色过滤器,
         blendMode = 混合模式,
     )

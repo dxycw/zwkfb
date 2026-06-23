@@ -41,31 +41,50 @@ dependencyResolutionManagement {
 }
 ```
 
-**2、在项目的 build.gradle 文件中添加依赖项：**
+**2、在项目的 build.gradle 文件中添加依赖项（注意：添加任意一个平台添加即可）：**
 
 ```kotlin
-dependencies {
-    
-    // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb:0.2.4")
-    
-    // 如果使用 Android Jetpack Compose 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-android:0.2.4")
-    
-    // 如果使用 Desktop Jetpack Compose 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.2.4")
-    
-    // 以下平台可以用，但目前不推荐使用
-    
-    // 如果使用 IOS Jetpack Compose 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.2.4")
-    implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.2.4")
-    
-    // 如果使用 Web Jetpack Compose 项目，请添加以下依赖项
-    implementation("com.github.dxycw.zwkfb:zwkfb-js:0.2.4")
-    implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.2.4")
-    
+
+kotlin {
+    //...
+    sourceSets {
+        // 只添加 Android 平台，其他的可以不用添加
+        androidMain.dependencies {
+            // 如果使用 Android平台 Jetpack Compose 项目，请添加以下依赖项
+            implementation("com.github.dxycw.zwkfb:zwkfb-android:0.2.5")
+        }
+        // 只添加 多平台，其他的可以不用添加
+        commonMain.dependencies {
+            // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
+            implementation("com.github.dxycw.zwkfb:zwkfb:0.2.5")
+        }
+        // 只添加 Desktop 平台，其他的可以不用添加
+        jvmMain.dependencies {
+            // 如果使用 Desktop平台 Jetpack Compose 项目，请添加以下依赖项
+            implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.2.5")
+        }
+
+        // 以下平台可以用，但目前不推荐使用
+        // 只添加 iOS 平台，其他的可以不用添加
+        iosMain.dependencies {
+            // 如果使用 IOS平台 Jetpack Compose 项目，请添加以下依赖项
+            implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.2.5")
+            implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.2.5")
+        }
+        // 只添加 web的js 平台，其他的可以不用添加
+        jsMain.dependencies {
+            // 如果使用 Web的js平台 Jetpack Compose 项目，请添加以下依赖项
+            implementation("com.github.dxycw.zwkfb:zwkfb-js:0.2.5")
+        }
+        // 只添加 web的wasmJs 平台，其他的可以不用添加
+        wasmJsMain.dependencies {
+            // 如果使用 Web的wasmjs平台 Jetpack Compose 项目，请添加以下依赖项
+            implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.2.5")
+        }
+        
+    }
 }
+
 ```
 
 **3、目前可以使用的平台：**
@@ -101,6 +120,20 @@ dependencies {
 >   从本版本发布开始请使用 Jetpack Compose Multiplatform 的新项目模板。
 
 # 更新内容
+
+## 0.2.5
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 添加 Multiplatform平台的 “悬浮操作按钮()”、“小型悬浮操作按钮()”、“中等悬浮操作按钮()”、“大型悬浮操作按钮()”、两个“小型扩展悬浮操作按钮()”、两个“中等扩展悬浮操作按钮()”、两个“大型扩展悬浮操作按钮()”、两个“扩展悬浮操作按钮()”、“开关()” 函数组件；
+* 添加 Multiplatform平台的 两个“形状集()”、三个“排版()”、“开关颜色集()” 函数；
+* 添加 Multiplatform平台的 “悬浮操作按钮默认值”、“形状默认值”、“排版”、“开关默认值” 对象类；
+* 添加 Multiplatform平台的 DrawScope 两个“绘制圆弧()”、两个“绘制路径()”、两个“绘制点集()” 函数；
+* 添加 Multiplatform平台的 Modifier “动画悬浮操作按钮()” 函数；
+* 添加 Multiplatform平台的 Shapes “大增加”、“超大增加”、“超超大” 属性函数；
+* 添加 Multiplatform平台的 Shapes 两个“复制()” 函数；
+* 添加 Multiplatform平台的 Typography “显示大型强调”、“显示中等强调”、“显示小型强调”、“大标题大型强调”、“大标题中等强调”、“大标题小型强调”、“标题大型强调”、“标题中等强调”、“标题小型强调”、“正文大型强调”、“正文中等强调”、“正文小型强调”、“标签大型强调”、“标签中等强调”、“标签小型强调” 属性函数；
+* 添加 Multiplatform平台的 Typography 两个“复制()” 函数；
+* 添加 Multiplatform平台的 SwitchColors “复制()” 函数；
 
 ## 0.2.4
 
