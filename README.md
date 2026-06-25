@@ -41,7 +41,7 @@ dependencyResolutionManagement {
 }
 ```
 
-**2、在项目的 build.gradle 文件中添加依赖项（注意：添加任意一个平台添加即可）：**
+**2、在项目的 build.gradle 文件中添加依赖项（注意：添加任意一个平台即可）：**
 
 ```kotlin
 
@@ -51,35 +51,35 @@ kotlin {
         // 只添加 Android 平台，其他的可以不用添加
         androidMain.dependencies {
             // 如果使用 Android平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-android:0.2.5")
+            implementation("com.github.dxycw.zwkfb:zwkfb-android:0.2.6")
         }
         // 只添加 多平台，其他的可以不用添加
         commonMain.dependencies {
             // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb:0.2.5")
+            implementation("com.github.dxycw.zwkfb:zwkfb:0.2.6")
         }
         // 只添加 Desktop 平台，其他的可以不用添加
         jvmMain.dependencies {
             // 如果使用 Desktop平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.2.5")
+            implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.2.6")
         }
 
         // 以下平台可以用，但目前不推荐使用
         // 只添加 iOS 平台，其他的可以不用添加
         iosMain.dependencies {
             // 如果使用 IOS平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.2.5")
-            implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.2.5")
+            implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.2.6")
+            implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.2.6")
         }
         // 只添加 web的js 平台，其他的可以不用添加
         jsMain.dependencies {
             // 如果使用 Web的js平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-js:0.2.5")
+            implementation("com.github.dxycw.zwkfb:zwkfb-js:0.2.6")
         }
         // 只添加 web的wasmJs 平台，其他的可以不用添加
         wasmJsMain.dependencies {
             // 如果使用 Web的wasmjs平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.2.5")
+            implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.2.6")
         }
         
     }
@@ -120,6 +120,24 @@ kotlin {
 >   从本版本发布开始请使用 Jetpack Compose Multiplatform 的新项目模板。
 
 # 更新内容
+
+## 0.2.6
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 添加 Multiplatform平台的 “工具提示框()”、“水平多浏览轮播()”、“水平无约束轮播()”、“水平居中焦点轮播()” 函数组件；
+* 添加 Multiplatform平台的 “富工具提示颜色集()”、“记住工具提示状态()”、“工具提示状态()”、“默认工具提示箭头形状()”、五个“记住()”、“键()”、“可复用内容()”、“可复用内容主机()”、三个“组合节点()”、三个“可复用组合节点()”、“记住组合上下文()”、“轮播状态()”、“记住轮播状态()” 函数；
+* 添加 Multiplatform平台的 “当前组合器”、“当前组合上下文”、“当前重组范围”、“当前组合局部上下文”、“当前复合键哈希”、“当前复合键哈希码” 属性函数；
+* 添加 Multiplatform平台的 “工具提示范围”、“工具提示状态”、“轮播项绘制信息” 接口类；
+* 添加 Multiplatform平台的 “工具提示默认值”、“工具提示锚点位置”、“轮播默认值”、“轮播状态” 对象类；
+* 添加 Multiplatform平台的 TooltipScope “取定位提供器()”、“普通工具提示()”、“富工具提示()” 函数；
+* 添加 Multiplatform平台的 RichTooltipColors “复制()” 函数；
+* 添加 Multiplatform平台的 TooltipState “过渡”、“是否可见”、“是否持久” 属性函数；
+* 添加 Multiplatform平台的 TooltipState “显示()”、“关闭()”、“销毁回调()” 函数；
+* 添加 Multiplatform平台的 DefaultTooltipCaretShape “箭头大小” 属性函数；
+* 添加 Multiplatform平台的 DefaultTooltipCaretShape “创建轮廓()” 函数；
+* 添加 Multiplatform平台的 CarouselState “是否正在滚动”、“当前项” 属性函数；
+* 添加 Multiplatform平台的 CarouselState “分发原始增量()”、“滚动()”、“滚动到项()”、“动画滚动到项()” 函数；
+* 添加 Multiplatform平台的 CarouselItemDrawInfo “大小”、“最小大小”、“最大大小”、“遮罩矩形” 属性函数；
 
 ## 0.2.5
 

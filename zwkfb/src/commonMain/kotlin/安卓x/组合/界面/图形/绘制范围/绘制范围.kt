@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.toIntSize
 import kotlin.Float
 
 /**
@@ -678,22 +679,21 @@ interface 绘制范围 : Density { // DrawScope
      *  使用提供的 [DrawScope] 中的 [Density]、[LayoutDirection] 和 [IntSize] 作为默认值，记录此 [GraphicsLayer]
      *  实例对应的绘制命令。这会将提供的 DrawScope 的底层画布重定向到在该图层内部进行绘制，并在方法调用结束时将其重置为原始画布。
      */
-//    fun GraphicsLayer.记录(
-//        size: IntSize = this@绘制范围.size.toIntSize(),
-//        block: 绘制范围.() -> Unit,
-//    ) =
-//        record(this@绘制范围, this@绘制范围.layoutDirection, size) {
-//            this@绘制范围.draw(
-//                // we can use this@record.drawContext directly as the values in this@DrawScope
-//                // and this@record are the same
-//                drawContext.density,
-//                drawContext.layoutDirection,
-//                drawContext.canvas,
-//                drawContext.size,
-//                drawContext.graphicsLayer,
-//                block,
-//            )
-//        }
+    fun GraphicsLayer.记录(
+        大小: IntSize = this@绘制范围.大小.toIntSize(),
+        块: DrawScope.() -> Unit,
+    ) =
+        record(this@绘制范围, this@绘制范围.布局方向, 大小) {
+            this.draw(
+                // 我们可以直接使用 `this@record.drawContext`，因为 `this@DrawScope` 和 `this@record` 中的值是相同的。
+                drawContext.density,
+                drawContext.layoutDirection,
+                drawContext.canvas,
+                drawContext.size,
+                drawContext.graphicsLayer,
+                block = 块,
+            )
+        }
 
     /** 辅助方法，用于在框宽和框高方向上偏移所提供的尺寸。 */
     private fun Size.offsetSize(offset: Offset): Size =

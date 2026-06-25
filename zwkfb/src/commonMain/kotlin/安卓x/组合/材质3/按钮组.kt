@@ -52,14 +52,14 @@ fun 按钮组(
     @FloatRange(0.0) 展开比例: Float = ButtonGroupDefaults.ExpandedRatio,
     水平排列: Arrangement.Horizontal = ButtonGroupDefaults.HorizontalArrangement,
     内容: @Composable ButtonGroupScope.() -> Unit,
-) {
+) =
     ButtonGroup(
         modifier = 修饰符,
         expandedRatio = 展开比例,
         horizontalArrangement = 水平排列,
         content = 内容
     )
-}
+
 
 // TODO 待 MIO 页面可用后添加链接。
 // TODO 待图片资源可用后添加链接。
@@ -87,7 +87,7 @@ fun 按钮组(
     水平排列: Arrangement.Horizontal = ButtonGroupDefaults.HorizontalArrangement,
     垂直对齐: Alignment.Vertical = Alignment.Top,
     内容: ButtonGroupScope.() -> Unit,
-) {
+) =
     ButtonGroup(
         overflowIndicator = 溢出指示器,
         modifier = 修饰符,
@@ -96,7 +96,7 @@ fun 按钮组(
         verticalAlignment = 垂直对齐,
         content = 内容
     )
-}
+
 
 
 /** [按钮组] 使用的默认值 */

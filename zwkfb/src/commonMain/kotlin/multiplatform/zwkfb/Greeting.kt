@@ -6,4 +6,8 @@ class Greeting {
     fun greet(): String {
         return sayHello(platform.name)
     }
+
+    fun platform(): String {
+        return platform.platform
+    }
 }

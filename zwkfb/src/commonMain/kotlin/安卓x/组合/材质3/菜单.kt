@@ -583,16 +583,16 @@ fun MenuItemShapes.复制(形状: Shape? = this.shape, 已选择形状: Shape? =
  * 表示 [下拉菜单组] 在各种状态下使用的形状。
  *
  * @param 形状 用于该组的默认 [Shape]。
- * @param 非活动形状 当该组不再悬停时使用的 [Shape]。
+ * @param 非激活形状 当该组不再悬停时使用的 [Shape]。
  */
 @ExperimentalMaterial3ExpressiveApi
-fun 菜单组形状集(形状: Shape, 非活动形状: Shape) = // MenuGroupShapes
-    MenuGroupShapes(shape = 形状, inactiveShape = 非活动形状)
+fun 菜单组形状集(形状: Shape, 非激活形状: Shape) = // MenuGroupShapes
+    MenuGroupShapes(shape = 形状, inactiveShape = 非激活形状)
 
 
 /** 返回此 MenuGroupShapes 的副本，可选择性地覆盖其中某些值。 */
 @ExperimentalMaterial3ExpressiveApi
-fun MenuGroupShapes.复制(形状: Shape? = this.shape, 非活动形状: Shape? = this.inactiveShape) =
-    this.copy(shape = 形状, inactiveShape = 非活动形状)
+fun MenuGroupShapes.复制(形状: Shape? = this.shape, 非激活形状: Shape? = this.inactiveShape) =
+    this.copy(shape = 形状, inactiveShape = 非激活形状)
 
 

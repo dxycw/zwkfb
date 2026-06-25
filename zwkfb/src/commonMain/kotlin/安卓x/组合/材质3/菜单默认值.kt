@@ -117,7 +117,7 @@ object 菜单默认值 { // MenuDefaults
 
     /** 菜单中不再处于悬停状态的分组的形状。 */
     @ExperimentalMaterial3ExpressiveApi
-    val 非活动组形状: Shape
+    val 非激活组形状: Shape
         @Composable get() = MenuDefaults.inactiveGroupShape
 
     /** 每个菜单分组之间的默认间距。通常用于 [Spacer] 的高度。 */
@@ -194,18 +194,18 @@ object 菜单默认值 { // MenuDefaults
      * 有一个便捷函数，可用于轻松确定要使用的形状，详见 [MenuDefaults.groupShape]。
      *
      * @param 形状 菜单组的默认形状。如果传入 null，则默认使用 [独立组形状]。
-     * @param 非活动形状 不再悬停时的形状。如果传入 null，则默认使用 [非活动组形状]。
+     * @param 非激活形状 不再悬停时的形状。如果传入 null，则默认使用 [非激活组形状]。
      */
     @ExperimentalMaterial3ExpressiveApi
     @Composable
-    fun 组形状集(形状: Shape? = null, 非活动形状: Shape? = null): MenuGroupShapes =
-        MenuDefaults.groupShapes(shape = 形状, inactiveShape = 非活动形状,)
+    fun 组形状集(形状: Shape? = null, 非激活形状: Shape? = null): MenuGroupShapes =
+        MenuDefaults.groupShapes(shape = 形状, inactiveShape = 非激活形状,)
 
     /**
      * 创建一个 [MenuGroupShapes]，表示 [DropdownMenuGroup] 中使用的默认形状。
      *
-     * 此 [MenuGroupShapes] 的形状为 [MenuDefaults.standaloneGroupShape]，非活动形状为 [MenuDefaults.inactiveGroupShape]。
-     * 非活动形状是指该菜单组不再被悬停时的形状。
+     * 此 [MenuGroupShapes] 的形状为 [MenuDefaults.standaloneGroupShape]，非激活形状为 [MenuDefaults.inactiveGroupShape]。
+     * 非激活形状是指该菜单组不再被悬停时的形状。
      */
     @ExperimentalMaterial3ExpressiveApi
     @Composable
