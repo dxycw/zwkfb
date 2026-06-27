@@ -81,13 +81,13 @@ fun 提示条主机(
     主机状态: SnackbarHostState,
     修饰符: Modifier = Modifier,
     提示条: @Composable (SnackbarData) -> Unit = { Snackbar(it) },
-) {
+) =
     SnackbarHost(
         hostState = 主机状态,
         modifier = 修饰符,
         snackbar = 提示条,
     )
-}
+
 
 /** [SnackbarHostState.showSnackbar] 调用的可能结果。 */
 object 提示条结果 { // SnackbarResult

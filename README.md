@@ -51,35 +51,35 @@ kotlin {
         // 只添加 Android 平台，其他的可以不用添加
         androidMain.dependencies {
             // 如果使用 Android平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-android:0.2.6")
+            implementation("com.github.dxycw.zwkfb:zwkfb-android:0.2.7")
         }
         // 只添加 多平台，其他的可以不用添加
         commonMain.dependencies {
             // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb:0.2.6")
+            implementation("com.github.dxycw.zwkfb:zwkfb:0.2.7")
         }
         // 只添加 Desktop 平台，其他的可以不用添加
         jvmMain.dependencies {
             // 如果使用 Desktop平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.2.6")
+            implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.2.7")
         }
 
         // 以下平台可以用，但目前不推荐使用
         // 只添加 iOS 平台，其他的可以不用添加
         iosMain.dependencies {
             // 如果使用 IOS平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.2.6")
-            implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.2.6")
+            implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.2.7")
+            implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.2.7")
         }
         // 只添加 web的js 平台，其他的可以不用添加
         jsMain.dependencies {
             // 如果使用 Web的js平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-js:0.2.6")
+            implementation("com.github.dxycw.zwkfb:zwkfb-js:0.2.7")
         }
         // 只添加 web的wasmJs 平台，其他的可以不用添加
         wasmJsMain.dependencies {
             // 如果使用 Web的wasmjs平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.2.6")
+            implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.2.7")
         }
         
     }
@@ -120,6 +120,23 @@ kotlin {
 >   从本版本发布开始请使用 Jetpack Compose Multiplatform 的新项目模板。
 
 # 更新内容
+
+## 0.2.7
+
+* 添加 Multiplatform平台的 “切换按钮()”、“凸起切换按钮()”、“色调切换按钮()”、“轮廓切换按钮()”、“侧边导航栏()”、“侧边导航栏项()” 函数组件；
+* 添加 Multiplatform平台的 “切换按钮颜色集()”、“切换按钮形状集()”、“组合本地的()”、“静态组合本地的()”、“组合本地带已计算默认值的()”、“组合本地带主机默认值的()”、三个“组合本地提供器()”、“带组合本地()”、“带组合本地集()”、“侧边导航栏项颜色集()”、五个“颜色()”、“线性插值()” 函数；
+* 添加 Multiplatform平台的 “组合本地访问器范围” 接口类；
+* 添加 Multiplatform平台的 “颜色提供器” 函数接口类；
+* 添加 Multiplatform平台的 “切换按钮默认值”、“侧边导航栏默认值”、“侧边导航栏项默认值”、“颜色” 对象类；
+* 添加 Multiplatform平台的 “本地侧边导航栏覆盖” 属性函数；
+* 添加 Multiplatform平台的 ToggleButtonColors “复制()” 函数；
+* 添加 Multiplatform平台的 ToggleButtonShapes “形状”、“按压形状”、“已选中形状” 属性函数；
+* 添加 Multiplatform平台的 ToggleButtonShapes “复制()” 函数；
+* 添加 Multiplatform平台的 CompositionLocal “当前” 属性函数；
+* 添加 Multiplatform平台的 ProvidableCompositionLocal “提供集()”、“提供集默认值()”、“提供集已计算()” 函数；
+* 添加 Multiplatform平台的 NavigationRailItemColors “复制()” 函数；
+* 添加 Multiplatform平台的 Color “值”、“颜色间隔”、“红”、“绿”、“蓝”、“透明度”、“是否已指定”、“是否未指定” 属性函数；
+* 添加 Multiplatform平台的 Color “转换()”、“组件1()”、“组件2()”、“组件3()”、“组件4()”、“组件5()”、“复制()”、“合成覆盖()”、“亮度()”、“转为Argb()”、“取或否则()” 函数；
 
 ## 0.2.6
 

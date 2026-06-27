@@ -123,18 +123,32 @@ package com.dxyc.zwkfb
 //    }
 //}
 
+import androidx.compose.material.Divider
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.OpenInNew
+import androidx.compose.material.icons.filled.DarkMode
+import androidx.compose.material.icons.filled.LightMode
+import androidx.compose.material.icons.filled.OpenInNew
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.KeyShortcut
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.window.MenuBar
+import androidx.compose.ui.window.Tray
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
+import androidx.compose.ui.window.rememberNotification
+import androidx.compose.ui.window.rememberTrayState
 import com.formdev.flatlaf.FlatLightLaf
 import java.awt.Color
 import java.awt.Insets
+import java.awt.TrayIcon
 import javax.swing.UIManager
 
 
@@ -186,6 +200,16 @@ fun main() = application {
 
     // 初始化主题
     FlatLightLaf.setup()
+
+//    Tray(
+//        icon = painterResource("drawable/compose-multiplatform.xml"),
+//        tooltip = "我的应用",
+//    ) {
+//        Item("新建"){}
+//        Item("打开"){}
+//        Item("保存"){}
+//        Item("退出"){}
+//    }
 
     Window(
         onCloseRequest = ::exitApplication,
