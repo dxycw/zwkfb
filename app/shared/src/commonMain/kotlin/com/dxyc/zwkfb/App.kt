@@ -29,67 +29,96 @@ import 安卓x.组合.材质3.*
 @Preview
 fun App() {
     材质主题 {
-        脚手架(
-            容器颜色 = Color.Transparent
-        ) { 内边距 ->
-            列(
-                修饰符 = Modifier.padding(内边距).fillMaxSize(),
-                水平对齐 = Alignment.CenterHorizontally,
-            ) {
-
-                ClickToLoadLinear()
-
-                val 测试值 = remember { TextFieldState("测试") }
-                var 图标状态 by remember { mutableStateOf(Icons.Filled.Visibility) }
-                轮廓安全文本字段(
-                    状态 = 测试值,
-                    标签 = { 文本("测试") },
-                    尾随图标 = {
-                        图标按钮(
-                            单击回调 = {
-                                图标状态 = when (图标状态) {
-                                    Icons.Filled.Visibility -> Icons.Filled.VisibilityOff
-                                    else -> Icons.Filled.Visibility
-                                }
-                            }
-                        ) {
-                            图标(
-                                图像矢量 = 图标状态,
-                                内容描述 = null,
-                            )
-                        }
-                    },
-                    输入转换 = 最大长度输入转换(20),
-                    文本混淆模式 = when (图标状态) {
-                        Icons.Filled.Visibility -> TextObfuscationMode.Visible
-                        else -> TextObfuscationMode.RevealLastTyped
-                    }
-                )
-
-                var showContent by remember { mutableStateOf(false) }
-                按钮(单击回调 = { showContent = !showContent }
-                ) { 文本("单击我!") }
-
-                动画可见性(showContent) {
-                    val greeting = remember { Greeting().greet() }
-                    列(
-                        修饰符 = Modifier.fillMaxWidth(),
-                        水平对齐 = Alignment.CenterHorizontally,
-                    ) {
-                        图像(
-                            绘制器 = painterResource(Res.drawable.compose_multiplatform),
-                            内容描述 = null,
-                            修饰符 = Modifier.size(200.dp)
-                        )
-                        文本("Compose: $greeting")
-                    }
-                }
-
-            }
+        列(水平对齐 = Alignment.CenterHorizontally,) {
+            ClickToLoadLinear()
+            轮廓安全文本字段限制长度为100()
+            测试()
+            ChipElevation(
+                0.dp,
+                0.dp,
+                0.dp,
+                0.dp,
+                0.dp,
+                0.dp,
+            )
+            SelectableChipColors(
+                containerColor = Color.Red,
+                labelColor = Color.White,
+                leadingIconColor = Color.White,
+                trailingIconColor = Color.White,
+                disabledContainerColor = Color.Red,
+                disabledLabelColor = Color.White,
+                disabledLeadingIconColor = Color.White,
+                disabledTrailingIconColor = Color.White,
+                selectedContainerColor = Color.Red,
+                disabledSelectedContainerColor = Color.Red,
+                selectedLabelColor = Color.White,
+                selectedLeadingIconColor = Color.White,
+                selectedTrailingIconColor = Color.White,
+            )
         }
-
     }
 }
+
+@Suppress("ComposableNaming")
+@Composable
+fun 轮廓安全文本字段限制长度为100(
+    文本: String = "文本",
+    标签: String = "标签",
+    @IntRange(from = 0, to = 100) 最大长度: Int = 20
+){
+    val 测试值 by remember { mutableStateOf(TextFieldState(文本)) }
+    var 图标状态 by remember { mutableStateOf(Icons.Filled.Visibility) }
+    轮廓安全文本字段(
+        状态 = 测试值,
+        标签 = { 文本(标签) },
+        尾随图标 = {
+            图标按钮(
+                单击回调 = {
+                    图标状态 = when (图标状态) {
+                        Icons.Filled.Visibility -> Icons.Filled.VisibilityOff
+                        else -> Icons.Filled.Visibility
+                    }
+                }
+            ) {
+                图标(
+                    图像矢量 = 图标状态,
+                    内容描述 = null,
+                )
+            }
+        },
+        输入转换 = 最大长度输入转换(最大长度),
+        文本混淆模式 = when (图标状态) {
+            Icons.Filled.Visibility -> TextObfuscationMode.Visible
+            else -> TextObfuscationMode.RevealLastTyped
+        }
+    )
+}
+
+@Suppress("ComposableNaming")
+@Composable
+fun 测试() {
+    var showContent by remember { mutableStateOf(false) }
+    按钮(
+        修饰符 = Modifier.padding(top = 10.dp, bottom = 10.dp),
+        单击回调 = { showContent = !showContent }
+    ) { 文本("单击我!") }
+    动画可见性(showContent) {
+        val greeting = remember { Greeting().greet() }
+        列(
+            修饰符 = Modifier.fillMaxWidth(),
+            水平对齐 = Alignment.CenterHorizontally,
+        ) {
+            图像(
+                绘制器 = painterResource(Res.drawable.compose_multiplatform),
+                内容描述 = null,
+                修饰符 = Modifier.size(200.dp)
+            )
+            文本("Compose: $greeting")
+        }
+    }
+}
+
 
 
 /**
@@ -128,14 +157,11 @@ fun ClickToLoadLinear() {
     // 添加一个job引用以便能够取消
     var 加载中Job by remember { mutableStateOf<Job?>(null) }
 
+    // 保存协程作用域
     val scope = rememberCoroutineScope()
-    //    保存协程作用域
-    列 (
-        修饰符 = Modifier.padding(10.dp),
-        水平对齐 = Alignment.CenterHorizontally
-    ) {
-        // 进度条
 
+    列 (水平对齐 = Alignment.CenterHorizontally) {
+        // 进度条
         线性进度指示器(
             进度 = { 进度 / 100f },
             修饰符 = Modifier.fillMaxWidth().padding(16.dp),
@@ -174,7 +200,7 @@ fun ClickToLoadLinear() {
                         加载中Job?.cancel()
                     }
                 },
-                修饰符 = Modifier.padding(0.dp, 10.dp, 0.dp, 10.dp),
+                修饰符 = Modifier.padding(top = 10.dp, bottom = 10.dp),
             ) {
                 文本(
                     文本 = when {
@@ -195,10 +221,11 @@ fun ClickToLoadLinear() {
                     进度 = 0
                     加载中Job?.cancel()
                 },
-                修饰符 = Modifier.padding(0.dp, 10.dp, 0.dp, 10.dp),
+                修饰符 = Modifier.padding(top = 10.dp, bottom = 10.dp),
                 已启用 = 加载中 || 进度 > 0 // 正在运行或有进度时可用
             ) { 文本(文本 = "重置") }
         }
 
     }
 }
+

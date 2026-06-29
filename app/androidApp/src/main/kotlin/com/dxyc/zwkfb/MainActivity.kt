@@ -21,7 +21,6 @@ import androidx.compose.ui.unit.dp
 import com.dxyc.zwkfb.ui.theme.AppTheme
 import kotlinx.coroutines.launch
 import 安卓x.组合.基础.布局.列
-import 安卓x.组合.基础.文本.选择.选择容器
 import 安卓x.组合.材质3.*
 
 class MainActivity : ComponentActivity() {
@@ -42,56 +41,38 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Home(上下文 : Activity? = LocalActivity.current) {
     AppTheme{
-        var 显示日期选择器 by remember { mutableStateOf(false) }
         脚手架(
             修饰符 = Modifier.fillMaxSize(),
             悬浮操作按钮 = {
-                ExtendedFloatingActionButton(
-                    onClick = {
-                        上下文?.startActivity(Intent(上下文, 欢迎窗口::class.java))
-                    }
-                ) { 文本(文本 = "显示") }
+                扩展悬浮操作按钮(
+                    单击回调 = {
+                        上下文?.startActivity(
+                            Intent(上下文, 欢迎窗口::class.java)
+                        )
+                    },
+                    内容 = { 文本(文本 = "显示") }
+                )
             },
         ) { 内边距 ->
-            选择容器 {
-                列(
-                    修饰符 = Modifier.padding(内边距)
-                        .verticalScroll(rememberScrollState())
-                ) {
-
-                    按钮(
-                        单击回调 = { 显示日期选择器 = !显示日期选择器 }
-                    ) { 文本("显示") }
-                    
-                    val primaryColor = MaterialTheme.colorScheme.primary
-                    val r = (primaryColor.red * 255).toInt()
-                    val g = (primaryColor.green * 255).toInt()
-                    val b = (primaryColor.blue * 255).toInt()
-                    val a = (primaryColor.alpha * 255).toInt()
-
-                    // 结果示例: "RGB(62, 130, 255)"
-                    val rgbString = "RGB($r, $g, $b, $a)"
-
-                    文本(
-                        文本 = rgbString,
-                        修饰符 = Modifier.padding(8.dp)
-                    )
-
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        DateWheelPickerPreview()
-                    }
-
-                    App()
+            var 显示日期选择器 by remember { mutableStateOf(false) }
+            列(
+                修饰符 = Modifier.padding(内边距).fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+            ) {
+                按钮(单击回调 = { 显示日期选择器 = !显示日期选择器 }) { 文本("显示") }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    DateWheelPickerPreview()
                 }
-
+                App()
             }
-
             if (显示日期选择器) {
-                ModalBottomSheet (
-                    onDismissRequest = { 显示日期选择器 = false },
-                    dragHandle = null
+                模态底部面板 (
+                    关闭请求回调 = { 显示日期选择器 = false },
+                    拖拽手柄 = null
                 ) {
-                    列(水平对齐 = Alignment.CenterHorizontally) {
+                    列(
+                        水平对齐 = Alignment.CenterHorizontally
+                    ) {
                         BottomSheetDefaults.DragHandle()
                         DatePicker(
                             state = rememberDatePickerState(),
@@ -103,7 +84,6 @@ fun Home(上下文 : Activity? = LocalActivity.current) {
                     }
                 }
             }
-
         }
     }
 }
@@ -114,44 +94,46 @@ fun Home(上下文 : Activity? = LocalActivity.current) {
 fun SimpleDrawer() {
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope  = rememberCoroutineScope()
-    ModalNavigationDrawer(
-        drawerState = drawerState,
-        drawerContent = {
-            ModalDrawerSheet {
-                Text("抽屉标题", modifier = Modifier.padding(16.dp))
-                HorizontalDivider()
-                NavigationDrawerItem(
-                    label = { Text("首页") },
-                    selected = true,
-                    onClick = { scope.launch { drawerState.close() } }
+    模态导航抽屉(
+        抽屉内容 = {
+            模态抽屉面板 {
+                文本("抽屉标题", 修饰符 = Modifier.padding(16.dp))
+                水平分隔线()
+                导航抽屉项(
+                    标签 = { Text("首页") },
+                    已选择 = true,
+                    单击回调 = { scope.launch { drawerState.close() } }
                 )
-                NavigationDrawerItem(
-                    label = { Text("设置") },
-                    selected = false,
-                    onClick = { scope.launch { drawerState.close() } }
+                导航抽屉项(
+                    标签 = { Text("设置") },
+                    已选择 = false,
+                    单击回调 = { scope.launch { drawerState.close() } }
+                )
+                导航抽屉项(
+                    标签 = { Text("设置1") },
+                    已选择 = false,
+                    单击回调 = { scope.launch { drawerState.close() } }
                 )
             }
-        }
+        },
+        抽屉状态 = drawerState,
     ) {
         Scaffold(
             topBar = {
                 TopAppBar(
                     title = { Text("主界面") },
                     navigationIcon = {
-                        IconButton(
-                            onClick = { scope.launch { drawerState.open() } }
+                        图标按钮(
+                            单击回调 = { scope.launch { drawerState.open() } }
                         ) {
-                            Icon(Icons.Default.Menu,
-                                contentDescription = "打开抽屉")
+                            图标(Icons.Default.Menu, 内容描述 = "打开抽屉")
                         }
                     }
                 )
             }
-        ) { innerPadding ->
-            // 主屏幕内容
+        ) { 内边距 ->
             Box(
-                modifier = Modifier.fillMaxSize()
-                    .padding(innerPadding),
+                modifier = Modifier.fillMaxSize().padding(内边距),
                 contentAlignment = Alignment.Center
             ) {
                 Text("主屏幕")

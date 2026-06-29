@@ -51,35 +51,35 @@ kotlin {
         // 只添加 Android 平台，其他的可以不用添加
         androidMain.dependencies {
             // 如果使用 Android平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-android:0.2.7")
+            implementation("com.github.dxycw.zwkfb:zwkfb-android:0.2.8")
         }
         // 只添加 多平台，其他的可以不用添加
         commonMain.dependencies {
             // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb:0.2.7")
+            implementation("com.github.dxycw.zwkfb:zwkfb:0.2.8")
         }
         // 只添加 Desktop 平台，其他的可以不用添加
         jvmMain.dependencies {
             // 如果使用 Desktop平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.2.7")
+            implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.2.8")
         }
 
         // 以下平台可以用，但目前不推荐使用
         // 只添加 iOS 平台，其他的可以不用添加
         iosMain.dependencies {
             // 如果使用 IOS平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.2.7")
-            implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.2.7")
+            implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.2.8")
+            implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.2.8")
         }
         // 只添加 web的js 平台，其他的可以不用添加
         jsMain.dependencies {
             // 如果使用 Web的js平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-js:0.2.7")
+            implementation("com.github.dxycw.zwkfb:zwkfb-js:0.2.8")
         }
         // 只添加 web的wasmJs 平台，其他的可以不用添加
         wasmJsMain.dependencies {
             // 如果使用 Web的wasmjs平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.2.7")
+            implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.2.8")
         }
         
     }
@@ -120,6 +120,21 @@ kotlin {
 >   从本版本发布开始请使用 Jetpack Compose Multiplatform 的新项目模板。
 
 # 更新内容
+
+## 0.2.8
+
+* 添加 Multiplatform平台的 “模态导航抽屉()”、“可关闭导航抽屉()”、“永久导航抽屉()”、两个“模态抽屉面板()”、两个“可关闭抽屉面板()”、“永久抽屉面板()”、“导航抽屉项()”、“辅助芯片()”、“凸起辅助芯片()”、“过滤芯片()”、“凸起过滤芯片()”、“输入芯片()”、“建议芯片()”、“凸起建议芯片()” 函数组件；
+* 添加 Multiplatform平台的 “抽屉状态()”、“记住抽屉状态()”、两个“颜色转整数()”、两个“颜色转字符串()”、“芯片阴影()”、“可选芯片阴影()”、“芯片颜色集()”、“可选芯片颜色集()” 函数；
+* 添加 Multiplatform平台的 “抽屉值”、“抽屉状态”、“抽屉默认值”、“导航抽屉项默认值”、“辅助芯片默认设置”、“过滤芯片默认值”、“输入芯片默认值”、“建议芯片默认值” 对象类；
+* 添加 Multiplatform平台的 “导航抽屉项颜色集” 接口类；
+* 添加 Multiplatform平台的 DrawerState “是否打开”、“是否关闭”、“当前值”、“是否动画在运行”、“目标值”、“偏移量”、“当前偏移量” 属性函数；
+* 添加 Multiplatform平台的 DrawerState “打开()”、“关闭()”、“动画到()”、“吸附到()” 函数；
+* 添加 Multiplatform平台的 NavigationDrawerItemColors “图标颜色()”、“文本颜色()”、“徽章颜色()”、“容器颜色()” 函数；
+* 添加 Multiplatform平台的 ChipElevation “阴影”、“按下阴影”、“聚焦阴影”、“悬停阴影”、“拖拽阴影”、“禁用阴影” 属性函数；
+* 添加 Multiplatform平台的 SelectableChipElevation “阴影”、“按下阴影”、“聚焦阴影”、“悬停阴影”、“拖拽阴影”、“禁用阴影” 属性函数；
+* 添加 Multiplatform平台的 ChipColors “容器颜色”、“标签颜色”、“前导图标内容颜色”、“尾随图标内容颜色”、“禁用容器颜色”、“禁用标签颜色”、“禁用前导图标内容颜色”、“禁用尾随图标内容颜色” 属性函数；
+* 添加 Multiplatform平台的 ChipColors “复制()” 函数；
+* 添加 Multiplatform平台的 SelectableChipColors “复制()” 函数；
 
 ## 0.2.7
 
