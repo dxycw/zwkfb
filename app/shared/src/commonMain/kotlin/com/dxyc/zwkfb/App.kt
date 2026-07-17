@@ -24,14 +24,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.annotation.IntRange
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.text.input.TextFieldBuffer
 import androidx.compose.foundation.text.input.maxLength
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.ui.platform.LocalInspectionMode
@@ -45,7 +43,7 @@ import 安卓x.组合.动画.动画可见性
 import 安卓x.组合.基础.图像
 import 安卓x.组合.基础.布局.列
 import 安卓x.组合.基础.布局.行
-import 安卓x.组合.基础.间隔器
+import 安卓x.组合.基础.布局.间隔器
 import 安卓x.组合.材质3.图标
 import 安卓x.组合.材质3.图标按钮
 import 安卓x.组合.材质3.按钮
@@ -59,7 +57,6 @@ import kotlin.time.Duration.Companion.milliseconds
 @Preview
 fun App() {
     MaterialTheme {
-        var showContent by remember { mutableStateOf(false) }
         Column(
             modifier = Modifier
                 .safeContentPadding()
@@ -71,22 +68,8 @@ fun App() {
             轮廓安全文本字段限制长度为100()
             测试()
 
-            Button(onClick = { showContent = !showContent }) {
-                Text("点击我！")
-            }
-            AnimatedVisibility(showContent) {
-                val greeting = remember { Greeting().greet() }
-                Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    Image(
-                        painterResource(Res.drawable.compose_multiplatform),
-                        null,
-                        modifier = Modifier.size(100.dp)
-                    )
-                    Text("Compose: $greeting")
-                }
+            BoxWithConstraints{
+
             }
 
         }
@@ -129,12 +112,7 @@ fun 轮廓安全文本字段限制长度为100(
                             else -> Icons.Filled.Visibility
                         }
                     }
-                ) {
-                    图标(
-                        图像矢量 = 图标状态,
-                        内容描述 = null,
-                    )
-                }
+                ) { 图标(图像矢量 = 图标状态, 内容描述 = null,) }
             },
             输入转换 = InputTransformation.maxLength(最大长度),//最大长度输入转换(最大长度),
             文本混淆模式 = when (图标状态) {
@@ -154,8 +132,8 @@ fun 测试() {
         按钮(
             修饰符 = Modifier.padding(top = 10.dp, bottom = 10.dp),
             单击回调 = { showContent = !showContent }
-        ) { 文本("单击我!") }
-        this.动画可见性(showContent) {
+        ) { 文本("点击我!") }
+        动画可见性(showContent) {
             val greeting = remember { Greeting().greet() }
             列(
                 修饰符 = Modifier.fillMaxWidth(),

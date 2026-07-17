@@ -14,7 +14,7 @@
 
 [![GitHub](https://jitpack.io/v/dxycw/zwkfb.svg)](https://jitpack.io/#dxycw/multiplatform-zwkfb)
 [![Kotlin](https://img.shields.io/badge/kotlin-v2.4.0-blue.svg?logo=kotlin)](http://kotlinlang.org)
-[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.11.1-blue)](https://github.com/JetBrains/compose-multiplatform)
+[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.12.0--beta01-blue)](https://github.com/JetBrains/compose-multiplatform)
 
 ![badge-android](http://img.shields.io/badge/platform-android-6EDB8D.svg?style=flat)
 ![badge-ios](http://img.shields.io/badge/platform-ios-CDCDCD.svg?style=flat)
@@ -51,35 +51,35 @@ kotlin {
         // 只添加 Android 平台，其他的可以不用添加
         androidMain.dependencies {
             // 如果使用 Android平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-android:0.3.0")
+            implementation("com.github.dxycw.zwkfb:zwkfb-android:0.3.1")
         }
         // 只添加 多平台，其他的可以不用添加
         commonMain.dependencies {
             // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb:0.3.0")
+            implementation("com.github.dxycw.zwkfb:zwkfb:0.3.1")
         }
         // 只添加 Desktop 平台，其他的可以不用添加
         jvmMain.dependencies {
             // 如果使用 Desktop平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.3.0")
+            implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.3.1")
         }
 
         // 以下平台可以用，但目前不推荐使用
         // 只添加 iOS 平台，其他的可以不用添加
         iosMain.dependencies {
             // 如果使用 IOS平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.3.0")
-            implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.3.0")
+            implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.3.1")
+            implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.3.1")
         }
         // 只添加 web的js 平台，其他的可以不用添加
         jsMain.dependencies {
             // 如果使用 Web的js平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-js:0.3.0")
+            implementation("com.github.dxycw.zwkfb:zwkfb-js:0.3.1")
         }
         // 只添加 web的wasmJs 平台，其他的可以不用添加
         wasmJsMain.dependencies {
             // 如果使用 Web的wasmjs平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.3.0")
+            implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.3.1")
         }
         
     }
@@ -132,6 +132,23 @@ kotlin {
 
 
 # 更新内容
+
+## 0.3.1
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 添加 Multiplatform平台的 “盒子带约束()” 函数组件；
+* 添加 Multiplatform平台的 五个“记住可保存()”、“约束()” 函数；
+* 添加 Multiplatform平台的 “盒子带约束范围” 接口类；
+* 添加 Multiplatform平台的 “约束” 对象类；
+* 移动 Multiplatform平台的 “间隔器”组件移动到“安卓x.组合.基础.布局”下；
+* 添加 Multiplatform平台的 BoxWithConstraintsScope "约束"、“最小宽度”、“最大宽度”、"最小高度"、“最大高度” 属性函数；
+* 添加 Multiplatform平台的 Constraints "最小宽度"、“最大宽度”、“最小高度”、"最大高度"、“有边界宽度”、“有边界高度”、“有固定宽度”、“有固定高度”、“是否零”、“复制()”、“复制最大尺寸()”、两个“约束()”、“约束宽度()”、“约束高度()”、“是否满足()”、“偏移量()” 属性函数；
+* 添加 Multiplatform平台的 org.jetbrains.androidx.navigation3:navigation3-ui 依赖库版本为 1.2.0-alpha02；
+* 添加 Multiplatform平台的 org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-navigation3 依赖库版本为 2.11.0-rc01；
+* 更新 Desktop平台的 com.formdev:flatlaf 依赖库版本为 3.7.2；
+* 更新 Desktop平台的 com.formdev:flatlaf-extras 依赖库版本为 3.7.2；
+* 更新 Desktop平台的 com.formdev:flatlaf-intellij-themes 依赖库版本为 3.7.2；
+* 更新 Web的js平台的 org.jetbrains.kotlin-wrappers:kotlin-browser 依赖库版本为 2026.7.1；
 
 ## 0.3.0
 

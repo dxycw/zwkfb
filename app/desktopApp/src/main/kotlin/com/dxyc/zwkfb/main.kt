@@ -1,5 +1,6 @@
 package com.dxyc.zwkfb
 
+import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.Key
@@ -10,6 +11,9 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
+import androidx.navigation3.runtime.NavEntry
+import androidx.navigation3.runtime.rememberNavBackStack
+import androidx.savedstate.serialization.SavedStateConfiguration
 import com.formdev.flatlaf.FlatLightLaf
 import java.awt.Insets
 import javax.swing.UIManager
@@ -199,5 +203,6 @@ fun main() = application {
         }
 
         App()
+
     }
 }

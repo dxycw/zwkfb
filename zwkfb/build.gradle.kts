@@ -85,11 +85,16 @@ kotlin {
                 api("org.jetbrains.compose.material:material-icons-extended:1.7.3")
                 api("org.jetbrains.androidx.navigation:navigation-compose:2.10.0-alpha02")
 
+                // 这是一个 Compose Multiplatform 的导航库
+                api("org.jetbrains.androidx.navigation3:navigation3-ui:1.2.0-alpha02")
+                // 这个库属于 Compose Multiplatform 生态，为 Navigation3 提供与 ViewModel 的集成支持。
+                api("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-navigation3:2.11.0-rc01")
+
                 api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
 
                 // Composables UI 是一套现代化、完全可访问的 Jetpack Compose 和 Compose 多平台组件集合。
                 // https://composables.com/ui/docs/overview
-//                api("com.composables:ui:0.1.0")
+//                api("com.composables:ui:0.2.0")
 
             }
         }
@@ -120,6 +125,7 @@ kotlin {
                 implementation(libs.androidx.testExt.junit)
             }
         }
+
 //        val desktopMain by getting {
         val desktopMain = getByName("desktopMain")  {
             dependencies {
@@ -135,11 +141,11 @@ kotlin {
 
 
                 // 是 FlatLaf —— 一个现代化的 Java Swing 跨平台 Look and Feel（外观与感觉）库。它提供类似 IntelliJ IDEA 的扁平化、高 DPI 支持、深色/浅色主题，并支持自定义主题。
-                api("com.formdev:flatlaf:3.7.1")
+                api("com.formdev:flatlaf:3.7.2")
                 // 是 FlatLaf 官方提供的扩展组件包，包含 Swing 标准库中没有的额外 UI 组件和工具类，用于增强 FlatLaf 主题下的桌面应用体验。
-                api("com.formdev:flatlaf-extras:3.7.1")
+                api("com.formdev:flatlaf-extras:3.7.2")
                 // 是 FlatLaf 官方提供的 IntelliJ IDEA 主题包，包含 JetBrains 系列 IDE 的多种经典配色方案（如 Darcula、One Dark、Material 等），用于 Swing/JavaFX 桌面应用。
-                api("com.formdev:flatlaf-intellij-themes:3.7.1")
+                api("com.formdev:flatlaf-intellij-themes:3.7.2")
 //                api("com.formdev:flatlaf-jide-oss:3.7.1")
 //                api("com.formdev:flatlaf-swingx:3.7.1")
 //                api("com.formdev:flatlaf-fonts-inter:4.1")
@@ -181,7 +187,7 @@ kotlin {
 
         jsMain {
             dependencies {
-                api("org.jetbrains.kotlin-wrappers:kotlin-browser:2026.6.10")
+                api("org.jetbrains.kotlin-wrappers:kotlin-browser:2026.7.1")
             }
         }
 
