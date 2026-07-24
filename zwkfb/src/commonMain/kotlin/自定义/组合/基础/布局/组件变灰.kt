@@ -24,11 +24,11 @@ import androidx.compose.ui.unit.dp
 import 自定义.组合.基础.可单击变灰
 import kotlin.jvm.JvmName
 
-@OptIn(ExperimentalMaterial3Api::class)
+
 @Suppress("ComposableNaming")
-@JvmName("组件变灰Box")
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun 组件变灰(
+fun 组件变灰盒子(
     修饰符: Modifier = Modifier,
     单击回调: () -> Unit = {},
     是否显示提示: Boolean = false,
@@ -61,11 +61,11 @@ fun 组件变灰(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+
 @Suppress("ComposableNaming")
-@JvmName("组件变灰Row")
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun 组件变灰(
+fun 组件变灰行(
     修饰符: Modifier = Modifier,
     单击回调: () -> Unit = {},
     是否显示提示: Boolean = false,
@@ -95,11 +95,11 @@ fun 组件变灰(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+
 @Suppress("ComposableNaming")
-@JvmName("组件变灰Column")
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun 组件变灰(
+fun 组件变灰列(
     修饰符: Modifier = Modifier,
     单击回调: () -> Unit = {},
     是否显示提示: Boolean = false,

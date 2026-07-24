@@ -9,6 +9,7 @@ plugins {
 }
 
 kotlin {
+
     listOf(
         iosArm64(),
         iosSimulatorArm64()
@@ -32,8 +33,8 @@ kotlin {
     
     android {
         namespace = "com.dxyc.zwkfb.app.shared"
-        compileSdk = 37
-        minSdk = 24
+        compileSdk = libs.versions.android.compileSdk.get().toInt()
+        minSdk = libs.versions.android.minSdk.get().toInt()
 
         aarMetadata {
             minCompileSdk = 37  // 但这对上游依赖无效

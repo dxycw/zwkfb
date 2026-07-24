@@ -23,8 +23,8 @@ kotlin {
     
     android {
        namespace = "com.dxyc.zwkfb.core"
-       compileSdk = 37
-       minSdk = 24
+       compileSdk = libs.versions.android.compileSdk.get().toInt()
+       minSdk = libs.versions.android.minSdk.get().toInt()
     
        compilerOptions {
            jvmTarget = JvmTarget.JVM_11

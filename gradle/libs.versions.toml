@@ -1,22 +1,32 @@
 [versions]
-agp = "9.2.1"
+agp = "9.3.1"
+android-compileSdk = "37"
+android-minSdk = "24"
+android-targetSdk = "36"
 androidx-activity = "1.13.0"
 androidx-appcompat = "1.7.1"
 androidx-core = "1.19.0"
 androidx-espresso = "3.7.0"
-androidx-lifecycle = "2.11.0-beta01"
+androidx-lifecycle = "2.11.0"
 androidx-testExt = "1.3.0"
-composeMultiplatform = "1.12.0-beta01"
+composeMultiplatform = "1.12.0-beta02"
 junit = "4.13.2"
 kotlin = "2.4.0"
-kotlin-wrappers = "2026.6.1"
+kotlin-wrappers = "2026.7.4"
 kotlinx-coroutines = "1.11.0"
 ktor = "3.5.1"
 logback = "1.5.37"
-material3 = "1.11.0-alpha07"
+material3 = "1.12.0-alpha03"
 kotlinStdlib = "2.4.0"
 runner = "1.7.0"
 core = "1.7.0"
+
+material-iconsExtended = "1.7.3"
+androidx-navigationCompose = "2.10.0-alpha02"
+androidx-navigation3Ui = "1.2.0-alpha02"
+dev-jna = "5.19.1"
+flatlaf = "3.7.2"
+
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -26,22 +36,63 @@ androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx
 androidx-testExt-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-testExt" }
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidx-espresso" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
-androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
 compose-uiTooling = { module = "org.jetbrains.compose.ui:ui-tooling", version.ref = "composeMultiplatform" }
-androidx-lifecycle-viewmodelCompose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
-androidx-lifecycle-runtimeCompose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+
+#===============================================================
+
+# 多平台依赖库
 compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "composeMultiplatform" }
 compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "composeMultiplatform" }
+compose-material = { module = "org.jetbrains.compose.material:material", version.ref = "composeMultiplatform" }
+## ----------------------------------------------------------------
 compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "material3" }
+## ----------------------------------------------------------------
 compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "composeMultiplatform" }
-compose-components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "composeMultiplatform" }
 compose-uiToolingPreview = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "composeMultiplatform" }
+compose-uiGraphics = { module = "org.jetbrains.compose.ui:ui-graphics", version.ref = "composeMultiplatform" }
+compose-components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "composeMultiplatform" }
+## ----------------------------------------------------------------
+androidx-lifecycle-viewmodelCompose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-runtimeCompose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-viewmodelNavigation3 = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "androidx-lifecycle" }
+## ----------------------------------------------------------------
+compose-material-iconsExtended = { module = "org.jetbrains.compose.material:material-icons-extended", version.ref = "material-iconsExtended" }
+## ----------------------------------------------------------------
+androidx-navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "androidx-navigationCompose" }
+androidx-navigation3-ui = { module = "org.jetbrains.androidx.navigation3:navigation3-ui", version.ref = "androidx-navigation3Ui" }
+## ----------------------------------------------------------------
+kotlinx-coroutinesCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+
+#===============================================================
+
+# Android依赖库
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
+## ----------------------------------------------------------------
+kotlinx-coroutinesAndroid = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
+
+#===============================================================
+
+# Desktop依赖库
 kotlinx-coroutinesSwing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
+## ----------------------------------------------------------------
+dev-jna = { module = "net.java.dev.jna:jna", version.ref = "dev-jna" }
+dev-jnaPlatform = { module = "net.java.dev.jna:jna-platform", version.ref = "dev-jna" }
+## ----------------------------------------------------------------
+formdev-flatlaf = { module = "com.formdev:flatlaf", version.ref = "flatlaf" }
+formdev-flatlafExtras = { module = "com.formdev:flatlaf-extras", version.ref = "flatlaf" }
+formdev-flatlafIntellijThemes = { module = "com.formdev:flatlaf-intellij-themes", version.ref = "flatlaf" }
+
+#===============================================================
+
+# js依赖库
+wrappers-browser = { module = "org.jetbrains.kotlin-wrappers:kotlin-browser", version.ref = "kotlin-wrappers" }
+
+#===============================================================
+
 logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 ktor-serverCore = { module = "io.ktor:ktor-server-core-jvm", version.ref = "ktor" }
 ktor-serverNetty = { module = "io.ktor:ktor-server-netty-jvm", version.ref = "ktor" }
 ktor-serverTestHost = { module = "io.ktor:ktor-server-test-host-jvm", version.ref = "ktor" }
-wrappers-browser = { module = "org.jetbrains.kotlin-wrappers:kotlin-browser", version.ref = "kotlin-wrappers" }
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlinStdlib" }
 androidx-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
 androidx-core = { group = "androidx.test", name = "core", version.ref = "core" }

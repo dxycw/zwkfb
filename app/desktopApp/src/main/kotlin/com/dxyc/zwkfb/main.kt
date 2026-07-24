@@ -1,6 +1,5 @@
 package com.dxyc.zwkfb
 
-import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.Key
@@ -11,9 +10,6 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
-import androidx.navigation3.runtime.NavEntry
-import androidx.navigation3.runtime.rememberNavBackStack
-import androidx.savedstate.serialization.SavedStateConfiguration
 import com.formdev.flatlaf.FlatLightLaf
 import java.awt.Insets
 import javax.swing.UIManager
@@ -105,12 +101,12 @@ fun main() = application {
 
 
     // 颜色配置（IntelliJ Light 风格）
-    UIManager.put("MenuBar.hoverBackground", Color(0xE8E8E8)) // 悬停背景色（浅灰）
-    UIManager.put("MenuBar.selectionBackground", Color(0xD4D4D4)) // 选中背景色（稍深）
-    UIManager.put("MenuBar.selectionForeground", Color(0x000000)) // 选中文字色
+//    UIManager.put("MenuBar.hoverBackground", (0xFFFFFF)) // 悬停背景色（浅灰）
+//    UIManager.put("MenuBar.selectionBackground", Color(0xD4D4D4)) // 选中背景色（稍深）
+//    UIManager.put("MenuBar.selectionForeground", Color(0x000000)) // 选中文字色
 
     // 可选：菜单栏底部边框颜色
-    UIManager.put("MenuBar.borderColor", Color(0xC9C9C9))
+//    UIManager.put("MenuBar.borderColor", Color(0xC9C9C9))
 
 
     // ===== 弹出菜单项（JMenu）的圆角选中效果 =====
@@ -203,6 +199,5 @@ fun main() = application {
         }
 
         App()
-
     }
 }

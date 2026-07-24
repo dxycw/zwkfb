@@ -14,7 +14,7 @@
 
 [![GitHub](https://jitpack.io/v/dxycw/zwkfb.svg)](https://jitpack.io/#dxycw/multiplatform-zwkfb)
 [![Kotlin](https://img.shields.io/badge/kotlin-v2.4.0-blue.svg?logo=kotlin)](http://kotlinlang.org)
-[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.12.0--beta01-blue)](https://github.com/JetBrains/compose-multiplatform)
+[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.12.0--beta02-blue)](https://github.com/JetBrains/compose-multiplatform)
 
 ![badge-android](http://img.shields.io/badge/platform-android-6EDB8D.svg?style=flat)
 ![badge-ios](http://img.shields.io/badge/platform-ios-CDCDCD.svg?style=flat)
@@ -36,7 +36,7 @@ dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         mavenCentral()
-        maven("https://jitpack.io")  // 添加 JitPack 仓库
+        maven { url = uri("https://jitpack.io") }  // 添加 JitPack 仓库
     }
 }
 ```
@@ -46,42 +46,12 @@ dependencyResolutionManagement {
 ```kotlin
 
 kotlin {
-    //...
     sourceSets {
-        // 只添加 Android 平台，其他的可以不用添加
-        androidMain.dependencies {
-            // 如果使用 Android平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-android:0.3.1")
-        }
-        // 只添加 多平台，其他的可以不用添加
+        // 多平台，
         commonMain.dependencies {
             // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb:0.3.1")
+            implementation("com.github.dxycw.zwkfb:zwkfb:0.3.2")
         }
-        // 只添加 Desktop 平台，其他的可以不用添加
-        jvmMain.dependencies {
-            // 如果使用 Desktop平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-desktop:0.3.1")
-        }
-
-        // 以下平台可以用，但目前不推荐使用
-        // 只添加 iOS 平台，其他的可以不用添加
-        iosMain.dependencies {
-            // 如果使用 IOS平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-iosarm64:0.3.1")
-            implementation("com.github.dxycw.zwkfb:zwkfb-iossimulatorarm64:0.3.1")
-        }
-        // 只添加 web的js 平台，其他的可以不用添加
-        jsMain.dependencies {
-            // 如果使用 Web的js平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-js:0.3.1")
-        }
-        // 只添加 web的wasmJs 平台，其他的可以不用添加
-        wasmJsMain.dependencies {
-            // 如果使用 Web的wasmjs平台 Jetpack Compose 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb-wasm-js:0.3.1")
-        }
-        
     }
 }
 
@@ -132,6 +102,23 @@ kotlin {
 
 
 # 更新内容
+
+## 0.3.2
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 优化依赖库导入方式；
+* 修改 “组件变灰()” 函数组件，改为“组件变灰盒子()”、“组件变灰行()”、“组件变灰列()” 函数组件
+* 更新 Multiplatform平台的 org.jetbrains.compose.runtime:runtime 依赖库版本为 1.12.0-beta02；
+* 更新 Multiplatform平台的 org.jetbrains.compose.foundation:foundation 依赖库版本为 1.12.0-beta02；
+* 更新 Multiplatform平台的 org.jetbrains.compose.ui:ui 依赖库版本为 1.12.0-beta02；
+* 更新 Multiplatform平台的 org.jetbrains.compose.ui:ui-tooling-preview 依赖库版本为 1.12.0-beta02；
+* 更新 Multiplatform平台的 org.jetbrains.compose.ui:ui-graphics 依赖库版本为 1.12.0-beta02；
+* 更新 Multiplatform平台的 org.jetbrains.compose.components:components-resources 依赖库版本为 1.12.0-beta02；
+* 更新 Multiplatform平台的 org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose 依赖库版本为 2.11.0；
+* 更新 Multiplatform平台的 org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose 依赖库版本为 2.11.0；
+* 添加 Multiplatform平台的 org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-navigation3 依赖库版本为 2.11.0；
+* 更新 Web的js平台的 org.jetbrains.kotlin-wrappers:kotlin-browser 依赖库版本为 2026.7.4；
+* 更新 AGP 版本为 9.3.1；
 
 ## 0.3.1
 

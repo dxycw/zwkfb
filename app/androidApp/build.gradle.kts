@@ -42,12 +42,12 @@ android {
     }
 
     namespace = "com.dxyc.zwkfb"
-    compileSdk = 37
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "com.dxyc.zwkfb"
-        minSdk = 24
-        targetSdk = 37
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "0.0.1"
     }
@@ -75,6 +75,10 @@ android {
 
             isMinifyEnabled = true // 是否混淆
             isShrinkResources = true // 是否压缩资源
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
             signingConfig = signingConfigs.getByName("release")
         }
     }
