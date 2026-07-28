@@ -2,20 +2,7 @@ jdk:
   - openjdk21
 
 install:
-  - ./gradlew publishToMavenLocal \
-    -x jsMainClasses \
-    -x wasmJsMainClasses \
-    -x kotlinNpmInstall \
-    -x compileKotlinJs \
-    -x compileKotlinWasmJs \
-    -x compileKotlinIosArm64 \
-    -x compileKotlinIosSimulatorArm64 \
-    -x compileKotlinIosX64 \
-    -x linkPodDebugFrameworkIosArm64 \
-    -x linkPodDebugFrameworkIosSimulatorArm64 \
-    -x transformIosArm64MainDependenciesMetadata \
-    -x transformIosSimulatorArm64MainDependenciesMetadata \
-    -x transformIosX64MainDependenciesMetadata
+  - ./gradlew publishToMavenLocal -x jsMainClasses -x wasmJsMainClasses -x kotlinNpmInstall -x compileKotlinJs -x compileKotlinWasmJs -x compileKotlinIosArm64 -x compileKotlinIosSimulatorArm64 -x compileKotlinIosX64 -x linkPodDebugFrameworkIosArm64 -x linkPodDebugFrameworkIosSimulatorArm64 -x transformIosArm64MainDependenciesMetadata -x transformIosSimulatorArm64MainDependenciesMetadata -x transformIosX64MainDependenciesMetadata
 
 before_install:
   - sdk install java 21.0.2-tem
