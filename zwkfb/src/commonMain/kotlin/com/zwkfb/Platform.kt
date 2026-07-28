@@ -1,4 +1,4 @@
-package multiplatform.zwkfb
+package com.zwkfb
 
 interface Platform {
     val name: String

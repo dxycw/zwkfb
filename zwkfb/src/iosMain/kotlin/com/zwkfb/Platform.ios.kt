@@ -1,4 +1,4 @@
-package multiplatform.zwkfb
+package com.zwkfb
 
 import platform.UIKit.UIDevice
 

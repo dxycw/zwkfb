@@ -32,7 +32,7 @@ import androidx.compose.ui.unit.dp
  */
 @Suppress("ComposableNaming","ModifierParameter")
 @Composable
-fun 下拉逐渐缩小隐藏动画(
+fun 下拉逐渐缩小隐藏动画盒子(
     修饰符: Modifier = Modifier,
     内容对齐: Alignment = Alignment.TopStart,
     内容: @Composable (BoxScope.() -> Unit) = {}
@@ -104,7 +104,7 @@ fun 下拉逐渐缩小隐藏动画(
  */
 @Suppress("ComposableNaming","ModifierParameter")
 @Composable
-fun 下拉逐渐缩小隐藏动画(
+fun 下拉逐渐缩小隐藏动画行(
     修饰符: Modifier = Modifier,
     水平排列: Arrangement.Horizontal = Arrangement.Start,
     垂直对齐: Alignment.Vertical = Alignment.Top,
@@ -178,7 +178,7 @@ fun 下拉逐渐缩小隐藏动画(
  */
 @Suppress("ComposableNaming","ModifierParameter")
 @Composable
-fun 下拉逐渐缩小隐藏动画(
+fun 下拉逐渐缩小隐藏动画列(
     修饰符: Modifier = Modifier,
     垂直排列: Arrangement.Vertical = Arrangement.Top,
     水平对齐: Alignment.Horizontal = Alignment.Start,

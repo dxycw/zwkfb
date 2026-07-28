@@ -25,7 +25,8 @@ fun Modifier.旋转动画(
         animationSpec = tween(
             durationMillis = 500, // 动画时长
             easing = FastOutSlowInEasing
-        ), label = "可控旋转"
+        ),
+        label = "可控旋转"
     )
     this.graphicsLayer{
         this.rotationZ = 旋转角度

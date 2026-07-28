@@ -1,17 +1,23 @@
 package com.dxyc.zwkfb
 
-import androidx.compose.foundation.text.input.InputTransformation
+import androidx.annotation.IntRange
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.input.InputTransformation
 import androidx.compose.foundation.text.input.TextObfuscationMode
+import androidx.compose.foundation.text.input.maxLength
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.LinearWavyProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -21,22 +27,13 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.annotation.IntRange
-import androidx.compose.foundation.layout.BoxWithConstraints
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.safeContentPadding
-import androidx.compose.foundation.text.input.TextFieldBuffer
-import androidx.compose.foundation.text.input.maxLength
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Text
-import androidx.compose.ui.platform.LocalInspectionMode
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import multiplatform.zwkfb.Greeting
+import com.zwkfb.Greeting
 import org.jetbrains.compose.resources.painterResource
 import zwkfbmultiplatform.app.shared.generated.resources.*
 import 安卓x.组合.动画.动画可见性
@@ -52,26 +49,18 @@ import 安卓x.组合.材质3.线性进度指示器
 import 安卓x.组合.材质3.轮廓安全文本字段
 import kotlin.time.Duration.Companion.milliseconds
 
-@OptIn(ExperimentalMaterial3Api::class)
+
 @Composable
 @Preview
 fun App() {
     MaterialTheme {
         Column(
-            modifier = Modifier
-                .safeContentPadding()
-                .fillMaxSize(),
+            modifier = Modifier.safeContentPadding().fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-
             ClickToLoadLinear()
             轮廓安全文本字段限制长度为100()
             测试()
-
-            BoxWithConstraints{
-
-            }
-
         }
     }
 }
@@ -112,7 +101,7 @@ fun 轮廓安全文本字段限制长度为100(
                             else -> Icons.Filled.Visibility
                         }
                     }
-                ) { 图标(图像矢量 = 图标状态, 内容描述 = null,) }
+                ) { 图标(图像矢量 = 图标状态, 内容描述 = null) }
             },
             输入转换 = InputTransformation.maxLength(最大长度),//最大长度输入转换(最大长度),
             文本混淆模式 = when (图标状态) {
@@ -121,7 +110,6 @@ fun 轮廓安全文本字段限制长度为100(
             }
         )
     }
-
 }
 
 @Suppress("ComposableNaming")
@@ -151,22 +139,22 @@ fun 测试() {
 }
 
 
-/**
- * 最大长度输入转换
- *
- * @param 最大长度 最大长度范围，0-100之间超过100位时，截断到100位
- * @throws IllegalArgumentException 如果最大长度不在0-100之间，抛出异常
- */
-class 最大长度输入转换(
-    @field:IntRange(from = 0, to = 100) private val 最大长度: Int
-) : InputTransformation {
-    override fun TextFieldBuffer.transformInput() {
-        val filtered = asCharSequence().filter {
-            it.isLetterOrDigit()
-        }
-        replace(0, length, filtered.take(最大长度))
-    }
-}
+///**
+// * 最大长度输入转换
+// *
+// * @param 最大长度 最大长度范围，0-100之间超过100位时，截断到100位
+// * @throws IllegalArgumentException 如果最大长度不在0-100之间，抛出异常
+// */
+//class 最大长度输入转换(
+//    @field:IntRange(from = 0, to = 100) private val 最大长度: Int
+//) : InputTransformation {
+//    override fun TextFieldBuffer.transformInput() {
+//        val filtered = asCharSequence().filter {
+//            it.isLetterOrDigit()
+//        }
+//        replace(0, length, filtered.take(最大长度))
+//    }
+//}
 
 
 @Preview
@@ -188,13 +176,13 @@ fun ClickToLoadLinear() {
         // 进度条
         线性进度指示器(
             进度 = { 进度 / 100f },
-            修饰符 = Modifier.fillMaxWidth().padding(16.dp),
+            修饰符 = Modifier.fillMaxWidth().padding(10.dp),
             绘制停止指示器 = {}
         )
 
         LinearWavyProgressIndicator(
             progress = { 进度 / 100f },
-            modifier = Modifier.fillMaxWidth().padding(16.dp),
+            modifier = Modifier.fillMaxWidth().padding(10.dp),
             stopSize = 0.dp
         )
 

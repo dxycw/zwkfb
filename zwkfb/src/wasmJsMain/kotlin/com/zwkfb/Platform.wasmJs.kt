@@ -1,4 +1,4 @@
-package multiplatform.zwkfb
+package com.zwkfb
 
 class WasmPlatform: Platform {
     override val name: String = "Web with Kotlin/Wasm"

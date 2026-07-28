@@ -23,6 +23,7 @@ dependencies {
 
     implementation(libs.compose.uiToolingPreview)
     implementation(libs.compose.uiTooling)
+//    implementation("io.github.kevinnzou:compose-webview:0.33.6")
 }
 
 android {
@@ -102,7 +103,7 @@ androidComponents.onVariants { variant ->
             // 获取当前 APK 对应的 ABI（架构）
             output.filters.forEach { abi = it.identifier }
             // 修改输出文件名
-            output.outputFileName = "中文开发包-${versionName}-${abi}-${timeStamp}.apk"
+            output.outputFileName = "中文开发包-${versionName}-${abi}.apk" // -${timeStamp}
         }
     }
 }

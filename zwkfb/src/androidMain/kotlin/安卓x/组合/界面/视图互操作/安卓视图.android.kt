@@ -13,9 +13,9 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.findViewTreeLifecycleOwner
 
 /**
- * 通过 [工厂] 获取一个 Android [View] 并进行组合。[工厂] 代码块只会被调用**恰好一次**来获取要组合的 [View]，并且保证在 UI 线程上调用。
- * 因此，除了创建 [View] 之外，[工厂] 代码块还可用于执行一次性初始化以及设置 [View] 的常量属性。[更新] 代码块可以运行多次（同样在 UI 线程上），
- * 这是由于重组（recomposition）导致的，它是设置新属性的正确位置。请注意，该代码块也会在 [工厂] 代码块完成后**立即运行一次**。
+ * 通过 [原生] 获取一个 Android [View] 并进行组合。[原生] 代码块只会被调用**恰好一次**来获取要组合的 [View]，并且保证在 UI 线程上调用。
+ * 因此，除了创建 [View] 之外，[原生] 代码块还可用于执行一次性初始化以及设置 [View] 的常量属性。[更新] 代码块可以运行多次（同样在 UI 线程上），
+ * 这是由于重组（recomposition）导致的，它是设置新属性的正确位置。请注意，该代码块也会在 [原生] 代码块完成后**立即运行一次**。
  *
  * [安卓视图] 通常用于那些**无法在 Compose 中重新实现**、且**没有对应 Compose API** 的 View。目前常见的例子包括 WebView、SurfaceView、AdView 等。
  *
@@ -32,7 +32,7 @@ import androidx.lifecycle.findViewTreeLifecycleOwner
  * [安卓视图] 在包含的 View 启用了嵌套滚动时，具备嵌套滚动互操作能力。这意味着如果该可组合项被放置在参与嵌套滚动的容器内部，它可以分发滚动增量。
  * 有关如何启用嵌套滚动互操作的更多信息：
  *
- * @param 工厂 用于创建要组合的 [View] 的代码块。
+ * @param 原生 用于创建要组合的 [View] 的代码块。
  * @param 修饰符 要应用于布局的修饰符。
  * @param 更新 布局膨胀完成后以及重组时调用的回调，用于更新 View 的信息和状态。
  */
@@ -40,21 +40,21 @@ import androidx.lifecycle.findViewTreeLifecycleOwner
 @Composable
 @UiComposable
 fun <T : View> 安卓视图(
-    工厂: (Context) -> T,
+    原生: (Context) -> T,
     修饰符: Modifier = Modifier,
     更新: (T) -> Unit = NoOpUpdate,
 ) =
     AndroidView(
-        factory = 工厂,
+        factory = 原生,
         modifier = 修饰符,
         update = 更新
     )
 
 
 /**
- * 通过 [工厂] 获取一个 Android [View] 并进行组合。[工厂] 代码块只会被调用恰好一次来获取要组合的 [View]，并且保证在 UI 线程上调用。
- * 因此，除了创建 [View] 之外，[工厂] 代码块还可用于执行一次性初始化以及设置 [View] 的常量属性。[更新] 代码块可以运行多次
- * （同样在 UI 线程上），这是由于重组（recomposition）导致的，它是设置新属性的正确位置。请注意，该代码块也会在 [工厂] 代码块完成后立即运行一次。
+ * 通过 [原生] 获取一个 Android [View] 并进行组合。[原生] 代码块只会被调用恰好一次来获取要组合的 [View]，并且保证在 UI 线程上调用。
+ * 因此，除了创建 [View] 之外，[原生] 代码块还可用于执行一次性初始化以及设置 [View] 的常量属性。[更新] 代码块可以运行多次
+ * （同样在 UI 线程上），这是由于重组（recomposition）导致的，它是设置新属性的正确位置。请注意，该代码块也会在 [原生] 代码块完成后立即运行一次。
  *
  * [安卓视图] 通常用于那些无法在 Compose 中重新实现、且没有对应 Compose API 的 View。目前常见的例子包括 WebView、SurfaceView、AdView 等。
  *
@@ -82,7 +82,7 @@ fun <T : View> 安卓视图(
  * 生命周期尚未设置且无法使用。
  *
  * 当 View 被永久从组合中移除时，[释放回调] 将被调用（同样在 UI 线程上）。一旦此回调返回，无论是否提供了 [重置回调] 实现，Compose
- * 都不会再尝试复用之前的 View 实例。如果将来再次需要该 View，将会创建一个新实例，其生命周期从调用 [工厂] 开始全新启动。
+ * 都不会再尝试复用之前的 View 实例。如果将来再次需要该 View，将会创建一个新实例，其生命周期从调用 [原生] 开始全新启动。
  *
  * [安卓视图] 不会将其内容裁剪到布局边界内。如果需要裁剪内容，请在子 View 上使用 [View.setClipToOutline]。开发者很可能希望对 SurfaceView
  * 的所有子类都执行此操作，以将其内容限制在边界范围内。
@@ -90,7 +90,7 @@ fun <T : View> 安卓视图(
  * [安卓视图] 在包含的 View 启用了嵌套滚动时，具备嵌套滚动互操作能力。这意味着如果该可组合项被放置在参与嵌套滚动的容器内部，它可以分发滚动增量。
  * 有关如何启用嵌套滚动互操作的更多信息：
  *
- * @param 工厂 用于创建要组合的 [View] 的代码块。
+ * @param 原生 用于创建要组合的 [View] 的代码块。
  * @param 修饰符 要应用于布局的修饰符。
  * @param 重置回调 当 View 即将被附着到与其原始创建不同的上下文中的组合层级结构时，会调用此回调。此回调在 [更新] 之前调用，应将 View
  * 准备为可通用复用。如果为 `null` 或未指定，则该 `安卓视图` 实例将不支持复用，且每当 安卓视图 被移动或从组合层级结构中移除时，
@@ -102,14 +102,14 @@ fun <T : View> 安卓视图(
 @Composable
 @UiComposable
 fun <T : View> 安卓视图(
-    工厂: (Context) -> T,
+    原生: (Context) -> T,
     修饰符: Modifier = Modifier,
     重置回调: ((T) -> Unit)? = null,
     释放回调: (T) -> Unit = NoOpUpdate,
     更新: (T) -> Unit = NoOpUpdate,
 ) =
     AndroidView(
-        factory = 工厂,
+        factory = 原生,
         modifier = 修饰符,
         onReset = 重置回调,
         onRelease = 释放回调,

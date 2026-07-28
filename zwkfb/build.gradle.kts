@@ -14,7 +14,7 @@ plugins {
 kotlin {
 
     android {
-        namespace = "multiplatform.zwkfb"
+        namespace = "com.zwkfb"
         compileSdk {
             version = release(37) {
                 minorApiLevel = 1
@@ -65,6 +65,7 @@ kotlin {
     }
 
     sourceSets {
+
         commonMain {
             dependencies {
                 implementation(libs.kotlin.stdlib)
@@ -72,7 +73,7 @@ kotlin {
 
                 api(libs.compose.runtime)
                 api(libs.compose.foundation)
-                //     api(libs.compose.material)
+                api(libs.compose.material)
                 api(libs.compose.material3)
                 api(libs.compose.ui)
                 api(libs.compose.uiToolingPreview)
@@ -96,6 +97,9 @@ kotlin {
 
                 // 是 Kotlin 协程（Coroutines）的核心库
                 api(libs.kotlinx.coroutinesCore)
+
+                // 是一个 Kotlin 库，用于解析 Markdown 格式的文本。
+                api(libs.dxycw.markdown)
 
                 // Composables UI 是一套现代化、完全可访问的 Jetpack Compose 和 Compose 多平台组件集合。
                 // https://composables.com/ui/docs/overview
@@ -156,41 +160,31 @@ kotlin {
 //                api("com.formdev:flatlaf-fonts-roboto-mono:3.000")
 
 
-//                val platform = when {
-//                    org.gradle.internal.os.OperatingSystem.current().isWindows -> "win"
-//                    org.gradle.internal.os.OperatingSystem.current().isMacOsX ->
+//                // 根据当前构建平台选择 classifier
+//                val javafxPlatform = when {
+//                    org.gradle.internal.os.OperatingSystem.current().isMacOsX -> {
 //                        if (System.getProperty("os.arch") == "aarch64") "mac-aarch64" else "mac"
-//                    org.gradle.internal.os.OperatingSystem.current().isLinux ->
-//                        if (System.getProperty("os.arch") == "aarch64") "linux-aarch64" else "linux"
-//                    else -> throw GradleException("Unsupported platform")
+//                    }
+//                    org.gradle.internal.os.OperatingSystem.current().isWindows -> "win"
+//                    org.gradle.internal.os.OperatingSystem.current().isLinux -> "linux"
+//                    else -> throw GradleException("Unsupported OS")
 //                }
 //
-//                // 所有 JavaFX 模块，带平台分类器
-//                api("org.openjfx:javafx-base:21:$platform")
-//                api("org.openjfx:javafx-graphics:21:$platform")
-//                api("org.openjfx:javafx-controls:21:$platform")
-//                api("org.openjfx:javafx-fxml:21:$platform")
-//                api("org.openjfx:javafx-web:21:$platform")
-//                api("org.openjfx:javafx-media:21:$platform")
-//                api("org.openjfx:javafx-swing:21:$platform")
-
-//                // 所有 JavaFX 模块，带平台分类器
-//                listOf("base", "graphics", "controls", "fxml", "web", "media", "swing").forEach { module ->
-//                    api("org.openjfx:javafx-$module:21:win")
-//                    api("org.openjfx:javafx-$module:21:mac")
-//                    api("org.openjfx:javafx-$module:21:linux")
-//                }
+//                api("org.openjfx:javafx-base:21:$javafxPlatform") // 基础
+//                api("org.openjfx:javafx-controls:21:$javafxPlatform") // UI 控件
+//                api("org.openjfx:javafx-graphics:21:$javafxPlatform") // 图形
+//                api("org.openjfx:javafx-fxml:21:$javafxPlatform") // XML 布局
+//                api("org.openjfx:javafx-swing:21:$javafxPlatform") // Swing 互操作
+//                api("org.openjfx:javafx-web:21:$javafxPlatform") // WebView（如需要）
+//                api("org.openjfx:javafx-media:21:$javafxPlatform") // 音视频（如需要）
 
             }
+
         }
 
         iosMain {
             dependencies {
-                // Add iOS-specific dependencies here. This a source set created by Kotlin Gradle
-                // Plugin (KGP) that each specific iOS target (e.g., iosX64) depends on as
-                // part of KMP’s default source set hierarchy. Note that this source set depends
-                // on common by default and will correctly pull the iOS artifacts of any
-                // KMP dependencies declared in commonMain.
+
             }
         }
 
@@ -201,7 +195,9 @@ kotlin {
         }
 
         wasmJsMain {
-            dependencies {}
+            dependencies {
+
+            }
         }
 
     }

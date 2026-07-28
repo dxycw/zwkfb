@@ -1,4 +1,4 @@
-package multiplatform.zwkfb
+package com.zwkfb
 
 class DesktopPlatform: Platform {
     override val name: String = "Java ${System.getProperty("java.version")}"

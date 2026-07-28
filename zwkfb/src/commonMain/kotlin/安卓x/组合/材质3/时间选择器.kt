@@ -552,7 +552,9 @@ interface 时间选择器状态 { // TimePickerState
  * 此值始终有效。[分钟输入] 是后来添加的，用于跟踪无效输入（例如在 [TimeInput] 中正在输入时），
  * 而不改变此属性的行为，该属性始终保证返回有效值。
  */
-@get:IntRange(from = 0, to = 59) @setparam:IntRange(from = 0, to = 59) var TimePickerState.分钟: Int
+@get:IntRange(from = 0, to = 59)
+@setparam:IntRange(from = 0, to = 59)
+var TimePickerState.分钟: Int
     get() = this.minute
     set(value) {
         this.minute = value
@@ -564,7 +566,9 @@ interface 时间选择器状态 { // TimePickerState
  * 此值始终有效。[小时输入] 是后来添加的，用于跟踪无效输入（例如在 [TimeInput] 中正在输入时），
  * 而不改变此属性的行为，该属性始终保证返回有效值。
  */
-@get:IntRange(from = 0, to = 23) @setparam:IntRange(from = 0, to = 23) var TimePickerState.小时: Int
+@get:IntRange(from = 0, to = 23)
+@setparam:IntRange(from = 0, to = 23)
+var TimePickerState.小时: Int
     get() = this.hour
     set(value) {
         this.hour = value

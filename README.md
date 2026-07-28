@@ -29,9 +29,11 @@
 
 # 使用方法
 
-**1、在项目的 settings.gradle 文件中添加 JitPack 仓库：**
+**1、在项目中添加依赖项的方法：**
 
 ```kotlin
+
+// 在项目的 settings.gradle.kts 文件中添加 JitPack 仓库
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -39,43 +41,38 @@ dependencyResolutionManagement {
         maven { url = uri("https://jitpack.io") }  // 添加 JitPack 仓库
     }
 }
-```
 
-**2、在项目的 build.gradle 文件中添加依赖项（注意：添加任意一个平台即可）：**
-
-```kotlin
-
+// 在项目的 build.gradle.kts 文件中添加依赖项
 kotlin {
     sourceSets {
         // 多平台，
         commonMain.dependencies {
             // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb:0.3.2")
+            implementation("com.github.dxycw.zwkfb:zwkfb:0.3.3")
         }
     }
 }
 
 ```
 
-**3、目前可以使用的平台：**
+**2、目前可以使用的平台：**
 
-| 平台            | 是否可用 |
-|---------------|------|
-| Multiplatform | ✅️   |
-| Android       | ✅️   |
-| Desktop       | ✅️   |
-| IOS           | ❌️   |
-| Web           | ❌️   |
+| 平台                            | 是否可用 |
+|-------------------------------|------|
+| Android                       | ✅️   |
+| Desktop (Windows/MacOS/Linux) | ✅️   |
+| IOS                           | ❌️   |
+| Web (WasmJS/JS)               | ❌️   |
 
-**4、使用的依赖库：**
+**3、使用的依赖库：**
 
 * 本项目所有平台[使用的依赖库](%E6%96%87%E6%A1%A3/%E4%BD%BF%E7%94%A8%E7%9A%84%E4%BE%9D%E8%B5%96%E5%BA%93.md)；
 
-**5、打包体积压缩：**
+**4、打包体积压缩：**
 
 * 本项目所有平台[打包体积压缩](%E6%96%87%E6%A1%A3/%E6%89%93%E5%8C%85%E4%BD%93%E7%A7%AF%E5%8E%8B%E7%BC%A9.md)；
 
-**6、示例代码：**
+**5、示例代码：**
 
 * 本项目所有平台[示例代码](https://gitee.com/dxycw/zwkfb-jiaocheng)；
 
@@ -103,11 +100,21 @@ kotlin {
 
 # 更新内容
 
+## 0.3.3
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 修改 项目包名，从 multiplatform.zwkfb 改为 com.zwkfb；
+* 修改 Multiplatform平台的 "组件变灰()" 函数组件为 “组件变灰提示盒子()”、“组件变灰提示行()”、“组件变灰提示列()” 函数组件代码
+* 添加 Android平台的 “浏览器()”组件函数（注意：浏览器目前是测试阶段有Bug不建议使用）；
+* 添加 Multiplatform平台的 org.jetbrains.compose.material:material 依赖库版本为 1.12.0-beta02；
+* 添加 Multiplatform平台的 com.github.dxycw.markdown:markdown 依赖库版本为 1.1.0；
+* 更新 logback 依赖库版本为 1.5.38；
+
 ## 0.3.2
 
 * 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
 * 优化依赖库导入方式；
-* 修改 “组件变灰()” 函数组件，改为“组件变灰盒子()”、“组件变灰行()”、“组件变灰列()” 函数组件
+* 修改 Multiplatform平台的 “组件变灰()” 函数组件，改为“组件变灰盒子()”、“组件变灰行()”、“组件变灰列()” 函数组件
 * 更新 Multiplatform平台的 org.jetbrains.compose.runtime:runtime 依赖库版本为 1.12.0-beta02；
 * 更新 Multiplatform平台的 org.jetbrains.compose.foundation:foundation 依赖库版本为 1.12.0-beta02；
 * 更新 Multiplatform平台的 org.jetbrains.compose.ui:ui 依赖库版本为 1.12.0-beta02；

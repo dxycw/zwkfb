@@ -19,8 +19,12 @@ kotlin {
             isStatic = true
         }
     }
-    
-    jvm()
+
+    jvm("desktop") {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
+        }
+    }
     
     js {
         browser()

@@ -245,6 +245,7 @@ fun DateWheelPicker(
     }
 }
 
+
 @RequiresApi(Build.VERSION_CODES.O)
 @Preview(showBackground = true)
 @Composable
@@ -258,7 +259,7 @@ fun DateWheelPickerPreview() {
                 )
                 Text(
                     text = "选中: ${date.format(DateTimeFormatter.ofPattern("yyyy年MM月dd日"))}",
-                    modifier = Modifier.padding(16.dp),
+                    modifier = Modifier.padding(5.dp),
                     style = MaterialTheme.typography.titleMedium
                 )
             }

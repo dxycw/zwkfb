@@ -15,7 +15,7 @@ kotlin = "2.4.0"
 kotlin-wrappers = "2026.7.4"
 kotlinx-coroutines = "1.11.0"
 ktor = "3.5.1"
-logback = "1.5.37"
+logback = "1.5.38"
 material3 = "1.12.0-alpha03"
 kotlinStdlib = "2.4.0"
 runner = "1.7.0"
@@ -24,6 +24,7 @@ core = "1.7.0"
 material-iconsExtended = "1.7.3"
 androidx-navigationCompose = "2.10.0-alpha02"
 androidx-navigation3Ui = "1.2.0-alpha02"
+dxycw-markdown = "1.1.0"
 dev-jna = "5.19.1"
 flatlaf = "3.7.2"
 
@@ -62,6 +63,8 @@ androidx-navigation-compose = { module = "org.jetbrains.androidx.navigation:navi
 androidx-navigation3-ui = { module = "org.jetbrains.androidx.navigation3:navigation3-ui", version.ref = "androidx-navigation3Ui" }
 ## ----------------------------------------------------------------
 kotlinx-coroutinesCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+## ----------------------------------------------------------------
+dxycw-markdown = { module = "com.github.dxycw.markdown:markdown", version.ref = "dxycw-markdown" }
 
 #===============================================================
 
