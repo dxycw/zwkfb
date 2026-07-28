@@ -46,6 +46,14 @@ fun main() {
                 icon = painterResource("drawable/compose-multiplatform.xml"),
             ) {
                 App()
+
+//                val markdown =
+//                    """
+//                        ## fsdf
+//                        sfsdf
+//                    """.trimIndent()
+//                Markdown(markdown)
+
             }
         }
     }
