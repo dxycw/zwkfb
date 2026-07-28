@@ -57,12 +57,12 @@ kotlin {
 
 **2、目前可以使用的平台：**
 
-| 平台                            | 是否可用 |
-|-------------------------------|------|
-| Android                       | ✅️   |
-| Desktop (Windows/MacOS/Linux) | ✅️   |
-| IOS                           | ❌️   |
-| Web (WasmJS/JS)               | ❌️   |
+| 平台                                | 是否可用 |
+|-----------------------------------|------|
+| Android                           | ✅️   |
+| Desktop (Windows, MacOS, Linux)   | ✅️   |
+| IOS (iosArm64, iosSimulatorArm64) | ❌️   |
+| Web (WasmJS, JS)                  | ❌️   |
 
 **3、使用的依赖库：**
 

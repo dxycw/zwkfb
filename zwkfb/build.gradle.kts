@@ -43,7 +43,7 @@ kotlin {
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = "zwkfbKit"
-//            isStatic = true
+            isStatic = true
         }
     }
 
