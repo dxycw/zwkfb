@@ -2,4 +2,4 @@ jdk:
   - openjdk21
 
 install:
-  - ./gradlew publishToMavenLocal -x jsMainClasses -x wasmJsMainClasses -x kotlinNpmInstall -x compileKotlinJs -x compileKotlinWasmJs -x compileKotlinIosArm64 -x compileKotlinIosSimulatorArm64 -x linkDebugFrameworkIosArm64 -x linkDebugFrameworkIosSimulatorArm64
+  - ./gradlew publishAndroidReleasePublicationToMavenLocal publishJvmPublicationToMavenLocal
