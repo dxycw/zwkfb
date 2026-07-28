@@ -104,7 +104,7 @@ kotlin {
 
 * 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
 * 修改 项目包名，从 multiplatform.zwkfb 改为 com.zwkfb；
-* 修改 Multiplatform平台的 "组件变灰()" 函数组件为 “组件变灰提示盒子()”、“组件变灰提示行()”、“组件变灰提示列()” 函数组件代码
+* 修改 Multiplatform平台的 "组件变灰()" 函数组件为 “组件变灰提示盒子()”、“组件变灰提示行()”、“组件变灰提示列()” 函数组件代码;
 * 添加 Android平台的 “浏览器()”组件函数（注意：浏览器目前是测试阶段有Bug不建议使用）；
 * 添加 Multiplatform平台的 org.jetbrains.compose.material:material 依赖库版本为 1.12.0-beta02；
 * 添加 Multiplatform平台的 com.github.dxycw.markdown:markdown 依赖库版本为 1.1.0；
