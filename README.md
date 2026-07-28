@@ -107,7 +107,7 @@ kotlin {
 * 修改 Multiplatform平台的 "组件变灰()" 函数组件为 “组件变灰提示盒子()”、“组件变灰提示行()”、“组件变灰提示列()” 函数组件代码;
 * 添加 Android平台的 “浏览器()”组件函数（注意：浏览器目前是测试阶段有Bug不建议使用）；
 * 添加 Multiplatform平台的 org.jetbrains.compose.material:material 依赖库版本为 1.12.0-beta02；
-* 添加 Multiplatform平台的 com.github.dxycw.markdown:markdown 依赖库版本为 1.2.1；
+* 因为 com.github.dxycw.markdown:markdown 依赖库导入到项目打包失败，所以把 com.github.dxycw.markdown:markdown 依赖库导入到本项目中；
 * 更新 logback 依赖库版本为 1.5.38；
 
 ## 0.3.2

@@ -30,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.mikepenz.markdown.m3.Markdown
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -61,7 +62,14 @@ fun App() {
             ClickToLoadLinear()
             轮廓安全文本字段限制长度为100()
 //            测试()
-
+            val markdown =
+                """
+                    # fsdfdfgdfg
+                    ## fsdfdfgdfg
+                    ### fsdfdfgdfg
+                    sfsdf13123
+                """.trimIndent()
+            Markdown(markdown)
         }
     }
 }
