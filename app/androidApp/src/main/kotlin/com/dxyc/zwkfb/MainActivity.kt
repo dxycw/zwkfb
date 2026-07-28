@@ -129,6 +129,13 @@ fun Home(上下文 : Activity? = LocalActivity.current) {
 //                }
                 App()
 
+                val markdown =
+                    """
+                        ## fsdf
+                        sfsdf
+                    """.trimIndent()
+                Markdown(markdown)
+
             }
 //            if (显示日期选择器) {
 //                模态底部面板 (
