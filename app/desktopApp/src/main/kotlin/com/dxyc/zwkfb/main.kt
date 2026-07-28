@@ -11,6 +11,7 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
+import com.mikepenz.markdown.m3.Markdown
 import java.awt.Font
 import javax.swing.UIManager
 
@@ -46,13 +47,6 @@ fun main() {
                 icon = painterResource("drawable/compose-multiplatform.xml"),
             ) {
                 App()
-
-//                val markdown =
-//                    """
-//                        ## fsdf
-//                        sfsdf
-//                    """.trimIndent()
-//                Markdown(markdown)
 
             }
         }

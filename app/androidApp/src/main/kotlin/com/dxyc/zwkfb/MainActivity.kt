@@ -34,6 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.dxyc.zwkfb.ui.theme.AppTheme
+import com.mikepenz.markdown.m3.Markdown
 import kotlinx.coroutines.launch
 import 安卓x.组合.基础.布局.列
 import 安卓x.组合.材质3.图标

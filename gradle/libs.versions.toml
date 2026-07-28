@@ -24,7 +24,7 @@ core = "1.7.0"
 material-iconsExtended = "1.7.3"
 androidx-navigationCompose = "2.10.0-alpha02"
 androidx-navigation3Ui = "1.2.0-alpha02"
-dxycw-markdown = "1.2.0"
+dxycw-markdown = "1.2.1"
 dev-jna = "5.19.1"
 flatlaf = "3.7.2"
 

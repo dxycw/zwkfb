@@ -55,7 +55,7 @@ kotlin {
                 // 是 Kotlin 协程（Coroutines）的核心库
                 exclude("org.jetbrains.kotlinx", "kotlinx-coroutines-core")
                 // 如果使用Markdown，请把markdown依赖库注释掉
-                exclude("com.github.dxycw.markdown", "markdown")
+//                exclude("com.github.dxycw.markdown", "markdown")
 
                 // ------------------Android平台：
 
