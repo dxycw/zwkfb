@@ -26,10 +26,6 @@ dependencyResolutionManagement {
         mavenCentral()
         maven { url = uri("https://jitpack.io") }  // 添加 JitPack 仓库
 //        maven { url = uri("https://maven.mozilla.org/maven2") } // 使用org.mozilla.geckoview依赖库需要添加此仓库
-
-        maven { url = uri("https://your-internal-mirror.com/gradle-plugins") }
-        gradlePluginPortal() // 作为 fallback
-
     }
 }
 
@@ -38,7 +34,6 @@ plugins {
 }
 
 rootProject.name = "Zwkfbmultiplatform"
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 
 include(":app:androidApp")
