@@ -21,17 +21,8 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
-import androidx.compose.material3.AssistChip
-import androidx.compose.material3.AssistChipDefaults
-import androidx.compose.material3.ElevatedAssistChip
-import androidx.compose.material3.FilterChip
-import androidx.compose.material3.FilterChipDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.InputChip
-import androidx.compose.material3.InputChipDefaults
 import androidx.compose.material3.LinearWavyProgressIndicator
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.SuggestionChip
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -64,9 +55,6 @@ import 安卓x.组合.材质3.按钮
 import 安卓x.组合.材质3.文本
 import 安卓x.组合.材质3.线性进度指示器
 import 安卓x.组合.材质3.轮廓安全文本字段
-import 安卓x.组合.材质3.过滤芯片
-import 自定义.组合.材质3.凸起辅助芯片
-import 自定义.组合.材质3.辅助芯片
 
 
 @Composable
@@ -74,15 +62,12 @@ import 自定义.组合.材质3.辅助芯片
 fun App() {
     MaterialTheme {
         Column(
-            modifier = Modifier
-                .safeContentPadding()
-                .fillMaxSize()
+            modifier = Modifier.safeContentPadding().fillMaxSize()
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             ClickToLoadLinear()
             轮廓安全文本字段限制长度为100()
-//            测试()
             val markdown =
                 """
                     # 标题1
@@ -99,6 +84,11 @@ fun App() {
                             Text("测试")
                         }
                     ```
+                    
+                    ---
+                    
+                    * xs
+                    * z
                     
                 """.trimIndent()
             Markdown(

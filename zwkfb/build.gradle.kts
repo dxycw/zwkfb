@@ -99,8 +99,7 @@ kotlin {
                 api(libs.kotlinx.coroutinesCore)
 
                 // 是一个 Kotlin 多平台库，用于解析 Markdown 格式的文本并将其渲染为 Compose 组件。
-//                api(project(":markdown"))
-                api("com.github.dxycw.markdown:markdown:1.0.1")
+                api(project(":markdown"))
 
                 // Composables UI 是一套现代化、完全可访问的 Jetpack Compose 和 Compose 多平台组件集合。
                 // https://composables.com/ui/docs/overview

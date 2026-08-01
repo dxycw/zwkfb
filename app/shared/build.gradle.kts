@@ -56,10 +56,13 @@ kotlin {
     }
     
     sourceSets {
+
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
         }
+
         commonMain.dependencies {
+
             api(project(":zwkfb")){
 
                 // 是 Compose Multiplatform 的基础库，提供基础的 UI 组件和工具库，包含基础的布局、文本、按钮、文本输入框、下拉列表等组件。
@@ -77,7 +80,6 @@ kotlin {
 
                 // 如果使用Markdown，请把markdown依赖库注释掉
 //                exclude("","markdown")
-//                exclude("com.github.dxycw.markdown", "markdown")
 
                 // ------------------Android平台：
 
