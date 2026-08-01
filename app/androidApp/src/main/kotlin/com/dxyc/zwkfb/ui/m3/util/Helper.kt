@@ -1,0 +1,45 @@
+package com.dxyc.zwkfb.ui.m3.util
+
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.platform.LocalInspectionMode
+import com.mikepenz.markdown.compose.components.markdownComponents
+import com.mikepenz.markdown.compose.elements.highlightedCodeBlock
+import com.mikepenz.markdown.compose.elements.highlightedCodeFence
+import com.mikepenz.markdown.m3.Markdown
+import com.mikepenz.markdown.model.rememberMarkdownState
+import com.mikepenz.markdown.sample.rememberCheckAnnotator
+import com.mikepenz.markdown.sample.rememberCheckInlineContent
+import com.dxyc.zwkfb.ui.m3.theme.SampleTheme
+
+@Composable
+fun TestMarkdown(content: String) = SampleTheme(isSystemInDarkTheme()) {
+    CompositionLocalProvider(LocalInspectionMode provides true) {
+        Markdown(rememberMarkdownState(content))
+    }
+}
+
+@Composable
+fun TestMarkdownTableInline(content: String) = SampleTheme(isSystemInDarkTheme()) {
+    CompositionLocalProvider(LocalInspectionMode provides true) {
+        Markdown(
+            rememberMarkdownState(content),
+            annotator = rememberCheckAnnotator(),
+            inlineContent = rememberCheckInlineContent(),
+        )
+    }
+}
+
+@Composable
+fun TestMarkdownCodeBlock(content: String) = SampleTheme(isSystemInDarkTheme()) {
+    CompositionLocalProvider(LocalInspectionMode provides true) {
+        Markdown(
+            rememberMarkdownState(content),
+            components = markdownComponents(
+                codeBlock = highlightedCodeBlock,
+                codeFence = highlightedCodeFence,
+            ),
+        )
+    }
+}

@@ -15,11 +15,11 @@ kotlin = "2.4.0"
 kotlin-wrappers = "2026.7.4"
 kotlinx-coroutines = "1.11.0"
 ktor = "3.5.1"
-logback = "1.5.38"
 material3 = "1.12.0-alpha03"
 kotlinStdlib = "2.4.0"
 runner = "1.7.0"
 core = "1.7.0"
+
 
 material-iconsExtended = "1.7.3"
 androidx-navigationCompose = "2.10.0-alpha02"
@@ -30,7 +30,6 @@ flatlaf = "3.7.2"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
-kotlin-testJunit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 junit = { module = "junit:junit", version.ref = "junit" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
 androidx-testExt-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-testExt" }
@@ -89,13 +88,10 @@ wrappers-browser = { module = "org.jetbrains.kotlin-wrappers:kotlin-browser", ve
 
 #===============================================================
 
-logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
-ktor-serverCore = { module = "io.ktor:ktor-server-core-jvm", version.ref = "ktor" }
-ktor-serverNetty = { module = "io.ktor:ktor-server-netty-jvm", version.ref = "ktor" }
-ktor-serverTestHost = { module = "io.ktor:ktor-server-test-host-jvm", version.ref = "ktor" }
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlinStdlib" }
 androidx-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
 androidx-core = { group = "androidx.test", name = "core", version.ref = "core" }
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

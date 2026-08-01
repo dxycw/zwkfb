@@ -48,7 +48,7 @@ kotlin {
         // 多平台，
         commonMain.dependencies {
             // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb:0.3.3")
+            implementation("com.github.dxycw.zwkfb:zwkfb:0.3.4")
         }
     }
 }
@@ -99,6 +99,20 @@ kotlin {
 
 
 # 更新内容
+
+## 0.3.4
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 添加 Multiplatform平台的 “辅助芯片()”、“凸起辅助芯片()”、“建议芯片()”、“凸起建议芯片()” 函数组件,可以长按；
+* 添加 Multiplatform平台的 图标集.填充 “菜单”、“设置” 属性函数；
+* 添加 Multiplatform平台的 “材质图标()” 函数；
+* 添加 Multiplatform平台的 “图标集” 对象类；
+* 添加 Multiplatform平台的 ImageVector.Builder “材质路径()” 函数；
+* 添加 Android平台的 两个“注册返回键回调事件()”、“按两次返回桌面()”、两个“注册返回键两次回调事件()” 函数；
+* 删除 “server” 和 “core” 两个模块；
+* 删除 “logback”、“ktor-serverCore”、“ktor-serverNetty”、“ktor-serverTestHost”和“kotlin-testJunit” 依赖库；
+* 新建 `markdown` 库，把 "io.github.feiyin0719:markdown-multiplatform:0.3.0" 和 "com.mikepenz:multiplatform-markdown-renderer:0.43.0" 依赖库导入到 `markdown` 项目中；
+* 添加 把 `markdown` 项目导入到本项目中，如果不用可以注释掉，在[打包体积压缩](%E6%96%87%E6%A1%A3/%E6%89%93%E5%8C%85%E4%BD%93%E7%A7%AF%E5%8E%8B%E7%BC%A9.md)查看；
 
 ## 0.3.3
 

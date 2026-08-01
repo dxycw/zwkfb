@@ -704,7 +704,7 @@ fun 凸起建议芯片(
 
 
 /** 包含 [AssistChip] 使用的基准值。 */
-object 辅助芯片默认设置 { // AssistChipDefaults
+object 辅助芯片默认值 { // AssistChipDefaults
 
     /** 应用于辅助芯片的高度。请注意，您可以通过直接在芯片上应用 Modifier.height 来覆盖此值。*/
     val 高度 = AssistChipDefaults.Height
