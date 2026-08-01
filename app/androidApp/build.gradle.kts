@@ -89,6 +89,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
+    buildFeatures {
+        compose = true
+    }
+
 }
 
 // 修改输出文件名
