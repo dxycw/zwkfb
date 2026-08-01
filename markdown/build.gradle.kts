@@ -8,7 +8,7 @@ plugins {
 
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
-//    id("maven-publish")
+    id("maven-publish")
 }
 
 kotlin {
