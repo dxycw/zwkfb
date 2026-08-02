@@ -48,7 +48,7 @@ kotlin {
         // 多平台，
         commonMain.dependencies {
             // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb:0.3.4")
+            implementation("com.github.dxycw.zwkfb:zwkfb:0.3.5")
         }
     }
 }
@@ -99,6 +99,12 @@ kotlin {
 
 
 # 更新内容
+
+## 0.3.5
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 取消 本项目的 `markdown` 库发布；
+* 添加 Multiplatform平台的 com.github.dxycw.markdown:markdown 依赖库版本为 1.0.1；
 
 ## 0.3.4
 
