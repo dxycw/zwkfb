@@ -37,15 +37,15 @@ kotlin {
         }
     }
 
-    listOf(
-        iosArm64(),
+//    listOf(
+        iosArm64()
         iosSimulatorArm64()
-    ).forEach { iosTarget ->
-        iosTarget.binaries.framework {
-            baseName = "zwkfbKit"
-            isStatic = true
-        }
-    }
+//    ).forEach { iosTarget ->
+//        iosTarget.binaries.framework {
+//            baseName = "zwkfbKit"
+//            isStatic = true
+//        }
+//    }
 
     jvm("desktop") {
         compilerOptions {
