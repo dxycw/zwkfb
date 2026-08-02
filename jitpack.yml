@@ -2,4 +2,15 @@ jdk:
   - openjdk21
 
 install:
-  - ./gradlew publishToMavenLocal -x jsMainClasses -x wasmJsMainClasses -x kotlinNpmInstall -x compileKotlinJs -x compileKotlinWasmJs
+  - ./gradlew publishToMavenLocal
+    -x jsMainClasses
+    -x wasmJsMainClasses
+    -x kotlinNpmInstall
+    -x compileKotlinJs
+    -x compileKotlinWasmJs
+    -x compileKotlinIosArm64    # 新增：排除 iOS Arm64 编译
+    -x compileKotlinIosX64      # 新增：排除 iOS X64 编译
+    -x compileKotlinIosSimulatorArm64  # 新增：排除 iOS 模拟器
+    -x linkPodDebugFrameworkIosArm64   # 新增：排除 iOS 链接任务
+    -x linkPodDebugFrameworkIosX64
+    -x linkPodDebugFrameworkIosSimulatorArm64
