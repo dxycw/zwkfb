@@ -185,7 +185,8 @@ kotlin {
 
         iosMain {
             dependencies {
-
+                api("com.github.dxycw.markdown:markdown-iosarm64:1.0.2")
+                api("com.github.dxycw.markdown:markdown-iossimulatorarm64:1.0.2")
             }
         }
 
