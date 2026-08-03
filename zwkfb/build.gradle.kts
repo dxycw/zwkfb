@@ -98,13 +98,27 @@ kotlin {
                 // 是 Kotlin 协程（Coroutines）的核心库
                 api(libs.kotlinx.coroutinesCore)
 
-                // 是一个 Kotlin 多平台库，用于解析 Markdown 格式的文本并将其渲染为 Compose 组件。
-//                api(project(":markdown"))
-                api("com.github.dxycw.markdown:markdown:1.0.2")
-
                 // Composables UI 是一套现代化、完全可访问的 Jetpack Compose 和 Compose 多平台组件集合。
                 // https://composables.com/ui/docs/overview
 //                api("com.composables:ui:0.2.0")
+
+
+                // markdown项目
+                implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.5.1")
+                implementation("io.coil-kt.coil3:coil-compose:3.5.0")
+
+                // Compose Markdown Multiplatform
+                api("io.github.feiyin0719:commonmark:0.0.2") // api
+                implementation("io.github.feiyin0719:commonmark-ext-gfm-tables:0.0.2")
+                implementation("io.github.feiyin0719:commonmark-ext-autolink:0.0.2")
+                implementation("io.github.feiyin0719:commonmark-ext-task-list-items:0.0.2")
+                implementation("io.github.feiyin0719:commonmark-ext-html-converter:0.0.2")
+
+                implementation("io.coil-kt.coil3:coil-network-ktor3:3.5.0")
+
+                // multiplatform-markdown-renderer
+                api("org.jetbrains:markdown:0.7.8") // api
+                api("dev.snipme:highlights:1.1.0") // api
 
             }
         }
@@ -123,6 +137,15 @@ kotlin {
 
                 // 是 Kotlin 协程（Coroutines）的核心库
                 api(libs.kotlinx.coroutinesAndroid)
+
+
+                // markdown项目
+                // Compose Markdown Multiplatform
+                implementation("androidx.core:core-ktx:1.19.0")
+                implementation("io.ktor:ktor-client-okhttp:3.5.1")
+
+                // multiplatform-markdown-renderer
+                implementation("io.coil-kt:coil-compose:2.7.0")
 
             }
         }
@@ -179,12 +202,21 @@ kotlin {
 //                api("org.openjfx:javafx-web:21:$javafxPlatform") // WebView（如需要）
 //                api("org.openjfx:javafx-media:21:$javafxPlatform") // 音视频（如需要）
 
+
+                // markdown项目
+                // Compose Markdown Multiplatform
+                implementation("io.ktor:ktor-client-okhttp:3.5.1")
+
             }
 
         }
 
         iosMain {
-            dependencies {}
+            dependencies {
+                // markdown项目
+                // Compose Markdown Multiplatform
+                implementation("io.ktor:ktor-client-darwin:3.5.1")
+            }
         }
 
         jsMain {
@@ -194,7 +226,11 @@ kotlin {
         }
 
         wasmJsMain {
-            dependencies {}
+            dependencies {
+                // markdown项目
+                // Compose Markdown Multiplatform
+                implementation("io.ktor:ktor-client-js:3.5.1")
+            }
         }
 
     }

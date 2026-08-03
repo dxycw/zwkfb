@@ -29,7 +29,6 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.util.fastForEach
 import com.iffly.compose.markdown.multiplatform.util.StringExt
 import kotlinx.collections.immutable.ImmutableMap
 import kotlinx.coroutines.Dispatchers

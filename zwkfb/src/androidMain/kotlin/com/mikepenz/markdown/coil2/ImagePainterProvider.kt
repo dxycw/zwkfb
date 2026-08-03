@@ -6,6 +6,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
 import coil.compose.AsyncImagePainter
@@ -25,7 +26,7 @@ internal actual fun imagePainter(url: String): Painter? {
 }
 
 @Composable
-internal actual fun painterIntrinsicSize(painter: Painter): androidx.compose.ui.geometry.Size {
+internal actual fun painterIntrinsicSize(painter: Painter): Size {
     var size by remember(painter) { mutableStateOf(painter.intrinsicSize) }
 
     if (painter is AsyncImagePainter) {

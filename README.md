@@ -103,8 +103,11 @@ kotlin {
 ## 0.3.5
 
 * 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
-* 取消 本项目的 `markdown` 库发布；
-* 添加 Multiplatform平台的 com.github.dxycw.markdown:markdown 依赖库版本为 1.0.1；
+* 取消 本项目的 `markdown` 库发布，并删除 `markdown` 库；
+* 添加 把 `markdown`项目导入到 `zwkfb`项目中；
+* 添加 Multiplatform平台的 io.github.feiyin0719:commonmark 依赖库版本为 0.0.2；
+* 添加 Multiplatform平台的 org.jetbrains:markdown 依赖库版本为 0.7.8；
+* 添加 Multiplatform平台的 dev.snipme:highlights 依赖库版本为 1.1.0；
 
 ## 0.3.4
 

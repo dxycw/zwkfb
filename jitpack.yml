@@ -5,4 +5,4 @@ env:
   machine: macos-14
 
 install:
-  - ./gradlew publishToMavenLocal -x jsMainClasses -x wasmJsMainClasses -x kotlinNpmInstall -x compileKotlinJs -x compileKotlinWasmJs -x transformCommonMainDependenciesMetadata -x iosArm64MainKlibrary -x iosSimulatorArm64MainKlibrary
+  - ./gradlew publishToMavenLocal -x jsMainClasses -x wasmJsMainClasses -x kotlinNpmInstall -x compileKotlinJs -x compileKotlinWasmJs

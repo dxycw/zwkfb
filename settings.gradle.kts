@@ -42,4 +42,3 @@ include(":app:shared")
 include(":app:webApp")
 
 include(":zwkfb")
-include(":markdown")
