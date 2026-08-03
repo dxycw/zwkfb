@@ -37,15 +37,15 @@ kotlin {
         }
     }
 
-//    listOf(
-        iosArm64()
+    listOf(
+        iosArm64(),
         iosSimulatorArm64()
-//    ).forEach { iosTarget ->
-//        iosTarget.binaries.framework {
-//            baseName = "zwkfbKit"
-//            isStatic = true
-//        }
-//    }
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = "zwkfbKit"
+            isStatic = true
+        }
+    }
 
     jvm("desktop") {
         compilerOptions {
@@ -184,10 +184,7 @@ kotlin {
         }
 
         iosMain {
-            dependencies {
-                api("com.github.dxycw.markdown:markdown-iosarm64:1.0.2")
-                api("com.github.dxycw.markdown:markdown-iossimulatorarm64:1.0.2")
-            }
+            dependencies {}
         }
 
         jsMain {
@@ -197,9 +194,7 @@ kotlin {
         }
 
         wasmJsMain {
-            dependencies {
-
-            }
+            dependencies {}
         }
 
     }
