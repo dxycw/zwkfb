@@ -1,5 +1,6 @@
 package com.dxyc.zwkfb.ui.m2.theme
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
@@ -10,6 +11,7 @@ import com.mikepenz.markdown.sample.theme.Primary
 import com.mikepenz.markdown.sample.theme.Red200
 import com.mikepenz.markdown.sample.theme.Red800
 
+@SuppressLint("ConflictingOnColor")
 private val DarkColorPalette = darkColors(
     primary = Primary,
     primaryVariant = Primary,

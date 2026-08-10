@@ -14,7 +14,7 @@
 
 [![GitHub](https://jitpack.io/v/dxycw/zwkfb.svg)](https://jitpack.io/#dxycw/zwkfb)
 [![Kotlin](https://img.shields.io/badge/kotlin-v2.4.0-blue.svg?logo=kotlin)](http://kotlinlang.org)
-[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.12.0--beta02-blue)](https://github.com/JetBrains/compose-multiplatform)
+[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.12.0--beta03-blue)](https://github.com/JetBrains/compose-multiplatform)
 
 ![badge-android](http://img.shields.io/badge/platform-android-6EDB8D.svg?style=flat)
 ![badge-ios](http://img.shields.io/badge/platform-ios-CDCDCD.svg?style=flat)
@@ -48,7 +48,7 @@ kotlin {
         // 多平台，
         commonMain.dependencies {
             // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb:0.3.5")
+            implementation("com.github.dxycw.zwkfb:zwkfb:0.3.6")
         }
     }
 }
@@ -78,6 +78,16 @@ kotlin {
 
 > [!CAUTION]
 >
+> * 项目>=0.3.6版本：
+> 
+>   如果使用 org.jetbrains.kotlinx:kotlinx-serialization-json 依赖库[官方教程](https://github.com/Kotlin/kotlinx.serialization)，请在项目中添加以下插件项：
+> 
+>   ```kotlin
+>   plugins {
+>       kotlin("plugin.serialization") version "${和项目kotlin的版本一样}"
+>   }
+>   ```
+> 
 > * 项目>=0.3.0版本：
 >
 >   1、从本版本发布开始请使用 Jetpack Compose Multiplatform 的新项目模板。
@@ -99,6 +109,18 @@ kotlin {
 
 
 # 更新内容
+
+## 0.3.6
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 添加 Multiplatform平台的 自定义的 “底部面板默认值”的“拖动手柄()”、“线性进度指示器()”、“取下载网址文件名()”、“圆形进度指示器()”、两个“图标()”、“顶部应用栏()”、“底部导航栏()”、“信息底部面板()” 函数组件；
+* 添加 Desktop平台和Android平台的 自定义的 两个“图标()” 函数组件；
+* 添加 Android平台的 自定义的 “是否竖屏()”、“是否横屏()”、“强制横屏()”、“强制竖屏()”、“取屏幕宽度()”、“取屏幕高度()”、“取屏幕宽度像素()”、“取屏幕高度像素()” 函数组件；
+* 添加 Android平台的 自定义的 “是否竖屏”、“是否横屏”、“屏幕宽度”、“屏幕高度”、“屏幕宽度像素”、“屏幕高度像素” 函数属性；
+* 添加 Multiplatform平台的 org.jetbrains.kotlinx:kotlinx-serialization-json 依赖库版本为 1.1.0；
+* 更新 Multiplatform平台的 composeMultiplatform 依赖库版本为 1.12.0-beta03；
+* 更新 Web的js平台的 org.jetbrains.kotlin-wrappers:kotlin-browser 依赖库版本为 2026.8.0；
+* 删除 不需要的插件；
 
 ## 0.3.5
 

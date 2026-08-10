@@ -9,21 +9,25 @@ androidx-core = "1.19.0"
 androidx-espresso = "3.7.0"
 androidx-lifecycle = "2.11.0"
 androidx-testExt = "1.3.0"
-composeMultiplatform = "1.12.0-beta02"
+composeMultiplatform = "1.12.0-beta03"
 junit = "4.13.2"
 kotlin = "2.4.0"
-kotlin-wrappers = "2026.7.4"
+kotlin-wrappers = "2026.8.0"
 kotlinx-coroutines = "1.11.0"
-ktor = "3.5.1"
 material3 = "1.12.0-alpha03"
 kotlinStdlib = "2.4.0"
 runner = "1.7.0"
 core = "1.7.0"
 
-
 material-iconsExtended = "1.7.3"
 androidx-navigationCompose = "2.10.0-alpha02"
 androidx-navigation3Ui = "1.2.0-alpha02"
+kotlinx-serialization = "1.11.0"
+
+feiyin0719-commonmark = "0.0.2"
+jetbrains-markdown = "0.7.8"
+snipme-highlights = "1.1.0"
+
 dev-jna = "5.19.1"
 flatlaf = "3.7.2"
 
@@ -61,6 +65,14 @@ androidx-navigation-compose = { module = "org.jetbrains.androidx.navigation:navi
 androidx-navigation3-ui = { module = "org.jetbrains.androidx.navigation3:navigation3-ui", version.ref = "androidx-navigation3Ui" }
 ## ----------------------------------------------------------------
 kotlinx-coroutinesCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+## ----------------------------------------------------------------
+kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+## ----------------------------------------------------------------
+feiyin0719-commonmark = { module = "io.github.feiyin0719:commonmark", version.ref = "feiyin0719-commonmark" }
+## ----------------------------------------------------------------
+jetbrains-markdown = { module = "org.jetbrains:markdown", version.ref = "jetbrains-markdown" }
+## ----------------------------------------------------------------
+snipme-highlights = { module = "dev.snipme:highlights", version.ref = "snipme-highlights" }
 
 #===============================================================
 
@@ -100,5 +112,4 @@ composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMul
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
 androidLint = { id = "com.android.lint", version.ref = "agp" }

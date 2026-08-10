@@ -98,8 +98,19 @@ kotlin {
                 // 是 Kotlin 协程（Coroutines）的核心库
                 api(libs.kotlinx.coroutinesCore)
 
-                // Composables UI 是一套现代化、完全可访问的 Jetpack Compose 和 Compose 多平台组件集合。
-                // https://composables.com/ui/docs/overview
+                // 是 Kotlin 官方的多平台 JSON 序列化库
+                api(libs.kotlinx.serialization)
+
+                // 是 Kotlin Multiplatform 版本的 CommonMark Markdown 解析与渲染库
+                api(libs.feiyin0719.commonmark)
+
+                // 是 JetBrains 官方用 Kotlin 编写的 Markdown 解析库
+                api(libs.jetbrains.markdown)
+
+                // 是 Kotlin Multiplatform 语法高亮引擎
+                api(libs.snipme.highlights)
+
+                // 是一套现代化、完全可访问的 Jetpack Compose 和 Compose 多平台组件集合。
 //                api("com.composables:ui:0.2.0")
 
 
@@ -108,17 +119,14 @@ kotlin {
                 implementation("io.coil-kt.coil3:coil-compose:3.5.0")
 
                 // Compose Markdown Multiplatform
-                api("io.github.feiyin0719:commonmark:0.0.2") // api
                 implementation("io.github.feiyin0719:commonmark-ext-gfm-tables:0.0.2")
                 implementation("io.github.feiyin0719:commonmark-ext-autolink:0.0.2")
                 implementation("io.github.feiyin0719:commonmark-ext-task-list-items:0.0.2")
                 implementation("io.github.feiyin0719:commonmark-ext-html-converter:0.0.2")
-
                 implementation("io.coil-kt.coil3:coil-network-ktor3:3.5.0")
 
-                // multiplatform-markdown-renderer
-                api("org.jetbrains:markdown:0.7.8") // api
-                api("dev.snipme:highlights:1.1.0") // api
+
+                implementation("io.ktor:ktor-client-core:3.5.2")
 
             }
         }
@@ -142,11 +150,14 @@ kotlin {
                 // markdown项目
                 // Compose Markdown Multiplatform
                 implementation("androidx.core:core-ktx:1.19.0")
-                implementation("io.ktor:ktor-client-okhttp:3.5.1")
+                implementation("io.ktor:ktor-client-okhttp:3.5.2")
 
                 // multiplatform-markdown-renderer
                 implementation("io.coil-kt:coil-compose:2.7.0")
 
+
+
+                implementation("io.coil-kt.coil3:coil-network-okhttp:3.5.0")
             }
         }
 
@@ -193,7 +204,6 @@ kotlin {
 //                    org.gradle.internal.os.OperatingSystem.current().isLinux -> "linux"
 //                    else -> throw GradleException("Unsupported OS")
 //                }
-//
 //                api("org.openjfx:javafx-base:21:$javafxPlatform") // 基础
 //                api("org.openjfx:javafx-controls:21:$javafxPlatform") // UI 控件
 //                api("org.openjfx:javafx-graphics:21:$javafxPlatform") // 图形
@@ -205,8 +215,11 @@ kotlin {
 
                 // markdown项目
                 // Compose Markdown Multiplatform
-                implementation("io.ktor:ktor-client-okhttp:3.5.1")
+                implementation("io.ktor:ktor-client-okhttp:3.5.2")
 
+                implementation("io.ktor:ktor-client-cio:3.5.2")
+
+                implementation("io.coil-kt.coil3:coil-network-okhttp:3.5.0")
             }
 
         }
@@ -222,6 +235,10 @@ kotlin {
         jsMain {
             dependencies {
                 api(libs.wrappers.browser)
+
+                // markdown项目
+                // Compose Markdown Multiplatform
+                implementation("io.ktor:ktor-client-js:3.5.1")
             }
         }
 

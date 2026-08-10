@@ -24,7 +24,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.pointer.positionChange
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 
@@ -36,7 +35,7 @@ import androidx.compose.ui.unit.dp
  */
 @Suppress("ComposableNaming","ModifierParameter")
 @Composable
-fun 下拉逐渐缩小隐藏动画并启动活动(
+fun 下拉逐渐缩小隐藏动画并启动活动盒子(
     修饰符: Modifier = Modifier,
     内容对齐: Alignment = Alignment.TopStart,
     上下文: Activity? = LocalActivity.current,
@@ -110,7 +109,7 @@ fun 下拉逐渐缩小隐藏动画并启动活动(
  */
 @Suppress("ComposableNaming","ModifierParameter")
 @Composable
-fun 下拉逐渐缩小隐藏动画并启动活动(
+fun 下拉逐渐缩小隐藏动画并启动活动行(
     修饰符: Modifier = Modifier,
     水平排列: Arrangement.Horizontal = Arrangement.Start,
     垂直对齐: Alignment.Vertical = Alignment.Top,
@@ -186,7 +185,7 @@ fun 下拉逐渐缩小隐藏动画并启动活动(
  */
 @Suppress("ComposableNaming","ModifierParameter")
 @Composable
-fun 下拉逐渐缩小隐藏动画并启动活动(
+fun 下拉逐渐缩小隐藏动画并启动活动列(
     修饰符: Modifier = Modifier,
     垂直排列: Arrangement.Vertical = Arrangement.Top,
     水平对齐: Alignment.Horizontal = Alignment.Start,

@@ -78,9 +78,6 @@ kotlin {
                 // 是 Kotlin 协程（Coroutines）的核心库
                 exclude("org.jetbrains.kotlinx", "kotlinx-coroutines-core")
 
-                // 如果使用Markdown，请把markdown依赖库注释掉
-//                exclude("","markdown")
-
                 // ------------------Android平台：
 
                 // Kotlin 协程（Coroutines）的 Android 特定支持库
@@ -104,6 +101,7 @@ kotlin {
 //                exclude("com.formdev", "flatlaf-intellij-themes")
 
             }
+
             implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)
             implementation(libs.compose.material3)

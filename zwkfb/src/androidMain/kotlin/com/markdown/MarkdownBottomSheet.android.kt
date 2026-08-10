@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalConfiguration
 
+
 @SuppressLint("ConfigurationScreenWidthHeight")
 @Composable
 actual fun Modifier.markdownBottomSheetHeight(): Modifier =

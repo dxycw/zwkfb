@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.input.InputTransformation
@@ -15,12 +14,9 @@ import androidx.compose.foundation.text.input.maxLength
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Done
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LinearWavyProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -36,70 +32,71 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.mikepenz.markdown.m3.Markdown
+import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlin.time.Duration.Companion.milliseconds
-import com.zwkfb.Greeting
-import org.jetbrains.compose.resources.painterResource
-import zwkfbmultiplatform.app.shared.generated.resources.*
-import 安卓x.组合.动画.动画可见性
-import 安卓x.组合.基础.图像
 import 安卓x.组合.基础.布局.列
 import 安卓x.组合.基础.布局.行
 import 安卓x.组合.基础.布局.间隔器
 import 安卓x.组合.材质3.图标
 import 安卓x.组合.材质3.图标按钮
+
 import 安卓x.组合.材质3.按钮
 import 安卓x.组合.材质3.文本
-import 安卓x.组合.材质3.线性进度指示器
 import 安卓x.组合.材质3.轮廓安全文本字段
+import 自定义.组合.材质3.信息底部面板
+import 自定义.组合.材质3.圆形进度指示器
+import 自定义.组合.材质3.线性进度指示器
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Preview
 fun App() {
     MaterialTheme {
+        var 信息底部面板值 by remember { mutableStateOf(false) }
         Column(
-            modifier = Modifier.safeContentPadding().fillMaxSize()
+            modifier = Modifier
+                .safeContentPadding()
+                .fillMaxSize()
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             ClickToLoadLinear()
             轮廓安全文本字段限制长度为100()
-            val markdown =
-                """
-                    # 标题1
-                    ## 标题2
-                    ### 标题3
-                    段落
-                    
-                    **加粗**
-                    
-                    ---
-                    
-                    ```kotlin
-                        fun 测试() {
-                            Text("测试")
-                        }
-                    ```
-                    
-                    ---
-                    
-                    * xs
-                    * z
-                    
-                """.trimIndent()
-            Markdown(
-                content = markdown,
-                modifier = Modifier.padding(10.dp),
-            )
 
+            圆形进度指示器()
+
+            按钮(
+                单击回调 = {
+                    信息底部面板值 = true
+                },
+            ){ 文本("打开信息底部面板") }
         }
+
+        if (信息底部面板值 ){
+            信息底部面板(
+                请求关闭回调 = {
+                    信息底部面板值 = false
+                },
+                标题 = "标题阿达阿达是的阿是打算大打算大声道阿萨德阿萨德阿是",
+                内容 = "撒大声地撒啊实打实大山东科技阿是登记卡搜嘎鲸打卡噶伤筋动骨尽快阿三哥登记卡三个结婚蛋糕哈时间跨度规划局啊送给大家客户噶时间看到过好贱啊说课稿带回家阿三哥很简单噶事看到过回家阿是看到过哈吉斯开关打开撒给大家好看噶数据库的话噶伤筋动骨阿九十多个几哈送给大家灰咖色孤岛惊魂",
+                忽略按钮 = {
+                    信息底部面板值 = false
+                },
+                取消按钮 = {
+                    信息底部面板值 = false
+                },
+                确定按钮 = {
+                    信息底部面板值 = false
+                },
+            )
+        }
+
+
     }
 }
-
 
 
 
@@ -151,50 +148,6 @@ fun 轮廓安全文本字段限制长度为100(
     }
 }
 
-
-@Suppress("ComposableNaming")
-@Composable
-fun 测试() {
-    列(水平对齐 = Alignment.CenterHorizontally) {
-        var showContent by remember { mutableStateOf(false) }
-        按钮(
-            修饰符 = Modifier.padding(top = 10.dp, bottom = 10.dp),
-            单击回调 = { showContent = !showContent }
-        ) { 文本("点击我!") }
-        动画可见性(showContent) {
-            val greeting = remember { Greeting().greet() }
-            列(
-                修饰符 = Modifier.fillMaxWidth(),
-                水平对齐 = Alignment.CenterHorizontally,
-            ) {
-                图像(
-                    绘制器 = painterResource(Res.drawable.compose_multiplatform),
-                    内容描述 = null,
-                    修饰符 = Modifier.size(100.dp)
-                )
-                文本("Compose: $greeting")
-            }
-        }
-    }
-}
-
-
-///**
-// * 最大长度输入转换
-// *
-// * @param 最大长度 最大长度范围，0-100之间超过100位时，截断到100位
-// * @throws IllegalArgumentException 如果最大长度不在0-100之间，抛出异常
-// */
-//class 最大长度输入转换(
-//    @field:IntRange(from = 0, to = 100) private val 最大长度: Int
-//) : InputTransformation {
-//    override fun TextFieldBuffer.transformInput() {
-//        val filtered = asCharSequence().filter {
-//            it.isLetterOrDigit()
-//        }
-//        replace(0, length, filtered.take(最大长度))
-//    }
-//}
 
 
 @Preview

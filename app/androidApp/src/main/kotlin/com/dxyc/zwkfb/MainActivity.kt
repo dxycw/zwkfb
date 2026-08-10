@@ -8,55 +8,35 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.LocalActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDefaults
-import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.rememberDatePickerState
-import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.dxyc.zwkfb.ui.theme.AppTheme
-import kotlinx.coroutines.launch
 import 安卓x.组合.基础.布局.列
-import 安卓x.组合.材质3.图标
-import 安卓x.组合.材质3.图标按钮
-import 安卓x.组合.材质3.导航抽屉项
 import 安卓x.组合.材质3.扩展悬浮操作按钮
 import 安卓x.组合.材质3.按钮
 import 安卓x.组合.材质3.文本
-import 安卓x.组合.材质3.模态导航抽屉
 import 安卓x.组合.材质3.模态底部面板
-import 安卓x.组合.材质3.模态抽屉面板
-import 安卓x.组合.材质3.水平分隔线
 import 安卓x.组合.材质3.脚手架
 
-class MainActivity : ComponentActivity() {
 
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
-        setContent {
-            Home()
-        }
+        setContent { Home() }
     }
 }
 
@@ -87,20 +67,6 @@ fun Home() {
                     //.verticalScroll(rememberScrollState())
             ) {
 
-//                浏览器(
-//                    状态 = 记住浏览器状态("https://www.baidu.com"),
-//                    浏览器客户端事件 = 浏览器客户端.网页跳转拦截事件请求事件 { 浏览器, 请求 ->
-//                        网页跳转拦截事件请求(上下文!!,请求)
-//                    }
-////                    浏览器配置 ={
-////                        浏览器配置(上下文 = 上下文!!,it)
-////                    }
-//                ){
-//                    it.settings.javaScriptEnabled = true
-////                    浏览器配置(上下文 = 上下文!!,it.settings)
-//                }
-
-
                 按钮(
                     单击回调 = { 显示日期选择器 = !显示日期选择器 }
                 ) { 文本("显示") }
@@ -128,6 +94,7 @@ fun Home() {
 //                }
 
                 App()
+
             }
             if (显示日期选择器) {
                 模态底部面板 (
@@ -137,7 +104,6 @@ fun Home() {
                         state = rememberDatePickerState(),
                         colors = DatePickerDefaults.colors(
                             containerColor = BottomSheetDefaults.ContainerColor,
-//                          navigationContentColor = Color.Red,
                         ),
                     )
                 }
@@ -146,63 +112,4 @@ fun Home() {
     }
 }
 
-
-
-
-
-@Preview
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun SimpleDrawer() {
-    val drawerState = rememberDrawerState(DrawerValue.Closed)
-    val scope  = rememberCoroutineScope()
-    模态导航抽屉(
-        抽屉内容 = {
-            模态抽屉面板 {
-                文本("抽屉标题", 修饰符 = Modifier.padding(16.dp))
-                水平分隔线()
-                导航抽屉项(
-                    标签 = { Text("首页") },
-                    已选择 = true,
-                    单击回调 = { scope.launch { drawerState.close() } }
-                )
-                导航抽屉项(
-                    标签 = { Text("设置") },
-                    已选择 = false,
-                    单击回调 = { scope.launch { drawerState.close() } }
-                )
-                导航抽屉项(
-                    标签 = { Text("设置1") },
-                    已选择 = false,
-                    单击回调 = { scope.launch { drawerState.close() } }
-                )
-            }
-        },
-        抽屉状态 = drawerState,
-    ) {
-        Scaffold(
-            topBar = {
-                TopAppBar(
-                    title = { Text("主界面") },
-                    navigationIcon = {
-                        图标按钮(
-                            单击回调 = { scope.launch { drawerState.open() } }
-                        ) {
-                            图标(Icons.Default.Menu, 内容描述 = "打开抽屉")
-                        }
-                    }
-                )
-            }
-        ) { 内边距 ->
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(内边距),
-                contentAlignment = Alignment.Center
-            ) {
-                Text("主屏幕")
-            }
-        }
-    }
-}
 

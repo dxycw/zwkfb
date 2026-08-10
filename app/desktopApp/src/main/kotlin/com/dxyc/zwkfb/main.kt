@@ -58,6 +58,7 @@ import 自定义.组合.材质3.凸起辅助芯片
 import 自定义.组合.材质3.辅助芯片
 import java.awt.Insets
 import javax.swing.UIManager
+import kotlin.time.Duration.Companion.milliseconds
 
 
 //fun main() = application {
@@ -216,7 +217,6 @@ fun main() = application {
 
             App()
 
-//            App(aboutlibraries())
             if (showCloseDialog) {
                 CloseConfirmDialog(
                     onDismiss = {
@@ -275,55 +275,3 @@ fun CloseConfirmDialog(
     }
 }
 
-
-@Preview
-@Composable
-fun a() {
-    Column {
-        val markdown =
-            """
-            # fsdfdfgdfg
-            ## fsdfdfgdfg
-            ### fsdfdfgdfg
-            #### fsdfdfgdfg
-            sfsdf13123
-            
-            ```kotlin
-               println("hello world")
-               Markdown(markdown)
-               Text("这是一个测试文本")
-            ```
-            
-        """.trimIndent()
-//        Markdown(markdown)
-//        Text("这是一个测试文本")
-
-        var a by remember { mutableStateOf("") }
-
-        val handler = object : ActionHandler {
-
-            override fun handleCopyClick(node: org.commonmark.node.Node) {
-                // 1. 获取代码块文本内容
-                val codeText = node.nodeTextContent()
-
-                // 2. 复制到剪贴板（或使用你自己的 Clipboard API）
-                // 默认行为已经会复制，这里可以追加额外逻辑
-
-                // 3. 显示提示
-                println("代码已复制！:$codeText")
-                a = codeText
-                // 或使用 Compose 的 SnackbarHostState 显示提示
-            }
-        }
-
-        MarkdownView(
-            text = markdown,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 10.dp)
-                .padding(bottom = 10.dp),
-            actionHandler = handler,
-        )
-        Text(a)
-    }
-}
