@@ -48,7 +48,7 @@ kotlin {
         // 多平台，
         commonMain.dependencies {
             // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb:0.3.6")
+            implementation("com.github.dxycw.zwkfb:zwkfb:0.3.7")
         }
     }
 }
@@ -109,6 +109,18 @@ kotlin {
 
 
 # 更新内容
+
+## 0.3.7
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 添加 Multiplatform平台的 “弹性盒子()”、“网格()” 函数组件；
+* 添加 Multiplatform平台的 三个“弹性盒子配置()”、三个“弹性配置()” 函数；
+* 添加 Multiplatform平台的 “弹性方向”、“弹性换行”、“弹性对齐项集”、“弹性对齐自身”、“弹性对齐内容”、“弹性主轴内容”、“弹性基础”、“网格流式”、“网格轨道大小” 对象类；
+* 添加 Multiplatform平台的 “弹性盒子范围”、“弹性盒子配置”、“弹性盒子配置范围”、“弹性配置”、“弹性配置范围”、“网格范围”、“网格配置范围” 接口类；
+* 添加 Multiplatform平台的 FlexBoxConfigScope “约束”、“方向()”、“换行()”、“主轴内容()”、三个“对齐项集()”、“对齐内容()”、“行间隙()”、“列间隙()”、两个“间隙()” 属性函数；
+* 添加 Multiplatform平台的 FlexConfigScope “弹性盒子主轴最大”、“弹性盒子主轴最小”、“弹性盒子交叉轴最大”、“弹性盒子交叉轴最小”、三个“对齐自身()”、“顺序()”、“增长()”、“收缩()”、三个“基础()” 属性函数；
+* 添加 Multiplatform平台的 GridConfigurationScope “约束”、“流式”、四个“列()”、四个“行()”、两个“区域()”、两个“间隙()”、“列间隙()”、“行间隙()”、“最小最大()”、“列数()”、“行数()” 属性函数；
+* 添加 Multiplatform平台的 自定义的 “流式列表多芯片()”、“列表多芯片()” 函数组件；
 
 ## 0.3.6
 

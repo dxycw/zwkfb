@@ -274,9 +274,11 @@ interface 流式列溢出范围 : FlowColumnScope { // FlowColumnOverflowScope
  *
  * 在 [ContextualFlowColumn] 中，这与 [ContextualFlowColumn] 的 `itemCount` 参数一致。
  */
-@ExperimentalLayoutApi val FlowColumnOverflowScope.总共项数量: Int get() = this.totalItemCount
+@ExperimentalLayoutApi
+val FlowColumnOverflowScope.总共项数量: Int get() = this.totalItemCount
 
 /** [FlowColumn] 中已显示的条目总数*/
-@ExperimentalLayoutApi val FlowColumnOverflowScope.显示项数量: Int get() = this.shownItemCount
+@ExperimentalLayoutApi
+val FlowColumnOverflowScope.显示项数量: Int get() = this.shownItemCount
 
 //====================================================================================

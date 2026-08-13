@@ -80,6 +80,8 @@ kotlin {
                 api(libs.compose.uiGraphics)
                 api(libs.compose.components.resources)
 
+                //===================================================================
+
                 // 这个库属于 Compose Multiplatform 生态，为 Compose 提供与 ViewModel 的集成支持。
                 api(libs.androidx.lifecycle.viewmodelCompose)
                 // 这个库属于 Compose Multiplatform 生态，为 Compose 提供与 Runtime 的集成支持。
@@ -87,19 +89,27 @@ kotlin {
                 // 这个库属于 Compose Multiplatform 生态，为 Navigation3 提供与 ViewModel 的集成支持。
                 api(libs.androidx.lifecycle.viewmodelNavigation3)
 
+                //===================================================================
+
                 // 图标库，包含 org.jetbrains.compose.material:material-icons-core 里面的图标
                 api(libs.compose.material.iconsExtended)
+
+                //===================================================================
 
                 // 这是一个 Compose Multiplatform 的navigation导航库
                 api(libs.androidx.navigation.compose)
                 // 这是一个 Compose Multiplatform 的navigation3导航库
                 api(libs.androidx.navigation3.ui)
 
+                //===================================================================
+
                 // 是 Kotlin 协程（Coroutines）的核心库
                 api(libs.kotlinx.coroutinesCore)
 
                 // 是 Kotlin 官方的多平台 JSON 序列化库
                 api(libs.kotlinx.serialization)
+
+                //===================================================================
 
                 // 是 Kotlin Multiplatform 版本的 CommonMark Markdown 解析与渲染库
                 api(libs.feiyin0719.commonmark)

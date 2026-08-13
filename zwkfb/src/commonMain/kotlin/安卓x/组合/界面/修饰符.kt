@@ -7,11 +7,7 @@ import androidx.compose.ui.Modifier
  * 伴生对象 `修饰符` 是不包含任何[元素][Element]的空、默认或起始[修饰符]。
  * 使用它来通过修饰符扩展工厂函数创建新的[修饰符]：
  *
- * @sample androidx.compose.ui.samples.ModifierUsageSample
- *
  * 或作为[修饰符]参数的默认值：
- *
- * @sample androidx.compose.ui.samples.ModifierParameterSample
  */
 // 伴生对象实现 `修饰符`，以便它可以作为修饰符扩展工厂表达式的起点。
 object 修饰符 : Modifier {

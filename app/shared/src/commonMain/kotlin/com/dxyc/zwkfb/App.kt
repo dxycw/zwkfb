@@ -1,13 +1,33 @@
 package com.dxyc.zwkfb
 
 import androidx.annotation.IntRange
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalFlexBoxApi
+import androidx.compose.foundation.layout.ExperimentalGridApi
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlexAlignItems
+import androidx.compose.foundation.layout.FlexBox
+import androidx.compose.foundation.layout.FlexBoxConfig
+import androidx.compose.foundation.layout.FlexBoxConfigScope
+import androidx.compose.foundation.layout.FlexDirection
+import androidx.compose.foundation.layout.FlexWrap
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Fr
+import androidx.compose.foundation.layout.Grid
+import androidx.compose.foundation.layout.GridTrackSize
+import androidx.compose.foundation.layout.GridTrackSpec
+import androidx.compose.foundation.layout.columns
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.rows
 import androidx.compose.foundation.layout.safeContentPadding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.input.InputTransformation
 import androidx.compose.foundation.text.input.TextObfuscationMode
 import androidx.compose.foundation.text.input.maxLength
@@ -16,6 +36,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LinearWavyProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -29,14 +51,17 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import 安卓x.组合.基础.布局.列
+import 安卓x.组合.基础.布局.网格
 import 安卓x.组合.基础.布局.行
 import 安卓x.组合.基础.布局.间隔器
 import 安卓x.组合.材质3.图标
@@ -50,7 +75,7 @@ import 自定义.组合.材质3.圆形进度指示器
 import 自定义.组合.材质3.线性进度指示器
 
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalFlexBoxApi::class, ExperimentalGridApi::class)
 @Composable
 @Preview
 fun App() {
@@ -68,32 +93,40 @@ fun App() {
 
             圆形进度指示器()
 
-            按钮(
-                单击回调 = {
-                    信息底部面板值 = true
-                },
-            ){ 文本("打开信息底部面板") }
-        }
+            Grid(
+                config = {
+                    repeat(3) {
+                        column(100.dp)
+                    }
+                    repeat(3) {
+                        row(100.dp)
+                    }
+                }
+            ) {
+                Card(colors = CardDefaults.cardColors(containerColor = Color.Red)){
+                    Text("红色卡片")
+                }
+                Card(colors = CardDefaults.cardColors(containerColor = Color.Green)){
+                    Text("绿色卡片")
+                }
+                Card(colors = CardDefaults.cardColors(containerColor = Color.Blue)){
+                    Text("蓝色卡片")
+                }
+                Card(colors = CardDefaults.cardColors(containerColor = Color.Yellow)){
+                    Text("黄色卡片")
+                }
+                Card(colors = CardDefaults.cardColors(containerColor = Color.Black)){
+                    Text("黑色卡片")
+                }
+                Card(colors = CardDefaults.cardColors(containerColor = Color.Gray)){
+                    Text("灰色卡片")
+                }
+                Card(colors = CardDefaults.cardColors(containerColor = Color.Magenta)){
+                    Text("品红色卡片")
+                }
+            }
 
-        if (信息底部面板值 ){
-            信息底部面板(
-                请求关闭回调 = {
-                    信息底部面板值 = false
-                },
-                标题 = "标题阿达阿达是的阿是打算大打算大声道阿萨德阿萨德阿是",
-                内容 = "撒大声地撒啊实打实大山东科技阿是登记卡搜嘎鲸打卡噶伤筋动骨尽快阿三哥登记卡三个结婚蛋糕哈时间跨度规划局啊送给大家客户噶时间看到过好贱啊说课稿带回家阿三哥很简单噶事看到过回家阿是看到过哈吉斯开关打开撒给大家好看噶数据库的话噶伤筋动骨阿九十多个几哈送给大家灰咖色孤岛惊魂",
-                忽略按钮 = {
-                    信息底部面板值 = false
-                },
-                取消按钮 = {
-                    信息底部面板值 = false
-                },
-                确定按钮 = {
-                    信息底部面板值 = false
-                },
-            )
         }
-
 
     }
 }
