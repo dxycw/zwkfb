@@ -120,9 +120,18 @@ kotlin {
                 // 是 Kotlin Multiplatform 语法高亮引擎
                 api(libs.snipme.highlights)
 
+                //===================================================================
+
+                // 是 Ktor HTTP 客户端的核心模块
+                api(libs.ktor.client.core)
+
+                // 是 Ktor HTTP 客户端的 CIO (Coroutine I/O) 引擎
+                api(libs.ktor.client.cio)
+
+                //===================================================================
+
                 // 是一套现代化、完全可访问的 Jetpack Compose 和 Compose 多平台组件集合。
 //                api("com.composables:ui:0.2.0")
-
 
                 // markdown项目
                 implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.5.1")
@@ -134,9 +143,6 @@ kotlin {
                 implementation("io.github.feiyin0719:commonmark-ext-task-list-items:0.0.2")
                 implementation("io.github.feiyin0719:commonmark-ext-html-converter:0.0.2")
                 implementation("io.coil-kt.coil3:coil-network-ktor3:3.5.0")
-
-
-                implementation("io.ktor:ktor-client-core:3.5.2")
 
             }
         }
@@ -156,16 +162,21 @@ kotlin {
                 // 是 Kotlin 协程（Coroutines）的核心库
                 api(libs.kotlinx.coroutinesAndroid)
 
+                //===================================================================
+
+                // 是 Ktor HTTP 客户端的 Android 引擎（Engine）
+                api(libs.ktor.client.okhttp)
+
+                //===================================================================
 
                 // markdown项目
                 // Compose Markdown Multiplatform
-                implementation("androidx.core:core-ktx:1.19.0")
-                implementation("io.ktor:ktor-client-okhttp:3.5.2")
+
+                // 是 AndroidX Core 库的 Kotlin 扩展包
+//                implementation(libs.androidx.core.ktx)
 
                 // multiplatform-markdown-renderer
                 implementation("io.coil-kt:coil-compose:2.7.0")
-
-
 
                 implementation("io.coil-kt.coil3:coil-network-okhttp:3.5.0")
             }
@@ -186,10 +197,14 @@ kotlin {
                 api(libs.kotlinx.coroutinesSwing)
 //                api("org.jetbrains.kotlinx:kotlinx-coroutines-javafx:1.11.0")
 
+                //===================================================================
+
                 // JNA 核心库
                 api(libs.dev.jna)
                 // JNA Platform（包含 Windows API、POSIX 等封装）
                 api(libs.dev.jnaPlatform)
+
+                //===================================================================
 
                 // 是 FlatLaf —— 一个现代化的 Java Swing 跨平台 Look and Feel（外观与感觉）库。它提供类似 IntelliJ IDEA 的扁平化、高 DPI 支持、深色/浅色主题，并支持自定义主题。
                 api(libs.formdev.flatlaf)
@@ -204,6 +219,7 @@ kotlin {
 //                api("com.formdev:flatlaf-fonts-roboto:2.137")
 //                api("com.formdev:flatlaf-fonts-roboto-mono:3.000")
 
+                //===================================================================
 
 //                // 根据当前构建平台选择 classifier
 //                val javafxPlatform = when {
@@ -222,12 +238,15 @@ kotlin {
 //                api("org.openjfx:javafx-web:21:$javafxPlatform") // WebView（如需要）
 //                api("org.openjfx:javafx-media:21:$javafxPlatform") // 音视频（如需要）
 
+                //===================================================================
+
+                // 是 Ktor HTTP 客户端的 Desktop 引擎（Engine）
+                api(libs.ktor.client.okhttp)
+
+                //===================================================================
 
                 // markdown项目
                 // Compose Markdown Multiplatform
-                implementation("io.ktor:ktor-client-okhttp:3.5.2")
-
-                implementation("io.ktor:ktor-client-cio:3.5.2")
 
                 implementation("io.coil-kt.coil3:coil-network-okhttp:3.5.0")
             }
@@ -238,7 +257,7 @@ kotlin {
             dependencies {
                 // markdown项目
                 // Compose Markdown Multiplatform
-                implementation("io.ktor:ktor-client-darwin:3.5.1")
+                implementation("io.ktor:ktor-client-darwin:3.5.2")
             }
         }
 
@@ -248,7 +267,7 @@ kotlin {
 
                 // markdown项目
                 // Compose Markdown Multiplatform
-                implementation("io.ktor:ktor-client-js:3.5.1")
+                implementation("io.ktor:ktor-client-js-js:3.5.2")
             }
         }
 
@@ -256,7 +275,7 @@ kotlin {
             dependencies {
                 // markdown项目
                 // Compose Markdown Multiplatform
-                implementation("io.ktor:ktor-client-js:3.5.1")
+                implementation("io.ktor:ktor-client-js-wasm-js:3.5.2")
             }
         }
 

@@ -27,6 +27,7 @@ kotlinx-serialization = "1.11.0"
 feiyin0719-commonmark = "0.0.2"
 jetbrains-markdown = "0.7.8"
 snipme-highlights = "1.1.0"
+ktor = "3.5.2"
 
 dev-jna = "5.19.1"
 flatlaf = "3.7.2"
@@ -73,6 +74,9 @@ feiyin0719-commonmark = { module = "io.github.feiyin0719:commonmark", version.re
 jetbrains-markdown = { module = "org.jetbrains:markdown", version.ref = "jetbrains-markdown" }
 ## ----------------------------------------------------------------
 snipme-highlights = { module = "dev.snipme:highlights", version.ref = "snipme-highlights" }
+## ----------------------------------------------------------------
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
 
 #===============================================================
 
@@ -95,8 +99,23 @@ formdev-flatlafIntellijThemes = { module = "com.formdev:flatlaf-intellij-themes"
 
 #===============================================================
 
+# ios依赖库
+
+
+#===============================================================
+
 # js依赖库
 wrappers-browser = { module = "org.jetbrains.kotlin-wrappers:kotlin-browser", version.ref = "kotlin-wrappers" }
+
+#===============================================================
+
+# wasmJs依赖库
+
+
+#===============================================================
+
+# Desktop 和 Android依赖库
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 
 #===============================================================
 

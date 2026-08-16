@@ -20,7 +20,7 @@ object 底部面板默认值 {
 
     @Suppress("ComposableNaming")
     @Composable
-    fun 拖动手柄(
+    fun 拖拽手柄(
         修饰符: Modifier = Modifier,
         宽度: Dp = 32.0.dp,
         高度: Dp = 4.0.dp,

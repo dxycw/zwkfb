@@ -48,7 +48,7 @@ kotlin {
         // 多平台，
         commonMain.dependencies {
             // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb:0.3.7")
+            implementation("com.github.dxycw.zwkfb:zwkfb:0.3.8")
         }
     }
 }
@@ -109,6 +109,18 @@ kotlin {
 
 
 # 更新内容
+
+## 0.3.8
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 添加 Multiplatform平台的 两个“线性波浪进度指示器()”、两个“圆形波浪进度指示器()” 函数组件；
+* 添加 Multiplatform平台的 “波浪进度指示器默认值” 对象类；
+* 添加 Multiplatform平台的 图标集.轮廓 “菜单”、“设置” 属性函数；
+* 添加 Multiplatform平台的 自定义的 “列表选择开关()”、“列表多选择开关()” 函数组件；
+* 添加 Multiplatform平台的 自定义的 “开关列表数据” 数据类；
+* 添加 Multiplatform平台的 io.ktor:ktor-client-core 依赖库版本为 3.5.2；
+* 添加 Multiplatform平台的 io.ktor:ktor-client-cio 依赖库版本为 3.5.2；
+* 添加 Desktop和Android平台的 io.ktor:ktor-client-okhttp 依赖库版本为 3.5.2；
 
 ## 0.3.7
 

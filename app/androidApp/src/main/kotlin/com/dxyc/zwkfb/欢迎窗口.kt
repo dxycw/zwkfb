@@ -21,6 +21,11 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.ExpandLess
+import androidx.compose.material.icons.filled.ExpandMore
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -30,16 +35,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.dxyc.zwkfb.ui.theme.AppTheme
-import 安卓x.组合.材质3.文本
+
+
 
 class 欢迎窗口 : ComponentActivity() {
 
@@ -55,57 +59,27 @@ class 欢迎窗口 : ComponentActivity() {
 
 }
 
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
-@Preview
+
 @SuppressLint("ComposableNaming")
+@Preview
 @Composable
 fun 欢迎界面() {
-    AppTheme(){
-        Scaffold(
-            floatingActionButton = {
-                Button(
-                    onClick = {}
-                ){
-                    文本(
-                        文本 = stringResource(R.string.app_name),
-                        颜色 = MaterialTheme.colorScheme.onPrimary
-                    )
-                }
-            }
-        ){ 内边距 ->
-            Column (
-                modifier = Modifier.padding(内边距)
+    AppTheme{
+        Scaffold { 内边距 ->
+            val 页面状态 = rememberPagerState { 2 }
+
+            HorizontalPager(
+                state = 页面状态,
+                modifier = Modifier
+                    .padding(内边距)
                     .fillMaxSize()
-            ) {
-                文本(
-                    文本 = "欢迎来到灵阁！",
-                    修饰符 = Modifier.padding(start = 20.dp, top = 10.dp, bottom = 30.dp),
-                    颜色 = MaterialTheme.colorScheme.primary,
-                    字体大小 = 35.sp
-                )
-
-                LinearWavyProgressIndicator(
-                    progress = { 0.5f },
-                    modifier = Modifier.fillMaxWidth().padding(top = 10.dp, bottom = 10.dp),
-                    color = MaterialTheme.colorScheme.primary,
-                    stopSize = 0.dp
-                )
-
-                val 页面状态 = rememberPagerState { 3 }
-
-                HorizontalPager(
-                    state = 页面状态,
-                ) { 页面 ->
-                    when (页面) {
-                        0 -> {
-                            系统语言设置界面()
-                        }
-                        1 -> {
-                            系统语言设置界面()
-                        }
-                        2 -> {
-                            系统语言设置界面()
-                        }
+            ) { 页面 ->
+                when (页面) {
+                    0 -> {
+                        系统语言设置界面()
+                    }
+                    1 -> {
+                        系统语言设置界面()
                     }
                 }
             }
@@ -121,25 +95,48 @@ fun 欢迎界面() {
 fun 系统语言设置界面(){
     Column (modifier = Modifier.fillMaxSize()) {
 
-        val count = 4
+        Column {
+            HorizontalDivider()
+            ListItem(
+                headlineContent = { Text("Two line list item with trailing") },
+                supportingContent = { Text("Secondary text") },
+                trailingContent = { Text("meta") },
+                leadingContent = {
+                    Icon(Icons.Filled.Favorite, contentDescription = "Localized description")
+                },
+            )
+            HorizontalDivider()
+            ListItem(
+                headlineContent = { Text("Two line list item with trailing") },
+                supportingContent = { Text("Secondary text") },
+                trailingContent = { Text("meta") },
+                leadingContent = {
+                    Icon(Icons.Filled.Favorite, contentDescription = "Localized description")
+                },
+            )
+            HorizontalDivider()
+        }
+
         val colors = ListItemDefaults.colors(
             containerColor = MaterialTheme.colorScheme.surfaceContainer
         )
         Column(
-            modifier = Modifier.selectableGroup().padding(16.dp),
+            modifier = Modifier
+                .selectableGroup()
+                .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
         ) {
             var selectedIndex: Int? by rememberSaveable { mutableStateOf(null) }
-            repeat(count) { idx ->
+            repeat(4) { idx ->
                 val selected = selectedIndex == idx
                 SegmentedListItem(
                     selected = selected,
                     onClick = { selectedIndex = idx },// if (selected) null else
                     colors = colors,
-                    shapes = ListItemDefaults.segmentedShapes(index = idx, count = count),
+                    shapes = ListItemDefaults.segmentedShapes(index = idx, count = 4),
                     leadingContent = { RadioButton(selected = selected, onClick = null) },
                     trailingContent = {
-                        //if (selected) Icon(Icons.Default.Favorite, contentDescription = null)
+                        if (selected) Icon(Icons.Default.Favorite, contentDescription = null)
                     },
                     supportingContent = { Text("Additional info") },
                     content = { Text("Item ${idx + 1}") },
@@ -154,14 +151,14 @@ fun 系统语言设置界面(){
         val itemCount = 1 + if (expanded) numChildren else 0
         val childrenChecked = rememberSaveable { mutableStateListOf(*Array(numChildren) { false }) }
 
-        val color =
-            ListItemDefaults.colors(containerColor = MaterialTheme.colorScheme.surfaceContainer)
+        val color = ListItemDefaults.colors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainer
+        )
 
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize().selectableGroup().padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
         ) {
-            Spacer(Modifier.height(100.dp))
             SegmentedListItem(
                 onClick = { expanded = !expanded },
                 modifier =
@@ -169,13 +166,13 @@ fun 系统语言设置界面(){
                 colors = color,
                 shapes = ListItemDefaults.segmentedShapes(index = 0, count = itemCount),
                 leadingContent = {
-//                    Icon(Icons.Default.Favorite, contentDescription = null)
+                    Icon(Icons.Default.Favorite, contentDescription = null)
                 },
                 trailingContent = {
-//                    Icon(
-//                        if (expanded) Icons.Default.ExpandLess else Icons.Default.ExpandMore,
-//                        contentDescription = null,
-//                    )
+                    Icon(
+                        if (expanded) Icons.Default.ExpandLess else Icons.Default.ExpandMore,
+                        contentDescription = null,
+                    )
                 },
                 content = { Text("Click to expand/collapse") },
             )
@@ -196,7 +193,7 @@ fun 系统语言设置界面(){
                                     count = itemCount
                                 ),
                             leadingContent = {
-                                //Icon(Icons.Default.Favorite, contentDescription = null)
+                                Icon(Icons.Default.Favorite, contentDescription = null)
                             },
                             trailingContent = {
                                 Checkbox(checked = childrenChecked[idx], onCheckedChange = null)
@@ -311,12 +308,12 @@ fun SegmentedColumn(
                     modifier = Modifier.weight(1f)
                 )
                 if (selected) {
-//                    Icon(
-//                        imageVector = Icons.Default.Check,
-//                        contentDescription = null,
-//                        tint = MaterialTheme.colorScheme.primary,
-//                        modifier = Modifier.size(20.dp)
-//                    )
+                    Icon(
+                        imageVector = Icons.Default.Check,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.size(20.dp)
+                    )
                 }
             }
         }

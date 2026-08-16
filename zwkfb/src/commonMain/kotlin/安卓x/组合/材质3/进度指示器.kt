@@ -290,7 +290,7 @@ object 进度指示器默认值 { // ProgressIndicatorDefaults
     val 圆形指示器轨道间隙大小: Dp = ProgressIndicatorDefaults.CircularIndicatorTrackGapSize
 
     /** 在确定性进度指示器中为进度变化添加动画时，应使用的默认 [androidx.compose.animation.core.AnimationSpec]。*/
-    val 进度动画规范 = ProgressIndicatorDefaults.ProgressAnimationSpec
+    val 进度动画规格 = ProgressIndicatorDefaults.ProgressAnimationSpec
 
     /**
      * 在轨道末端绘制停止指示器。

@@ -159,12 +159,6 @@ fun main() = application {
             icon = painterResource("drawable/compose-multiplatform.xml")
         ) {
 
-            // 启用全窗口内容模式
-            this.window.getRootPane().putClientProperty("JRootPane.fullWindowContent", true);
-
-            // 在 macOS 上还需要占位符来避开红绿灯按钮
-            this.window.getRootPane().putClientProperty("JRootPane.menuBarEmbedded", false);
-
             // 场景 2：自定义标题栏高度
             this.window.getRootPane().putClientProperty("JRootPane.titleBarHeight", 45)
 
