@@ -1,4 +1,4 @@
-package 自定义.活动
+package 自定义.应用
 
 import android.app.Activity
 import android.widget.Toast
@@ -18,8 +18,8 @@ fun Activity.按两次返回桌面(信息: CharSequence = "再按一次返回桌
         Toast.makeText(this, 信息, Toast.LENGTH_SHORT).show()
     } else {
         // 两次点击间隔在阈值内，执行返回桌面
-        this.moveTaskToBack(true)
-    } //返回桌面指令
+        this.退出后台() //返回桌面指令
+    }
 }
 
 

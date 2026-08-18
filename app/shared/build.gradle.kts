@@ -121,6 +121,9 @@ kotlin {
             api("com.mikepenz:aboutlibraries-compose-m3:15.0.3")
             api("com.mikepenz:aboutlibraries-core:15.0.3")
 
+
+            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.8.0")
+
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

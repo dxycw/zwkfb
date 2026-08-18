@@ -1,4 +1,4 @@
-package 自定义.系统.屏幕
+package 自定义.组合.内容.资源
 
 import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!-- 需要添加到 AndroidManifest.xml 中 -->
+<!--    <application>-->
+<!--        &lt;!&ndash; 下载文件所需 &ndash;&gt;-->
+<!--        <provider-->
+<!--            android:name="androidx.core.content.FileProvider"-->
+<!--            android:authorities="${applicationId}.fileprovider"-->
+<!--            android:exported="false"-->
+<!--            android:grantUriPermissions="true">-->
+<!--            <meta-data-->
+<!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
+<!--                android:resource="@xml/file_paths" />-->
+<!--        </provider>-->
+<!--    </application>-->
+
+    <!-- 对应 Context.getExternalFilesDir(null) -->
+    <external-files-path
+        name="external_files"
+        path="." />
+
+    <!-- 对应 Context.getFilesDir() -->
+    <files-path
+        name="internal_files"
+        path="." />
+
+    <!-- 对应 Environment.getExternalStorageDirectory() -->
+    <external-path
+        name="external_storage"
+        path="." />
+
+    <!-- 对应 Context.getCacheDir() -->
+    <cache-path
+        name="cache"
+        path="." />
+</paths>

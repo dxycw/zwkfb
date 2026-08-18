@@ -48,7 +48,7 @@ kotlin {
         // 多平台，
         commonMain.dependencies {
             // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb:0.3.8")
+            implementation("com.github.dxycw.zwkfb:zwkfb:0.3.9")
         }
     }
 }
@@ -109,6 +109,18 @@ kotlin {
 
 
 # 更新内容
+
+## 0.3.9
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 修改 部分代码的包名；
+* 添加 Multiplatform平台的 自定义的 “用默认浏览器打开网址()” 函数组件；
+* 添加 Multiplatform平台的 “科特林.标准”；
+* 添加 Android平台的 “安卓.应用.活动”、“安卓.内容.上下文”、“安卓.内容.对话框接口”、“安卓.内容.意图”；
+* 添加 Android平台的 res的xml 添加“file_paths.xml”下载文件；
+* 添加 Android平台的 自定义的 “活动”和“上下文” 两个“启动活动()”、“启动活动到地址()” 函数组件；
+* 添加 Android平台的 导入 com.louiscad.splitties:splitties-appctx 依赖库内容到 “自定义.内容”；
+* 更新 Gradle 版本为 9.7.0；
 
 ## 0.3.8
 

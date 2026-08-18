@@ -179,6 +179,10 @@ kotlin {
                 implementation("io.coil-kt:coil-compose:2.7.0")
 
                 implementation("io.coil-kt.coil3:coil-network-okhttp:3.5.0")
+
+                // 是 AndroidX Startup 库的核心模块，用于统一管理应用启动时的第三方库初始化。
+                implementation("androidx.startup:startup-runtime:1.2.0")
+
             }
         }
 
