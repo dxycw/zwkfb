@@ -18,9 +18,7 @@ kotlin {
 
 dependencies {
     implementation(project(":app:shared"))
-
     implementation(libs.androidx.activity.compose)
-
     implementation(libs.compose.uiToolingPreview)
     implementation(libs.compose.uiTooling)
 //    implementation("io.github.kevinnzou:compose-webview:0.33.6")

@@ -96,7 +96,6 @@ fun 系统语言设置界面(){
     Column (modifier = Modifier.fillMaxSize()) {
 
         Column {
-            HorizontalDivider()
             ListItem(
                 headlineContent = { Text("Two line list item with trailing") },
                 supportingContent = { Text("Secondary text") },

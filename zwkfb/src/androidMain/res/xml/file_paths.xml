@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths xmlns:android="http://schemas.android.com/apk/res/android">
 
-<!-- 需要添加到 AndroidManifest.xml 中 -->
-<!--    <application>-->
+<!-- 在AndroidManifest.xml添加以下代码 -->
+<!--    <application >-->
 <!--        &lt;!&ndash; 下载文件所需 &ndash;&gt;-->
 <!--        <provider-->
 <!--            android:name="androidx.core.content.FileProvider"-->

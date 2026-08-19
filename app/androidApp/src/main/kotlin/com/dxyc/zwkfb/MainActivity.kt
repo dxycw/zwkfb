@@ -46,8 +46,8 @@ class MainActivity : ComponentActivity() {
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun Home() {
-    val 上下文 = LocalActivity.current
     AppTheme{
+        val 上下文 = LocalActivity.current
         脚手架(
             修饰符 = Modifier.fillMaxSize(),
             悬浮操作按钮 = {
@@ -61,19 +61,16 @@ fun Home() {
                 )
             },
         ) { 内边距 ->
-            var 显示日期选择器 by remember { mutableStateOf(false) }
+
             列(
-                修饰符 = Modifier.padding(内边距).fillMaxSize()
+                修饰符 = Modifier.padding(内边距)
+                    .fillMaxSize()
                     //.verticalScroll(rememberScrollState())
             ) {
 
-                按钮(
-                    单击回调 = { 显示日期选择器 = !显示日期选择器 }
-                ) { 文本("显示") }
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     DateWheelPickerPreview()
                 }
-
 
 //                val backStack = remember { mutableStateListOf("home") }
 //                androidx.navigation3.ui.NavDisplay(
@@ -95,18 +92,6 @@ fun Home() {
 
                 App()
 
-            }
-            if (显示日期选择器) {
-                模态底部面板 (
-                    关闭请求回调 = { 显示日期选择器 = false },
-                ) {
-                    DatePicker(
-                        state = rememberDatePickerState(),
-                        colors = DatePickerDefaults.colors(
-                            containerColor = BottomSheetDefaults.ContainerColor,
-                        ),
-                    )
-                }
             }
         }
     }

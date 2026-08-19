@@ -22,6 +22,12 @@ kotlin {
         }
         minSdk = 24
 
+        // 从 Android Gradle 插件版本 8.8.0 开始
+        // 必须显式开启，否则 androidMain/res 被忽略
+        androidResources {
+            enable = true
+        }
+
         aarMetadata {
             minCompileSdk = 37  // 但这对上游依赖无效
         }
@@ -132,6 +138,8 @@ kotlin {
 
                 // 是一套现代化、完全可访问的 Jetpack Compose 和 Compose 多平台组件集合。
 //                api("com.composables:ui:0.2.0")
+
+                //===================================================================
 
                 // markdown项目
                 implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.5.1")

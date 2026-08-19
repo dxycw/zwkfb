@@ -112,7 +112,6 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
             // required for coil
-//            implementation("io.ktor:ktor-client-core:3.5.1")
 //            implementation("io.coil-kt.coil3:coil-network-ktor3:3.5.0")
 //            implementation("io.coil-kt.coil3:coil-svg:3.5.0")
 
