@@ -113,8 +113,8 @@ kotlin {
 ## 0.4.0
 
 * 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
-* 添加 Multiplatform平台的 “遮罩()” 函数组件。
-* 添加 Multiplatform平台的 “遮罩默认值” 对象类。
+* 添加 Multiplatform平台的 “遮罩()” 函数组件；
+* 添加 Multiplatform平台的 “遮罩默认值” 对象类；
 * 添加 Multiplatform平台的 图标集.圆角 “菜单”、“设置” 属性函数；
 * 添加 Multiplatform平台的 图标集.双色 “菜单”、“设置” 属性函数；
 * 添加 Multiplatform平台的 图标集.锐角 “菜单”、“设置” 属性函数；
@@ -122,8 +122,8 @@ kotlin {
 * 修复 Android平台的 “res”不能使用的Bug；
 * 添加 Android平台的 “res”的“anim”内容；
 * 更新 Multiplatform平台的 composeMultiplatform 依赖库版本为 1.12.0-rc01；
-* 更新 Multiplatform平台的 org.jetbrains:markdown 依赖库版本为 0.7.9。
-* 更新 “kotlin”、“kotlinStdlib” 版本为 2.4.10。
+* 更新 Multiplatform平台的 org.jetbrains:markdown 依赖库版本为 0.7.9；
+* 更新 “kotlin”、“kotlinStdlib” 版本为 2.4.10；
 
 # 老版本更新内容
 
