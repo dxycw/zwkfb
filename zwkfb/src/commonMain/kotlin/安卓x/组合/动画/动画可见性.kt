@@ -147,7 +147,7 @@ fun RowScope.动画可见性(
     标签: String = "AnimatedVisibility",
     内容: @Composable() AnimatedVisibilityScope.() -> Unit,
 ) =
-    AnimatedVisibility(
+    this.AnimatedVisibility(
         visible = 可见,
         modifier = 修饰符,
         enter = 进入,
@@ -210,7 +210,7 @@ fun ColumnScope.动画可见性(
     标签: String = "AnimatedVisibility",
     内容: @Composable AnimatedVisibilityScope.() -> Unit,
 ) =
-    AnimatedVisibility(
+    this.AnimatedVisibility(
         visible = 可见,
         modifier = 修饰符,
         enter = 进入,
@@ -357,7 +357,7 @@ fun RowScope.动画可见性(
     标签: String = "AnimatedVisibility",
     内容: @Composable() AnimatedVisibilityScope.() -> Unit,
 ) =
-    AnimatedVisibility(
+    this.AnimatedVisibility(
         visibleState = 可见状态,
         modifier = 修饰符,
         enter = 进入,
@@ -420,7 +420,7 @@ fun ColumnScope.动画可见性(
     标签: String = "AnimatedVisibility",
     内容: @Composable() AnimatedVisibilityScope.() -> Unit,
 ) =
-    AnimatedVisibility(
+    this.AnimatedVisibility(
         visibleState = 可见状态,
         modifier = 修饰符,
         enter = 进入,
@@ -477,7 +477,14 @@ fun <T> Transition<T>.动画可见性(
     进入: EnterTransition = fadeIn() + expandIn(),
     退出: ExitTransition = shrinkOut() + fadeOut(),
     内容: @Composable() AnimatedVisibilityScope.() -> Unit,
-): Unit = AnimatedVisibility(visible = 可见, modifier = 修饰符, enter = 进入, exit = 退出, content = 内容)
+): Unit =
+    this.AnimatedVisibility(
+        visible = 可见,
+        modifier = 修饰符,
+        enter = 进入,
+        exit = 退出,
+        content = 内容
+    )
 
 
 /**

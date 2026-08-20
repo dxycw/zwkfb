@@ -10,24 +10,14 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.BottomSheetDefaults
-import androidx.compose.material3.DatePicker
-import androidx.compose.material3.DatePickerDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.dxyc.zwkfb.ui.theme.AppTheme
 import 安卓x.组合.基础.布局.列
 import 安卓x.组合.材质3.扩展悬浮操作按钮
-import 安卓x.组合.材质3.按钮
 import 安卓x.组合.材质3.文本
-import 安卓x.组合.材质3.模态底部面板
 import 安卓x.组合.材质3.脚手架
 
 
@@ -35,7 +25,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
-
         setContent { Home() }
     }
 }
@@ -61,13 +50,11 @@ fun Home() {
                 )
             },
         ) { 内边距 ->
-
             列(
                 修饰符 = Modifier.padding(内边距)
                     .fillMaxSize()
                     //.verticalScroll(rememberScrollState())
             ) {
-
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     DateWheelPickerPreview()
                 }
@@ -91,7 +78,6 @@ fun Home() {
 //                }
 
                 App()
-
             }
         }
     }

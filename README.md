@@ -48,7 +48,7 @@ kotlin {
         // 多平台，
         commonMain.dependencies {
             // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb:0.4.0")
+            implementation("com.github.dxycw.zwkfb:zwkfb:0.4.1")
         }
     }
 }
@@ -109,6 +109,21 @@ kotlin {
 
 
 # 更新内容
+
+## 0.4.1
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 添加 Multiplatform平台的 “垂直拖拽手柄()” 函数组件；
+* 添加 Multiplatform平台的 “拖拽手柄颜色集()”、“拖拽手柄形状集()”、“拖拽手柄大小集()” 函数；
+* 添加 Multiplatform平台的 “垂直拖拽手柄默认值” 对象类；
+* 添加 Multiplatform平台的 DragHandleColors “颜色”、“按压颜色”、“拖拽颜色” 函数属性；
+* 添加 Multiplatform平台的 DragHandleShapes “形状”、“按压形状”、“拖拽形状” 函数属性；
+* 添加 Multiplatform平台的 DragHandleSizes “大小”、“按压大小”、“拖拽大小” 函数属性；
+* 添加 Multiplatform平台的 自定义的 “箱子空()”、两个“动画可见性()”、“信息对话框()”、“图像()” 函数组件；
+* 添加 Multiplatform平台的 自定义的 “图像集” 对象类；
+* 添加 Multiplatform平台的 自定义的 “图像集.轮廓.空盒子” 图像；
+* 添加 Android平台的 自定义的 “默认浏览器()”、“默认进度条浏览器()”、“图像()” 函数组件；
+* 添加 Desktop平台的 自定义的 “图像()” 函数组件；
 
 ## 0.4.0
 

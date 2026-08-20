@@ -14,7 +14,7 @@ import androidx.compose.ui.window.DialogProperties
  * @param 使用平台默认宽度 指定对话框内容的宽度是否应限制为平台默认值（该值小于屏幕宽度）。
  * **可能仅用作命名参数**。
  */
-fun 对话框属性( // DialogProperties
+fun 对话框属性集( // DialogProperties
     关闭返回键回调: Boolean = true,
     关闭单击外部回调: Boolean = true,
     使用平台默认宽度: Boolean = true,
@@ -45,18 +45,18 @@ val DialogProperties.使用平台默认宽度: Boolean
  * 的实现中应包含将该对话框从组合层级中移除的逻辑。
  *
  * @param 关闭请求回调 当用户尝试关闭对话框时执行。
- * @param 属性 用于进一步自定义此对话框行为的 [对话框属性]。
+ * @param 属性集 用于进一步自定义此对话框行为的 [对话框属性集]。
  * @param 内容 要在对话框内部显示的内容。
  */
 @Suppress("ComposableNaming")
 @Composable
 fun 对话框( // Dialog
     关闭请求回调: () -> Unit,
-    属性: DialogProperties = DialogProperties(),
+    属性集: DialogProperties = DialogProperties(),
     内容: @Composable () -> Unit,
 ) =
     Dialog(
         onDismissRequest = 关闭请求回调,
-        properties = 属性,
+        properties = 属性集,
         content = 内容
     )

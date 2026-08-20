@@ -5,6 +5,7 @@ import androidx.compose.material.icons.materialPath
 import androidx.compose.ui.graphics.vector.ImageVector
 import 安卓x.组合.材质.图标集.图标集
 
+
 public val 图标集.轮廓.菜单: ImageVector             // 定义公共只读属性"菜单"，类型为 ImageVector，属于"图标集.填充"的扩展属性
     get() {
         if (_菜单 != null) {

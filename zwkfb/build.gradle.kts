@@ -152,6 +152,10 @@ kotlin {
                 implementation("io.github.feiyin0719:commonmark-ext-html-converter:0.0.2")
                 implementation("io.coil-kt.coil3:coil-network-ktor3:3.5.0")
 
+                // 是一个高度可定制的 Compose Multiplatform 日历库
+                // https://github.com/kizitonwose/Calendar
+                implementation("com.kizitonwose.calendar:compose-multiplatform:2.10.1")
+
             }
         }
 
