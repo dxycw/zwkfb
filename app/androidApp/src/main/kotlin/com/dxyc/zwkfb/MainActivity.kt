@@ -1,8 +1,6 @@
 package com.dxyc.zwkfb
 
 import android.content.Intent
-import android.content.res.Configuration
-import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.LocalActivity
@@ -10,7 +8,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -30,9 +27,7 @@ class MainActivity : ComponentActivity() {
 }
 
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Preview
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun Home() {
     AppTheme{
@@ -51,13 +46,14 @@ fun Home() {
             },
         ) { 内边距 ->
             列(
-                修饰符 = Modifier.padding(内边距)
+                修饰符 = Modifier
+                    .padding(内边距)
                     .fillMaxSize()
                     //.verticalScroll(rememberScrollState())
             ) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    DateWheelPickerPreview()
-                }
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                    DateWheelPickerPreview()
+//                }
 
 //                val backStack = remember { mutableStateListOf("home") }
 //                androidx.navigation3.ui.NavDisplay(
@@ -82,5 +78,4 @@ fun Home() {
         }
     }
 }
-
 

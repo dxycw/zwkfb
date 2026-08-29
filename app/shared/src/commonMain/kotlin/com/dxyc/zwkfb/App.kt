@@ -12,8 +12,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Label
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -34,7 +32,6 @@ import 安卓x.组合.材质3.轮廓安全文本字段
 import 自定义.组合.界面.窗口.信息对话框
 
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Preview
 fun App() {
@@ -46,44 +43,21 @@ fun App() {
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-
-//            LunarCalendarScreen(
-////                // 可选：初始选中某天，不传则默认今天
-////                initialSelectedDate = LocalDate(2026, 8, 18),
-//                onDateSelected = { date ->
-//                    val lunar = LunarCalendar.solarToLunar(
-//                        date.year, date.monthNumber, date.dayOfMonth
-//                    )
-//                    println("选中: ${date} -> ${lunar.monthName()}${lunar.dayName()}")
-//                }
-//            )
-
             轮廓安全文本字段限制长度为100()
-
-            Label(
-                label = {
-                    Text("标签")
-                },
-//                isPersistent = true,
-            ){ Text("文本") }
-
             Button(
                 onClick = {
                     显示信息对话框 = true
                 }
-            ) {
-                Text("显示信息对话框")
-            }
-
+            ) { Text("显示信息对话框") }
         }
         if (显示信息对话框){
             信息对话框(
                 关闭请求回调 = {
                     显示信息对话框 = false
                 },
-                忽略按钮单击回调 = {
-                    显示信息对话框 = false
-                },
+//                忽略按钮单击回调 = {
+//                    显示信息对话框 = false
+//                },
                 取消按钮单击回调 ={
                     显示信息对话框 = false
                 },

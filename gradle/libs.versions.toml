@@ -29,6 +29,8 @@ jetbrains-markdown = "0.7.9"
 snipme-highlights = "1.1.0"
 ktor = "3.5.2"
 
+composables = "0.2.0"
+
 dev-jna = "5.19.1"
 flatlaf = "3.7.2"
 
@@ -66,17 +68,17 @@ androidx-navigation-compose = { module = "org.jetbrains.androidx.navigation:navi
 androidx-navigation3-ui = { module = "org.jetbrains.androidx.navigation3:navigation3-ui", version.ref = "androidx-navigation3Ui" }
 ## ----------------------------------------------------------------
 kotlinx-coroutinesCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
-## ----------------------------------------------------------------
 kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 ## ----------------------------------------------------------------
 feiyin0719-commonmark = { module = "io.github.feiyin0719:commonmark", version.ref = "feiyin0719-commonmark" }
 ## ----------------------------------------------------------------
 jetbrains-markdown = { module = "org.jetbrains:markdown", version.ref = "jetbrains-markdown" }
-## ----------------------------------------------------------------
 snipme-highlights = { module = "dev.snipme:highlights", version.ref = "snipme-highlights" }
 ## ----------------------------------------------------------------
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+## ----------------------------------------------------------------
+composables-ui = { module = "com.composables:ui", version.ref = "composables" }
 
 #===============================================================
 

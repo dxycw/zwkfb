@@ -48,7 +48,7 @@ kotlin {
         // 多平台，
         commonMain.dependencies {
             // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb:0.4.1")
+            implementation("com.github.dxycw.zwkfb:zwkfb:0.4.2")
         }
     }
 }
@@ -78,6 +78,16 @@ kotlin {
 
 > [!CAUTION]
 >
+> * 项目>=0.4.2版本：
+>   
+>   如果使用 com.composables:ui 依赖库[官方教程](https://composables.com/ui/docs/theming)，请在项目中添加主题否则报错不能使用：
+> 
+>   ```kotlin
+>   ComposablesTheme {
+>       // 你的 com.composables:ui依赖库 代码
+>   }
+>   ```
+>   
 > * 项目>=0.3.6版本：
 > 
 >   如果使用 org.jetbrains.kotlinx:kotlinx-serialization-json 依赖库[官方教程](https://github.com/Kotlin/kotlinx.serialization)，请在项目中添加以下插件项：
@@ -109,6 +119,17 @@ kotlin {
 
 
 # 更新内容
+
+## 0.4.2
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 添加 Multiplatform平台的 “标签()” 函数组件；
+* 添加 Android平台的 自定义的 “相机扫码()”、“扫码相册手电筒布局()”、“扫码相册手电筒缩放布局()” 函数组件；
+* 添加 Android平台的 “res-drawable”添加“smx.png”图片；
+* 修改 部分代码的位置；
+* 添加 把 “io.github.ismai117:KScan:0.9.2” 和 “io.github.kalinjul.easyqrscan:scanner:0.7.2” 依赖库内容添加到项目中（注意：这两个依赖库是临时添加后续会移除）；
+* 添加 Multiplatform平台的 com.composables:ui 依赖库版本为 0.2.0；
+* 更新 Gradle 版本为 9.7.1；
 
 ## 0.4.1
 

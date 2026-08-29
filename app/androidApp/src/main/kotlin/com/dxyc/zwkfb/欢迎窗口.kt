@@ -16,8 +16,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.pager.HorizontalPager
-import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -66,76 +64,54 @@ class 欢迎窗口 : ComponentActivity() {
 fun 欢迎界面() {
     AppTheme{
         Scaffold { 内边距 ->
-            val 页面状态 = rememberPagerState { 2 }
-
-            HorizontalPager(
-                state = 页面状态,
-                modifier = Modifier
-                    .padding(内边距)
-                    .fillMaxSize()
-            ) { 页面 ->
-                when (页面) {
-                    0 -> {
-                        系统语言设置界面()
-                    }
-                    1 -> {
-                        系统语言设置界面()
-                    }
-                }
-            }
+            系统语言设置界面(
+                Modifier.padding(内边距)
+            )
+//        SegmentedListDemo()
         }
     }
 }
+
+
 
 //=======================================================
 
 @SuppressLint("ComposableNaming")
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
-fun 系统语言设置界面(){
-    Column (modifier = Modifier.fillMaxSize()) {
+fun 系统语言设置界面(
+    modifier: Modifier = Modifier,
+){
+    Column (modifier = modifier.fillMaxSize()) {
 
-        Column {
-            ListItem(
-                headlineContent = { Text("Two line list item with trailing") },
-                supportingContent = { Text("Secondary text") },
-                trailingContent = { Text("meta") },
-                leadingContent = {
-                    Icon(Icons.Filled.Favorite, contentDescription = "Localized description")
-                },
-            )
-            HorizontalDivider()
-            ListItem(
-                headlineContent = { Text("Two line list item with trailing") },
-                supportingContent = { Text("Secondary text") },
-                trailingContent = { Text("meta") },
-                leadingContent = {
-                    Icon(Icons.Filled.Favorite, contentDescription = "Localized description")
-                },
-            )
-            HorizontalDivider()
-        }
-
-        val colors = ListItemDefaults.colors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainer
+        ListItem(
+            headlineContent = { Text("Two line list item with trailing") },
+            supportingContent = { Text("Secondary text") },
+            trailingContent = { Text("meta") },
+            leadingContent = {
+                Icon(Icons.Filled.Favorite, contentDescription = "Localized description")
+            },
         )
+
         Column(
-            modifier = Modifier
-                .selectableGroup()
-                .padding(16.dp),
+            modifier = Modifier.selectableGroup().padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
         ) {
             var selectedIndex: Int? by rememberSaveable { mutableStateOf(null) }
-            repeat(4) { idx ->
+            repeat(2) { idx ->
                 val selected = selectedIndex == idx
                 SegmentedListItem(
                     selected = selected,
-                    onClick = { selectedIndex = idx },// if (selected) null else
-                    colors = colors,
-                    shapes = ListItemDefaults.segmentedShapes(index = idx, count = 4),
+                    onClick = { selectedIndex = idx },
+                    colors = ListItemDefaults.colors(
+                        containerColor = MaterialTheme.colorScheme.surfaceContainer
+                    ),
+                    shapes = ListItemDefaults.segmentedShapes(index = idx, count = 2),
                     leadingContent = { RadioButton(selected = selected, onClick = null) },
                     trailingContent = {
-                        if (selected) Icon(Icons.Default.Favorite, contentDescription = null)
+                        if (selected) Icon(
+                            Icons.Default.Favorite,
+                            contentDescription = null)
                     },
                     supportingContent = { Text("Additional info") },
                     content = { Text("Item ${idx + 1}") },
@@ -143,16 +119,10 @@ fun 系统语言设置界面(){
             }
         }
 
-//        SegmentedListDemo()
-
         var expanded by rememberSaveable { mutableStateOf(false) }
         val numChildren = 3
         val itemCount = 1 + if (expanded) numChildren else 0
         val childrenChecked = rememberSaveable { mutableStateListOf(*Array(numChildren) { false }) }
-
-        val color = ListItemDefaults.colors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainer
-        )
 
         Column(
             modifier = Modifier.fillMaxSize().selectableGroup().padding(16.dp),
@@ -160,9 +130,12 @@ fun 系统语言设置界面(){
         ) {
             SegmentedListItem(
                 onClick = { expanded = !expanded },
-                modifier =
-                    Modifier.semantics { stateDescription = if (expanded) "Expanded" else "Collapsed" },
-                colors = color,
+                modifier = Modifier.semantics {
+                    stateDescription = if (expanded) "Expanded" else "Collapsed"
+                },
+                colors = ListItemDefaults.colors(
+                    containerColor = MaterialTheme.colorScheme.surfaceContainer
+                ),
                 shapes = ListItemDefaults.segmentedShapes(index = 0, count = itemCount),
                 leadingContent = {
                     Icon(Icons.Default.Favorite, contentDescription = null)
@@ -185,9 +158,10 @@ fun 系统语言设置界面(){
                         SegmentedListItem(
                             checked = childrenChecked[idx],
                             onCheckedChange = { childrenChecked[idx] = it },
-                            colors = color,
-                            shapes =
-                                ListItemDefaults.segmentedShapes(
+                            colors = ListItemDefaults.colors(
+                                containerColor = MaterialTheme.colorScheme.surfaceContainer
+                            ),
+                            shapes = ListItemDefaults.segmentedShapes(
                                     index = idx + 1,
                                     count = itemCount
                                 ),
@@ -328,6 +302,8 @@ private fun shapeFor(index: Int, total: Int): Shape = when {
 }
 
 //=======================================================
+
+//、四个“列表项()”、三个“分段列表项()”
 
 //@Preview
 //@SuppressLint("ComposableNaming")

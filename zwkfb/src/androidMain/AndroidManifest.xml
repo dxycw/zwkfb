@@ -11,7 +11,7 @@
             tools:ignore="UnusedAttribute"
             tools:node="merge">
             <meta-data
-                android:name="自定义.内容.AppCtxInitializer"
+                android:name="自定义.内容.应用上下文.AppCtxInitializer"
                 android:value="androidx.startup" />
         </provider>
     </application>

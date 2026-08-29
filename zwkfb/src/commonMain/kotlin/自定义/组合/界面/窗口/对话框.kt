@@ -1,6 +1,7 @@
 package 自定义.组合.界面.窗口
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -8,11 +9,14 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CardElevation
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
@@ -67,24 +71,32 @@ fun 信息对话框(
             border = 边框
         ) {
             Column{
-                Column(modifier = Modifier){
+                Column{
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = 标题对齐,
                         verticalAlignment = Alignment.CenterVertically
                     ){
+
+                        Icon(
+                            imageVector = Icons.Default.Info,
+                            contentDescription = "信息图标",
+                            modifier = Modifier.padding(10.dp),
+                        )
+
                         Text(
                             text = 标题,
-                            modifier = Modifier.padding(10.dp),
+                            modifier = Modifier.fillMaxWidth()
+//                                .background(Color.Gray)
+                                .padding(10.dp),
                             fontSize = 18.sp,
-                            style = MaterialTheme.typography.bodyLarge,
-                            fontWeight = FontWeight.Bold
+                            fontWeight = FontWeight.Bold,
+//                            textAlign = TextAlign.Center
                         )
                     }
                     Text(
                         text = 内容,
                         modifier = Modifier.padding(10.dp).align(内容对齐),
-                        style = MaterialTheme.typography.bodyMedium
                     )
                 }
                 if (确定按钮单击回调 != null || 取消按钮单击回调 != null || 忽略按钮单击回调 != null){

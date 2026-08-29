@@ -85,6 +85,8 @@ kotlin {
                 api(libs.compose.uiToolingPreview)
                 api(libs.compose.uiGraphics)
                 api(libs.compose.components.resources)
+                // 图标库，包含 org.jetbrains.compose.material:material-icons-core 里面的图标
+                api(libs.compose.material.iconsExtended)
 
                 //===================================================================
 
@@ -97,11 +99,6 @@ kotlin {
 
                 //===================================================================
 
-                // 图标库，包含 org.jetbrains.compose.material:material-icons-core 里面的图标
-                api(libs.compose.material.iconsExtended)
-
-                //===================================================================
-
                 // 这是一个 Compose Multiplatform 的navigation导航库
                 api(libs.androidx.navigation.compose)
                 // 这是一个 Compose Multiplatform 的navigation3导航库
@@ -111,7 +108,6 @@ kotlin {
 
                 // 是 Kotlin 协程（Coroutines）的核心库
                 api(libs.kotlinx.coroutinesCore)
-
                 // 是 Kotlin 官方的多平台 JSON 序列化库
                 api(libs.kotlinx.serialization)
 
@@ -119,10 +115,8 @@ kotlin {
 
                 // 是 Kotlin Multiplatform 版本的 CommonMark Markdown 解析与渲染库
                 api(libs.feiyin0719.commonmark)
-
                 // 是 JetBrains 官方用 Kotlin 编写的 Markdown 解析库
                 api(libs.jetbrains.markdown)
-
                 // 是 Kotlin Multiplatform 语法高亮引擎
                 api(libs.snipme.highlights)
 
@@ -130,14 +124,39 @@ kotlin {
 
                 // 是 Ktor HTTP 客户端的核心模块
                 api(libs.ktor.client.core)
-
                 // 是 Ktor HTTP 客户端的 CIO (Coroutine I/O) 引擎
                 api(libs.ktor.client.cio)
 
                 //===================================================================
 
-                // 是一套现代化、完全可访问的 Jetpack Compose 和 Compose 多平台组件集合。
-//                api("com.composables:ui:0.2.0")
+                // 是一套现代化、完全可访问的 Compose 多平台组件集合。
+                api(libs.composables.ui)
+
+                //===================================================================
+//                implementation("io.github.kalinjul.easyqrscan:scanner:0.7.2")
+//                // 是一个跨平台二维码和条码扫描 SDK
+//                api("io.github.ismoy:belzspeedscan:1.0.14")
+
+                //===================================================================
+
+//                api("io.github.generalio.multiweb:webview-compose:0.2.9")
+
+                //===================================================================
+
+                // https://github.com/ismoy/ImagePickerKMP
+                // Photo — 相机拍摄与图库图片选择
+//                api("io.github.ismoy:imagepickerkmp:1.1.5")
+
+//                // Video — 视频录制与图库视频选择
+//                implementation("io.github.ismoy:imagepickerkmp-video:1.1.0") // SOON
+//                // Audio — 音频录制
+//                implementation("io.github.ismoy:imagepickerkmp-audio:1.1.3") // SOON
+//                // Audio Player — 语音消息与音频文件播放
+//                implementation("io.github.ismoy:imagepickerkmp-audioplayer:1.1.3") // SOON
+//                // Scanner — 实时条形码与二维码扫描
+//                implementation("io.github.ismoy:imagepickerkmp-scanner:1.1.3") // SOON
+//                // Video Player — 全功能视频播放
+//                implementation("io.github.ismoy:imagepickerkmp-videoplayer:1.1.3") // SOON
 
                 //===================================================================
 
@@ -170,7 +189,6 @@ kotlin {
 
                 // 是 Android Activity 组件的 Compose 版本，用于在 Compose 中创建 Android 活动
                 api(libs.androidx.activity.compose)
-
                 // 是 Kotlin 协程（Coroutines）的核心库
                 api(libs.kotlinx.coroutinesAndroid)
 
@@ -181,17 +199,26 @@ kotlin {
 
                 //===================================================================
 
+                // CameraX
+//                implementation("androidx.camera:camera-core:1.6.1")
+                implementation("androidx.camera:camera-camera2:1.6.1")
+                implementation("androidx.camera:camera-lifecycle:1.6.1")
+                implementation("androidx.camera:camera-view:1.6.1")
+//                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.11.0")
+//                implementation("androidx.camera:camera-extensions:1.6.1")
+                // 是 CameraX 官方提供的 ML Kit 视觉组件库
+//                implementation("androidx.camera:camera-mlkit-vision:1.6.1") // MlKitAnalyzer
+                // ML Kit
+                implementation("com.google.mlkit:barcode-scanning:17.3.0")
+                // 权限
+                implementation("com.google.accompanist:accompanist-permissions:0.37.3")
+
+                //===================================================================
+
                 // markdown项目
-                // Compose Markdown Multiplatform
-
-                // 是 AndroidX Core 库的 Kotlin 扩展包
-//                implementation(libs.androidx.core.ktx)
-
                 // multiplatform-markdown-renderer
                 implementation("io.coil-kt:coil-compose:2.7.0")
-
                 implementation("io.coil-kt.coil3:coil-network-okhttp:3.5.0")
-
                 // 是 AndroidX Startup 库的核心模块，用于统一管理应用启动时的第三方库初始化。
                 implementation("androidx.startup:startup-runtime:1.2.0")
 
@@ -209,6 +236,8 @@ kotlin {
         getByName("desktopMain")  {
             dependencies {
                 implementation(compose.desktop.currentOs)
+
+                //===================================================================
 
                 api(libs.kotlinx.coroutinesSwing)
 //                api("org.jetbrains.kotlinx:kotlinx-coroutines-javafx:1.11.0")
@@ -256,14 +285,54 @@ kotlin {
 
                 //===================================================================
 
+//                // 是 Jewel UI 库的基础核心模块
+//                api("org.jetbrains.jewel:jewel-foundation:0.39.1-262.9437.29")
+//                // 是 Jewel UI 库的通用组件模块
+//                api("org.jetbrains.jewel:jewel-ui:0.39.1-262.9437.29")
+//                // 是 Jewel UI 库的 Markdown 渲染核心模块
+//                api("org.jetbrains.jewel:jewel-markdown-core:0.39.1-262.9437.29")
+//                // 是 Jewel UI 库的 IntelliJ 风格独立桌面应用主题模块 , 用于在 Java 中使用 IntelliJ 样式的桌面应用
+//                api("org.jetbrains.jewel:jewel-int-ui-standalone:0.39.1-262.9437.29")
+//                // 是 Jewel Markdown 的 GitHub Flavored Markdown (GFM) 表格扩展模块
+////            implementation("org.jetbrains.jewel:jewel-markdown-extensions-gfm-tables:0.34.0-253.32098.37")
+//                // 是 Jewel Markdown 的 GitHub Flavored Markdown (GFM) Alert 扩展模块
+////            implementation("org.jetbrains.jewel:jewel-markdown-extensions-gfm-alerts:0.34.0-253.32098.37")
+//                // 是 Jewel UI 库的自定义装饰窗口模块
+//                api("org.jetbrains.jewel:jewel-decorated-window:0.39.1-262.9437.29")
+//                // ✅ 关键：自定义窗口装饰模块, 是 Jewel UI 库的 IntelliJ 风格装饰窗口模块
+//                api("org.jetbrains.jewel:jewel-int-ui-decorated-window:0.39.1-262.9437.29")
+//                // 是 Jewel Markdown 的自动链接扩展模块
+////            implementation("org.jetbrains.jewel:jewel-markdown-extensions-autolink:0.34.0-253.32098.37")
+//                // 是 Jewel Markdown 的 GitHub Flavored Markdown (GFM) 删除线扩展模块
+////            implementation("org.jetbrains.jewel:jewel-markdown-extensions-gfm-strikethrough:0.34.0-253.32098.37")
+//                //  是 Jewel UI 库的 IntelliJ 平台 Look and Feel (LaF) 桥接模块
+////                api("org.jetbrains.jewel:jewel-ide-laf-bridge:0.13.2-ij-233")
+//                // 是 Jewel Markdown 的图片加载扩展模块
+////            implementation("org.jetbrains.jewel:jewel-markdown-extensions-images:0.34.0-253.32098.37")
+//                // 是 Jewel Markdown 的 IntelliJ 平台 IDE LaF 桥接样式模块
+////            implementation("org.jetbrains.jewel:jewel-markdown-ide-laf-bridge-styling:0.28.0-243.27100")
+//                // 是 Jewel Markdown 的 IntelliJ 风格独立桌面应用样式模块
+////            implementation("org.jetbrains.jewel:jewel-markdown-int-ui-standalone-styling:0.34.0-253.32098.37")
+//                // 是 IntelliJ 平台的图标资源库
+//                api("com.jetbrains.intellij.platform:icons:261.22158.291")
+
+                //===================================================================
+
                 // 是 Ktor HTTP 客户端的 Desktop 引擎（Engine）
                 api(libs.ktor.client.okhttp)
 
                 //===================================================================
 
+                implementation("org.jetbrains.compose.desktop:desktop:1.11.1")
+                implementation("org.bytedeco:javacv:1.5.14")
+                implementation("org.bytedeco:opencv-platform:4.14.0-1.5.14")
+                implementation("com.google.zxing:core:3.5.4")
+                implementation("com.google.zxing:javase:3.5.4")
+
+                //===================================================================
+
                 // markdown项目
                 // Compose Markdown Multiplatform
-
                 implementation("io.coil-kt.coil3:coil-network-okhttp:3.5.0")
             }
 

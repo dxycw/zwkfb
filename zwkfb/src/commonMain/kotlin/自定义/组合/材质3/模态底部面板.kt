@@ -63,7 +63,7 @@ fun 信息底部面板(
     色调阴影: Dp = 0.dp,
     遮罩颜色: Color = BottomSheetDefaults.ScrimColor,
     拖动手柄: @Composable (() -> Unit)? = { DragHandle() },
-    内容窗口边距: @Composable () -> WindowInsets = { BottomSheetDefaults.windowInsets},
+    内容窗口边距: @Composable () -> WindowInsets = { BottomSheetDefaults.modalWindowInsets},
     配置属性: ModalBottomSheetProperties = ModalBottomSheetDefaults.properties,
     忽略文本: String = "忽略",
     忽略按钮: (() -> Unit)? = null,

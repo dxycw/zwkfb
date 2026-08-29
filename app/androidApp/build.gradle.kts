@@ -21,7 +21,6 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.compose.uiToolingPreview)
     implementation(libs.compose.uiTooling)
-//    implementation("io.github.kevinnzou:compose-webview:0.33.6")
 }
 
 android {
@@ -72,8 +71,8 @@ android {
         getByName("release") {
 //            isMinifyEnabled = false
 
-            isMinifyEnabled = true // 是否混淆
-            isShrinkResources = true // 是否压缩资源
+            isMinifyEnabled = true // 混淆
+            isShrinkResources = true // 压缩资源
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"

@@ -3,7 +3,7 @@ package 自定义.系统
 
 import android.content.Intent
 import androidx.core.net.toUri
-import 自定义.内容.appCtx
+import 自定义.内容.应用上下文.appCtx
 
 
 actual fun 用默认浏览器打开网址(网址: String) {

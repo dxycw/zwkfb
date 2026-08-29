@@ -38,8 +38,7 @@ actual fun SelectionFormatText(
             )
         },
         modifier =
-            modifier
-                .invisible()
+            modifier.invisible()
                 .disableAccessibility(),
     ) { measurables, constraints ->
         measurables.map { measurable ->
@@ -51,9 +50,7 @@ actual fun SelectionFormatText(
 }
 
 private fun Modifier.invisible(): Modifier =
-    this
-        .alpha(0f)
-        .size(0.dp)
+    this.alpha(0f).size(0.dp)
 
 private fun Modifier.disableAccessibility(): Modifier =
     this.semantics {
