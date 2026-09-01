@@ -107,6 +107,10 @@ import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.rememberDialogState
 import com.formdev.flatlaf.FlatLightLaf
+import org.publicvalue.multiplatform.qrcode.CameraPosition
+import org.publicvalue.multiplatform.qrcode.CodeType
+import org.publicvalue.multiplatform.qrcode.Scanner
+import org.publicvalue.multiplatform.qrcode.ScannerWithPermissions
 import java.awt.Insets
 import javax.swing.UIManager
 
@@ -503,8 +507,6 @@ fun main() = application {
 //                    Item("退出") {}
 //                }
 //            }
-
-            org.ncgroup.kscan.App()
 
             if (showCloseDialog) {
                 CloseConfirmDialog(

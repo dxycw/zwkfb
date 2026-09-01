@@ -127,26 +127,33 @@ kotlin {
                 // 是 Ktor HTTP 客户端的 CIO (Coroutine I/O) 引擎
                 api(libs.ktor.client.cio)
 
+//                api("io.github.generalio.multiweb:webview-compose:0.2.9")
+
                 //===================================================================
 
                 // 是一套现代化、完全可访问的 Compose 多平台组件集合。
                 api(libs.composables.ui)
 
                 //===================================================================
-//                implementation("io.github.kalinjul.easyqrscan:scanner:0.7.2")
-//                // 是一个跨平台二维码和条码扫描 SDK
-//                api("io.github.ismoy:belzspeedscan:1.0.14")
 
-                //===================================================================
-
-//                api("io.github.generalio.multiweb:webview-compose:0.2.9")
+                // 是由 Mike Penz 开发的一个 Kotlin Multiplatform（KMP）Markdown 渲染库
+                api(libs.mikepenz.multiplatform.markdown.renderer)
+                // 是由 Mike Penz 开发的一个 Kotlin Multiplatform（KMP）Markdown 渲染库的 M2 版本
+                api(libs.mikepenz.multiplatform.markdown.renderer.m2)
+                // 是由 Mike Penz 开发的一个 Kotlin Multiplatform（KMP）Markdown 渲染库的 M3 版本
+                api(libs.mikepenz.multiplatform.markdown.renderer.m3)
+                // 是由 Mike Penz 开发的一个 Kotlin Multiplatform（KMP）Markdown 渲染库的 Coil2 版本
+//                implementation("com.mikepenz:multiplatform-markdown-renderer-coil2:0.45.0")
+                // 是由 Mike Penz 开发的一个 Kotlin Multiplatform（KMP）Markdown 渲染库的 Coil3 版本
+                api(libs.mikepenz.multiplatform.markdown.renderer.coil3)
+                // 是由 Mike Penz 开发的一个 Kotlin Multiplatform（KMP）Markdown 渲染库的 Code 版本
+                api(libs.mikepenz.multiplatform.markdown.renderer.code)
 
                 //===================================================================
 
                 // https://github.com/ismoy/ImagePickerKMP
                 // Photo — 相机拍摄与图库图片选择
 //                api("io.github.ismoy:imagepickerkmp:1.1.5")
-
 //                // Video — 视频录制与图库视频选择
 //                implementation("io.github.ismoy:imagepickerkmp-video:1.1.0") // SOON
 //                // Audio — 音频录制
@@ -154,7 +161,7 @@ kotlin {
 //                // Audio Player — 语音消息与音频文件播放
 //                implementation("io.github.ismoy:imagepickerkmp-audioplayer:1.1.3") // SOON
 //                // Scanner — 实时条形码与二维码扫描
-//                implementation("io.github.ismoy:imagepickerkmp-scanner:1.1.3") // SOON
+//                api("io.github.ismoy:imagepickerkmp-scanner:1.0.0)
 //                // Video Player — 全功能视频播放
 //                implementation("io.github.ismoy:imagepickerkmp-videoplayer:1.1.3") // SOON
 
@@ -171,9 +178,9 @@ kotlin {
                 implementation("io.github.feiyin0719:commonmark-ext-html-converter:0.0.2")
                 implementation("io.coil-kt.coil3:coil-network-ktor3:3.5.0")
 
-                // 是一个高度可定制的 Compose Multiplatform 日历库
-                // https://github.com/kizitonwose/Calendar
-                implementation("com.kizitonwose.calendar:compose-multiplatform:2.10.1")
+//                // 是一个高度可定制的 Compose Multiplatform 日历库
+//                // https://github.com/kizitonwose/Calendar
+//                implementation("com.kizitonwose.calendar:compose-multiplatform:2.10.1")
 
             }
         }
@@ -201,26 +208,26 @@ kotlin {
 
                 // CameraX
 //                implementation("androidx.camera:camera-core:1.6.1")
-                implementation("androidx.camera:camera-camera2:1.6.1")
-                implementation("androidx.camera:camera-lifecycle:1.6.1")
-                implementation("androidx.camera:camera-view:1.6.1")
-//                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.11.0")
+                compileOnly("androidx.camera:camera-camera2:1.6.1")
+                compileOnly("androidx.camera:camera-lifecycle:1.6.1")
+                compileOnly("androidx.camera:camera-view:1.6.1")
 //                implementation("androidx.camera:camera-extensions:1.6.1")
                 // 是 CameraX 官方提供的 ML Kit 视觉组件库
 //                implementation("androidx.camera:camera-mlkit-vision:1.6.1") // MlKitAnalyzer
                 // ML Kit
-                implementation("com.google.mlkit:barcode-scanning:17.3.0")
+                compileOnly("com.google.mlkit:barcode-scanning:17.3.0")
                 // 权限
-                implementation("com.google.accompanist:accompanist-permissions:0.37.3")
+                compileOnly("com.google.accompanist:accompanist-permissions:0.37.3")
 
                 //===================================================================
 
                 // markdown项目
                 // multiplatform-markdown-renderer
-                implementation("io.coil-kt:coil-compose:2.7.0")
-                implementation("io.coil-kt.coil3:coil-network-okhttp:3.5.0")
+                compileOnly("io.coil-kt:coil-compose:2.7.0")
+//                compileOnly("io.coil-kt.coil3:coil-network-okhttp:3.5.0")
+
                 // 是 AndroidX Startup 库的核心模块，用于统一管理应用启动时的第三方库初始化。
-                implementation("androidx.startup:startup-runtime:1.2.0")
+                compileOnly("androidx.startup:startup-runtime:1.2.0")
 
             }
         }
@@ -323,17 +330,17 @@ kotlin {
 
                 //===================================================================
 
-                implementation("org.jetbrains.compose.desktop:desktop:1.11.1")
-                implementation("org.bytedeco:javacv:1.5.14")
-                implementation("org.bytedeco:opencv-platform:4.14.0-1.5.14")
-                implementation("com.google.zxing:core:3.5.4")
-                implementation("com.google.zxing:javase:3.5.4")
+                compileOnly("org.jetbrains.compose.desktop:desktop:1.11.1")
+                compileOnly("org.bytedeco:javacv:1.5.14")
+                compileOnly("org.bytedeco:opencv-platform:4.14.0-1.5.14")
+                compileOnly("com.google.zxing:core:3.5.4")
+                compileOnly("com.google.zxing:javase:3.5.4")
 
                 //===================================================================
 
                 // markdown项目
                 // Compose Markdown Multiplatform
-                implementation("io.coil-kt.coil3:coil-network-okhttp:3.5.0")
+                compileOnly("io.coil-kt.coil3:coil-network-okhttp:3.5.0")
             }
 
         }

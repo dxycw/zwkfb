@@ -14,7 +14,7 @@
 
 [![GitHub](https://jitpack.io/v/dxycw/zwkfb.svg)](https://jitpack.io/#dxycw/zwkfb)
 [![Kotlin](https://img.shields.io/badge/kotlin-v2.4.10-blue.svg?logo=kotlin)](http://kotlinlang.org)
-[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.12.0--rc01-blue)](https://github.com/JetBrains/compose-multiplatform)
+[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.12.0-blue)](https://github.com/JetBrains/compose-multiplatform)
 
 ![badge-android](http://img.shields.io/badge/platform-android-6EDB8D.svg?style=flat)
 ![badge-ios](http://img.shields.io/badge/platform-ios-CDCDCD.svg?style=flat)
@@ -48,7 +48,7 @@ kotlin {
         // 多平台，
         commonMain.dependencies {
             // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb:0.4.2")
+            implementation("com.github.dxycw.zwkfb:zwkfb:0.4.3")
         }
     }
 }
@@ -119,6 +119,18 @@ kotlin {
 
 
 # 更新内容
+
+## 0.4.3
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 优化 把一些依赖库不编译到包里面，减少打包体积大小；
+* 更新 Multiplatform平台的 composeMultiplatform 依赖库版本为 1.12.0；
+* 删除 除 com.mikepenz:multiplatform-markdown-renderer-coil2 依赖库内容的其他依赖库（因为 coil2 在多平台里面使用报错）；
+* 添加 Multiplatform平台的 com.mikepenz:multiplatform-markdown-renderer 依赖库版本为 0.45.0；
+* 添加 Multiplatform平台的 com.mikepenz:multiplatform-markdown-renderer-m2 依赖库版本为 0.45.0；
+* 添加 Multiplatform平台的 com.mikepenz:multiplatform-markdown-renderer-m3 依赖库版本为 0.45.0；
+* 添加 Multiplatform平台的 com.mikepenz:multiplatform-markdown-renderer-coil3 依赖库版本为 0.45.0；
+* 添加 Multiplatform平台的 com.mikepenz:multiplatform-markdown-renderer-code 依赖库版本为 0.45.0；
 
 ## 0.4.2
 
