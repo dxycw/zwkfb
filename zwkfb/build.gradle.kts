@@ -107,9 +107,9 @@ kotlin {
                 //===================================================================
 
                 // 是 Kotlin 协程（Coroutines）的核心库
-                api(libs.kotlinx.coroutinesCore)
+                api(libs.kotlinx.coroutines.core)
                 // 是 Kotlin 官方的多平台 JSON 序列化库
-                api(libs.kotlinx.serialization)
+                api(libs.kotlinx.serialization.json)
 
                 //===================================================================
 
@@ -127,7 +127,8 @@ kotlin {
                 // 是 Ktor HTTP 客户端的 CIO (Coroutine I/O) 引擎
                 api(libs.ktor.client.cio)
 
-//                api("io.github.generalio.multiweb:webview-compose:0.2.9")
+                // 是 MultiWeb —— 一个面向 Kotlin Multiplatform (KMP) 的原生 WebView 组件库。
+                api("io.github.generalio.multiweb:webview-compose:0.2.9")
 
                 //===================================================================
 
@@ -151,19 +152,18 @@ kotlin {
 
                 //===================================================================
 
-                // https://github.com/ismoy/ImagePickerKMP
                 // Photo — 相机拍摄与图库图片选择
-//                api("io.github.ismoy:imagepickerkmp:1.1.5")
+                api("io.github.ismoy:imagepickerkmp:1.1.7")
 //                // Video — 视频录制与图库视频选择
-//                implementation("io.github.ismoy:imagepickerkmp-video:1.1.0") // SOON
+//                api("io.github.ismoy:imagepickerkmp-video:1.1.0") // SOON
 //                // Audio — 音频录制
-//                implementation("io.github.ismoy:imagepickerkmp-audio:1.1.3") // SOON
+//                api("io.github.ismoy:imagepickerkmp-audio:1.1.3") // SOON
 //                // Audio Player — 语音消息与音频文件播放
-//                implementation("io.github.ismoy:imagepickerkmp-audioplayer:1.1.3") // SOON
-//                // Scanner — 实时条形码与二维码扫描
-//                api("io.github.ismoy:imagepickerkmp-scanner:1.0.0)
+//                api("io.github.ismoy:imagepickerkmp-audioplayer:1.1.3") // SOON
+                // Scanner — 实时条形码与二维码扫描
+                api("io.github.ismoy:imagepickerkmp-scanner:1.0.0")
 //                // Video Player — 全功能视频播放
-//                implementation("io.github.ismoy:imagepickerkmp-videoplayer:1.1.3") // SOON
+//                api("io.github.ismoy:imagepickerkmp-videoplayer:1.1.3") // SOON
 
                 //===================================================================
 
@@ -180,7 +180,7 @@ kotlin {
 
 //                // 是一个高度可定制的 Compose Multiplatform 日历库
 //                // https://github.com/kizitonwose/Calendar
-//                implementation("com.kizitonwose.calendar:compose-multiplatform:2.10.1")
+//                api("com.kizitonwose.calendar:compose-multiplatform:2.10.1")
 
             }
         }
@@ -341,8 +341,8 @@ kotlin {
                 // markdown项目
                 // Compose Markdown Multiplatform
                 compileOnly("io.coil-kt.coil3:coil-network-okhttp:3.5.0")
-            }
 
+            }
         }
 
         iosMain {

@@ -1,6 +1,5 @@
 package 自定义.系统
 
-import org.jetbrains.compose.resources.painterResource
 import platform.Foundation.NSURL
 import platform.UIKit.UIApplication
 

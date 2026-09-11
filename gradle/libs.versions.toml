@@ -1,5 +1,5 @@
 [versions]
-agp = "9.3.1"
+agp = "9.4.0"
 android-compileSdk = "37"
 android-minSdk = "24"
 android-targetSdk = "36"
@@ -25,7 +25,7 @@ androidx-navigation3Ui = "1.2.0-alpha02"
 kotlinx-serialization = "1.11.0"
 
 feiyin0719-commonmark = "0.0.2"
-jetbrains-markdown = "0.7.9"
+jetbrains-markdown = "0.7.10"
 snipme-highlights = "1.1.0"
 ktor = "3.5.2"
 
@@ -68,8 +68,8 @@ compose-material-iconsExtended = { module = "org.jetbrains.compose.material:mate
 androidx-navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "androidx-navigationCompose" }
 androidx-navigation3-ui = { module = "org.jetbrains.androidx.navigation3:navigation3-ui", version.ref = "androidx-navigation3Ui" }
 ## ----------------------------------------------------------------
-kotlinx-coroutinesCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
-kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 ## ----------------------------------------------------------------
 feiyin0719-commonmark = { module = "io.github.feiyin0719:commonmark", version.ref = "feiyin0719-commonmark" }
 ## ----------------------------------------------------------------

@@ -48,7 +48,7 @@ kotlin {
         // 多平台，
         commonMain.dependencies {
             // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb:0.4.3")
+            implementation("com.github.dxycw.zwkfb:zwkfb:0.4.4")
         }
     }
 }
@@ -119,6 +119,16 @@ kotlin {
 
 
 # 更新内容
+
+## 0.4.4
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 添加 Multiplatform平台的 自定义的 “加载对话框”、“自定义加载对话框” 函数组件；
+* 添加 Multiplatform平台的 io.github.generalio.multiweb:webview-compose 依赖库版本为 0.2.9；
+* 添加 Multiplatform平台的 io.github.ismoy:imagepickerkmp 依赖库版本为 1.1.7；
+* 添加 Multiplatform平台的 io.github.ismoy:imagepickerkmp-scanner 依赖库版本为 1.0.0；
+* 更新 Multiplatform平台的 org.jetbrains:markdown 依赖库版本为 0.7.10；
+* 更新 AGP 版本为 9.4.0；
 
 ## 0.4.3
 
