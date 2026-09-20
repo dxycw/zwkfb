@@ -27,7 +27,6 @@ dependencyResolutionManagement {
 //        maven { url = uri("https://jitpack.io") }  // 添加 JitPack 仓库
 //        maven { url = uri("https://maven.mozilla.org/maven2") } // 使用org.mozilla.geckoview依赖库需要添加此仓库
 
-        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
 //        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
 //        maven("https://packages.jetbrains.team/maven/p/kpm/public/")
 //
@@ -37,7 +36,7 @@ dependencyResolutionManagement {
 }
 
 plugins {
-    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
+    id("org.gradle.toolchains.foojay-resolver-convention") version "0.7.0"
 }
 
 rootProject.name = "Zwkfbmultiplatform"
