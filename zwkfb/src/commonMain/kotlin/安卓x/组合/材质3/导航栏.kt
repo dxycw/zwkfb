@@ -4,10 +4,8 @@ import androidx.compose.foundation.interaction.Interaction
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.material3.DefaultNavigationBarOverride.NavigationBar
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
@@ -34,7 +32,6 @@ import androidx.compose.ui.unit.Dp
  * @param 内容 此导航栏的内容，通常为 3-5 个 [NavigationBarItem]。
  */
 @Suppress("ComposableNaming")
-@OptIn(ExperimentalMaterial3ComponentOverrideApi::class)
 @Composable
 fun 导航栏(
     修饰符: Modifier = Modifier,
@@ -237,8 +234,3 @@ val NavigationBarItemColors.禁用图标颜色: Color
 val NavigationBarItemColors.禁用文本颜色: Color
     get() = this.disabledTextColor
 
-//================================================================================
-
-/** 包含当前选中的 [NavigationBarOverride] 的 CompositionLocal。 */
-@ExperimentalMaterial3ComponentOverrideApi
-val 本地导航栏覆盖: ProvidableCompositionLocal<NavigationBarOverride> = LocalNavigationBarOverride

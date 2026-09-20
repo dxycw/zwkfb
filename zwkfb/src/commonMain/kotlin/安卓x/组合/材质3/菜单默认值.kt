@@ -11,39 +11,47 @@ import androidx.compose.material3.MenuItemShapes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuPopup
 import androidx.compose.material3.MenuDefaults
 import androidx.compose.material3.MenuDefaults.rememberDropdownMenuPopupPositionProvider
+import androidx.compose.material3.SelectableMenuItemColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.PopupProperties
 
 
 /** 包含 [下拉菜单] 和 [下拉菜单项] 使用的默认值。 */
 object 菜单默认值 { // MenuDefaults
 
+    /** [DropdownMenu] 和 [DropdownMenuPopup] 中使用的默认 [PopupProperties]。 */
+    val 默认菜单属性集: PopupProperties = MenuDefaults.DefaultMenuProperties
+
     /** 菜单的默认色调高度。 */
-    val 色调阴影 = MenuDefaults.TonalElevation
+    val 色调阴影: Dp = MenuDefaults.TonalElevation
 
     /** 菜单的默认阴影高度。 */
-    val 视觉阴影 = MenuDefaults.ShadowElevation
+    val 视觉阴影: Dp = MenuDefaults.ShadowElevation
 
     /** 菜单项的默认前置图标尺寸。*/
-    val 前导图标大小 = MenuDefaults.LeadingIconSize
+    val 前导图标大小: Dp = MenuDefaults.LeadingIconSize
 
     /** 菜单项的默认尾部图标尺寸。 */
-    val 尾随图标大小
+    val 尾随图标大小: Dp
         get() = MenuDefaults.TrailingIconSize
 
     /** 菜单的默认形状。 */
-    val 形状
+    val 形状: Shape
         @Composable get() = MenuDefaults.shape
 
     /** 菜单的默认容器颜色。 */
-    val 容器颜色
+    val 容器颜色: Color
         @Composable get() = MenuDefaults.containerColor
 
     /**
@@ -118,8 +126,8 @@ object 菜单默认值 { // MenuDefaults
     /** 用于菜单分组中 [HorizontalDivider] 的默认内边距。将此内边距值用于 [HorizontalDivider] 的 padding 修饰符中。*/
     val 水平分隔线内边距: PaddingValues = MenuDefaults.HorizontalDividerPadding
 
-    /** 菜单分组标签的默认水平内边距。请参阅 [MenuDefaults.Label]。 */
-    val 下拉菜单组标签水平内边距 = MenuDefaults.DropdownMenuGroupLabelHorizontalPadding
+    /** 菜单分组标签的默认水平内边距。请参阅 [MenuDefaults.DropdownMenuGroupLabel]。 */
+    val 下拉菜单组标签水平内边距: PaddingValues = MenuDefaults.DropdownMenuGroupLabelHorizontalPadding
 
     /**
      * 一个 [MenuGroupShapes] 构造器，用于指定当菜单中共有 [数量] 个分组时，位于 [索引] 位置的分组应使用的形状。
@@ -201,11 +209,18 @@ object 菜单默认值 { // MenuDefaults
      */
     @Suppress("ComposableNaming")
     @Composable
-    fun 标签(
+    fun 下拉菜单组标签(
+        修饰符: Modifier = Modifier,
         内容对齐: Alignment = Alignment.CenterStart,
         内边距: PaddingValues = MenuDefaults.DropdownMenuGroupLabelHorizontalPadding,
         内容: @Composable () -> Unit,
-    ) = MenuDefaults.Label(contentAlignment = 内容对齐, padding = 内边距, content = 内容,)
+    ) =
+        MenuDefaults.DropdownMenuGroupLabel(
+            modifier = 修饰符,
+            contentAlignment = 内容对齐,
+            padding = 内边距,
+            content = 内容,
+        )
 
     /** 菜单组尾部标签的默认水平内边距。详见 [MenuDefaults.DropdownMenuItemTrailingLabel]。*/
     val 下拉菜单项尾随标签水平内边距
@@ -252,47 +267,83 @@ object 菜单默认值 { // MenuDefaults
             disabledTrailingIconColor = 禁用尾随图标颜色,
         )
 
+    /** 创建一个 [MenuItemColors]，表示鲜艳的（vibrant）配色变体 [DropdownMenuItem] 中使用的默认文本、图标和容器颜色。*/
+    @Composable
+    fun 项鲜艳颜色集(): MenuItemColors =
+        MenuDefaults.itemVibrantColors()
+
+    /**
+     * 创建一个 [MenuItemColors]，表示 [DropdownMenuItem] 中使用的默认文本和图标颜色。
+     *
+     * @param 文本颜色 此 [DropdownMenuItem] 启用时的文本颜色。
+     * @param 前导图标颜色 此 [DropdownMenuItem] 启用时的前置图标颜色。
+     * @param 尾随图标颜色 此 [DropdownMenuItem] 启用时的尾部图标颜色。
+     * @param 禁用文本颜色 此 [DropdownMenuItem] 未启用时的文本颜色。
+     * @param 禁用前导图标颜色 此 [DropdownMenuItem] 未启用时的前置图标颜色。
+     * @param 禁用尾随图标颜色 此 [DropdownMenuItem] 未启用时的尾部图标颜色。
+     */
+    @Composable
+    fun 项鲜艳颜色集(
+        文本颜色: Color = Color.Unspecified,
+        前导图标颜色: Color = Color.Unspecified,
+        尾随图标颜色: Color = Color.Unspecified,
+        禁用文本颜色: Color = Color.Unspecified,
+        禁用前导图标颜色: Color = Color.Unspecified,
+        禁用尾随图标颜色: Color = Color.Unspecified,
+    ): MenuItemColors =
+        MenuDefaults.itemVibrantColors(
+            textColor = 文本颜色,
+            leadingIconColor = 前导图标颜色,
+            trailingIconColor = 尾随图标颜色,
+            disabledTextColor = 禁用文本颜色,
+            disabledLeadingIconColor = 禁用前导图标颜色,
+            disabledTrailingIconColor = 禁用尾随图标颜色,
+        )
+
+
     /**
      * 创建一个 [MenuItemColors]，表示标准颜色变体 [DropdownMenuItem] 中使用的默认文本、图标和容器颜色。
      *
      * @param 文本颜色 此 [DropdownMenuItem] 启用时的文本颜色。
      * @param 容器颜色 此 [DropdownMenuItem] 启用且未选中时的容器颜色。
      * @param 前导图标颜色 此 [DropdownMenuItem] 启用时的前置图标颜色。
-     * @param 尾随图标颜色 此 [DropdownMenuItem] 启用时的尾部图标颜色。
+     * @param 尾随内容颜色 此 [DropdownMenuItem] 启用时的尾部图标颜色。
      * @param 禁用文本颜色 此 [DropdownMenuItem] 未启用时的文本颜色。
      * @param 禁用前导图标颜色 此 [DropdownMenuItem] 未启用时的前置图标颜色。
-     * @param 禁用尾随图标颜色 此 [DropdownMenuItem] 未启用时的尾部图标颜色。
+     * @param 禁用尾随内容颜色 此 [DropdownMenuItem] 未启用时的尾部图标颜色。
      * @param 已选择容器颜色 此 [DropdownMenuItem] 启用且选中时的容器颜色。
      * @param 已选择文本颜色 此 [DropdownMenuItem] 启用且选中时的文本颜色。
      * @param 已选择前导图标颜色 此 [DropdownMenuItem] 启用且选中时的前置图标颜色。
-     * @param 已选择尾随图标颜色 此 [DropdownMenuItem] 启用且选中时的尾部图标颜色。
+     * @param 已选择尾随内容颜色 此 [DropdownMenuItem] 启用且选中时的尾部图标颜色。
      */
     @Composable
     fun 选择项颜色集(
         文本颜色: Color = Color.Unspecified,
         容器颜色: Color = Color.Unspecified,
         前导图标颜色: Color = Color.Unspecified,
-        尾随图标颜色: Color = Color.Unspecified,
+        尾随内容颜色: Color = Color.Unspecified,
         禁用文本颜色: Color = Color.Unspecified,
+        禁用容器颜色: Color = Color.Unspecified,
         禁用前导图标颜色: Color = Color.Unspecified,
-        禁用尾随图标颜色: Color = Color.Unspecified,
-        已选择容器颜色: Color = Color.Unspecified,
+        禁用尾随内容颜色: Color = Color.Unspecified,
         已选择文本颜色: Color = Color.Unspecified,
+        已选择容器颜色: Color = Color.Unspecified,
         已选择前导图标颜色: Color = Color.Unspecified,
-        已选择尾随图标颜色: Color = Color.Unspecified,
-    ): MenuItemColors =
+        已选择尾随内容颜色: Color = Color.Unspecified,
+    ): SelectableMenuItemColors =
         MenuDefaults.selectableItemColors(
             textColor = 文本颜色,
             containerColor = 容器颜色,
             leadingIconColor = 前导图标颜色,
-            trailingIconColor = 尾随图标颜色,
+            trailingContentColor = 尾随内容颜色,
             disabledTextColor = 禁用文本颜色,
+            disabledContainerColor = 禁用容器颜色,
             disabledLeadingIconColor = 禁用前导图标颜色,
-            disabledTrailingIconColor = 禁用尾随图标颜色,
-            selectedContainerColor = 已选择容器颜色,
+            disabledTrailingContentColor = 禁用尾随内容颜色,
             selectedTextColor = 已选择文本颜色,
+            selectedContainerColor = 已选择容器颜色,
             selectedLeadingIconColor = 已选择前导图标颜色,
-            selectedTrailingIconColor = 已选择尾随图标颜色,
+            selectedTrailingContentColor = 已选择尾随内容颜色,
         )
 
     /**
@@ -301,41 +352,41 @@ object 菜单默认值 { // MenuDefaults
      * @param 文本颜色 此 [DropdownMenuItem] 启用时的文本颜色。
      * @param 容器颜色 此 [DropdownMenuItem] 启用且未选中时的容器颜色。
      * @param 前导图标颜色 此 [DropdownMenuItem] 启用时的前置图标颜色。
-     * @param 尾随图标颜色 此 [DropdownMenuItem] 启用时的尾部图标颜色。
+     * @param 尾随内容颜色 此 [DropdownMenuItem] 启用时的尾部图标颜色。
      * @param 禁用文本颜色 此 [DropdownMenuItem] 未启用时的文本颜色。
      * @param 禁用前导图标颜色 此 [DropdownMenuItem] 未启用时的前置图标颜色。
-     * @param 禁用尾随图标颜色 此 [DropdownMenuItem] 未启用时的尾部图标颜色。
+     * @param 禁用尾随内容颜色 此 [DropdownMenuItem] 未启用时的尾部图标颜色。
      * @param 已选择容器颜色 此 [DropdownMenuItem] 启用且选中时的容器颜色。
      * @param 已选择文本颜色 此 [DropdownMenuItem] 启用且选中时的文本颜色。
      * @param 已选择前导图标颜色 此 [DropdownMenuItem] 启用且选中时的前置图标颜色。
-     * @param 已选择尾随图标颜色 此 [DropdownMenuItem] 启用且选中时的尾部图标颜色。
+     * @param 已选择尾随内容颜色 此 [DropdownMenuItem] 启用且选中时的尾部图标颜色。
      */
     @Composable
     fun 选择项变体颜色集(
         文本颜色: Color = Color.Unspecified,
         容器颜色: Color = Color.Unspecified,
         前导图标颜色: Color = Color.Unspecified,
-        尾随图标颜色: Color = Color.Unspecified,
+        尾随内容颜色: Color = Color.Unspecified,
         禁用文本颜色: Color = Color.Unspecified,
         禁用前导图标颜色: Color = Color.Unspecified,
-        禁用尾随图标颜色: Color = Color.Unspecified,
+        禁用尾随内容颜色: Color = Color.Unspecified,
         已选择容器颜色: Color = Color.Unspecified,
         已选择文本颜色: Color = Color.Unspecified,
         已选择前导图标颜色: Color = Color.Unspecified,
-        已选择尾随图标颜色: Color = Color.Unspecified,
-    ): MenuItemColors =
+        已选择尾随内容颜色: Color = Color.Unspecified,
+    ): SelectableMenuItemColors =
         MenuDefaults.selectableItemVibrantColors(
             textColor = 文本颜色,
             containerColor = 容器颜色,
             leadingIconColor = 前导图标颜色,
-            trailingIconColor = 尾随图标颜色,
+            trailingContentColor = 尾随内容颜色,
             disabledTextColor = 禁用文本颜色,
             disabledLeadingIconColor = 禁用前导图标颜色,
-            disabledTrailingIconColor = 禁用尾随图标颜色,
+            disabledTrailingContentColor = 禁用尾随内容颜色,
             selectedContainerColor = 已选择容器颜色,
             selectedTextColor = 已选择文本颜色,
             selectedLeadingIconColor = 已选择前导图标颜色,
-            selectedTrailingIconColor = 已选择尾随图标颜色,
+            selectedTrailingContentColor = 已选择尾随内容颜色,
         )
 
     /**
@@ -363,13 +414,13 @@ object 菜单默认值 { // MenuDefaults
         get() = MenuDefaults.DropdownMenuItemHorizontalArrangement
 
     /** [DropdownMenuItem] 使用的默认内边距。 */
-    val 下拉菜单项内容内边距 = MenuDefaults.DropdownMenuItemContentPadding
+    val 下拉菜单项内容内边距: PaddingValues = MenuDefaults.DropdownMenuItemContentPadding
 
     /** 用于可选 [DropdownMenuItem] 的默认内边距。 */
-    val 下拉菜单可选中项内容内边距
+    val 下拉菜单可选中项内容内边距: PaddingValues
         get() = MenuDefaults.DropdownMenuSelectableItemContentPadding
 
     /** [DropdownMenuGroup] 使用的默认内边距。 */
-    val 下拉菜单组内容内边距 = MenuDefaults.DropdownMenuGroupContentPadding
+    val 下拉菜单组内容内边距: PaddingValues = MenuDefaults.DropdownMenuGroupContentPadding
 
 }

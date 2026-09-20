@@ -106,26 +106,6 @@ object 材质主题 { // MaterialTheme
         get() = MaterialTheme.LocalMaterialTheme
 
     /**
-     * 一个只读的 `CompositionLocal`，用于向 Material 3 组件提供当前的 [动效方案][动画方案]。
-     *
-     * 动效方案通常由 [材质主题.动效方案][MaterialTheme.motionScheme] 提供，并且可以通过用另一个 [材质主题][材质主题]
-     * 包装特定的 UI 子树来覆盖它。
-     *
-     * 暴露此 API 是为了允许从 CompositionLocalConsumerModifierNode 实现内部检索动效值，但在大多数情况下，建议从
-     * [材质主题.动效方案][MaterialTheme.motionScheme] 中读取动效值。
-     */
-    @Suppress("ExperimentalPropertyAnnotation")
-    @ExperimentalMaterial3ExpressiveApi
-    @Deprecated(
-        level = DeprecationLevel.WARNING,
-        message = "Use [LocalMaterialTheme.current.motionScheme] instead",
-    )
-    val 本地动画方案: CompositionLocal<MotionScheme>
-        get() = MaterialTheme.LocalMotionScheme
-
-
-
-    /**
      * Material 3 包含不同的主题子系统，以允许在整个 UI 层级结构中进行视觉自定义。
      *
      * 组件在获取默认值时，会使用此处提供的属性。

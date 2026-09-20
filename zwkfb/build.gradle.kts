@@ -170,6 +170,7 @@ kotlin {
                 // markdown项目
                 implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.5.1")
                 implementation("io.coil-kt.coil3:coil-compose:3.5.0")
+//                implementation("io.coil-kt.coil3:coil-network-okhttp:3.5.0")
 
                 // Compose Markdown Multiplatform
                 implementation("io.github.feiyin0719:commonmark-ext-gfm-tables:0.0.2")
@@ -224,7 +225,6 @@ kotlin {
                 // markdown项目
                 // multiplatform-markdown-renderer
                 compileOnly("io.coil-kt:coil-compose:2.7.0")
-//                compileOnly("io.coil-kt.coil3:coil-network-okhttp:3.5.0")
 
                 // 是 AndroidX Startup 库的核心模块，用于统一管理应用启动时的第三方库初始化。
                 compileOnly("androidx.startup:startup-runtime:1.2.0")

@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.TooltipBox
 import androidx.compose.material3.TooltipDefaults
 import androidx.compose.material3.TooltipScope
@@ -32,6 +33,7 @@ import 自定义.组合.基础.可单击变灰
  */
 @Suppress("ComposableNaming")
 @Composable
+@ExperimentalMaterial3Api
 fun 组件变灰提示盒子(
     单击回调: () -> Unit,
     修饰符: Modifier = Modifier,
@@ -69,6 +71,7 @@ fun 组件变灰提示盒子(
  */
 @Suppress("ComposableNaming")
 @Composable
+@ExperimentalMaterial3Api
 fun 组件变灰提示行(
     单击回调: () -> Unit,
     修饰符: Modifier = Modifier,
@@ -107,6 +110,7 @@ fun 组件变灰提示行(
  */
 @Suppress("ComposableNaming")
 @Composable
+@ExperimentalMaterial3Api
 fun 组件变灰提示列(
     单击回调: () -> Unit,
     修饰符: Modifier = Modifier,

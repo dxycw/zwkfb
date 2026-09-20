@@ -142,8 +142,6 @@ kotlin {
 //            implementation("io.coil-kt.coil3:coil-network-ktor3:3.5.0")
 //            implementation("io.coil-kt.coil3:coil-svg:3.5.0")
 
-            implementation( "io.github.ismoy:imagepickerkmp:1.1.5")
-
             // about libs
             api("com.mikepenz:aboutlibraries-compose-core:15.0.3")
             api("com.mikepenz:aboutlibraries-compose-m3:15.0.3")

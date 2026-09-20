@@ -4,7 +4,10 @@ package 安卓x.组合.材质3
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.annotation.IntRange
+import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.TimeInput
+import androidx.compose.material3.TimeInputColors
+import androidx.compose.material3.TimeInputDefaults
 import androidx.compose.material3.TimePicker
 import androidx.compose.material3.TimePickerColors
 import androidx.compose.material3.TimePickerDefaults
@@ -12,6 +15,7 @@ import androidx.compose.material3.TimePickerLayoutType
 import androidx.compose.material3.TimePickerSelectionMode
 import androidx.compose.material3.TimePickerShapes
 import androidx.compose.material3.TimePickerState
+import androidx.compose.material3.TimeScroll
 import androidx.compose.material3.isHourInputValid
 import androidx.compose.material3.isInputValid
 import androidx.compose.material3.isMinuteInputValid
@@ -24,6 +28,7 @@ import androidx.compose.runtime.Stable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.takeOrElse
 
 
 /**
@@ -77,7 +82,7 @@ fun 时间选择器(
     状态: TimePickerState,
     形状集: TimePickerShapes,
     修饰符: Modifier = Modifier,
-    颜色集: TimePickerColors = TimePickerDefaults.richColors(),
+    颜色集: TimePickerColors = TimePickerDefaults.vibrantColors(),
     布局类型: TimePickerLayoutType = TimePickerDefaults.layoutType(),
 )=
     TimePicker(
@@ -102,7 +107,7 @@ fun 时间选择器(
 fun 时间输入(
     状态: TimePickerState,
     修饰符: Modifier = Modifier,
-    颜色集: TimePickerColors = TimePickerDefaults.colors(),
+    颜色集: TimeInputColors = TimeInputDefaults.colors(),
 ) =
     TimeInput(
         state = 状态,
@@ -126,11 +131,93 @@ fun 时间输入(
     状态: TimePickerState,
     形状集: TimePickerShapes,
     修饰符: Modifier = Modifier,
-    颜色集: TimePickerColors = TimePickerDefaults.richColors(),
+    颜色集: TimeInputColors = TimeInputDefaults.vibrantColors(),
 ) =
     TimeInput(
         state = 状态,
         shapes = 形状集,
+        modifier = 修饰符,
+        colors = 颜色集
+    )
+
+/**
+ * 时间选择器帮助用户选择和设置特定时间。
+ *
+ * 显示一个丰富的时间输入界面，允许用户通过两个文本字段输入时间，一个用于分钟，一个用于小时。通过 [TimePickerState] 订阅更新。
+ *
+ * @param 状态 此时间选择器的状态，允许订阅 [TimePickerState.hour] 和 [TimePickerState.minute] 的变化，并设置此选择器的初始时间。
+ * @param 形状集 用于解析此时间输入在不同状态下所用形状的 [TimePickerShapes]。
+ * @param 切换 可选的切换开关，用于在不同的选择器模式之间切换，例如在 [TimeInput]（时间输入）和 [TimeScroll]（时间滚动）之间切换。
+ * @param 修饰符 要应用于此时间输入的 [Modifier]。
+ * @param 颜色集 用于解析此时间输入在不同状态下所用颜色的 [TimePickerColors]。参见 [TimePickerDefaults.vibrantColors]。
+ */
+@Suppress("ComposableNaming")
+@Composable
+fun 时间输入(
+    状态: TimePickerState,
+    形状集: TimePickerShapes,
+    切换: @Composable () -> Unit,
+    修饰符: Modifier = Modifier,
+    颜色集: TimeInputColors = TimeInputDefaults.vibrantColors(),
+) =
+    TimeInput(
+        state = 状态,
+        shapes = 形状集,
+        toggle = 切换,
+        modifier = 修饰符,
+        colors = 颜色集
+    )
+
+
+/**
+ * 时间选择器帮助用户选择和设置特定时间。
+ *
+ * 显示一个丰富的时间输入界面，允许用户通过两个文本字段输入时间，一个用于分钟，一个用于小时。通过 [TimePickerState] 订阅更新。
+ *
+ * @param 状态 此时间选择器的状态，允许订阅 [TimePickerState.hour] 和 [TimePickerState.minute] 的变化，并设置此选择器的初始时间。
+ * @param 形状集 用于解析此时间输入在不同状态下所用形状的 [TimePickerShapes]。
+ * @param 修饰符 要应用于此时间输入的 [Modifier]。
+ * @param 颜色集 用于解析此时间输入在不同状态下所用颜色的 [TimePickerColors]。参见 [TimePickerDefaults.richColors]。
+ */
+@Suppress("ComposableNaming")
+@Composable
+fun 时间滚动(
+    状态: TimePickerState,
+    形状集: TimePickerShapes,
+    修饰符: Modifier = Modifier,
+    颜色集: TimePickerColors = TimePickerDefaults.vibrantColors(),
+) =
+    TimeScroll(
+        state = 状态,
+        shapes = 形状集,
+        modifier = 修饰符,
+        colors = 颜色集
+    )
+
+/**
+ * 时间选择器帮助用户选择和设置特定时间。
+ *
+ * 显示一个丰富的时间输入界面，允许用户通过两个文本字段输入时间，一个用于分钟，一个用于小时。通过 [TimePickerState] 订阅更新。
+ *
+ * @param 状态 此时间选择器的状态，允许订阅 [TimePickerState.hour] 和 [TimePickerState.minute] 的变化，并设置此选择器的初始时间。
+ * @param 形状集 用于解析此时间输入在不同状态下所用形状的 [TimePickerShapes]。
+ * @param 切换 可选的切换开关，用于在不同的选择器模式之间切换，例如在 [TimeInput]（时间输入）和 [TimeScroll]（时间滚动）之间切换。
+ * @param 修饰符 要应用于此时间输入的 [Modifier]。
+ * @param 颜色集 用于解析此时间输入在不同状态下所用颜色的 [TimePickerColors]。参见 [TimePickerDefaults.richColors]。
+ */
+@Suppress("ComposableNaming")
+@Composable
+fun 时间滚动(
+    状态: TimePickerState,
+    形状集: TimePickerShapes,
+    切换: @Composable () -> Unit,
+    修饰符: Modifier = Modifier,
+    颜色集: TimePickerColors = TimePickerDefaults.vibrantColors(),
+) =
+    TimeScroll(
+        state = 状态,
+        shapes = 形状集,
+        toggle = 切换,
         modifier = 修饰符,
         colors = 颜色集
     )
@@ -149,106 +236,106 @@ object 时间选择器默认值 { // TimePickerDefaults
      *
      * @param 时钟表盘颜色 时钟表盘的颜色。
      * @param 时钟表盘选中内容颜色 时钟表盘上的数字在被选中或与选择器重叠时的颜色。
-     * @param 时钟表盘未选中内容颜色 时钟表盘上的数字在未选中时的颜色。
+     * @param 时钟表盘内容颜色 时钟表盘上的数字在未选中时的颜色。
      * @param 选择器颜色 时钟表盘选择器的颜色。
      * @param 容器颜色 时间选择器的容器颜色。
      * @param 周期选择器边框颜色 上午/下午切换按钮边框所使用的颜色。
      * @param 周期选择器选中容器颜色 上午/下午切换按钮中所选中容器的颜色。
-     * @param 周期选择器未选中容器颜色 上午/下午切换按钮中未选中容器的颜色。
+     * @param 周期选择器容器颜色 上午/下午切换按钮中未选中容器的颜色。
      * @param 周期选择器选中内容颜色 上午/下午切换按钮中所选中内容的颜色。
-     * @param 周期选择器未选中内容颜色 上午/下午切换按钮中未选中内容的颜色。
+     * @param 周期选择器内容颜色 上午/下午切换按钮中未选中内容的颜色。
      * @param 时间选择器选中容器颜色 用于切换小时和分钟显示按钮的选中容器的颜色。
-     * @param 时间选择器未选中容器颜色 用于切换小时和分钟显示按钮的未选中容器的颜色。
+     * @param 时间选择器容器颜色 用于切换小时和分钟显示按钮的未选中容器的颜色。
      * @param 时间选择器选中内容颜色 用于切换小时和分钟显示按钮的选中内容的颜色。
-     * @param 时间选择器未选中内容颜色 用于切换小时和分钟显示按钮的未选中内容的颜色。
+     * @param 时间选择器内容颜色 用于切换小时和分钟显示按钮的未选中内容的颜色。
      */
     @Composable
     fun 颜色集(
         时钟表盘颜色: Color = Color.Unspecified,
         时钟表盘选中内容颜色: Color = Color.Unspecified,
-        时钟表盘未选中内容颜色: Color = Color.Unspecified,
+        时钟表盘内容颜色: Color = Color.Unspecified,
         选择器颜色: Color = Color.Unspecified,
         容器颜色: Color = Color.Unspecified,
         周期选择器边框颜色: Color = Color.Unspecified,
         周期选择器选中容器颜色: Color = Color.Unspecified,
-        周期选择器未选中容器颜色: Color = Color.Unspecified,
+        周期选择器容器颜色: Color = Color.Unspecified,
         周期选择器选中内容颜色: Color = Color.Unspecified,
-        周期选择器未选中内容颜色: Color = Color.Unspecified,
+        周期选择器内容颜色: Color = Color.Unspecified,
         时间选择器选中容器颜色: Color = Color.Unspecified,
-        时间选择器未选中容器颜色: Color = Color.Unspecified,
+        时间选择器容器颜色: Color = Color.Unspecified,
         时间选择器选中内容颜色: Color = Color.Unspecified,
-        时间选择器未选中内容颜色: Color = Color.Unspecified,
+        时间选择器内容颜色: Color = Color.Unspecified,
     ) =
         TimePickerDefaults.colors(
             clockDialColor = 时钟表盘颜色,
             clockDialSelectedContentColor = 时钟表盘选中内容颜色,
-            clockDialUnselectedContentColor = 时钟表盘未选中内容颜色,
+            clockDialContentColor = 时钟表盘内容颜色,
             selectorColor = 选择器颜色,
             containerColor = 容器颜色,
             periodSelectorBorderColor = 周期选择器边框颜色,
             periodSelectorSelectedContainerColor = 周期选择器选中容器颜色,
-            periodSelectorUnselectedContainerColor = 周期选择器未选中容器颜色,
+            periodSelectorContainerColor = 周期选择器容器颜色,
             periodSelectorSelectedContentColor = 周期选择器选中内容颜色,
-            periodSelectorUnselectedContentColor = 周期选择器未选中内容颜色,
+            periodSelectorContentColor = 周期选择器内容颜色,
             timeSelectorSelectedContainerColor = 时间选择器选中容器颜色,
-            timeSelectorUnselectedContainerColor = 时间选择器未选中容器颜色,
+            timeSelectorContainerColor = 时间选择器容器颜色,
             timeSelectorSelectedContentColor = 时间选择器选中内容颜色,
-            timeSelectorUnselectedContentColor = 时间选择器未选中内容颜色,
+            timeSelectorContentColor = 时间选择器内容颜色,
         )
 
     /** 丰富 [TimePicker] 在不同状态下使用的默认颜色。 */
-    @Composable fun 富颜色集() = TimePickerDefaults.richColors()
+    @Composable fun 鲜艳颜色集() = TimePickerDefaults.vibrantColors()
 
     /**
      * 丰富 [TimePicker] 在不同状态下使用的默认颜色。
      *
      * @param 时钟表盘颜色 时钟表盘的颜色。
      * @param 时钟表盘选中内容颜色 时钟表盘上的数字在被选中或与选择器重叠时的颜色。
-     * @param 时钟表盘未选中内容颜色 时钟表盘上的数字在未选中时的颜色。
+     * @param 时钟表盘内容颜色 时钟表盘上的数字在未选中时的颜色。
      * @param 选择器颜色 时钟表盘选择器的颜色。
      * @param 容器颜色 时间选择器的容器颜色。
      * @param 周期选择器边框颜色 上午/下午切换按钮边框所使用的颜色。
      * @param 周期选择器选中容器颜色 上午/下午切换按钮中所选中容器的颜色。
-     * @param 周期选择器未选中容器颜色 上午/下午切换按钮中未选中容器的颜色。
+     * @param 周期选择器容器颜色 上午/下午切换按钮中未选中容器的颜色。
      * @param 周期选择器选中内容颜色 上午/下午切换按钮中所选中内容的颜色。
-     * @param 周期选择器未选中内容颜色 上午/下午切换按钮中未选中内容的颜色。
+     * @param 周期选择器内容颜色 上午/下午切换按钮中未选中内容的颜色。
      * @param 时间选择器选中容器颜色 用于切换小时和分钟显示按钮的选中容器的颜色。
-     * @param 时间选择器未选中容器颜色 用于切换小时和分钟显示按钮的未选中容器的颜色。
+     * @param 时间选择器容器颜色 用于切换小时和分钟显示按钮的未选中容器的颜色。
      * @param 时间选择器选中内容颜色 用于切换小时和分钟显示按钮的选中内容的颜色。
-     * @param 时间选择器未选中内容颜色 用于切换小时和分钟显示按钮的未选中内容的颜色。
+     * @param 时间选择器内容颜色 用于切换小时和分钟显示按钮的未选中内容的颜色。
      */
     @Composable
-    fun 富颜色集(
+    fun 鲜艳颜色集(
         时钟表盘颜色: Color = Color.Unspecified,
         时钟表盘选中内容颜色: Color = Color.Unspecified,
-        时钟表盘未选中内容颜色: Color = Color.Unspecified,
+        时钟表盘内容颜色: Color = Color.Unspecified,
         选择器颜色: Color = Color.Unspecified,
         容器颜色: Color = Color.Unspecified,
         周期选择器边框颜色: Color = Color.Unspecified,
         周期选择器选中容器颜色: Color = Color.Unspecified,
-        周期选择器未选中容器颜色: Color = Color.Unspecified,
+        周期选择器容器颜色: Color = Color.Unspecified,
         周期选择器选中内容颜色: Color = Color.Unspecified,
-        周期选择器未选中内容颜色: Color = Color.Unspecified,
+        周期选择器内容颜色: Color = Color.Unspecified,
         时间选择器选中容器颜色: Color = Color.Unspecified,
-        时间选择器未选中容器颜色: Color = Color.Unspecified,
+        时间选择器容器颜色: Color = Color.Unspecified,
         时间选择器选中内容颜色: Color = Color.Unspecified,
-        时间选择器未选中内容颜色: Color = Color.Unspecified,
+        时间选择器内容颜色: Color = Color.Unspecified,
     ) =
-        TimePickerDefaults.richColors(
+        TimePickerDefaults.vibrantColors(
             clockDialColor = 时钟表盘颜色,
             clockDialSelectedContentColor = 时钟表盘选中内容颜色,
-            clockDialUnselectedContentColor = 时钟表盘未选中内容颜色,
+            clockDialContentColor = 时钟表盘内容颜色,
             selectorColor = 选择器颜色,
             containerColor = 容器颜色,
             periodSelectorBorderColor = 周期选择器边框颜色,
             periodSelectorSelectedContainerColor = 周期选择器选中容器颜色,
-            periodSelectorUnselectedContainerColor = 周期选择器未选中容器颜色,
+            periodSelectorContainerColor = 周期选择器容器颜色,
             periodSelectorSelectedContentColor = 周期选择器选中内容颜色,
-            periodSelectorUnselectedContentColor = 周期选择器未选中内容颜色,
+            periodSelectorContentColor = 周期选择器内容颜色,
             timeSelectorSelectedContainerColor = 时间选择器选中容器颜色,
-            timeSelectorUnselectedContainerColor = 时间选择器未选中容器颜色,
+            timeSelectorContainerColor = 时间选择器容器颜色,
             timeSelectorSelectedContentColor = 时间选择器选中内容颜色,
-            timeSelectorUnselectedContentColor = 时间选择器未选中内容颜色,
+            timeSelectorContentColor = 时间选择器内容颜色,
         )
 
 
@@ -277,6 +364,100 @@ object 时间选择器默认值 { // TimePickerDefaults
         )
 
 }
+
+/** 包含 [TimeInput] 所使用的默认值。 */
+@Stable
+object 时间输入默认值 { // TimeInputDefaults
+
+    /** [TimeInput] 在不同状态下使用的默认颜色。 */
+    @Composable fun 颜色集() = TimeInputDefaults.colors()
+
+    /**
+     * [TimeInput] 在不同状态下使用的默认颜色。
+     *
+     * @param 容器颜色 时间选择器的容器颜色。
+     * @param 周期选择器边框颜色 上午/下午切换按钮边框所使用的颜色。
+     * @param 周期选择器选中容器颜色 上午/下午切换按钮中所选中容器的颜色。
+     * @param 周期选择器容器颜色 上午/下午切换按钮中未选中容器的颜色。
+     * @param 周期选择器选中内容颜色 上午/下午切换按钮中所选中内容的颜色。
+     * @param 周期选择器内容颜色 上午/下午切换按钮中未选中内容的颜色。
+     * @param 时间文本字段颜色集 表示用于小时和分钟文本输入框（text field）的 TextFieldColors（文本框颜色配置）。
+     */
+    @Composable
+    fun 颜色集(
+        容器颜色: Color = Color.Unspecified,
+        周期选择器边框颜色: Color = Color.Unspecified,
+        周期选择器选中容器颜色: Color = Color.Unspecified,
+        周期选择器容器颜色: Color = Color.Unspecified,
+        周期选择器选中内容颜色: Color = Color.Unspecified,
+        周期选择器内容颜色: Color = Color.Unspecified,
+        时间文本字段颜色集: TextFieldColors? = null,
+    ) =
+        TimeInputDefaults.colors(
+            containerColor = 容器颜色,
+            periodSelectorBorderColor = 周期选择器边框颜色,
+            periodSelectorSelectedContainerColor = 周期选择器选中容器颜色,
+            periodSelectorContainerColor = 周期选择器容器颜色,
+            periodSelectorSelectedContentColor = 周期选择器选中内容颜色,
+            periodSelectorContentColor = 周期选择器内容颜色,
+            timeTextFieldColors = 时间文本字段颜色集,
+        )
+
+    /** 丰富 [TimeInput] 在不同状态下使用的默认颜色。 */
+    @Composable fun 鲜艳颜色集() = TimePickerDefaults.vibrantColors()
+
+    /**
+     * 丰富 [TimeInput] 在不同状态下使用的默认颜色。
+     *
+     * @param 容器颜色 时间选择器的容器颜色。
+     * @param 周期选择器边框颜色 上午/下午切换按钮边框所使用的颜色。
+     * @param 周期选择器选中容器颜色 上午/下午切换按钮中所选中容器的颜色。
+     * @param 周期选择器容器颜色 上午/下午切换按钮中未选中容器的颜色。
+     * @param 周期选择器选中内容颜色 上午/下午切换按钮中所选中内容的颜色。
+     * @param 周期选择器内容颜色 上午/下午切换按钮中未选中内容的颜色。
+     * @param 时间文本字段颜色集 表示用于小时和分钟文本输入框（text field）的 TextFieldColors（文本框颜色配置）。
+     */
+    @Composable
+    fun 鲜艳颜色集(
+        容器颜色: Color = Color.Unspecified,
+        周期选择器边框颜色: Color = Color.Unspecified,
+        周期选择器选中容器颜色: Color = Color.Unspecified,
+        周期选择器容器颜色: Color = Color.Unspecified,
+        周期选择器选中内容颜色: Color = Color.Unspecified,
+        周期选择器内容颜色: Color = Color.Unspecified,
+        时间文本字段颜色集: TextFieldColors? = null,
+    ) =
+        TimeInputDefaults.vibrantColors(
+            containerColor = 容器颜色,
+            periodSelectorBorderColor = 周期选择器边框颜色,
+            periodSelectorSelectedContainerColor = 周期选择器选中容器颜色,
+            periodSelectorContainerColor = 周期选择器容器颜色,
+            periodSelectorSelectedContentColor = 周期选择器选中内容颜色,
+            periodSelectorContentColor = 周期选择器内容颜色,
+            timeTextFieldColors = 时间文本字段颜色集,
+        )
+
+    /** [TimeInput] 使用的默认形状。 */
+    @Composable fun 形状集() = TimeInputDefaults.shapes()
+
+    /**
+     * [TimeInput] 使用的默认形状。
+     *
+     * @param 时间字段形状 时间字段使用的形状。
+     * @param 周期选择器形状 上午/下午切换按钮使用的形状。
+     */
+    @Composable
+    fun 形状集(
+        时间字段形状: Shape? = null,
+        周期选择器形状: Shape? = null,
+    ): TimePickerShapes =
+        TimeInputDefaults.shapes(
+            timeFieldShape = 时间字段形状,
+            periodSelectorShape = 周期选择器形状,
+        )
+
+}
+
 
 /**
  * 时间选择器中使用的形状。
@@ -325,11 +506,11 @@ val TimePickerShapes.周期选择器形状: Shape
  * @param 周期选择器选中容器颜色 上午/下午切换按钮中所选中容器的颜色。
  * @param 周期选择器未选中容器颜色 上午/下午切换按钮中未选中容器的颜色。
  * @param 周期选择器选中内容颜色 上午/下午切换按钮中所选中内容的颜色。
- * @param 周期选择器未选中内容颜色 上午/下午切换按钮中未选中内容的颜色。
+ * @param 周期选择器内容颜色 上午/下午切换按钮中未选中内容的颜色。
  * @param 时间选择器选中容器颜色 用于切换小时和分钟显示按钮的选中容器的颜色。
- * @param 时间选择器未选中容器颜色 用于切换小时和分钟显示按钮的未选中容器的颜色。
+ * @param 时间选择器容器颜色 用于切换小时和分钟显示按钮的未选中容器的颜色。
  * @param 时间选择器选中内容颜色 用于切换小时和分钟显示按钮的选中内容的颜色。
- * @param 时间选择器未选中内容颜色 用于切换小时和分钟显示按钮的未选中内容的颜色。
+ * @param 时间选择器内容颜色 用于切换小时和分钟显示按钮的未选中内容的颜色。
  * @constructor 使用任意颜色创建实例。有关遵循 Material 规范的默认实现，请参见 [TimePickerDefaults.colors]。
  */
 fun 时间选择器颜色集(
@@ -342,11 +523,11 @@ fun 时间选择器颜色集(
     周期选择器选中容器颜色: Color,
     周期选择器未选中容器颜色: Color,
     周期选择器选中内容颜色: Color,
-    周期选择器未选中内容颜色: Color,
+    周期选择器内容颜色: Color,
     时间选择器选中容器颜色: Color,
-    时间选择器未选中容器颜色: Color,
+    时间选择器容器颜色: Color,
     时间选择器选中内容颜色: Color,
-    时间选择器未选中内容颜色: Color,
+    时间选择器内容颜色: Color,
 ) =
     TimePickerColors(
         clockDialColor = 时钟表盘颜色,
@@ -354,15 +535,15 @@ fun 时间选择器颜色集(
         containerColor = 容器颜色,
         periodSelectorBorderColor = 周期选择器边框颜色,
         clockDialSelectedContentColor = 时钟表盘选中内容颜色,
-        clockDialUnselectedContentColor = 时钟表盘未选中内容颜色,
+        clockDialContentColor = 时钟表盘未选中内容颜色,
         periodSelectorSelectedContainerColor = 周期选择器选中容器颜色,
-        periodSelectorUnselectedContainerColor = 周期选择器未选中容器颜色,
+        periodSelectorContainerColor = 周期选择器未选中容器颜色,
         periodSelectorSelectedContentColor = 周期选择器选中内容颜色,
-        periodSelectorUnselectedContentColor = 周期选择器未选中内容颜色,
+        periodSelectorContentColor = 周期选择器内容颜色,
         timeSelectorSelectedContainerColor = 时间选择器选中容器颜色,
-        timeSelectorUnselectedContainerColor = 时间选择器未选中容器颜色,
+        timeSelectorContainerColor = 时间选择器容器颜色,
         timeSelectorSelectedContentColor = 时间选择器选中内容颜色,
-        timeSelectorUnselectedContentColor = 时间选择器未选中内容颜色,
+        timeSelectorContentColor = 时间选择器内容颜色,
     )
 
 
@@ -374,15 +555,15 @@ fun TimePickerColors.复制(
     容器颜色: Color = this.containerColor,
     周期选择器边框颜色: Color = this.periodSelectorBorderColor,
     时钟表盘选中内容颜色: Color = this.clockDialSelectedContentColor,
-    时钟表盘未选中内容颜色: Color = this.clockDialUnselectedContentColor,
+    时钟表盘内容颜色: Color = this.clockDialContentColor,
     周期选择器选中容器颜色: Color = this.periodSelectorSelectedContainerColor,
-    周期选择器未选中容器颜色: Color = this.periodSelectorUnselectedContainerColor,
+    周期选择器容器颜色: Color = this.periodSelectorContainerColor,
     周期选择器选中内容颜色: Color = this.periodSelectorSelectedContentColor,
-    周期选择器未选中内容颜色: Color = this.periodSelectorUnselectedContentColor,
+    周期选择器内容颜色: Color = this.periodSelectorContentColor,
     时间选择器选中容器颜色: Color = this.timeSelectorSelectedContainerColor,
-    时间选择器未选中容器颜色: Color = this.timeSelectorUnselectedContainerColor,
+    时间选择器容器颜色: Color = this.timeSelectorContainerColor,
     时间选择器选中内容颜色: Color = this.timeSelectorSelectedContentColor,
-    时间选择器未选中内容颜色: Color = this.timeSelectorUnselectedContentColor,
+    时间选择器内容颜色: Color = this.timeSelectorContentColor,
 ) =
     this.copy(
         clockDialColor = 时钟表盘颜色,
@@ -390,15 +571,15 @@ fun TimePickerColors.复制(
         containerColor = 容器颜色,
         periodSelectorBorderColor = 周期选择器边框颜色,
         clockDialSelectedContentColor = 时钟表盘选中内容颜色,
-        clockDialUnselectedContentColor = 时钟表盘未选中内容颜色,
+        clockDialContentColor = 时钟表盘内容颜色,
         periodSelectorSelectedContainerColor = 周期选择器选中容器颜色,
-        periodSelectorUnselectedContainerColor = 周期选择器未选中容器颜色,
+        periodSelectorContainerColor = 周期选择器容器颜色,
         periodSelectorSelectedContentColor = 周期选择器选中内容颜色,
-        periodSelectorUnselectedContentColor = 周期选择器未选中内容颜色,
+        periodSelectorContentColor = 周期选择器内容颜色,
         timeSelectorSelectedContainerColor = 时间选择器选中容器颜色,
-        timeSelectorUnselectedContainerColor = 时间选择器未选中容器颜色,
+        timeSelectorContainerColor = 时间选择器容器颜色,
         timeSelectorSelectedContentColor = 时间选择器选中内容颜色,
-        timeSelectorUnselectedContentColor = 时间选择器未选中内容颜色,
+        timeSelectorContentColor = 时间选择器内容颜色,
     )
 
 
@@ -419,32 +600,126 @@ val TimePickerColors.周期选择器边框颜色: Color
 val TimePickerColors.时钟表盘选中内容颜色: Color
     get() = this.clockDialSelectedContentColor
 
-val TimePickerColors.时钟表盘未选中内容颜色: Color
-    get() = this.clockDialUnselectedContentColor
+val TimePickerColors.时钟表盘内容颜色: Color
+    get() = this.clockDialContentColor
 
 val TimePickerColors.周期选择器选中容器颜色: Color
     get() = this.periodSelectorSelectedContainerColor
 
-val TimePickerColors.周期选择器未选中容器颜色: Color
-    get() = this.periodSelectorUnselectedContainerColor
+val TimePickerColors.周期选择器容器颜色: Color
+    get() = this.periodSelectorContainerColor
 
 val TimePickerColors.周期选择器选中内容颜色: Color
     get() = this.periodSelectorSelectedContentColor
 
-val TimePickerColors.周期选择器未选中内容颜色: Color
-    get() = this.periodSelectorUnselectedContentColor
+val TimePickerColors.周期选择器内容颜色: Color
+    get() = this.periodSelectorContentColor
 
 val TimePickerColors.时间选择器选中容器颜色: Color
     get() = this.timeSelectorSelectedContainerColor
 
-val TimePickerColors.时间选择器未选中容器颜色: Color
-    get() = this.timeSelectorUnselectedContainerColor
+val TimePickerColors.时间选择器容器颜色: Color
+    get() = this.timeSelectorContainerColor
 
 val TimePickerColors.时间选择器选中内容颜色: Color
     get() = this.timeSelectorSelectedContentColor
 
-val TimePickerColors.时间选择器未选中内容颜色: Color
-    get() = this.timeSelectorUnselectedContentColor
+val TimePickerColors.时间选择器内容颜色: Color
+    get() = this.timeSelectorContentColor
+
+//===========================================================================
+
+
+/**
+ * 表示 [TimeInput] 在不同状态下使用的颜色。
+ *
+ * @param 容器颜色 时间输入框的容器颜色。
+ * @param 周期选择器边框颜色 用于 AM/PM 切换按钮边框的颜色。
+ * @param 周期选择器选中容器颜色 用于 AM/PM 切换按钮选中容器的颜色。
+ * @param 周期选择器容器颜色 用于 AM/PM 切换按钮容器的颜色。
+ * @param 周期选择器选中内容颜色 用于 AM/PM 切换按钮选中内容的颜色。
+ * @param 周期选择器内容颜色 用于 AM/PM 切换按钮内容的颜色。
+ * @param 时间文本字段颜色集 用于小时和分钟文本字段的 [TextFieldColors]。
+ * @constructor 使用任意颜色创建实例。请参阅 [TimeInputDefaults.colors]，了解遵循 Material 规范的默认实现。
+ */
+fun 时间输入颜色集(
+    容器颜色: Color,
+    周期选择器边框颜色: Color,
+    周期选择器选中容器颜色: Color,
+    周期选择器容器颜色: Color,
+    周期选择器选中内容颜色: Color,
+    周期选择器内容颜色: Color,
+    时间文本字段颜色集: TextFieldColors,
+) =
+    TimeInputColors(
+        containerColor = 容器颜色,
+        periodSelectorBorderColor = 周期选择器边框颜色,
+        periodSelectorSelectedContainerColor = 周期选择器选中容器颜色,
+        periodSelectorContainerColor = 周期选择器容器颜色,
+        periodSelectorSelectedContentColor = 周期选择器选中内容颜色,
+        periodSelectorContentColor = 周期选择器内容颜色,
+        timeTextFieldColors = 时间文本字段颜色集,
+    )
+
+/**
+ * 返回此 TimeInputColors 的副本，可选择覆盖其中的某些值。
+ *
+ * @param 容器颜色 时间输入框的容器颜色。
+ * @param 周期选择器边框颜色 用于 AM/PM 切换按钮边框的颜色。
+ * @param 周期选择器选中容器颜色 用于 AM/PM 切换按钮选中容器的颜色。
+ * @param 周期选择器容器颜色 用于 AM/PM 切换按钮容器的颜色。
+ * @param 周期选择器选中内容颜色 用于 AM/PM 切换按钮选中内容的颜色。
+ * @param 周期选择器内容颜色 用于 AM/PM 切换按钮内容的颜色。
+ * @param 时间文本字段颜色集 用于小时和分钟文本字段的 [TextFieldColors]。
+ * @return 此 [TimeInputColors] 的副本。
+ */
+public fun TimeInputColors.复制(
+    容器颜色: Color = this.containerColor,
+    周期选择器边框颜色: Color = this.periodSelectorBorderColor,
+    周期选择器选中容器颜色: Color = this.periodSelectorSelectedContainerColor,
+    周期选择器容器颜色: Color = this.periodSelectorContainerColor,
+    周期选择器选中内容颜色: Color = this.periodSelectorSelectedContentColor,
+    周期选择器内容颜色: Color = this.periodSelectorContentColor,
+    时间文本字段颜色集: TextFieldColors? = this.timeTextFieldColors,
+): TimeInputColors =
+    this.copy(
+        containerColor = 容器颜色,
+        periodSelectorBorderColor = 周期选择器边框颜色,
+        periodSelectorSelectedContainerColor = 周期选择器选中容器颜色,
+        periodSelectorContainerColor = 周期选择器容器颜色,
+        periodSelectorSelectedContentColor = 周期选择器选中内容颜色,
+        periodSelectorContentColor = 周期选择器内容颜色,
+        timeTextFieldColors = 时间文本字段颜色集,
+    )
+
+
+/** 时间输入框的容器颜色。 */
+public val TimeInputColors.容器颜色: Color
+    get() = this.containerColor
+
+/** AM/PM 切换按钮边框的颜色。 */
+public val TimeInputColors.周期选择器边框颜色: Color
+    get() = this.periodSelectorBorderColor
+
+/** AM/PM 切换按钮选中容器的颜色。 */
+public val TimeInputColors.周期选择器选中容器颜色: Color
+    get() = this.periodSelectorSelectedContainerColor
+
+/** AM/PM 切换按钮容器的颜色。 */
+public val TimeInputColors.周期选择器容器颜色: Color
+    get() = this.periodSelectorContainerColor
+
+/** AM/PM 切换按钮选中内容的颜色。 */
+public val TimeInputColors.周期选择器选中内容颜色: Color
+    get() = this.periodSelectorSelectedContentColor
+
+/** AM/PM 切换按钮内容的颜色。 */
+public val TimeInputColors.周期选择器内容颜色: Color
+    get() = this.periodSelectorContentColor
+
+/** 时间输入框的小时和分钟文本字段的颜色集。 */
+public val TimeInputColors.时间文本字段颜色集: TextFieldColors
+    get() = this.timeTextFieldColors
 
 //===========================================================================
 
@@ -617,7 +892,7 @@ var TimePickerState.选择: TimePickerSelectionMode
 //===========================================================================
 
 /** 指示所选时间是否属于从中午 12 点（含）到午夜 12 点（不含）的时段。*/
-val TimePickerState.是否下午
+val TimePickerState.是否下午: Boolean
     get() = this.isPm
 
 /** 如果当前 hourInput 表示有效的小时数（0-23），则为 true。 */
@@ -629,7 +904,7 @@ val TimePickerState.是否分钟输入有效: Boolean
     get() = this.isMinuteInputValid
 
 /**  如果时间输入值有效，则为 `true`。 */
-val TimePickerState.是否输入有效
+val TimePickerState.是否输入有效: Boolean
     get() = this.isInputValid
 
 /**
@@ -640,16 +915,21 @@ val TimePickerState.是否输入有效
  * @param 是否24小时制 此时间选择器的格式。`false` 表示带有上午/下午切换按钮的 12 小时制，`true`
  * 表示不带切换按钮的 24 小时制。默认遵循系统设置。
  */
-fun 时间选择器状态(初始小时: Int, 初始分钟: Int, 是否24小时制: Boolean): TimePickerState =
+fun 时间选择器状态(
+    初始小时: Int,
+    初始分钟: Int,
+    是否24小时制: Boolean,
+    初始选择: TimePickerSelectionMode = TimePickerSelectionMode.Hour,
+): TimePickerState =
     TimePickerState(
         initialHour = 初始小时,
         initialMinute = 初始分钟,
-        is24Hour = 是否24小时制
+        is24Hour = 是否24小时制,
+        initialSelection = 初始选择
     )
 
 
 /** 时间选择器的选择模式 */
-@ExperimentalMaterial3Api
 object 时间选择器选择模式{
 
     val 小时 = TimePickerSelectionMode.Hour

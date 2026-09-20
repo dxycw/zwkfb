@@ -829,9 +829,7 @@ fun ColorScheme.表面颜色在阴影(阴影: Dp): Color =
  *
  * `MaterialExpressiveTheme` 切换 `expressiveLightColorScheme` 和 `darkTheme` 的示例。
  */
-@Material3ExpressiveApi
 fun 表现性浅色颜色方案() = expressiveLightColorScheme()
-
 
 
 /**

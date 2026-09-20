@@ -1,6 +1,5 @@
 package 安卓x.组合.材质3
 
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ProvidableCompositionLocal
@@ -8,7 +7,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 
 /**
@@ -89,8 +87,6 @@ fun 警告对话框(
  * @param 内容 对话框的内容。
  */
 @Suppress("ComposableNaming")
-@OptIn(ExperimentalMaterial3ComponentOverrideApi::class)
-@ExperimentalMaterial3Api
 @Composable
 fun 基础警告对话框(
     关闭请求回调: () -> Unit,
@@ -127,7 +123,6 @@ fun 基础警告对话框(
     "Use BasicAlertDialog instead",
     replaceWith = ReplaceWith("BasicAlertDialog(onDismissRequest, modifier, properties, content)"),
 )
-@ExperimentalMaterial3Api
 @Composable
 fun 警告对话框(
     关闭请求回调: () -> Unit,
@@ -173,9 +168,3 @@ object 警告对话框默认值 { // AlertDialogDefaults
 
 }
 
-
-
-/** 包含当前选中的 [BasicAlertDialogOverride] 的 CompositionLocal。 */
-@ExperimentalMaterial3ComponentOverrideApi
-val 本地基础警告对话框覆盖: ProvidableCompositionLocal<BasicAlertDialogOverride> =
-    LocalBasicAlertDialogOverride

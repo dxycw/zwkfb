@@ -15,7 +15,6 @@ import androidx.compose.material3.IconButtonShapes
 import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.IconToggleButtonColors
 import androidx.compose.material3.IconToggleButtonShapes
-import androidx.compose.material3.Material3ExpressiveApi
 import androidx.compose.material3.OutlinedIconButton
 import androidx.compose.material3.OutlinedIconToggleButton
 import androidx.compose.runtime.Composable
@@ -87,7 +86,6 @@ fun 图标按钮(
  * @param 内容 此图标按钮的内容，通常为 [图标]。
  */
 @Suppress("ComposableNaming")
-@Material3ExpressiveApi
 @Composable
 fun 图标按钮(
     单击回调: () -> Unit,
@@ -130,6 +128,7 @@ fun 图标按钮(
  * @param 形状 此图标按钮的 [Shape]（形状）。
  * @param 内容 此图标按钮的内容，通常为一个 [图标]。
  */
+@Suppress("ComposableNaming")
 @Composable
 fun 图标切换按钮(
     已选中: Boolean,
@@ -173,7 +172,6 @@ fun 图标切换按钮(
  * @param 内容 此图标按钮的内容，通常为一个 [图标]。
  */
 @Suppress("ComposableNaming")
-@Material3ExpressiveApi
 @Composable
 fun 图标切换按钮(
     已选中: Boolean,
@@ -259,7 +257,6 @@ fun 填充图标按钮(
  * @param 内容 此图标按钮的内容，通常为一个 [图标]。
  */
 @Suppress("ComposableNaming")
-@Material3ExpressiveApi
 @Composable
 fun 填充图标按钮(
     单击回调: () -> Unit,
@@ -344,7 +341,6 @@ fun 填充图标切换按钮(
  * @param 内容 此图标按钮的内容，通常是一个 [图标]
  */
 @Suppress("ComposableNaming")
-@Material3ExpressiveApi
 @Composable
 fun 填充图标切换按钮(
     已选中: Boolean,
@@ -433,7 +429,6 @@ fun 填充色调图标按钮(
  * @param 内容 此图标按钮的内容，通常是一个 [图标]
  */
 @Suppress("ComposableNaming")
-@Material3ExpressiveApi
 @Composable
 fun 填充色调图标按钮(
     单击回调: () -> Unit,
@@ -524,7 +519,6 @@ fun 填充色调图标切换按钮(
  * @param 内容 此图标按钮的内容，通常是一个 [图标]。
  */
 @Suppress("ComposableNaming")
-@Material3ExpressiveApi
 @Composable
 fun 填充色调图标切换按钮(
     已选中: Boolean,
@@ -622,7 +616,7 @@ fun 轮廓图标按钮(
  * 您可以使用它来更改图标按钮的外观或在不同状态下预览图标按钮。请注意，如果提供 `null`，交互仍会在内部发生。
  * @param 内容 此图标按钮的内容，通常是一个 [图标]
  */
-@Material3ExpressiveApi
+@Suppress("ComposableNaming")
 @Composable
 fun 轮廓图标按钮(
     单击回调: () -> Unit,
@@ -714,7 +708,7 @@ fun 轮廓图标切换按钮(
  * 您可以利用它来改变图标按钮的外观或预览其在不同状态下的效果。请注意，即使传递 null，交互仍会在内部发生。
  * @param 内容 此图标按钮的内容，通常是一个 [图标]
  */
-@Material3ExpressiveApi
+@Suppress("ComposableNaming")
 @Composable
 fun 轮廓图标切换按钮(
     已选中: Boolean,

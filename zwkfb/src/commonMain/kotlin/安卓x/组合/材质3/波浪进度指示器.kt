@@ -1,6 +1,5 @@
 package 安卓x.组合.材质3
 
-import androidx.compose.material3.Material3ExpressiveApi
 import androidx.compose.material3.ProgressIndicatorDefaults
 import androidx.annotation.FloatRange
 import androidx.compose.animation.core.AnimationSpec
@@ -44,7 +43,6 @@ import androidx.compose.ui.unit.Dp
  * 以渲染出波浪每秒移动一个波长的动画。
  */
 @Suppress("ComposableNaming")
-@Material3ExpressiveApi
 @Composable
 fun 线性波浪进度指示器(
     进度: () -> Float,
@@ -96,7 +94,6 @@ fun 线性波浪进度指示器(
  * 以渲染出波浪每秒移动一个波长的动画。
  */
 @Suppress("ComposableNaming")
-@Material3ExpressiveApi
 @Composable
 fun 线性波浪进度指示器(
     修饰符: Modifier = Modifier,
@@ -149,7 +146,6 @@ fun 线性波浪进度指示器(
  * 以渲染出波浪每秒移动一个波长的动画。请注意，实际速度可能略有差异，因为 [波长] 可能会进行调整，以确保波浪形状的连续性。
  */
 @Suppress("ComposableNaming")
-@Material3ExpressiveApi
 @Composable
 fun 圆形波浪进度指示器(
     进度: () -> Float,
@@ -199,7 +195,6 @@ fun 圆形波浪进度指示器(
  * 以渲染出波浪每秒移动一个波长的动画。请注意，实际速度可能略有差异，因为 [波长] 可能会进行调整，以确保波浪形状的连续性。
  */
 @Suppress("ComposableNaming")
-@Material3ExpressiveApi
 @Composable
 fun 圆形波浪进度指示器(
     修饰符: Modifier = Modifier,
@@ -226,7 +221,6 @@ fun 圆形波浪进度指示器(
 
 
 /** 包含用于波浪形进度指示器的默认值。 */
-@Material3ExpressiveApi
 object 波浪进度指示器默认值 { // WavyProgressIndicatorDefaults
 
     /** 确定性进度指示器在进度值之间进行动画时应使用的默认 [AnimationSpec]。*/

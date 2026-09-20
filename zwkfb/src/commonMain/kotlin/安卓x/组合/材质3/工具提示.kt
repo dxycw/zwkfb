@@ -77,6 +77,7 @@ fun 工具提示框(
 
 
 /** 用于 [TooltipBox] 的工具提示作用域，可用于获取锚点内容的 [LayoutCoordinates]，以及为工具提示绘制指示箭头（caret）。*/
+@ExperimentalMaterial3Api
 sealed interface 工具提示范围 { // TooltipScope
 
     /** 用于获取锚点内容的 [LayoutCoordinates]。这可用于帮助绘制指向锚点内容的指示箭头。*/
@@ -91,6 +92,7 @@ sealed interface 工具提示范围 { // TooltipScope
 //======================================================================
 
 /** 用于获取所使用的 [PopupPositionProvider]。这可用于帮助绘制指向锚点内容的指示箭头。*/
+@ExperimentalMaterial3Api
 fun TooltipScope.获取定位提供器(): PopupPositionProvider = this.obtainPositionProvider()
 
 
@@ -114,6 +116,7 @@ fun TooltipScope.获取定位提供器(): PopupPositionProvider = this.obtainPos
  */
 @Suppress("ComposableNaming")
 @Composable
+@ExperimentalMaterial3Api
 fun TooltipScope.普通工具提示(
     修饰符: Modifier = Modifier,
     箭头形状: (Shape)? = null,
@@ -157,6 +160,7 @@ fun TooltipScope.普通工具提示(
  */
 @Suppress("ComposableNaming")
 @Composable
+@ExperimentalMaterial3Api
 fun TooltipScope.富工具提示(
     修饰符: Modifier = Modifier,
     标题: (@Composable () -> Unit)? = null,
@@ -184,6 +188,7 @@ fun TooltipScope.富工具提示(
 
 
 /** 包含 [PlainTooltip] 和 [RichTooltip] 默认值的工具提示默认值。 */
+@ExperimentalMaterial3Api
 object 工具提示默认值 { // TooltipDefaults
 
     /** [PlainTooltip] 容器的默认 [Shape]。 */
@@ -323,6 +328,7 @@ object 工具提示默认值 { // TooltipDefaults
 }
 
 
+@ExperimentalMaterial3Api
 fun 富工具提示颜色集(
     容器颜色: Color,
     内容颜色: Color,
@@ -337,6 +343,7 @@ fun 富工具提示颜色集(
     )
 
 /** 返回此 RichTooltipColors 的副本，可选择性地覆盖部分值。此处使用 Color.Unspecified 表示"使用源中的值"。*/
+@ExperimentalMaterial3Api
 fun RichTooltipColors.复制(
     容器颜色: Color = this.containerColor,
     内容颜色: Color = this.contentColor,
@@ -352,21 +359,25 @@ fun RichTooltipColors.复制(
 
 //=================================================================================
 
+@ExperimentalMaterial3Api
 val RichTooltipColors.容器颜色: Color
     get() = this.containerColor
 
+@ExperimentalMaterial3Api
 val RichTooltipColors.内容颜色: Color
     get() = this.contentColor
 
+@ExperimentalMaterial3Api
 val RichTooltipColors.标题内容颜色: Color
     get() = this.titleContentColor
 
+@ExperimentalMaterial3Api
 val RichTooltipColors.操作内容颜色: Color
     get() = this.actionContentColor
 
 //=================================================================================
 
-
+@ExperimentalMaterial3Api
 object 工具提示锚点位置 {
 
     /** 将工具提示放置在锚点上方。 */
@@ -400,6 +411,7 @@ object 工具提示锚点位置 {
  * @param 变异器互斥锁 [MutatorMutex]，用于确保与该互斥锁关联的所有工具提示中，任何时刻只有一个会显示在屏幕上。
  */
 @Composable
+@ExperimentalMaterial3Api
 fun 记住工具提示状态(
     初始可见: Boolean = false,
     是否持久: Boolean = false,
@@ -421,6 +433,7 @@ fun 记住工具提示状态(
  * 将在短时间后自动关闭。理想情况下，当工具提示内显示有可操作内容时，应将此值设为 `true`。
  * @param 变异器互斥锁 [MutatorMutex]，用于确保与该互斥锁关联的所有工具提示中，任何时刻只有一个会显示在屏幕上。
  */
+@ExperimentalMaterial3Api
 fun 工具提示状态(
     初始可见: Boolean = false,
     是否持久: Boolean = true,
@@ -435,6 +448,7 @@ fun 工具提示状态(
 
 
 /** 与 [TooltipBox] 关联的状态。[TooltipBox] 的每个实例都应拥有自己的 [TooltipState]。*/
+@ExperimentalMaterial3Api
 interface 工具提示状态 { // TooltipState
 
     /** 工具提示的当前过渡状态。用于在淡入和淡出时启动工具提示的过渡动画。*/
@@ -468,10 +482,12 @@ interface 工具提示状态 { // TooltipState
 // ===================================================================
 
 /** 工具提示的当前过渡状态。用于在淡入和淡出时启动工具提示的过渡动画。*/
+@ExperimentalMaterial3Api
 val TooltipState.过渡: MutableTransitionState<Boolean>
     get() = this.transition
 
 /**  [Boolean]，用于指示工具提示当前是否正在显示。 */
+@ExperimentalMaterial3Api
 val TooltipState.是否可见: Boolean
     get() = this.isVisible
 
@@ -480,6 +496,7 @@ val TooltipState.是否可见: Boolean
  * 边界外部或调用 [TooltipState.dismiss] 时才会关闭。当 `是否持久` 为 `false` 时，工具提示将在短时间后
  * 自动关闭。理想情况下，当工具提示内显示有可操作内容时，应将此值设为 `true`。
  */
+@ExperimentalMaterial3Api
 val TooltipState.是否持久: Boolean
     get() = this.isPersistent
 
@@ -488,13 +505,16 @@ val TooltipState.是否持久: Boolean
  *
  * @param 变异优先级 要使用的 [MutatePriority]。
  */
+@ExperimentalMaterial3Api
 suspend fun TooltipState.显示(变异优先级: MutatePriority = MutatePriority.Default) =
     this.show(mutatePriority = 变异优先级)
 
 /** 如果当前正在显示，则关闭与此 [TooltipState] 关联的工具提示。 */
+@ExperimentalMaterial3Api
 fun TooltipState.关闭() = this.dismiss()
 
 /** 当此状态离开组合时进行清理。 */
+@ExperimentalMaterial3Api
 fun TooltipState.销毁回调() = this.onDispose()
 
 // ===================================================================
@@ -504,14 +524,17 @@ fun TooltipState.销毁回调() = this.onDispose()
  *
  * @param 箭头大小 使用的指示箭头尺寸
  */
+@ExperimentalMaterial3Api
 fun 默认工具提示箭头形状(箭头大小: DpSize = TooltipDefaults.caretSize) =
     DefaultTooltipCaretShape(caretSize = 箭头大小)
 
 // ===================================================================
 
+@ExperimentalMaterial3Api
 val DefaultTooltipCaretShape.箭头大小: DpSize
     get() = this.caretSize
 
+@ExperimentalMaterial3Api
 fun DefaultTooltipCaretShape.创建轮廓(
     大小: Size,
     布局方向: LayoutDirection,
@@ -525,5 +548,6 @@ fun DefaultTooltipCaretShape.创建轮廓(
 
 // ===================================================================
 
-internal val SpacingBetweenTooltipAndAnchor = 4.dp
+internal val SpacingBetweenTooltipAndAnchor
+    get() = 4.dp
 

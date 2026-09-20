@@ -4,10 +4,8 @@ import androidx.compose.foundation.interaction.Interaction
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.material3.DefaultNavigationRailOverride.NavigationRail
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 
@@ -34,7 +32,6 @@ import androidx.compose.ui.graphics.Color
  * @param 内容 此导航轨道（Navigation Rail）的内容，通常包含 3 到 7 个 [NavigationRailItem]。
  */
 @Suppress("ComposableNaming")
-@OptIn(ExperimentalMaterial3ComponentOverrideApi::class)
 @Composable
 fun 侧边导航栏(
     修饰符: Modifier = Modifier,
@@ -232,9 +229,3 @@ val NavigationRailItemColors.禁用图标颜色: Color
 val NavigationRailItemColors.禁用文本颜色: Color
     get() = this.disabledTextColor
 
-//=================================================================
-
-
-/**  包含当前选中的 [NavigationRailOverride] 的 CompositionLocal。 */
-@ExperimentalMaterial3ComponentOverrideApi
-val 本地侧边导航栏覆盖: ProvidableCompositionLocal<NavigationRailOverride> = LocalNavigationRailOverride

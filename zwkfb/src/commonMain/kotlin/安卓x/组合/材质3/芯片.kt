@@ -15,9 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.LayoutDirection
 
 /**
  * [Material Design assist chip](https://m3.material.io/components/chips/overview)
@@ -251,7 +249,6 @@ fun 过滤芯片(
  * 你可以使用它来改变 Chip 的外观或在不同状态下预览 Chip。注意，如果提供 `null`，交互仍会在内部发生。
  */
 @Suppress("ComposableNaming")
-@Material3ExpressiveApi
 @Composable
 fun 过滤芯片(
     已选择: Boolean,
@@ -392,7 +389,6 @@ fun 凸起过滤芯片(
  * [Interaction]。你可以使用它来改变 Chip 的外观或在不同状态下预览 Chip。注意，如果提供 `null`，交互仍会在内部发生。
  */
 @Suppress("ComposableNaming")
-@Material3ExpressiveApi
 @Composable
 fun 凸起过滤芯片(
     已选择: Boolean,
@@ -534,7 +530,6 @@ fun 输入芯片(
  * 它来改变 Chip 的外观或在不同状态下预览 Chip。注意，如果提供 `null`，交互仍会在内部发生。
  */
 @Suppress("ComposableNaming")
-@Material3ExpressiveApi
 @Composable
 fun 输入芯片(
     已选择: Boolean,
@@ -933,13 +928,12 @@ object 过滤芯片默认值 { // FilterChipDefaults
     val 水平间距 = FilterChipDefaults.HorizontalSpacing
 
     /** The compact horizontal spacing between the icon and label of a filter chip. */
-    @Material3ExpressiveApi val 紧凑水平间距 = FilterChipDefaults.CompactHorizontalSpacing
+    val 紧凑水平间距 = FilterChipDefaults.CompactHorizontalSpacing
 
     /** 返回筛选型 Chip 中图标和标签的默认排列方式。 */
     fun 水平排列(): Arrangement.Horizontal = FilterChipDefaults.horizontalArrangement()
 
     /** 返回紧凑筛选 Chip 中图标和标签的默认排列方式。 */
-    @Material3ExpressiveApi
     fun 水平排列(
         有前导图标: Boolean,
         有尾随图标: Boolean,
@@ -964,7 +958,6 @@ object 过滤芯片默认值 { // FilterChipDefaults
     @Composable fun 过滤芯片颜色集() = FilterChipDefaults.filterChipColors()
 
     /** 创建一个 [SelectableChipColors]，表示在色调 [FilterChip] 中使用的默认容器颜色和内容颜色。*/
-    @Material3ExpressiveApi
     @Composable
     fun 色调过滤芯片颜色集() = FilterChipDefaults.tonalFilterChipColors()
 
@@ -1083,7 +1076,6 @@ object 过滤芯片默认值 { // FilterChipDefaults
     fun 凸起过滤芯片颜色集() = FilterChipDefaults.elevatedFilterChipColors()
 
     /** 创建一个 [SelectableChipColors]，表示在凸起、色调 [FilterChip] 中使用的默认容器颜色和内容颜色。*/
-    @Material3ExpressiveApi
     @Composable
     fun 色调凸起过滤芯片颜色集() = FilterChipDefaults.tonalElevatedFilterChipColors()
 
@@ -1167,7 +1159,7 @@ object 过滤芯片默认值 { // FilterChipDefaults
         @Composable get() = FilterChipDefaults.shape
 
     /** 创建一个 [ChipShapes]，表示 Chip 中使用的默认形状、按下形状和选中形状。*/
-    @Material3ExpressiveApi @Composable fun 形状集() = FilterChipDefaults.shapes()
+    @Composable fun 形状集() = FilterChipDefaults.shapes()
 
     /**
      * 创建一个 [ChipShapes]，表示 Chip 中使用的默认形状、按下形状和选中形状。
@@ -1176,7 +1168,6 @@ object 过滤芯片默认值 { // FilterChipDefaults
      * @param 已选择形状 [ChipShapes] 的未选中形状。
      * @param 按压形状 [ChipShapes] 的按下形状。
      */
-    @Material3ExpressiveApi
     @Composable
     fun 形状集(
         形状: Shape? = null,
@@ -1208,13 +1199,12 @@ object 输入芯片默认值 { // InputChipDefaults
     val 水平间距 = InputChipDefaults.HorizontalSpacing
 
     /** 输入 Chip 中图标与标签之间的紧凑水平间距。 */
-    @Material3ExpressiveApi val 紧凑水平间距 = InputChipDefaults.CompactHorizontalSpacing
+    val 紧凑水平间距 = InputChipDefaults.CompactHorizontalSpacing
 
     /** 返回输入型 Chip 中图标/头像和标签的默认排列方式。 */
     fun 水平排列(): Arrangement.Horizontal = InputChipDefaults.horizontalArrangement()
 
     /** 返回紧凑输入 Chip 中图标/头像和标签的默认排列方式。*/
-    @Material3ExpressiveApi
     fun 水平排列(
         有头像: Boolean,
         有前导图标: Boolean,
@@ -1250,7 +1240,6 @@ object 输入芯片默认值 { // InputChipDefaults
     @Composable fun 输入芯片颜色集() = InputChipDefaults.inputChipColors()
 
     /** 创建一个 [SelectableChipColors]，表示在色调 [InputChip] 中使用的默认容器颜色和内容颜色。*/
-    @Material3ExpressiveApi
     @Composable
     fun 色调输入芯片颜色集() = InputChipDefaults.tonalInputChipColors()
 
@@ -1372,7 +1361,7 @@ object 输入芯片默认值 { // InputChipDefaults
         @Composable get() = InputChipDefaults.shape
 
     /** 创建一个 [ChipShapes]，表示 Chip 中使用的默认形状、按下形状和选中形状。*/
-    @Material3ExpressiveApi @Composable fun 形状集() = InputChipDefaults.shapes()
+    @Composable fun 形状集() = InputChipDefaults.shapes()
 
     /**
      * 创建一个 [ChipShapes]，表示 [InputChip] 及其变体中使用的默认形状、按下形状和选中形状。
@@ -1381,7 +1370,6 @@ object 输入芯片默认值 { // InputChipDefaults
      * @param 已选择形状 [ChipShapes] 的未选中形状。
      * @param 按压形状 [ChipShapes] 的按下形状。
      */
-    @Material3ExpressiveApi
     @Composable
     fun 形状集(
         形状: Shape? = null,
@@ -1925,7 +1913,6 @@ val SelectableChipColors.已选择尾随图标颜色: Color
  * @param 已选择形状 是选中状态的形状。
  * @param 按压形状 是按下状态的形状。
  */
-@Material3ExpressiveApi
 fun 芯片形状集(
     形状: Shape,
     已选择形状: Shape,

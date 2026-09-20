@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material3.CheckableDropdownMenuItem
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuGroup
 import androidx.compose.material3.DropdownMenuItem
@@ -22,6 +23,8 @@ import androidx.compose.material3.MenuGroupShapes
 import androidx.compose.material3.MenuItemColors
 import androidx.compose.material3.MenuItemShapes
 import androidx.compose.material3.MenuPositionScope
+import androidx.compose.material3.SelectableDropdownMenuItem
+import androidx.compose.material3.SelectableMenuItemColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -36,6 +39,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupPositionProvider
 import androidx.compose.ui.window.PopupProperties
+import 安卓x.组合.材质3.菜单锚点位置.上方
+import 安卓x.组合.材质3.菜单锚点位置.下方
+import 安卓x.组合.材质3.菜单锚点位置.右侧
+import 安卓x.组合.材质3.菜单锚点位置.左侧
+import 安卓x.组合.材质3.菜单锚点位置.开始
+import 安卓x.组合.材质3.菜单锚点位置.结束
+import 安卓x.组合.材质3.菜单锚点位置.自定义
+import kotlin.jvm.JvmName
 
 
 /**
@@ -84,7 +95,7 @@ fun 下拉菜单(
     修饰符: Modifier = Modifier,
     偏移量: DpOffset = DpOffset(0.dp, 0.dp),
     滚动状态: ScrollState = rememberScrollState(),
-    属性集: PopupProperties = DefaultMenuProperties,
+    属性集: PopupProperties = MenuDefaults.DefaultMenuProperties,
     形状: Shape = MenuDefaults.shape,
     容器颜色: Color = MenuDefaults.containerColor,
     色调阴影: Dp = MenuDefaults.TonalElevation,
@@ -122,7 +133,6 @@ fun 下拉菜单(
  * @param 关闭请求回调 当用户请求关闭菜单时调用，例如在菜单范围之外点击。
  * @param 修饰符 要应用到菜单内容的 [Modifier]。
  * @param 弹出位置提供器 用于定位菜单的 [DropdownMenuPopupPositionProvider]。
- * @param 偏移量 菜单原始位置的 [DpOffset] 偏移量。
  * @param 属性集 用于进一步自定义此弹出层行为的 [PopupProperties]。
  * @param 内容 此下拉菜单的内容。
  */
@@ -134,8 +144,7 @@ fun 下拉菜单弹出(
     修饰符: Modifier = Modifier,
     弹出位置提供器: DropdownMenuPopupPositionProvider =
         MenuDefaults.rememberDropdownMenuPopupPositionProvider(MenuAnchorPosition.Below),
-    偏移量: DpOffset = DpOffset(0.dp, 0.dp),
-    属性集: PopupProperties = DefaultMenuProperties,
+    属性集: PopupProperties = MenuDefaults.DefaultMenuProperties,
     内容: @Composable ColumnScope.() -> Unit,
 ) =
     DropdownMenuPopup(
@@ -143,7 +152,6 @@ fun 下拉菜单弹出(
         onDismissRequest = 关闭请求回调,
         modifier = 修饰符,
         popupPositionProvider = 弹出位置提供器,
-        offset = 偏移量,
         properties = 属性集,
         content = 内容,
     )
@@ -253,7 +261,7 @@ fun 下拉菜单项(
  * 最后一项请使用 [MenuDefaults.trailingItemShape]。
  * @param 修饰符 应用于此菜单项的 [Modifier]。
  * @param 前导图标 当菜单项未选中时显示的可选前置图标。
- * @param 尾随图标 在菜单项文本末尾显示的可选后置图标。
+ * @param 尾随内容 在菜单项文本末尾显示的可选尾随内容。
  * @param 已启用 控制此菜单项的启用状态。当为 `false` 时，此组件不会响应用户输入。
  * @param 颜色集 用于解析此菜单项颜色的 [MenuItemColors]。
  * @param 水平排列 此菜单项的水平排列。参见 [MenuDefaults.DropdownMenuItemHorizontalArrangement]。
@@ -269,7 +277,7 @@ fun 下拉菜单项(
     形状: Shape,
     修饰符: Modifier = Modifier,
     前导图标: @Composable (() -> Unit)? = null,
-    尾随图标: @Composable (() -> Unit)? = null,
+    尾随内容: @Composable (() -> Unit)? = null,
     已启用: Boolean = true,
     颜色集: MenuItemColors = MenuDefaults.itemColors(),
     水平排列: Arrangement.Horizontal =
@@ -284,7 +292,7 @@ fun 下拉菜单项(
         shape = 形状,
         modifier = 修饰符,
         leadingIcon = 前导图标,
-        trailingIcon = 尾随图标,
+        trailingContent = 尾随内容,
         enabled = 已启用,
         colors = 颜色集,
         horizontalArrangement = 水平排列,
@@ -293,25 +301,24 @@ fun 下拉菜单项(
         supportingText = 辅助文本,
     )
 
-
 /**
  * [Material Design dropdown menu](https://m3.material.io/components/menus/overview)
  *
  * 根据 [已选中] 状态改变样式的菜单项。
  *
- * 此可组合项适用于表示开/关设置的菜单项，在菜单中行为类似于复选框或开关。
+ * 此可组合项适用于表示开/关设置的菜单项，在菜单中行为类似于单选按钮。
  *
  * ![Dropdown menu image](https://developer.android.com/images/reference/androidx/compose/material3/exposed-dropdown-menu-selectable-items.png)
  *
- * @param 已选中 此菜单项当前是否已选中
- * @param 已选中改变回调 当此菜单项被点击时调用，传入新的选中状态。
+ * @param 已选中 此菜单项当前是否已选中。
+ * @param 已选中改变回调 当此菜单项被点击时调用。
  * @param 文本 菜单项的文本。
  * @param 形状集 用于解析此菜单项形状的 [MenuItemShapes]。此项的形状由 [已选中] 的值决定。所提供的形状应根据分组
  * 或菜单中的项目数量以及该项目在菜单中的位置来确定。可使用便捷函数 [MenuDefaults.itemShape] 来轻松确定要使用的形状。
  * @param 修饰符 应用于此菜单项的 [Modifier]。
  * @param 前导图标 当菜单项未选中时显示的可选前置图标。
  * @param 已选中前导图标 当菜单项选中时显示的可选前置图标。
- * @param 尾随图标 在菜单项文本末尾显示的可选后置图标。
+ * @param 尾随内容 在菜单项文本末尾显示的可选尾随内容。
  * @param 已启用 控制此菜单项的启用状态。当为 `false` 时，此组件不会响应用户输入。
  * @param 颜色集 用于解析此菜单项颜色的 [MenuItemColors]。可使用或修改 [MenuDefaults.selectableItemColors]
  * 和 [MenuDefaults.selectableItemVibrantColors] 这两个预定义的 [MenuItemColors]。
@@ -322,7 +329,7 @@ fun 下拉菜单项(
  */
 @Suppress("ComposableNaming")
 @Composable
-fun 下拉菜单项(
+fun 可选中下拉菜单项(
     已选中: Boolean,
     已选中改变回调: (Boolean) -> Unit,
     文本: @Composable () -> Unit,
@@ -330,16 +337,16 @@ fun 下拉菜单项(
     修饰符: Modifier = Modifier,
     前导图标: @Composable (() -> Unit)? = null,
     已选中前导图标: @Composable (() -> Unit)? = null,
-    尾随图标: @Composable (() -> Unit)? = null,
+    尾随内容: @Composable (() -> Unit)? = null,
     辅助文本: @Composable (() -> Unit)? = null,
     已启用: Boolean = true,
-    颜色集: MenuItemColors = MenuDefaults.selectableItemColors(),
+    颜色集: SelectableMenuItemColors = MenuDefaults.selectableItemColors(),
     水平排列: Arrangement.Horizontal =
         MenuDefaults.DropdownMenuItemHorizontalArrangement,
     内容内边距: PaddingValues = MenuDefaults.DropdownMenuSelectableItemContentPadding,
     交互源: MutableInteractionSource? = null,
 ) =
-    DropdownMenuItem(
+    CheckableDropdownMenuItem(
         checked = 已选中,
         onCheckedChange = 已选中改变回调,
         text = 文本,
@@ -347,7 +354,7 @@ fun 下拉菜单项(
         modifier = 修饰符,
         leadingIcon = 前导图标,
         checkedLeadingIcon = 已选中前导图标,
-        trailingIcon = 尾随图标,
+        trailingContent = 尾随内容,
         supportingText = 辅助文本,
         enabled = 已启用,
         colors = 颜色集,
@@ -360,32 +367,35 @@ fun 下拉菜单项(
 /**
  * [Material Design dropdown menu](https://m3.material.io/components/menus/overview)
  *
- * 根据 [已选择] 状态改变样式的菜单项。
+ * 菜单在临时表面上显示一系列选项。当用户与按钮、操作项或其他控件进行交互时，菜单会随之出现。
  *
- * 此可组合项适用于表示开/关设置的菜单项，在菜单中行为类似于单选按钮。
+ * 菜单项会根据其 [已选择] 状态改变样式。
  *
- * ![Dropdown menu image](https://developer.android.com/images/reference/androidx/compose/material3/exposed-dropdown-menu-selectable-items.png)
+ * 此可组合项适用于表示开/关设置的菜单项，其行为类似于菜单中的单选按钮（radio button）。
  *
- * @param 已选择 此菜单项当前是否已选中。
+ * ![Dropdown menu
+ * image](https://developer.android.com/images/reference/androidx/compose/material3/exposed-dropdown-menu-selectable-items.png)
+ *
+ * @param 已选择 此菜单项当前是否处于选中状态。
  * @param 单击回调 当此菜单项被点击时调用。
- * @param 文本 菜单项的文本。
- * @param 形状集 用于解析此菜单项形状的 [MenuItemShapes]。此项的形状由 [已选择] 的值决定。所提供的形状应根据分组
- * 或菜单中的项目数量以及该项目在菜单中的位置来确定。可使用便捷函数 [MenuDefaults.itemShape] 来轻松确定要使用的形状。
+ * @param 文本 此菜单项的文本。
+ * @param 形状集 用于解析此菜单项形状的 [MenuItemShapes]。该菜单项的形状由 [已选择] 的值决定。
+ * 所提供的形状应根据菜单或菜单组中项目的数量以及该菜单项在菜单中的位置来确定。可以使用便捷函数 [MenuDefaults.itemShape] 轻松确定要使用的形状。
  * @param 修饰符 应用于此菜单项的 [Modifier]。
- * @param 前导图标 当菜单项未选中时显示的可选前置图标。
- * @param 已选择前导图标 当菜单项选中时显示的可选前置图标。
- * @param 尾随图标 在菜单项文本末尾显示的可选后置图标。
- * @param 已启用 控制此菜单项的启用状态。当为 `false` 时，此组件不会响应用户输入。
- * @param 颜色集 用于解析此菜单项颜色的 [MenuItemColors]。可使用或修改 [MenuDefaults.selectableItemColors]
- * 和 [MenuDefaults.selectableItemVibrantColors] 这两个预定义的 [MenuItemColors]。
- * @param 水平排列 此菜单项的水平排列。参见 [MenuDefaults.DropdownMenuItemHorizontalArrangement]。
- * @param 内容内边距 应用于此菜单项内容的内边距。
- * @param 交互源 用于观察并发出此菜单项 [Interaction] 的可选提升式 [MutableInteractionSource]。
- * @param 辅助文本 菜单项的可选辅助文本。
+ * @param 前导图标 当菜单项处于未选中状态时显示的可选前置图标。
+ * @param 已选择前导图标 当菜单项处于选中状态时显示的可选前置图标。
+ * @param 尾随内容 显示在菜单项文本末尾的可选尾部内容。
+ * @param 辅助文本 菜单项的可选辅助说明文本。
+ * @param 已启用 控制此菜单项的启用状态。当为 `false` 时，此组件将不响应用户输入。
+ * @param 颜色集 用于解析此菜单项颜色的 [SelectableMenuItemColors]。有两个预定义的 [SelectableMenuItemColors]
+ * 可供使用或修改：[MenuDefaults.selectableItemColors] 和 [MenuDefaults.selectableItemVibrantColors]。
+ * @param 水平排列 菜单项子元素的水平排列方式。
+ * @param 内容内边距 应用于此菜单项内容的内边距（padding）。
+ * @param 交互源 一个可选的提升的 [MutableInteractionSource]，用于观察和发出此菜单项的 [Interaction]。
  */
 @Suppress("ComposableNaming")
 @Composable
-fun 下拉菜单项(
+public fun 可选择下拉菜单项(
     已选择: Boolean,
     单击回调: () -> Unit,
     文本: @Composable () -> Unit,
@@ -393,16 +403,16 @@ fun 下拉菜单项(
     修饰符: Modifier = Modifier,
     前导图标: @Composable (() -> Unit)? = null,
     已选择前导图标: @Composable (() -> Unit)? = null,
-    尾随图标: @Composable (() -> Unit)? = null,
+    尾随内容: @Composable (() -> Unit)? = null,
     辅助文本: @Composable (() -> Unit)? = null,
     已启用: Boolean = true,
-    颜色集: MenuItemColors = MenuDefaults.selectableItemColors(),
+    颜色集: SelectableMenuItemColors = MenuDefaults.selectableItemColors(),
     水平排列: Arrangement.Horizontal =
         MenuDefaults.DropdownMenuItemHorizontalArrangement,
     内容内边距: PaddingValues = MenuDefaults.DropdownMenuSelectableItemContentPadding,
     交互源: MutableInteractionSource? = null,
 ) =
-    DropdownMenuItem(
+    SelectableDropdownMenuItem(
         selected = 已选择,
         onClick = 单击回调,
         text = 文本,
@@ -410,21 +420,124 @@ fun 下拉菜单项(
         modifier = 修饰符,
         leadingIcon = 前导图标,
         selectedLeadingIcon = 已选择前导图标,
-        trailingIcon = 尾随图标,
+        trailingContent = 尾随内容,
         supportingText = 辅助文本,
         enabled = 已启用,
         colors = 颜色集,
         horizontalArrangement = 水平排列,
         contentPadding = 内容内边距,
         interactionSource = 交互源,
-
     )
 
-// TODO: 考虑移入公开的 [MenuDefaults] 中
-internal val DefaultMenuProperties: PopupProperties = PopupProperties(focusable = true)
 
-//// TODO: 考虑迁移到公共 [MenuDefaults]
-//internal expect val DefaultMenuProperties: PopupProperties
+
+//======================================================================
+
+/**
+ * 创建一个带有标准菜单项颜色的实例。
+ *
+ * 此构造函数用于 [DropdownMenuItem]。
+ *
+ * @param 文本颜色 当此菜单项启用时的文本颜色。
+ * @param 前导图标颜色 当此菜单项启用时的前置图标颜色。
+ * @param 尾随图标颜色 当此菜单项启用时的后置图标颜色。
+ * @param 禁用文本颜色 当此菜单项未启用时的文本颜色。
+ * @param 禁用前导图标颜色 当此菜单项未启用时的前置图标颜色。
+ * @param 禁用尾随图标颜色 当此菜单项未启用时的后置图标颜色。
+ */
+fun 菜单项颜色集(
+    文本颜色: Color,
+    前导图标颜色: Color,
+    尾随图标颜色: Color,
+    禁用文本颜色: Color,
+    禁用前导图标颜色: Color,
+    禁用尾随图标颜色: Color,
+) =
+    MenuItemColors(
+        textColor = 文本颜色,
+        leadingIconColor = 前导图标颜色,
+        trailingIconColor = 尾随图标颜色,
+        disabledTextColor = 禁用文本颜色,
+        disabledLeadingIconColor = 禁用前导图标颜色,
+        disabledTrailingIconColor = 禁用尾随图标颜色,
+    )
+
+/**
+ * 表示菜单项在不同状态下使用的文本和图标颜色。
+ *
+ * @param 文本颜色 当此 [DropdownMenuItem] 启用时 的文本颜色。
+ * @param 前导图标颜色 当此 [DropdownMenuItem] 启用时 的前置图标颜色。
+ * @param 尾随图标颜色 当此 [DropdownMenuItem] 启用时 的后置图标颜色。
+ * @param 禁用文本颜色 当此 [DropdownMenuItem] 未启用时 的文本颜色。
+ * @param 禁用前导图标颜色 当此 [DropdownMenuItem] 未启用时 的前置图标颜色。
+ * @param 禁用尾随图标颜色 当此 [DropdownMenuItem] 未启用时 的后置图标颜色。
+ * @param 容器颜色 当此菜单项启用且未选中时的容器颜色。
+ * @param 禁用容器颜色 当此菜单项未启用时的容器颜色。
+ * @constructor 使用任意颜色创建一个实例。有关 [DropdownMenuItem] 中使用的默认颜色，请参阅 [MenuDefaults.itemColors]。
+ */
+fun 菜单项颜色集(
+    文本颜色: Color,
+    前导图标颜色: Color,
+    尾随图标颜色: Color,
+    禁用文本颜色: Color,
+    禁用前导图标颜色: Color,
+    禁用尾随图标颜色: Color,
+    容器颜色: Color,
+    禁用容器颜色: Color,
+) =
+    MenuItemColors(
+        textColor = 文本颜色,
+        leadingIconColor = 前导图标颜色,
+        trailingIconColor = 尾随图标颜色,
+        disabledTextColor = 禁用文本颜色,
+        disabledLeadingIconColor = 禁用前导图标颜色,
+        disabledTrailingIconColor = 禁用尾随图标颜色,
+        containerColor = 容器颜色,
+        disabledContainerColor = 禁用容器颜色,
+    )
+
+/**
+ * 表示菜单项在不同状态下使用的文本和图标颜色。
+ *
+ * @param 文本颜色 当此 [DropdownMenuItem] 启用时 的文本颜色。
+ * @param 前导图标颜色 当此 [DropdownMenuItem] 启用时 的前置图标颜色。
+ * @param 尾随图标颜色 当此 [DropdownMenuItem] 启用时 的后置图标颜色。
+ * @param 禁用文本颜色 当此 [DropdownMenuItem] 未启用时 的文本颜色。
+ * @param 禁用前导图标颜色 当此 [DropdownMenuItem] 未启用时 的前置图标颜色。
+ * @param 禁用尾随图标颜色 当此 [DropdownMenuItem] 未启用时 的后置图标颜色。
+ * @param 已选择文本颜色 当此菜单项启用且已选中时的文本颜色。
+ * @param 已选择容器颜色 当此菜单项启用且已选中时的容器颜色。
+ * @param 已选择前导图标颜色 当此菜单项启用且已选中时的前置图标颜色。
+ * @param 已选择尾随图标颜色 当此菜单项启用且已选中时的后置图标颜色。
+ * @constructor 使用任意颜色创建一个实例。有关 [DropdownMenuItem] 中使用的默认颜色，请参阅 [MenuDefaults.itemColors]。
+ */
+@Deprecated(
+    "MenuItemColors no longer supports selected colors. Use SelectableMenuItemColors instead."
+)
+fun 菜单项颜色集(
+    文本颜色: Color = Color.Unspecified,
+    前导图标颜色: Color = Color.Unspecified,
+    尾随图标颜色: Color = Color.Unspecified,
+    禁用文本颜色: Color = Color.Unspecified,
+    禁用前导图标颜色: Color = Color.Unspecified,
+    禁用尾随图标颜色: Color = Color.Unspecified,
+    已选择文本颜色: Color = Color.Unspecified,
+    已选择前导图标颜色: Color = Color.Unspecified,
+    已选择尾随图标颜色: Color = Color.Unspecified,
+    已选择容器颜色: Color = Color.Unspecified,
+) =
+    MenuItemColors(
+        textColor = 文本颜色,
+        leadingIconColor = 前导图标颜色,
+        trailingIconColor = 尾随图标颜色,
+        disabledTextColor = 禁用文本颜色,
+        disabledLeadingIconColor = 禁用前导图标颜色,
+        disabledTrailingIconColor = 禁用尾随图标颜色,
+        selectedTextColor = 已选择文本颜色,
+        selectedLeadingIconColor = 已选择前导图标颜色,
+        selectedTrailingIconColor = 已选择尾随图标颜色,
+        selectedContainerColor = 已选择容器颜色,
+    )
 
 /**
  * 表示菜单项在不同状态下使用的文本和图标颜色。
@@ -443,6 +556,9 @@ internal val DefaultMenuProperties: PopupProperties = PopupProperties(focusable 
  * @param 已选择尾随图标颜色 当此菜单项启用且已选中时的后置图标颜色。
  * @constructor 使用任意颜色创建一个实例。有关 [DropdownMenuItem] 中使用的默认颜色，请参阅 [MenuDefaults.itemColors]。
  */
+@Deprecated(
+    "MenuItemColors no longer supports selected colors. Use SelectableMenuItemColors instead."
+)
 fun 菜单项颜色集(
     文本颜色: Color,
     前导图标颜色: Color,
@@ -500,53 +616,59 @@ val MenuItemColors.禁用容器颜色
     get() = this.disabledContainerColor
 
 /** 当此菜单项启用且已选中时的容器颜色。 */
+@Deprecated("Use SelectableMenuItemColors instead.")
 val MenuItemColors.已选择容器颜色: Color
     get() = this.selectedContainerColor
 
 /** 当此菜单项启用且已选中时的文本颜色。 */
+@Deprecated("Use SelectableMenuItemColors instead.")
 val MenuItemColors.已选择文本颜色: Color
     get() = this.selectedTextColor
 
 /** 当此菜单项启用且已选中时的前置图标颜色。 */
+@Deprecated("Use SelectableMenuItemColors instead.")
 val MenuItemColors.已选择前导图标颜色: Color
     get() = this.selectedLeadingIconColor
 
 /** 当此菜单项启用且已选中时的后置图标颜色。 */
+@Deprecated("Use SelectableMenuItemColors instead.")
 val MenuItemColors.已选择尾随图标颜色: Color
     get() = this.selectedTrailingIconColor
 
+/** 当此菜单项启用且已选中时的后置内容颜色。 */
+@Deprecated("Use SelectableMenuItemColors instead.")
+val MenuItemColors.已选择尾随内容颜色: Color
+    get() = this.selectedTrailingContentColor
 
-/**
- * 创建一个带有标准菜单项颜色的实例。
- *
- * 此构造函数用于 [DropdownMenuItem]。
- *
- * @param 文本颜色 当此菜单项启用时的文本颜色。
- * @param 前导图标颜色 当此菜单项启用时的前置图标颜色。
- * @param 尾随图标颜色 当此菜单项启用时的后置图标颜色。
- * @param 禁用文本颜色 当此菜单项未启用时的文本颜色。
- * @param 禁用前导图标颜色 当此菜单项未启用时的前置图标颜色。
- * @param 禁用尾随图标颜色 当此菜单项未启用时的后置图标颜色。
- */
-fun 菜单项颜色集(
-    文本颜色: Color,
-    前导图标颜色: Color,
-    尾随图标颜色: Color,
-    禁用文本颜色: Color,
-    禁用前导图标颜色: Color,
-    禁用尾随图标颜色: Color,
+
+/** 返回此 MenuItemColors 的副本，可选择性地覆盖其中某些值。这里使用 Color.Unspecified 来表示“使用源对象中的值”。*/
+@JvmName("copyNew")
+fun MenuItemColors.复制(
+    文本颜色: Color = this.textColor,
+    容器颜色: Color = this.containerColor,
+    前导图标颜色: Color = this.leadingIconColor,
+    尾随图标颜色: Color = this.trailingIconColor,
+    禁用文本颜色: Color = this.disabledTextColor,
+    禁用容器颜色: Color = this.disabledContainerColor,
+    禁用前导图标颜色: Color = this.disabledLeadingIconColor,
+    禁用尾随图标颜色: Color = this.disabledTrailingIconColor,
 ) =
-    MenuItemColors(
+    this.copy(
         textColor = 文本颜色,
+        containerColor = 容器颜色,
         leadingIconColor = 前导图标颜色,
         trailingIconColor = 尾随图标颜色,
         disabledTextColor = 禁用文本颜色,
+        disabledContainerColor = 禁用容器颜色,
         disabledLeadingIconColor = 禁用前导图标颜色,
         disabledTrailingIconColor = 禁用尾随图标颜色,
     )
 
-
 /** 返回此 MenuItemColors 的副本，可选择性地覆盖其中某些值。这里使用 Color.Unspecified 来表示“使用源对象中的值”。*/
+@JvmName("copySelectable")
+@Deprecated(
+    "MenuItemColors no longer supports selected colors. Use SelectableMenuItemColors instead."
+)
 fun MenuItemColors.复制(
     文本颜色: Color = this.textColor,
     容器颜色: Color = this.containerColor,
@@ -576,22 +698,100 @@ fun MenuItemColors.复制(
         selectedTrailingIconColor = 已选择尾随图标颜色,
     )
 
-/** 返回此 MenuItemColors 的副本，可选择性地覆盖其中某些值。这里使用 Color.Unspecified 来表示“使用源对象中的值”。*/
-fun MenuItemColors.复制(
+//======================================================================
+
+/**
+ * 表示在选中状态下，可选择的 [DropdownMenuItem] 在不同状态下使用的文本、图标和容器颜色。
+ *
+ * 当条目（item）处于禁用状态时，禁用颜色（disabled colors）的优先级高于选中颜色（selected colors）。
+ *
+ * @param 文本颜色 表示当此菜单项（menu item）处于启用且未选中状态时使用的文本颜色。
+ * @param 容器颜色 表示当此菜单项（menu item）处于启用且未选中状态时使用的容器颜色。
+ * @param 前导图标颜色 表示当此菜单项（menu item）处于启用且未选中状态时使用的起始图标（leading icon）颜色。
+ * @param 尾随内容颜色 表示当此菜单项（menu item）处于启用且未选中状态时使用的尾部内容（trailing content）颜色。
+ * @param 禁用文本颜色 表示当此菜单项（menu item）未启用时的文本颜色；如果该菜单项同时处于选中且禁用状态，则以禁用颜色为优先。
+ * @param 禁用容器颜色 表示当此菜单项（menu item）未启用时的容器颜色；如果该菜单项同时处于选中且禁用状态，则以禁用颜色为优先。
+ * @param 禁用前导图标颜色 表示当此菜单项（menu item）未启用时的起始图标（leading icon）颜色；如果该菜单项同时处于选中且禁用状态，则以禁用颜色为优先。
+ * @param 禁用尾随内容颜色 表示当此菜单项（menu item）未启用时的尾部内容（trailing content）颜色；如果该菜单项同时处于选中且禁用状态，则以禁用颜色为优先。
+ * @param 已选择文本颜色 表示当此菜单项（menu item）处于启用且选中状态时使用的文本颜色。
+ * @param 已选择容器颜色 表示当此菜单项（menu item）处于启用且选中状态时使用的容器颜色。
+ * @param 已选择前导图标颜色 表示当此菜单项（menu item）处于启用且选中状态时使用的起始图标（leading icon）颜色。
+ * @param 已选择尾随内容颜色 表示当此菜单项（menu item）处于启用且选中状态时使用的尾部内容（trailing content）颜色。
+ */
+fun 可选择菜单项颜色集(
+    文本颜色: Color,
+    容器颜色: Color,
+    前导图标颜色: Color,
+    尾随内容颜色: Color,
+    禁用文本颜色: Color,
+    禁用容器颜色: Color,
+    禁用前导图标颜色: Color,
+    禁用尾随内容颜色: Color,
+    已选择文本颜色: Color,
+    已选择容器颜色: Color,
+    已选择前导图标颜色: Color,
+    已选择尾随内容颜色: Color,
+) =
+    SelectableMenuItemColors(
+        textColor = 文本颜色,
+        containerColor = 容器颜色,
+        leadingIconColor = 前导图标颜色,
+        trailingContentColor = 尾随内容颜色,
+        disabledTextColor = 禁用文本颜色,
+        disabledContainerColor = 禁用容器颜色,
+        disabledLeadingIconColor = 禁用前导图标颜色,
+        disabledTrailingContentColor = 禁用尾随内容颜色,
+        selectedTextColor = 已选择文本颜色,
+        selectedContainerColor = 已选择容器颜色,
+        selectedLeadingIconColor = 已选择前导图标颜色,
+        selectedTrailingContentColor = 已选择尾随内容颜色,
+    )
+
+/**
+ * 表示在选中状态下，可选择的 [DropdownMenuItem] 在不同状态下使用的文本、图标和容器颜色。
+ *
+ * 当条目（item）处于禁用状态时，禁用颜色（disabled colors）的优先级高于选中颜色（selected colors）。
+ *
+ * @param 文本颜色 表示当此菜单项（menu item）处于启用且未选中状态时使用的文本颜色。
+ * @param 容器颜色 表示当此菜单项（menu item）处于启用且未选中状态时使用的容器颜色。
+ * @param 前导图标颜色 表示当此菜单项（menu item）处于启用且未选中状态时使用的起始图标（leading icon）颜色。
+ * @param 尾随内容颜色 表示当此菜单项（menu item）处于启用且未选中状态时使用的尾部内容（trailing content）颜色。
+ * @param 禁用文本颜色 表示当此菜单项（menu item）未启用时的文本颜色；如果该菜单项同时处于选中且禁用状态，则以禁用颜色为优先。
+ * @param 禁用容器颜色 表示当此菜单项（menu item）未启用时的容器颜色；如果该菜单项同时处于选中且禁用状态，则以禁用颜色为优先。
+ * @param 禁用前导图标颜色 表示当此菜单项（menu item）未启用时的起始图标（leading icon）颜色；如果该菜单项同时处于选中且禁用状态，则以禁用颜色为优先。
+ * @param 禁用尾随内容颜色 表示当此菜单项（menu item）未启用时的尾部内容（trailing content）颜色；如果该菜单项同时处于选中且禁用状态，则以禁用颜色为优先。
+ * @param 已选择文本颜色 表示当此菜单项（menu item）处于启用且选中状态时使用的文本颜色。
+ * @param 已选择容器颜色 表示当此菜单项（menu item）处于启用且选中状态时使用的容器颜色。
+ * @param 已选择前导图标颜色 表示当此菜单项（menu item）处于启用且选中状态时使用的起始图标（leading icon）颜色。
+ * @param 已选择尾随内容颜色 表示当此菜单项（menu item）处于启用且选中状态时使用的尾部内容（trailing content）颜色。
+ */
+fun SelectableMenuItemColors.复制(
     文本颜色: Color = this.textColor,
+    容器颜色: Color = this.containerColor,
     前导图标颜色: Color = this.leadingIconColor,
-    尾随图标颜色: Color = this.trailingIconColor,
+    尾随内容颜色: Color = this.trailingContentColor,
     禁用文本颜色: Color = this.disabledTextColor,
+    禁用容器颜色: Color = this.disabledContainerColor,
     禁用前导图标颜色: Color = this.disabledLeadingIconColor,
-    禁用尾随图标颜色: Color = this.disabledTrailingIconColor,
+    禁用尾随内容颜色: Color = this.disabledTrailingContentColor,
+    已选择文本颜色: Color = this.selectedTextColor,
+    已选择容器颜色: Color = this.selectedContainerColor,
+    已选择前导图标颜色: Color = this.selectedLeadingIconColor,
+    已选择尾随内容颜色: Color = this.selectedTrailingContentColor,
 ) =
     this.copy(
         textColor = 文本颜色,
+        containerColor = 容器颜色,
         leadingIconColor = 前导图标颜色,
-        trailingIconColor = 尾随图标颜色,
+        trailingContentColor = 尾随内容颜色,
         disabledTextColor = 禁用文本颜色,
+        disabledContainerColor = 禁用容器颜色,
         disabledLeadingIconColor = 禁用前导图标颜色,
-        disabledTrailingIconColor = 禁用尾随图标颜色,
+        disabledTrailingContentColor = 禁用尾随内容颜色,
+        selectedTextColor = 已选择文本颜色,
+        selectedContainerColor = 已选择容器颜色,
+        selectedLeadingIconColor = 已选择前导图标颜色,
+        selectedTrailingContentColor = 已选择尾随内容颜色,
     )
 
 //======================================================================
@@ -607,8 +807,10 @@ fun 菜单项形状集(形状: Shape, 已选择形状: Shape) = // MenuItemShape
     MenuItemShapes(shape = 形状, selectedShape = 已选择形状)
 
 /** 返回此 MenuItemShapes 的副本，可选择性地覆盖其中某些值。 */
-fun MenuItemShapes.复制(形状: Shape? = this.shape, 已选择形状: Shape? = this.selectedShape) =
-    this.copy(shape = 形状, selectedShape = 已选择形状)
+fun MenuItemShapes.复制(
+    形状: Shape? = this.shape,
+    已选择形状: Shape? = this.selectedShape
+) = this.copy(shape = 形状, selectedShape = 已选择形状)
 
 //======================================================================
 
@@ -737,16 +939,17 @@ object 菜单锚点位置{
     /**
      * 通过提供用于计算 X 轴和 Y 轴候选位置的 Lambda 函数来创建自定义定位策略。注意，候选定位坐标是相对于窗口边界计算的。
      *
-     * @param xCandidates 确定菜单相对于窗口边界的候选 X 坐标列表的 Lambda。
-     * @param yCandidates 确定菜单相对于窗口边界的候选 Y 坐标列表的 Lambda。
+     * @param x候选值 确定菜单相对于窗口边界的候选 X 坐标列表的 Lambda。
+     * @param y候选值 确定菜单相对于窗口边界的候选 Y 坐标列表的 Lambda。
      */
     fun 自定义(
-        xCandidates: MenuPositionScope.() -> IntList,
-        yCandidates: MenuPositionScope.() -> IntList,
-    ) = MenuAnchorPosition.Custom(xCandidates = xCandidates, yCandidates = yCandidates)
+        x候选值: MenuPositionScope.() -> IntList,
+        y候选值: MenuPositionScope.() -> IntList,
+    ) = MenuAnchorPosition.Custom(xCandidates = x候选值, yCandidates = y候选值)
 
 }
 
+//======================================================================
 
 /** 向下拉菜单实现传递 [TransformOrigin] 的 [PopupPositionProvider]。*/
 interface 下拉菜单弹出位置提供器 : PopupPositionProvider { // DropdownMenuPopupPositionProvider

@@ -2,17 +2,11 @@ package 安卓x.组合.材质3
 
 import androidx.annotation.FloatRange
 import androidx.compose.animation.core.AnimationSpec
-import androidx.compose.animation.core.AnimationState
 import androidx.compose.animation.core.DecayAnimationSpec
 import androidx.compose.animation.core.FiniteAnimationSpec
-import androidx.compose.animation.core.animateDecay
-import androidx.compose.animation.core.animateTo
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.rememberSplineBasedDecay
 import androidx.compose.foundation.ScrollState
-import androidx.compose.foundation.gestures.DraggableState
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.interaction.Interaction
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.ColumnScope
@@ -28,36 +22,49 @@ import androidx.compose.foundation.text.input.TextFieldLineLimits
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
 import androidx.compose.foundation.text.selection.TextSelectionColors
-import androidx.compose.material3.*
-import 安卓x.组合.材质3.令牌集.MotionTokens
+import androidx.compose.material3.AppBarWithSearch
+import androidx.compose.material3.AppBarWithSearchColors
+import androidx.compose.material3.ColorScheme
+import androidx.compose.material3.DockedSearchBar
+import androidx.compose.material3.ExpandedDockedSearchBar
+import androidx.compose.material3.ExpandedDockedSearchBarWithGap
+import androidx.compose.material3.ExpandedFullScreenContainedSearchBar
+import androidx.compose.material3.ExpandedFullScreenSearchBar
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.LocalTextStyle
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SearchBar
+import androidx.compose.material3.SearchBarColors
+import androidx.compose.material3.SearchBarDefaults
+import androidx.compose.material3.SearchBarScrollBehavior
+import androidx.compose.material3.SearchBarScrollState
+import androidx.compose.material3.SearchBarState
+import androidx.compose.material3.SearchBarValue
+import androidx.compose.material3.TextFieldColors
+import androidx.compose.material3.TopSearchBar
+import androidx.compose.material3.rememberContainedSearchBarState
+import androidx.compose.material3.rememberSearchBarScrollState
+import androidx.compose.material3.rememberSearchBarState
+import androidx.compose.material3.rememberSearchBarWithGapState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.annotation.FrequentlyChangingValue
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.saveable.Saver
-import androidx.compose.runtime.saveable.listSaver
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clipToBounds
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
-import androidx.compose.ui.input.nestedscroll.NestedScrollSource
-import androidx.compose.ui.layout.LayoutCoordinates
-import androidx.compose.ui.layout.layout
-import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.window.PopupProperties
-import kotlin.math.abs
-import kotlin.math.roundToInt
+import 安卓x.组合.材质3.令牌集.MotionTokens
+import 安卓x.组合.材质3.搜索栏状态.保存器
+import 安卓x.组合.材质3.搜索栏默认值.输入字段
+import 安卓x.组合.材质3.搜索栏默认值.输入字段颜色集
 
 /**
  * [Material Design search](https://m3.material.io/components/search/overview)
@@ -242,7 +249,6 @@ fun 应用栏带搜索(
  */
 @Suppress("ComposableNaming")
 @OptIn(ExperimentalMaterial3Api::class)
-@ExperimentalMaterial3ExpressiveApi
 @Composable
 fun 已展开全屏容器搜索栏(
     状态: SearchBarState,
@@ -287,7 +293,6 @@ fun 已展开全屏容器搜索栏(
  * @param 内容 此搜索栏的内容，用于在 [输入字段] 下方显示搜索结果。
  */
 @Suppress("ComposableNaming")
-@ExperimentalMaterial3Api
 @Composable
 fun 已展开全屏搜索栏(
     状态: SearchBarState,
@@ -336,7 +341,6 @@ fun 已展开全屏搜索栏(
  */
 @Suppress("ComposableNaming")
 @OptIn(ExperimentalMaterial3Api::class)
-@ExperimentalMaterial3ExpressiveApi
 @Composable
 fun 已展开固定搜索栏带间隙(
     状态: SearchBarState,
@@ -383,7 +387,7 @@ fun 已展开固定搜索栏带间隙(
  * @param 属性集 用于配置对话框行为的平台特定属性。任何限制对话框大小的属性（例如 [DialogProperties.usePlatformDefaultWidth]）均会被忽略。
  * @param 内容 此搜索栏的内容，用于在 [输入字段] 下方显示搜索结果。
  */
-@ExperimentalMaterial3Api
+@Suppress("ComposableNaming")
 @Composable
 fun 已展开固定搜索栏(
     状态: SearchBarState,
@@ -435,6 +439,12 @@ fun 已展开固定搜索栏(
  * @param 窗口插入 此搜索栏将遵守的窗口内边距。
  * @param 内容 此搜索栏的内容，用于在 [输入字段] 下方显示搜索结果。
  */
+@Suppress("ComposableNaming")
+@Deprecated(
+    message =
+        "Use SearchBar with SearchBarState, and ExpandedFullScreenSearchBar or " +
+                "ExpandedDockedSearchBar to display results."
+)
 @ExperimentalMaterial3Api
 @Composable
 fun 搜索栏(
@@ -484,6 +494,10 @@ fun 搜索栏(
  * @param 视觉阴影 搜索栏下方阴影的海拔高度。
  * @param 内容 此搜索栏的内容，用于在 [输入字段] 下方显示搜索结果。
  */
+@Suppress("ComposableNaming")
+@Deprecated(
+    message = "Use SearchBar with SearchBarState, and ExpandedDockedSearchBar to display results."
+)
 @ExperimentalMaterial3Api
 @Composable
 fun 固定搜索栏(
@@ -511,7 +525,6 @@ fun 固定搜索栏(
 
 
 /** [搜索栏状态] 的可能取值。 */
-@ExperimentalMaterial3Api
 object 搜索栏值 { // SearchBarValue
 
     /** 搜索栏处于折叠状态时的状态。 */
@@ -529,7 +542,6 @@ object 搜索栏值 { // SearchBarValue
  * @param 动画规格用于展开 搜索栏展开时使用的动画规格。
  * @param 动画规格用于折叠 搜索栏收起时使用的动画规格。
  */
-@ExperimentalMaterial3Api
 fun 搜索栏状态 (
     初始值: SearchBarValue,
     动画规格用于展开: AnimationSpec<Float>,
@@ -550,7 +562,6 @@ fun 搜索栏状态 (
  * @param 动画规范用于内容淡入 搜索栏展开时内容使用的动画规格。
  * @param 动画规格用于内容淡出 搜索栏收起时内容使用的动画规格。
  */
-@ExperimentalMaterial3Api
 fun 搜索栏状态 (
     初始值: SearchBarValue,
     动画规格用于展开: AnimationSpec<Float>,
@@ -568,28 +579,18 @@ fun 搜索栏状态 (
 
 //===================================================================================
 
-/** 搜索栏收起时的布局坐标（如果可用）。用于协调展开动画。*/
-@ExperimentalMaterial3Api
-var SearchBarState.折叠坐标: LayoutCoordinates?
-    get() =  this.collapsedCoords
-    set(value) {
-        this.collapsedCoords = value
-    }
 
 /** 搜索栏的动画进度，其中 0 表示 [SearchBarValue.Collapsed]（收起状态），1 表示 [SearchBarValue.Expanded]（展开状态）。*/
-@ExperimentalMaterial3Api
 @get:FloatRange(from = 0.0, to = 1.0)
 val SearchBarState.进度: Float
     get() = this.progress
 
 
 /** 当前状态是否正在执行动画 */
-@ExperimentalMaterial3Api
 val SearchBarState.是否正在动画: Boolean
     get() = this.isAnimating
 
 /** 搜索栏将要展开还是收起。 */
-@ExperimentalMaterial3Api
 val SearchBarState.目标值: SearchBarValue
     get() = this.targetValue
 
@@ -597,29 +598,25 @@ val SearchBarState.目标值: SearchBarValue
  * 搜索栏当前是展开还是收起状态。如果搜索栏当前正在向展开状态或从展开状态执行动画，则 [当前值] 在动画完成前始终为
  * [SearchBarValue.Expanded]。
  */
-@ExperimentalMaterial3Api
 val SearchBarState.当前值: SearchBarValue
     get() = this.currentValue
 
 
 /** 将搜索栏动画过渡到展开状态。 */
-@ExperimentalMaterial3Api
 suspend fun SearchBarState.动画到已展开() = this.animateToExpanded()
 
 
 /** 将搜索栏动画过渡到收起状态。 */
-@ExperimentalMaterial3Api
 suspend fun SearchBarState.动画到已折叠() = this.animateToCollapsed()
 
 /**
  * 将搜索栏进度直接跳转到指定的 [fraction]，其中 0 表示 [SearchBarValue.Collapsed]（收起状态），1 表示
  * [SearchBarValue.Expanded]（展开状态）。
  */
-@ExperimentalMaterial3Api
 suspend fun SearchBarState.吸附到(fraction: Float) = this.snapTo(fraction)
 
 //===================================================================================
-@ExperimentalMaterial3Api
+
 object 搜索栏状态 {
 
     /** [SearchBarState] 的默认 [保存器] 实现。*/
@@ -656,7 +653,6 @@ object 搜索栏状态 {
  * @param 动画规格用于展开 搜索栏展开时使用的动画规格。
  * @param 动画规格用于折叠 搜索栏收起时使用的动画规格。
  */
-@ExperimentalMaterial3Api
 @Composable
 fun 记住搜索栏状态(
     初始值: SearchBarValue = SearchBarValue.Collapsed,
@@ -679,7 +675,6 @@ fun 记住搜索栏状态(
  * @param 动画规范用于内容淡入 搜索栏展开时内容使用的动画规格。
  * @param 动画规格用于内容淡出 搜索栏收起时内容使用的动画规格。
  */
-@ExperimentalMaterial3Api
 @Composable
 fun 记住容器搜索栏状态(
     初始值: SearchBarValue = SearchBarValue.Collapsed,
@@ -706,7 +701,6 @@ fun 记住容器搜索栏状态(
  * @param 动画规范用于内容淡入 搜索栏展开时内容使用的动画规格。
  * @param 动画规格用于内容淡出 搜索栏收起时内容使用的动画规格。
  */
-@ExperimentalMaterial3Api
 @Composable
 fun 记住搜索栏带间隙状态(
     初始值: SearchBarValue = SearchBarValue.Collapsed,
@@ -723,267 +717,123 @@ fun 记住搜索栏带间隙状态(
         animationSpecForContentFadeOut = 动画规格用于内容淡出,
     )
 
+//======================================================================================
+
+/**
+ * 一个可以提升（hoist）的状态对象，用于控制和观察搜索栏的滚动状态。该状态由 [SearchBarScrollBehavior] 的实现来读取和更新。
+ *
+ * 在大多数情况下，此状态将通过 [rememberSearchBarScrollState] 创建。
+ *
+ * @param 初始滚动偏移量限制 [SearchBarScrollState.scrollOffsetLimit] 的初始值。
+ * @param 初始滚动偏移量 [SearchBarScrollState.scrollOffset] 的初始值。
+ * @param 初始内容偏移量 [SearchBarScrollState.contentOffset] 的初始值。
+ */
+fun 搜索栏滚动状态(
+    初始滚动偏移量限制: Float,
+    初始滚动偏移量: Float,
+    初始内容偏移量: Float,
+) = SearchBarScrollState(
+    initialScrollOffsetLimit = 初始滚动偏移量限制,
+    initialScrollOffset = 初始滚动偏移量,
+    initialContentOffset = 初始内容偏移量,
+)
+
+
+/**
+ * 由于滚动产生的搜索栏当前偏移量，单位为像素。此偏移量会应用到搜索栏的固定尺寸上，以在内容滚动时控制其显示尺寸。
+ *
+ * 此值通常为负数。
+ *
+ * 对 [滚动偏移量] 值的更新会被强制约束在 [滚动偏移量限制] 和 0 之间。
+ */
+public var SearchBarScrollState.滚动偏移量: Float
+    @FrequentlyChangingValue get() = scrollOffset
+    set(newOffset) {
+        scrollOffset = newOffset
+    }
+
+/**
+ * 搜索栏因滚动可产生的偏移量上限，单位为像素。
+ *
+ * 此值通常为负数。
+ *
+ * 使用此上限在 [滚动偏移量] 值更新时对其进行约束。
+ */
+public var SearchBarScrollState.滚动偏移量限制: Float
+    get() = scrollOffsetLimit
+    set(newOffset) {
+        scrollOffsetLimit = newOffset
+    }
+
+/**
+ * 在搜索栏下方滚动的内容的总偏移量。
+ *
+ * 内容偏移量用于计算 [overlappedFraction]（重叠比例），该值随后可被实现读取。
+ *
+ * 当嵌套滚动连接（nested scroll connection）消耗滚动事件时，此值由 [SearchBarScrollBehavior]
+ * 更新。常见的实现会将该值更新为所有 [NestedScrollConnection.onPostScroll] 中 `consumed.y`
+ * 值的总和。
+ */
+@get:FrequentlyChangingValue
+public var SearchBarScrollState.内容偏移量: Float
+    get() = contentOffset
+    set(newOffset) {
+        contentOffset = newOffset
+    }
+
+
+object 搜索栏滚动状态 {
+
+    /** [SearchBarScrollState] 的默认 [Saver] 实现。 */
+    val 保存器: Saver<SearchBarScrollState, *> = SearchBarScrollState.Saver
+
+}
+
+//======================================================================================
+
 /**
  * [搜索栏滚动行为] 定义了当搜索栏下方的内容发生滚动时，搜索栏应如何表现。
  *
  * @see [SearchBarDefaults.enterAlwaysSearchBarScrollBehavior]
  */
-@ExperimentalMaterial3Api
 @Stable
 interface 搜索栏滚动行为 { // SearchBarScrollBehavior
 
     /**
-     * 搜索栏因滚动产生的当前偏移量，单位为像素。该偏移量会应用于搜索栏的固定尺寸，以在内容滚动时控制其显示大小。
-     *
-     * 该值通常为负数。
-     *
-     * 对 [滚动偏移量] 值的更新会被限制在 [滚动偏移量限制] 和 0 之间。
+     * 一个与此行为相关联的 [SearchBarScrollState]，在发生滚动时会被读取和更新。
      */
-    @get:FrequentlyChangingValue var 滚动偏移量: Float // scrollOffset
+    val 滚动状态: SearchBarScrollState // scrollState
 
-    /**
-     * 搜索栏因滚动可产生的偏移量上限，单位为像素。
-     *
-     * 该值通常为负数。
-     *
-     * 在 [滚动偏移量] 值更新时，使用此限制来对其进行约束。
-     */
-    var 滚动偏移量限制: Float // scrollOffsetLimit
-
-    /**
-     * 搜索栏下方内容滚动的总偏移量。
-     *
-     * 内容偏移量用于计算 [重叠比例]，后续可由具体实现读取。
-     *
-     * 该值由 [SearchBarScrollBehavior] 在嵌套滚动连接消费滚动事件时进行更新。常见的实现方式是将该值更新为所有
-     * [NestedScrollConnection.onPostScroll] 中 consumed.y 值的总和。
-     */
-    @get:FrequentlyChangingValue var 内容偏移量: Float // contentOffset
 
     /** 一个 [NestedScrollConnection]，应附加到 [androidx.compose.ui.input.nestedscroll.nestedScroll] 上，以便跟踪滚动事件。*/
     val 嵌套滚动连接: NestedScrollConnection // nestedScrollConnection
 
-    /** 为搜索栏组件添加滚动行为的修饰符。[AppBarWithSearch] 会自动应用此修饰符。*/
-    fun Modifier.搜索栏滚动行为(): Modifier // searchBarScrollBehavior
+    /**
+     * 为搜索栏（search bar）组件添加滚动行为的修饰符（modifier）。[AppBarWithSearch] 会自动应用此修饰符。
+     */
+    public val 搜索栏滚动行为修饰符: Modifier // searchBarScrollBehaviorModifier
 
 }
 
 //===============================================================================
 
-/**
- * 搜索栏因滚动产生的当前偏移量，单位为像素。该偏移量会应用于搜索栏的固定尺寸，以在内容滚动时控制其显示大小。
- *
- * 该值通常为负数。
- *
- * 对 [滚动偏移量] 值的更新会被限制在 [滚动偏移量限制] 和 0 之间。
- */
-@ExperimentalMaterial3Api
-@get:FrequentlyChangingValue var SearchBarScrollBehavior.滚动偏移量: Float
-    get() = this.scrollOffset
-    set(scrollOffset) {
-        this.scrollOffset = scrollOffset
-    }
+/** 一个与此行为相关联的 [SearchBarScrollState]，在发生滚动时会被读取和更新。*/
+val SearchBarScrollBehavior.滚动状态: SearchBarScrollState
+    get() = this.scrollState
 
-
-/**
- * 搜索栏因滚动可产生的偏移量上限，单位为像素。
- *
- * 该值通常为负数。
- *
- * 在 [滚动偏移量] 值更新时，使用此限制来对其进行约束。
- */
-@ExperimentalMaterial3Api
-var SearchBarScrollBehavior.滚动偏移量限制: Float
-    get() = this.scrollOffsetLimit
-    set(newLimit) {
-        this.scrollOffsetLimit = newLimit
-    }
-
-/**
- * 搜索栏下方内容滚动的总偏移量。
- *
- * 内容偏移量用于计算 [重叠比例]，后续可由具体实现读取。
- *
- * 该值由 [SearchBarScrollBehavior] 在嵌套滚动连接消费滚动事件时进行更新。常见的实现方式是将该值更新为所有
- * [NestedScrollConnection.onPostScroll] 中 consumed.y 值的总和。
- */
-@ExperimentalMaterial3Api
-@get:FrequentlyChangingValue var SearchBarScrollBehavior.内容偏移量: Float
-    get() = this.contentOffset
-    set(newOffset) {
-        this.contentOffset = newOffset
-    }
 
 /** 一个 [NestedScrollConnection]，应附加到 [androidx.compose.ui.input.nestedscroll.nestedScroll] 上，以便跟踪滚动事件。*/
-@ExperimentalMaterial3Api
 val SearchBarScrollBehavior.嵌套滚动连接: NestedScrollConnection
     get() = this.nestedScrollConnection
 
+/**
+ * 为搜索栏（search bar）组件添加滚动行为的修饰符（modifier）。[AppBarWithSearch] 会自动应用此修饰符。
+ */
+val SearchBarScrollBehavior.搜索栏滚动行为修饰符: Modifier
+    get() = this.searchBarScrollBehaviorModifier
+
 //===============================================================================
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Stable
-private class EnterAlwaysSearchBarScrollBehavior(
-    initialOffset: Float,
-    initialOffsetLimit: Float,
-    initialContentOffset: Float,
-    val canScroll: () -> Boolean,
-    val reverseLayout: Boolean,
-    val snapAnimationSpec: AnimationSpec<Float>,
-    val flingAnimationSpec: DecayAnimationSpec<Float>,
-) : SearchBarScrollBehavior {
-    private var _scrollOffset by mutableFloatStateOf(initialOffset)
-    private var _scrollOffsetLimit by mutableFloatStateOf(initialOffsetLimit)
-    private var _contentOffset by mutableFloatStateOf(initialContentOffset)
-
-    override var scrollOffset: Float
-        @FrequentlyChangingValue get() = _scrollOffset
-        set(newOffset) {
-            _scrollOffset = newOffset.coerceIn(scrollOffsetLimit, 0f)
-        }
-
-    override var scrollOffsetLimit: Float
-        get() = _scrollOffsetLimit
-        set(newOffset) {
-            _scrollOffsetLimit = newOffset
-        }
-
-    override var contentOffset: Float
-        @FrequentlyChangingValue get() = _contentOffset
-        set(newOffset) {
-            _contentOffset = newOffset
-        }
-
-    override fun Modifier.searchBarScrollBehavior(): Modifier {
-        return this.draggable(
-            orientation = Orientation.Vertical,
-            state = DraggableState { delta -> scrollOffset += delta },
-            onDragStopped = { velocity -> settleSearchBar(velocity) },
-            enabled = canScroll(),
-        )
-            .clipToBounds()
-            .layout { measurable, constraints ->
-                val placeable = measurable.measure(constraints)
-                val scrollOffset = scrollOffset.roundToInt()
-                val scrolledHeight = (placeable.height + scrollOffset).coerceAtLeast(0)
-                layout(placeable.width, scrolledHeight) {
-                    placeable.placeWithLayer(0, scrollOffset)
-                }
-            }
-            .onSizeChanged { size -> scrollOffsetLimit = -size.height.toFloat() }
-    }
-
-    override val nestedScrollConnection: NestedScrollConnection =
-        object : NestedScrollConnection {
-            override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
-                if (!canScroll()) return Offset.Zero
-                val prevScrollOffset = scrollOffset
-                scrollOffset += available.y
-                // The scrollOffset is coerced between scrollOffsetLimit and 0, so we check if its
-                // value was actually changed after available.y is added. If so, the search bar is
-                // currently  in between scroll states.
-                // Note: when the content is set with reversed layout, we always return Offset.Zero.
-                return if (!reverseLayout && prevScrollOffset != scrollOffset) {
-                    available.copy(x = 0f)
-                } else {
-                    Offset.Zero
-                }
-            }
-
-            override fun onPostScroll(
-                consumed: Offset,
-                available: Offset,
-                source: NestedScrollSource,
-            ): Offset {
-                if (!canScroll()) return Offset.Zero
-                if (reverseLayout && available.y > 0f) {
-                    // In a reversed layout, consume scroll if it's a pull down
-                    // to reveal the search bar but not if it's a pull up to hide.
-                    scrollOffset += available.y
-                    contentOffset += available.y
-                    return available.copy(x = 0f)
-                }
-                if (!reverseLayout) {
-                    scrollOffset += consumed.y
-                    contentOffset += consumed.y
-                }
-                return Offset.Zero
-            }
-
-            override suspend fun onPostFling(consumed: Velocity, available: Velocity): Velocity {
-                if (!canScroll()) return Velocity.Zero
-                return settleSearchBar(available.y)
-            }
-        }
-
-    private suspend fun settleSearchBar(velocity: Float): Velocity {
-        // Check if the search bar scroll is at a scroll limit. If so, no need to settle the search
-        // bar, and just return Velocity.Zero.
-        // Note that we don't check for 0f due to float precision with the scrollFraction
-        // calculation.
-        val scrollFraction = if (scrollOffsetLimit != 0f) scrollOffset / scrollOffsetLimit else 0f
-        if (scrollFraction < 0.01f || scrollFraction == 1f) {
-            return Velocity.Zero
-        }
-        var remainingVelocity = velocity
-        // In case there is an initial velocity that was left after a previous user fling, animate
-        // to continue the motion to scroll the search bar.
-        if (abs(velocity) > 1f) {
-            var lastValue = 0f
-            AnimationState(initialValue = 0f, initialVelocity = velocity).animateDecay(
-                flingAnimationSpec
-            ) {
-                val delta = value - lastValue
-                val initialScrollOffset = scrollOffset
-                scrollOffset = initialScrollOffset + delta
-                val consumed = abs(initialScrollOffset - scrollOffset)
-                lastValue = value
-                remainingVelocity = this.velocity
-                // avoid rounding errors and stop if anything is unconsumed
-                if (abs(delta - consumed) > 0.5f) this.cancelAnimation()
-            }
-        }
-        if (scrollOffsetLimit < scrollOffset && scrollOffset < 0) {
-            AnimationState(initialValue = scrollOffset).animateTo(
-                targetValue = if (scrollFraction < 0.5f) 0f else scrollOffsetLimit,
-                animationSpec = snapAnimationSpec,
-            ) {
-                scrollOffset = value
-            }
-        }
-
-        return Velocity(0f, remainingVelocity)
-    }
-
-    companion object {
-        fun Saver(
-            canScroll: () -> Boolean,
-            snapAnimationSpec: AnimationSpec<Float>,
-            flingAnimationSpec: DecayAnimationSpec<Float>,
-        ): Saver<EnterAlwaysSearchBarScrollBehavior, *> =
-            listSaver(
-                save = {
-                    listOf(
-                        it.scrollOffset,
-                        it.scrollOffsetLimit,
-                        it.contentOffset,
-                        it.reverseLayout,
-                    )
-                },
-                restore = {
-                    EnterAlwaysSearchBarScrollBehavior(
-                        initialOffset = it[0] as Float,
-                        initialOffsetLimit = it[1] as Float,
-                        initialContentOffset = it[2] as Float,
-                        reverseLayout = it[3] as Boolean,
-                        canScroll = canScroll,
-                        snapAnimationSpec = snapAnimationSpec,
-                        flingAnimationSpec = flingAnimationSpec,
-                    )
-                },
-            )
-    }
-}
 
 /** [搜索栏] 和 [固定搜索栏] 中使用的默认值。 */
 @ExperimentalMaterial3Api
@@ -1051,19 +901,41 @@ object 搜索栏默认值 { // SearchBarDefaults
         @Composable get() =  SearchBarDefaults.fullScreenWindowInsets
 
     /**
-     * 返回一个 [SearchBarScrollBehavior]。配置此行为的搜索栏会在内容向上拉动时立即向上滚出屏幕，并在内容向下拉动时立即出现。
+     * 返回一个 [SearchBarScrollBehavior]。配置了此行为的搜索栏会在内容上拉时立即向上滚动离开屏幕，并在内容下拉时立即重新出现。
      *
-     * T返回的 [SearchBarScrollBehavior] 会在重组过程中被记住（跨组合保留）。
+     * 返回的 [SearchBarScrollBehavior] 会在多次重组（composition）之间被记忆（remember）保存。
      *
-     * @param 初始偏移量 [SearchBarScrollBehavior.scrollOffset] 的初始值。应介于 [初始偏移量限制] 和 0 之间。
-     * @param 初始偏移量限制 [SearchBarScrollBehavior.scrollOffsetLimit] 的初始值，表示当内容滚动时，搜索栏允许滚出屏幕的像素上限。
-     * @param 初始内容偏移量 [SearchBarScrollBehavior.contentOffset] 的初始值。
-     * @param 可以滚动 用于确定滚动事件是否应由此 [SearchBarScrollBehavior] 处理的回调。
-     * @param 吸附动画规范 一个 [AnimationSpec]，用于定义当快速滑动或拖拽滚动使搜索栏处于中间位置时，其滚动偏移量如何吸附到上限值或 0。
-     * @param 抛掷动画规格 一个 [DecayAnimationSpec]，用于定义当用户快速滑动搜索栏本身或其下方内容时，搜索栏的减速动画行为。
-     * @param 反向布局 表示此行为应用于具有反向滚动和布局方向的可滚动内容。
+     * @param 滚动状态 用于控制或观察搜索栏滚动状态的状态对象。如需在多次重组（composition）之间被记忆（remember）保存的状态，请参见 [rememberSearchBarScrollState]。
+     * @param 可以滚动 一个回调，用于确定滚动事件是否应由此 [SearchBarScrollBehavior] 处理。
+     * @param 吸附动画规范 一个 [AnimationSpec]，用于定义当快速滑动（fling）或拖拽使搜索栏滚动到某个中间位置时，其滚动偏移量如何吸附（snap）到其极限值或 0。
+     * @param 抛掷动画规格 一个 [DecayAnimationSpec]，用于定义当用户快速滑动（fling）搜索栏本身或其下方内容时，搜索栏应如何滑动。
+     * @param 反向布局 表示此行为应用于一个滚动和布局方向均为反向的可滚动内容。
      */
-    @ExperimentalMaterial3Api
+    @Composable
+    fun 进入始终搜索栏滚动行为(
+        滚动状态: SearchBarScrollState = rememberSearchBarScrollState(),
+        可以滚动: () -> Boolean = { true },
+        // TODO 从组件令牌（tokens）文件中加载 motionScheme（动态方案）令牌。
+        吸附动画规范: AnimationSpec<Float> = MaterialTheme.motionScheme.defaultEffectsSpec(),
+        抛掷动画规格: DecayAnimationSpec<Float> = rememberSplineBasedDecay(),
+        反向布局: Boolean = false,
+    ): SearchBarScrollBehavior =
+        SearchBarDefaults.enterAlwaysSearchBarScrollBehavior(
+            scrollState = 滚动状态,
+            canScroll = 可以滚动,
+            snapAnimationSpec = 吸附动画规范,
+            flingAnimationSpec = 抛掷动画规格,
+            reverseLayout = 反向布局,
+        )
+
+
+    @Deprecated(
+        "Use `enterAlwaysSearchBarScrollBehavior` that accepts a `SearchBarScrollState` parameter.",
+        ReplaceWith(
+            "enterAlwaysSearchBarScrollBehavior(state, canScroll, snapAnimationSpec, " +
+                    "flingAnimationSpec, reverseLayout)"
+        ),
+    )
     @Composable
     fun 进入始终搜索栏滚动行为(
         初始偏移量: Float = 0f,
@@ -1126,6 +998,7 @@ object 搜索栏默认值 { // SearchBarDefaults
      * @param 应用栏导航图标颜色 应用栏导航图标所使用的颜色。
      * @param 应用栏操作图标颜色 应用栏操作图标所使用的颜色。
      */
+    @ExperimentalMaterial3Api
     @Composable
     fun 应用栏带搜索颜色集(
         搜索栏颜色集: SearchBarColors = SearchBarDefaults.colors(),
@@ -1260,7 +1133,6 @@ object 搜索栏默认值 { // SearchBarDefaults
      * 还是 [TextFieldLineLimits.MultiLine]（垂直扩展并滚动）。
      */
     @Suppress("ComposableNaming")
-    @ExperimentalMaterial3Api
     @Composable
     fun 输入字段(
         文本字段状态: TextFieldState,
@@ -1337,6 +1209,7 @@ object 搜索栏默认值 { // SearchBarDefaults
      * 你可以使用它来更改搜索栏的外观或在不同的状态下预览搜索栏。请注意，如果提供的值为 null，交互仍会在内部发生。
      */
     @Suppress("ComposableNaming")
+    @Deprecated(message = "Use SearchBarDefaults.InputField with SearchBarState.")
     @ExperimentalMaterial3Api
     @Composable
     fun 输入字段(
@@ -1402,6 +1275,9 @@ object 搜索栏默认值 { // SearchBarDefaults
      * 你可以使用它来更改搜索栏的外观或在不同状态下预览搜索栏。请注意，如果提供的值为 null，交互仍会在内部发生。
      */
     @Suppress("ComposableNaming")
+    @Deprecated(
+        message = "Use SearchBarDefaults.InputField with TextFieldState and SearchBarState."
+    )
     @ExperimentalMaterial3Api
     @Composable
     fun 输入字段(
@@ -1441,7 +1317,6 @@ object 搜索栏默认值 { // SearchBarDefaults
  *
  * 有关遵循 Material 规范的默认实现，请参阅 [SearchBarDefaults.colors]。
  */
-@ExperimentalMaterial3Api
 fun 搜索栏颜色集( // SearchBarColors
     容器颜色: Color,
     分隔线颜色: Color,
@@ -1458,7 +1333,6 @@ fun 搜索栏颜色集( // SearchBarColors
     message = "Use overload that takes `inputFieldColors`",
     replaceWith = ReplaceWith("SearchBarColors(containerColor, dividerColor, inputFieldColors)"),
 )
-@ExperimentalMaterial3Api
 fun 搜索栏颜色集(
     容器颜色: Color,
     分隔线颜色: Color,
@@ -1470,7 +1344,6 @@ fun 搜索栏颜色集(
 
 
 /** 返回此 SearchBarColors 的副本，可选择性地覆盖其中部分值。 */
-@ExperimentalMaterial3Api
 fun SearchBarColors.复制(
     容器颜色: Color = this.containerColor,
     分隔线颜色: Color = this.dividerColor,

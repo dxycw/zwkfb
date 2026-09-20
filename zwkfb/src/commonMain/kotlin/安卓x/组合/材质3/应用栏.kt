@@ -18,30 +18,22 @@ import androidx.compose.material3.BottomAppBarDefaults
 import androidx.compose.material3.BottomAppBarScrollBehavior
 import androidx.compose.material3.BottomAppBarState
 import androidx.compose.material3.CenterAlignedTopAppBar
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExperimentalMaterial3ComponentOverrideApi
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.FlexibleBottomAppBar
 import androidx.compose.material3.LargeFlexibleTopAppBar
 import androidx.compose.material3.LargeTopAppBar
-import androidx.compose.material3.LocalSingleRowTopAppBarOverride
-import androidx.compose.material3.LocalTwoRowsTopAppBarOverride
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MediumFlexibleTopAppBar
 import androidx.compose.material3.MediumTopAppBar
-import androidx.compose.material3.SingleRowTopAppBarOverride
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.material3.TopAppBarState
 import androidx.compose.material3.TwoRowsTopAppBar
-import androidx.compose.material3.TwoRowsTopAppBarOverride
 import androidx.compose.material3.contentColorFor
 import androidx.compose.material3.rememberBottomAppBarState
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.ui.Alignment
@@ -50,7 +42,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
-
+import 安卓x.组合.材质3.顶部应用栏状态.保存器
 
 
 /**
@@ -75,7 +67,6 @@ import androidx.compose.ui.unit.Dp
  * @param 内容内边距 应用于此 TopAppBar 内容的内边距。
  */
 @Suppress("ComposableNaming")
-@OptIn(ExperimentalMaterial3ExpressiveApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun 顶部应用栏(
     标题: @Composable () -> Unit,
@@ -127,7 +118,6 @@ fun 顶部应用栏(
  * @param 内容内边距 应用于此 TopAppBar 内容的内边距。
  */
 @Suppress("ComposableNaming")
-@OptIn(ExperimentalMaterial3ExpressiveApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun 居中对齐顶部应用栏(
     标题: @Composable () -> Unit,
@@ -178,8 +168,6 @@ fun 居中对齐顶部应用栏(
  * @param 内容内边距 应用于此 TopAppBar 内容的内边距。
  */
 @Suppress("ComposableNaming")
-@OptIn(ExperimentalMaterial3Api::class)
-@ExperimentalMaterial3ExpressiveApi
 @Composable
 fun 顶部应用栏(
     标题: @Composable () -> Unit,
@@ -234,7 +222,7 @@ fun 顶部应用栏(
  * 滚动行为旨在与已滚动的内容协同工作，当内容滚动时改变顶部应用栏的外观。请参阅 [TopAppBarScrollBehavior.nestedScrollConnection]。
  * @throws IllegalArgumentException 如果提供的 [已展开高度] 小于 [已折叠高度]
  */
-@OptIn(ExperimentalMaterial3ExpressiveApi::class, ExperimentalMaterial3Api::class)
+@Suppress("ComposableNaming")
 @Composable
 fun 中等顶部应用栏(
     标题: @Composable () -> Unit,
@@ -290,8 +278,6 @@ fun 中等顶部应用栏(
  * @throws IllegalArgumentException 如果提供的 [已展开高度] 小于 [已折叠高度]
  */
 @Suppress("ComposableNaming")
-@OptIn(ExperimentalMaterial3Api::class)
-@ExperimentalMaterial3ExpressiveApi
 @Composable
 fun 中等折叠顶部应用栏(
     标题: @Composable () -> Unit,
@@ -352,7 +338,6 @@ fun 中等折叠顶部应用栏(
  * @throws IllegalArgumentException 如果提供的 [已展开高度] 小于 [已折叠高度]
  */
 @Suppress("ComposableNaming")
-@OptIn(ExperimentalMaterial3ExpressiveApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun 大型顶部应用栏(
     标题: @Composable () -> Unit,
@@ -408,8 +393,6 @@ fun 大型顶部应用栏(
  * @throws IllegalArgumentException 如果提供的 [已展开高度] 小于 [已折叠高度]。
  */
 @Suppress("ComposableNaming")
-@OptIn(ExperimentalMaterial3Api::class)
-@ExperimentalMaterial3ExpressiveApi
 @Composable
 fun 大型折叠顶部应用栏(
     标题: @Composable () -> Unit,
@@ -479,8 +462,6 @@ fun 大型折叠顶部应用栏(
  * @throws IllegalArgumentException 如果提供的 [已展开高度] 小于 [已折叠高度]
  */
 @Suppress("ComposableNaming")
-@OptIn(ExperimentalMaterial3Api::class)
-@ExperimentalMaterial3ExpressiveApi
 @Composable
 fun 双行顶部应用栏(
     标题: @Composable (expanded: Boolean) -> Unit,
@@ -509,47 +490,6 @@ fun 双行顶部应用栏(
         scrollBehavior = 滚动行为,
     )
 
-/**
- * [Material Design bottom app bar](https://m3.material.io/components/bottom-app-bar/overview)
- *
- * 底部应用栏在小屏幕底部显示导航和关键操作。
- *
- * ![Bottom app bar image](https://developer.android.com/images/reference/androidx/compose/material3/bottom-app-bar.png)
- *
- * @param 操作集 此 BottomAppBar 的图标内容。此处的默认布局是 [Row]，因此内部内容将水平排列。
- * @param 修饰符 要应用于此 BottomAppBar 的 [Modifier]。
- * @param 悬浮操作按钮 此 BottomAppBar 末尾的可选浮动操作按钮。
- * @param 容器颜色 此 BottomAppBar 背景所使用的颜色。使用 [Color.Transparent] 可设为无颜色。
- * @param 内容颜色 此 BottomAppBar 内部内容的首选颜色。默认为与 [容器颜色] 匹配的内容颜色，如果 [容器颜色]
- * 不是来自主题的颜色，则默认为当前的 [LocalContentColor]。
- * @param 色调阴影 当 [容器颜色] 为 [ColorScheme.surface] 时，会在容器上方应用半透明的主色叠加层。
- * 较高的色调海拔值在浅色主题下会产生更深的颜色，在深色主题下会产生更浅的颜色。另请参阅：[表面]。
- * @param 内容内边距 应用于此 BottomAppBar 内容的内边距。
- * @param 窗口插入 应用栏将遵守的窗口内边距。
- */
-@Suppress("ComposableNaming")
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun 底部应用栏(
-    操作集: @Composable RowScope.() -> Unit,
-    修饰符: Modifier = Modifier,
-    悬浮操作按钮: @Composable (() -> Unit)? = null,
-    容器颜色: Color = BottomAppBarDefaults.containerColor,
-    内容颜色: Color = contentColorFor(容器颜色),
-    色调阴影: Dp = BottomAppBarDefaults.ContainerElevation,
-    内容内边距: PaddingValues = BottomAppBarDefaults.ContentPadding,
-    窗口插入: WindowInsets = BottomAppBarDefaults.windowInsets,
-) =
-    BottomAppBar(
-        actions = 操作集,
-        modifier = 修饰符,
-        floatingActionButton = 悬浮操作按钮,
-        containerColor = 容器颜色,
-        contentColor = 内容颜色,
-        tonalElevation = 色调阴影,
-        contentPadding = 内容内边距,
-        windowInsets = 窗口插入,
-    )
 
 /**
  * [Material Design bottom app bar](https://m3.material.io/components/bottom-app-bar/overview)
@@ -573,7 +513,6 @@ fun 底部应用栏(
  * 底部应用栏不会对滚动做出反应。请参阅 [BottomAppBarScrollBehavior.nestedScrollConnection]。
  */
 @Suppress("ComposableNaming")
-@ExperimentalMaterial3Api
 @Composable
 fun 底部应用栏(
     操作集: @Composable RowScope.() -> Unit,
@@ -605,45 +544,6 @@ fun 底部应用栏(
  *
  * ![Bottom app bar image](https://developer.android.com/images/reference/androidx/compose/material3/bottom-app-bar.png)
  *
- * @param 修饰符 要应用于此 底部应用栏 的 [Modifier]。
- * @param 容器颜色 此 底部应用栏 背景所使用的颜色。使用 [Color.Transparent] 可设为无颜色。
- * @param 内容颜色 此 底部应用栏 内部内容的首选颜色。默认为与 [容器颜色] 匹配的内容颜色，
- * 如果 [容器颜色] 不是来自主题的颜色，则默认为当前的 [LocalContentColor]。
- * @param 色调阴影 当 [容器颜色] 为 [ColorScheme.surface] 时，会在容器上方应用半透明的主色叠加层。
- * 较高的色调海拔值在浅色主题下会产生更深的颜色，在深色主题下会产生更浅的颜色。另请参阅：[表面]。
- * @param 内容内边距 应用于此 底部应用栏 内容的内边距。
- * @param 窗口插入 应用栏将遵守的窗口内边距。
- * @param 内容 此 底部应用栏 的内容。此处的默认布局是 [Row]，因此内部内容将水平排列。
- */
-@Suppress("ComposableNaming")
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun 底部应用栏(
-    修饰符: Modifier = Modifier,
-    容器颜色: Color = BottomAppBarDefaults.containerColor,
-    内容颜色: Color = contentColorFor(容器颜色),
-    色调阴影: Dp = BottomAppBarDefaults.ContainerElevation,
-    内容内边距: PaddingValues = BottomAppBarDefaults.ContentPadding,
-    窗口插入: WindowInsets = BottomAppBarDefaults.windowInsets,
-    内容: @Composable RowScope.() -> Unit,
-) =
-    BottomAppBar(
-        modifier = 修饰符,
-        containerColor = 容器颜色,
-        contentColor = 内容颜色,
-        tonalElevation = 色调阴影,
-        contentPadding = 内容内边距,
-        windowInsets = 窗口插入,
-        content = 内容,
-    )
-
-/**
- * [Material Design bottom app bar](https://m3.material.io/components/bottom-app-bar/overview)
- *
- * 底部应用栏在小屏幕底部显示导航和关键操作。
- *
- * ![Bottom app bar image](https://developer.android.com/images/reference/androidx/compose/material3/bottom-app-bar.png)
- *
  * 如果你有兴趣显示 [FloatingActionButton]，请考虑使用另一个重载。
  *
  * @param 修饰符 要应用于此 底部应用栏 的 [Modifier]。
@@ -660,7 +560,6 @@ fun 底部应用栏(
  * @param 内容 此 底部应用栏 的内容。此处的默认布局是 [Row]，因此内部内容将水平排列。
  */
 @Suppress("ComposableNaming")
-@ExperimentalMaterial3Api
 @Composable
 fun 底部应用栏(
     修饰符: Modifier = Modifier,
@@ -713,8 +612,6 @@ fun 底部应用栏(
  * @param 内容 此 底部应用栏 的内容。此处的默认布局是 [Row]，因此内部内容将水平排列。
  */
 @Suppress("ComposableNaming")
-@OptIn(ExperimentalMaterial3Api::class)
-@ExperimentalMaterial3ExpressiveApi
 @Composable
 fun 折叠底部应用栏(
     修饰符: Modifier = Modifier,
@@ -1030,107 +927,6 @@ object 顶部应用栏默认值 { // TopAppBarDefaults
         )
 
     /**
-     * 返回一个固定的 [TopAppBarScrollBehavior]，该行为会跟踪嵌套滚动回调，并相应地更新其 [TopAppBarState.contentOffset]。
-     *
-     * 此重载适用于内容已预滚动或使用 reverseLayout 的 [LazyColumn] 场景，因为它能正确处理这些特定滚动状态下 [TopAppBar] 的颜色过渡。
-     *
-     * 返回的 [TopAppBarScrollBehavior] 会在重组过程中被记忆。
-     *
-     * @param 懒加载列表状态 观察列表滚动位置的 [LazyListState] 对象，用于判断列表是否已滚动至起始位置。
-     * @param 状态 用于控制或观察顶部应用栏滚动状态的状态对象。如需一个在重组过程中保持记忆的状态，请参阅 [rememberTopAppBarState]。
-     * @param 可以滚动 用于确定滚动事件是否由该固定的 [TopAppBarScrollBehavior] 处理的回调。
-     */
-    @Deprecated(
-        message =
-            "Please use the pinnedScrollBehavior function that takes a ScrollableState parameter.",
-        replaceWith =
-            ReplaceWith(
-                "pinnedScrollBehavior(scrollableState = lazyListState, state = state, canScroll = canScroll)"
-            ),
-        level = DeprecationLevel.WARNING,
-    )
-    @ExperimentalMaterial3Api
-    @Composable
-    fun 固定滚动行为(
-        懒加载列表状态: LazyListState,
-        状态: TopAppBarState = rememberTopAppBarState(),
-        可以滚动: () -> Boolean = { true },
-    ): TopAppBarScrollBehavior =
-        TopAppBarDefaults.pinnedScrollBehavior(
-            lazyListState = 懒加载列表状态,
-            state = 状态,
-            canScroll = 可以滚动
-        )
-
-    /**
-     * 返回一个固定的 [TopAppBarScrollBehavior]，该行为会跟踪嵌套滚动回调，并相应地更新其 [TopAppBarState.contentOffset]。
-     *
-     * 此重载适用于使用 [ScrollState] 的可组合项场景，例如带有 verticalScroll 的 [Column]，特别是当内容已预滚动或使用
-     * reverseScrolling 时。它能正确处理这些特定滚动状态下 [TopAppBar] 的颜色过渡。
-     *
-     * 返回的 [TopAppBarScrollBehavior] 会在重组（recomposition）过程中被记住（remembered）。
-     *
-     * @param 滚动状态 滚动状态
-     * @param 反向滚动 反转滚动方向，当为 true 时，0 [ScrollState.value] 表示底部；当为 false 时，
-     * 0 [ScrollState.value] 表示顶部。
-     * @param 状态 用于控制或监听顶部应用栏滚动状态的状态对象。如需一个在重组过程中被记住的状态，请参阅 [rememberTopAppBarState]。
-     * @param 可以滚动 一个回调，用于判断滚动事件是否应由该固定的 [TopAppBarScrollBehavior] 处理。
-     */
-    @Deprecated(
-        message =
-            "Please use the pinnedScrollBehavior function that takes a ScrollableState parameter.",
-        replaceWith =
-            ReplaceWith(
-                "pinnedScrollBehavior(scrollableState = scrollState, state = state, canScroll = canScroll)"
-            ),
-        level = DeprecationLevel.WARNING,
-    )
-    @ExperimentalMaterial3Api
-    @Composable
-    fun 固定滚动行为(
-        滚动状态: ScrollState,
-        反向滚动: Boolean = false,
-        状态: TopAppBarState = rememberTopAppBarState(),
-        可以滚动: () -> Boolean = { true },
-    ): TopAppBarScrollBehavior =
-        TopAppBarDefaults.pinnedScrollBehavior(
-            scrollState = 滚动状态,
-            reverseScrolling = 反向滚动,
-            state = 状态,
-            canScroll = 可以滚动
-        )
-
-    /**
-     * 返回一个固定的 [TopAppBarScrollBehavior]，该行为跟踪嵌套滚动回调，并相应地更新其 [TopAppBarState.contentOffset]。
-     *
-     * 此重载适用于标准重载无法覆盖的用例，例如当需要为自定义或复杂布局（如 reverseLayout = true 的 LazyVerticalGrid）
-     * 确定自定义的 是否滚动内容在开始 状态时。
-     *
-     * 返回的 [TopAppBarScrollBehavior] 会在重组过程中被记住。
-     *
-     * @param 状态 用于控制或观察顶部应用栏滚动状态的状态对象。如需一个在重组过程中被记住的状态，请参阅 [rememberTopAppBarState]。
-     * @param 可以滚动 一个回调，用于判断滚动事件是否应由该固定的 [TopAppBarScrollBehavior] 处理。
-     * @param 是否滚动内容在开始 当可滚动组件位于其内容的原点时返回 true 的回调。处理反向布局，确保"起始"始终指代第一个逻辑项。
-     */
-    @Deprecated(
-        message =
-            "Please use the pinnedScrollBehavior function that takes a ScrollableState parameter.",
-        level = DeprecationLevel.WARNING,
-    )
-    @ExperimentalMaterial3Api
-    @Composable
-    fun 固定滚动行为(
-        状态: TopAppBarState = rememberTopAppBarState(),
-        可以滚动: () -> Boolean = { true },
-        是否滚动内容在开始: () -> Boolean = { true },
-    ): TopAppBarScrollBehavior =
-        TopAppBarDefaults.pinnedScrollBehavior(
-            state = 状态,
-            canScroll = 可以滚动,
-            isScrollingContentAtStart = 是否滚动内容在开始
-        )
-
-    /**
      * 返回一个固定的 [TopAppBarScrollBehavior]，它会跟踪嵌套滚动回调并相应地更新其 [TopAppBarState.contentOffset]。
      *
      * 此重载适用于滚动状态由 [ScrollableState] 表示的用例（例如 `LazyVerticalGrid`）。它通过观察所提供的 [ScrollableState] 的滚动位置来自动判断内容是否位于起始位置。
@@ -1180,136 +976,6 @@ object 顶部应用栏默认值 { // TopAppBarDefaults
             flingAnimationSpec = 抛掷动画规格,
         )
 
-    /**
-     * 返回一个 [TopAppBarScrollBehavior]。配置了此 [TopAppBarScrollBehavior] 的顶部应用栏会在内容向上拉动时立即折叠，
-     * 并在内容向下拉动时立即出现。
-     *
-     * 返回的 [TopAppBarScrollBehavior] 会在重组过程中被记住。
-     *
-     * @param 状态 用于控制或观察顶部应用栏滚动状态的状态对象。如需一个在重组过程中被记住的状态，请参阅 [rememberTopAppBarState]。
-     * @param 可以滚动 一个回调，用于判断滚动事件是否应由该 [EnterAlwaysScrollBehavior] 处理。
-     * @param 吸附动画规格 一个可选的 [AnimationSpec]，用于定义当顶部应用栏被快速滑动或拖拽滚动到中间位置时，
-     * 如何快速吸附到完全折叠或完全展开的状态。
-     * @param 抛掷动画规格 一个可选的 [DecayAnimationSpec]，用于定义当用户快速滑动顶部应用栏本身或其下方内容时，
-     * 如何执行衰减抛掷动画。
-     * @param 反向布局 表示此行为应用于滚动方向和布局均为反向的可滚动内容。
-     */
-    @Deprecated(
-        message =
-            "Please use the enterAlwaysScrollBehavior() function that takes a scrollableState parameter.",
-        replaceWith =
-            ReplaceWith(
-                "enterAlwaysScrollBehavior(scrollableState, state, canScroll, snapAnimationSpec, flingAnimationSpec)"
-            ),
-        level = DeprecationLevel.WARNING,
-    )
-    @ExperimentalMaterial3Api
-    @Composable
-    fun 进入始终滚动行为(
-        状态: TopAppBarState = rememberTopAppBarState(),
-        可以滚动: () -> Boolean = { true },
-        吸附动画规格: AnimationSpec<Float>? = TopAppBarDefaults.snapAnimationSpec,
-        抛掷动画规格: DecayAnimationSpec<Float>? = rememberSplineBasedDecay(),
-        反向布局: Boolean = false,
-    ): TopAppBarScrollBehavior =
-        TopAppBarDefaults.enterAlwaysScrollBehavior(
-            state = 状态,
-            canScroll = 可以滚动,
-            snapAnimationSpec = 吸附动画规格,
-            flingAnimationSpec = 抛掷动画规格,
-            reverseLayout = 反向布局,
-        )
-
-    /**
-     * 返回一个 [TopAppBarScrollBehavior]。配置了此 [TopAppBarScrollBehavior] 的顶部应用栏会在内容向上拉动时立即折叠，
-     * 并在内容向下拉动时立即出现。
-     *
-     * 此重载适用于内容已预滚动或使用 reverseLayout 的 [LazyColumn] 用例，因为它能正确处理这些特定滚动状态下 [TopAppBar] 的颜色过渡。
-     *
-     * 返回的 [TopAppBarScrollBehavior] 会在重组过程中被记住。
-     *
-     * @param 懒加载列表状态 观察列表滚动位置的 [LazyListState] 对象，用于判断列表是否滚动到了起始位置。
-     * @param 状态 用于控制或观察顶部应用栏滚动状态的状态对象。如需一个在重组过程中被记住的状态，请参阅 [rememberTopAppBarState]。
-     * @param 可以滚动 一个回调，用于判断滚动事件是否应由该 [TopAppBarScrollBehavior] 处理。
-     * @param 吸附动画规格 一个可选的 [AnimationSpec]，用于定义当顶部应用栏被快速滑动或拖拽滚动到中间位置时，
-     * 如何快速吸附到完全折叠或完全展开的状态。
-     * @param 抛掷动画规格 一个可选的 [DecayAnimationSpec]，用于定义当用户快速滑动顶部应用栏本身或其下方内容时，
-     * 如何执行衰减抛掷动画。
-     */
-    @Deprecated(
-        message =
-            "Please use the enterAlwaysScrollBehavior function that takes a ScrollableState parameter.",
-        replaceWith =
-            ReplaceWith(
-                "enterAlwaysScrollBehavior(scrollableState = lazyListState, state = state, canScroll = canScroll, snapAnimationSpec = snapAnimationSpec, flingAnimationSpec = flingAnimationSpec)"
-            ),
-        level = DeprecationLevel.WARNING,
-    )
-    @ExperimentalMaterial3Api
-    @Composable
-    fun 进入始终滚动行为(
-        懒加载列表状态: LazyListState,
-        状态: TopAppBarState = rememberTopAppBarState(),
-        可以滚动: () -> Boolean = { true },
-        吸附动画规格: AnimationSpec<Float>? = TopAppBarDefaults.snapAnimationSpec,
-        抛掷动画规格: DecayAnimationSpec<Float>? = rememberSplineBasedDecay(),
-    ): TopAppBarScrollBehavior =
-        TopAppBarDefaults.enterAlwaysScrollBehavior(
-            lazyListState = 懒加载列表状态,
-            state = 状态,
-            canScroll = 可以滚动,
-            snapAnimationSpec = 吸附动画规格,
-            flingAnimationSpec = 抛掷动画规格,
-        )
-
-    /**
-     * 返回一个 [TopAppBarScrollBehavior]。配置了此 [TopAppBarScrollBehavior] 的顶部应用栏会在内容向上拉动时立即折叠，
-     * 并在内容向下拉动时立即出现。
-     *
-     * 此重载适用于使用 [ScrollState] 的 Composable 用例，例如带有 verticalScroll 的 [Column]，特别是在内容已预滚动或使用
-     * reverseScrolling 时。它能正确处理这些特定滚动状态下 [TopAppBar] 的颜色过渡。
-     *
-     * 返回的 [TopAppBarScrollBehavior] 会在重组过程中被记住。
-     *
-     * 一个小型 [TopAppBar] 的示例，该应用栏在内容向上滚动时折叠，在内容向下滚动时出现，使用带有反向滚动的 [Column]。
-     *
-     * @param 滚动状态 滚动状态
-     * @param 反向滚动 反转滚动方向，当为 true 时，0 [ScrollState.value] 表示底部；当为 false 时，
-     * 0 [ScrollState.value] 表示顶部。
-     * @param 状态 用于控制或观察顶部应用栏滚动状态的状态对象。如需一个在重组过程中被记住的状态，请参阅 [rememberTopAppBarState]。
-     * @param 可以滚动 一个回调，用于判断滚动事件是否应由该 [TopAppBarScrollBehavior] 处理。
-     * @param 吸附动画规格 一个可选的 [AnimationSpec]，用于定义当顶部应用栏被快速滑动或拖拽滚动到中间位置时，
-     * 如何快速吸附到完全折叠或完全展开的状态。
-     * @param 抛掷动画规格 一个可选的 [DecayAnimationSpec]，用于定义当用户快速滑动顶部应用栏本身或其下方内容时，
-     * 如何执行衰减抛掷动画。
-     */
-    @Deprecated(
-        message =
-            "Please use the enterAlwaysScrollBehavior function that takes a ScrollableState parameter.",
-        replaceWith =
-            ReplaceWith(
-                "enterAlwaysScrollBehavior(scrollableState = scrollState, state = state, canScroll = canScroll, snapAnimationSpec = snapAnimationSpec, flingAnimationSpec = flingAnimationSpec)"
-            ),
-        level = DeprecationLevel.WARNING,
-    )
-    @ExperimentalMaterial3Api
-    @Composable
-    fun 进入始终滚动行为(
-        滚动状态: ScrollState,
-        反向滚动: Boolean = false,
-        状态: TopAppBarState = rememberTopAppBarState(),
-        可以滚动: () -> Boolean = { true },
-        吸附动画规格: AnimationSpec<Float>? = TopAppBarDefaults.snapAnimationSpec,
-        抛掷动画规格: DecayAnimationSpec<Float>? = rememberSplineBasedDecay(),
-    ): TopAppBarScrollBehavior =
-        TopAppBarDefaults.enterAlwaysScrollBehavior(
-            scrollState = 滚动状态,
-            reverseScrolling = 反向滚动,
-            state = 状态,
-            canScroll = 可以滚动,
-            snapAnimationSpec = 吸附动画规格,
-            flingAnimationSpec = 抛掷动画规格,
-        )
 
     /**
      * 返回一个 [TopAppBarScrollBehavior]。配置了此 [TopAppBarScrollBehavior] 的顶部应用栏会在内容向上拉动时立即折叠，
@@ -1647,7 +1313,6 @@ val TopAppBarColors.副标题内容颜色: Color
  *
  * @see [BottomAppBarDefaults.exitAlwaysScrollBehavior]
  */
-@ExperimentalMaterial3Api
 @Stable
 interface 底部应用栏滚动行为 { // BottomAppBarScrollBehavior
 
@@ -1678,7 +1343,6 @@ interface 底部应用栏滚动行为 { // BottomAppBarScrollBehavior
 //=======================================================================
 
 /** 一个与此行为关联的 [BottomAppBarState]，当发生滚动时会被读取和更新。*/
-@ExperimentalMaterial3Api
 val BottomAppBarScrollBehavior.状态: BottomAppBarState
     get() = this.state
 
@@ -1687,17 +1351,14 @@ val BottomAppBarScrollBehavior.状态: BottomAppBarState
  *
  * 被固定的应用栏在内容滚动时会保持在原位，不会响应任何拖拽手势。
  */
-@ExperimentalMaterial3Api
 val BottomAppBarScrollBehavior.是否已固定: Boolean
     get() = this.isPinned
 
 /** 一个可选的 [AnimationSpec]，用于定义当底部应用栏被快速滑动或拖拽到中间位置时，如何吸附到完全折叠或完全展开的状态。*/
-@ExperimentalMaterial3Api
 val BottomAppBarScrollBehavior.吸附动画规格: AnimationSpec<Float>?
     get() = this.snapAnimationSpec
 
 /** 一个可选的 [DecayAnimationSpec]，用于定义当用户快速滑动应用栏本身或可滚动内容时，底部应用栏应如何惯性滑动。*/
-@ExperimentalMaterial3Api
 val BottomAppBarScrollBehavior.抛掷动画规格: DecayAnimationSpec<Float>?
     get() = this.flingAnimationSpec
 
@@ -1705,7 +1366,6 @@ val BottomAppBarScrollBehavior.抛掷动画规格: DecayAnimationSpec<Float>?
  * 一个应附加到 [androidx.compose.ui.input.nestedscroll.nestedScroll] 的 [NestedScrollConnection]，
  * 用于跟踪滚动事件。
  */
-@ExperimentalMaterial3Api
 val BottomAppBarScrollBehavior.嵌套滚动连接: NestedScrollConnection
     get() = this.nestedScrollConnection
 
@@ -1735,24 +1395,18 @@ object 底部应用栏默认值 { // BottomAppBarDefaults
         @Composable get() = BottomAppBarDefaults.bottomAppBarFabColor
 
     /** 用于 [FlexibleBottomAppBar] 的默认内边距。 */
-    @ExperimentalMaterial3ExpressiveApi
     val 折叠内容内边距 = BottomAppBarDefaults.FlexibleContentPadding
 
     /** 柔性 [FlexibleBottomAppBar] 的默认高度。此高度表示底部应用栏在展开状态下的高度。*/
-    @ExperimentalMaterial3ExpressiveApi
     val 折叠底部应用栏高度 = BottomAppBarDefaults.FlexibleBottomAppBarHeight
 
     /** 用于排列 [FlexibleBottomAppBar] 内容的默认 [Arrangement]。 */
-    @ExperimentalMaterial3ExpressiveApi
     val 折叠水平排列: Arrangement.Horizontal = BottomAppBarDefaults.FlexibleHorizontalArrangement
 
     /** 用于以固定间距排列 [FlexibleBottomAppBar] 内容的 [Arrangement]。*/
-    @ExperimentalMaterial3ExpressiveApi
     val 折叠固定间距水平排列: Arrangement.Horizontal =
         BottomAppBarDefaults.FlexibleFixedHorizontalArrangement
 
-    // TODO: 请注意，此滚动行为可能会影响辅助技术，导致该组件无法访问。有关如何在启用触摸探索时禁用滚动的示例，
-    //  请参阅 @sample androidx.compose.material3.samples.ExitAlwaysBottomAppBar。
     /**
      * 返回一个 [BottomAppBarScrollBehavior]。使用此 [BottomAppBarScrollBehavior] 配置的底部应用栏将在内容向上
      * 拉动时立即收起，并在内容向下拉动时立即出现。
@@ -1766,7 +1420,6 @@ object 底部应用栏默认值 { // BottomAppBarDefaults
      * @param 抛掷动画规格 一个可选的 [DecayAnimationSpec]，用于定义当用户快速滑动应用栏本身或其下方内容时，
      * 如何使底部应用栏产生惯性滑动效果。
      */
-    @ExperimentalMaterial3Api
     @Composable
     fun 退出始终滚动行为(
         状态: BottomAppBarState = rememberBottomAppBarState(),
@@ -1792,7 +1445,6 @@ object 底部应用栏默认值 { // BottomAppBarDefaults
  * @param 初始高度偏移量 [BottomAppBarState.heightOffset] 的初始值。初始高度偏移应介于 0 与 [初始高度偏移量限制] 之间。
  * @param 初始内容偏移 [BottomAppBarState.contentOffset] 的初始值。
  */
-@ExperimentalMaterial3Api
 @Composable
 fun 记住底部应用栏状态(
     初始高度偏移量限制: Float = -Float.MAX_VALUE,
@@ -1810,7 +1462,7 @@ fun 记住底部应用栏状态(
  *
  * 在大多数情况下，此状态将通过 [rememberBottomAppBarState] 创建。
  */
-@ExperimentalMaterial3Api
+@Stable
 interface 底部应用栏状态 { // BottomAppBarState
 
     /**
@@ -1858,7 +1510,6 @@ interface 底部应用栏状态 { // BottomAppBarState
  *
  * 使用此限制来约束 [高度偏移量] 更新时的取值。
  */
-@ExperimentalMaterial3Api
 var BottomAppBarState.高度偏移量限制: Float
     get() = this.heightOffsetLimit
     set(newLimit) {
@@ -1870,7 +1521,6 @@ var BottomAppBarState.高度偏移量限制: Float
  *
  * 对 [高度偏移量] 值的更新被限制在 0 与 [高度偏移量限制] 之间。
  */
-@ExperimentalMaterial3Api
 var BottomAppBarState.高度偏移量: Float
     get() = this.heightOffset
     set(newOffset) {
@@ -1883,7 +1533,6 @@ var BottomAppBarState.高度偏移量: Float
  * 此值由 [BottomAppBarScrollBehavior] 在嵌套滚动连接消费滚动事件时更新。常见的实现方式是将该值更新为所有
  * [NestedScrollConnection.onPostScroll] 中 consumed.y 值的总和。
  */
-@ExperimentalMaterial3Api
 var BottomAppBarState.内容偏移量: Float
     get() = this.contentOffset
     set(newOffset) {
@@ -1895,7 +1544,6 @@ var BottomAppBarState.内容偏移量: Float
  *
  * `0.0` 表示完全展开的应用栏，`1.0` 表示完全收起的应用栏（计算方式为 [高度偏移量] / [高度偏移量限制]）。
  */
-@ExperimentalMaterial3Api
 val BottomAppBarState.折叠比例: Float
     get() = this.collapsedFraction
 
@@ -1909,30 +1557,13 @@ val BottomAppBarState.折叠比例: Float
  * @param 初始高度偏移量 [BottomAppBarState.heightOffset] 的初始值。初始高度偏移量应介于 0 和 [初始高度偏移量限制] 之间。
  * @param 初始内容偏移量 [BottomAppBarState.contentOffset] 的初始值。
  */
-@ExperimentalMaterial3Api
 fun 底部应用栏状态(
-    初始高度偏移量限制: Float,
-    初始高度偏移量: Float,
-    初始内容偏移量: Float,
+    初始高度偏移量限制: Float = -Float.MAX_VALUE,
+    初始高度偏移量: Float = 0f,
+    初始内容偏移量: Float = 0f,
 ): BottomAppBarState =
     BottomAppBarState(
         initialHeightOffsetLimit = 初始高度偏移量限制,
         initialHeightOffset = 初始高度偏移量,
         initialContentOffset = 初始内容偏移量
     )
-
-
-/** 包含当前选中的 [SingleRowTopAppBarOverride] 的 CompositionLocal。 */
-@OptIn(ExperimentalMaterial3Api::class)
-@ExperimentalMaterial3ComponentOverrideApi
-val 本地单行顶部应用栏覆盖: ProvidableCompositionLocal<SingleRowTopAppBarOverride> =
-    LocalSingleRowTopAppBarOverride
-
-
-/** 包含当前选中的 [TwoRowsTopAppBarOverride] 的 CompositionLocal。 */
-@OptIn(ExperimentalMaterial3Api::class)
-@ExperimentalMaterial3ComponentOverrideApi
-val 本地双行顶部应用栏覆盖: ProvidableCompositionLocal<TwoRowsTopAppBarOverride> =
-    LocalTwoRowsTopAppBarOverride
-
-

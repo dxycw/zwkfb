@@ -1,6 +1,7 @@
 package com.dxyc.zwkfb
 
 import androidx.annotation.IntRange
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.safeContentPadding
@@ -75,9 +76,6 @@ fun App() {
 /**
  * 轮廓安全文本字段限制长度为100
  *
- * 在 SDK 37.1 及以上版本中使用其他版本的预览不能使用该函数所以禁用该函数的
- * 预览模式，只显示"这是预览模式"文本。
- *
  * @param 文本 文本字段的初始文本
  * @param 标签 文本字段的标签
  * @param 最大长度 最大输入长度
@@ -89,48 +87,38 @@ fun 轮廓安全文本字段限制长度为100(
     标签: String = "标签",
     @IntRange(from = 0, to = 100) 最大长度: Int = 20,
 ){
-    val isInPreview = LocalInspectionMode.current
-    if (isInPreview) {
-        // 当前处于 Android Studio 的 Preview 模式
-        Text("这是预览模式")
-    } else {
-        // 这是实际运行
-        val 测试值 = rememberTextFieldState(文本)
-        var 图标状态 by remember {
-            mutableStateOf(Icons.Filled.Visibility)
-        }
+    val 文本值 = rememberTextFieldState(文本)
+    var 图标状态 by remember { mutableStateOf(Icons.Filled.Visibility) }
 
-        行(
-//            水平排列 = Arrangement.Center,
-            垂直对齐 = Alignment.CenterVertically,
-        ){
-            轮廓安全文本字段(
-                状态 = 测试值,
-                标签 = { 文本(标签) },
-                尾随图标 = {
-                    图标按钮(
-                        单击回调 = {
-                            图标状态 = when (图标状态) {
-                                Icons.Filled.Visibility -> Icons.Filled.VisibilityOff
-                                else -> Icons.Filled.Visibility
-                            }
+    行(
+        水平排列 = Arrangement.Center,
+        垂直对齐 = Alignment.CenterVertically,
+    ){
+        轮廓安全文本字段(
+            状态 = 文本值,
+            标签 = { 文本(标签) },
+            尾随图标 = {
+                图标按钮(
+                    单击回调 = {
+                        图标状态 = when (图标状态) {
+                            Icons.Filled.Visibility -> Icons.Filled.VisibilityOff
+                            else -> Icons.Filled.Visibility
                         }
-                    ) { 图标(图像矢量 = 图标状态, 内容描述 = null) }
-                },
-                输入转换 = InputTransformation.maxLength(最大长度),
-                文本混淆模式 = when (图标状态) {
-                    Icons.Filled.Visibility -> TextObfuscationMode.Visible
-                    else -> TextObfuscationMode.RevealLastTyped
-                }
-            )
+                    }
+                ) { 图标(图像矢量 = 图标状态, 内容描述 = null) }
+            },
+            输入转换 = InputTransformation.maxLength(最大长度),
+            文本混淆模式 = when (图标状态) {
+                Icons.Filled.Visibility -> TextObfuscationMode.Visible
+                else -> TextObfuscationMode.RevealLastTyped
+            }
+        )
 
-            文本(
-                文本 = if (测试值.text.any { it.isWhitespace() }) "文本不能包含空格" else "",
-                颜色 = Color.Red,
-            )
-
-        }
-
+        文本(
+            文本 = if (文本值.text.any { it.isWhitespace() })
+                "文本不能包含空格" else "",
+            颜色 = Color.Red,
+        )
     }
 }
 
