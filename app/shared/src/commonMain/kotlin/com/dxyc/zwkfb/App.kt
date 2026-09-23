@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.tooling.preview.Preview
+import com.zwkfb.Greeting
 import 安卓x.组合.基础.布局.行
 import 安卓x.组合.材质3.图标
 import 安卓x.组合.材质3.图标按钮
@@ -50,6 +51,10 @@ fun App() {
                     显示信息对话框 = true
                 }
             ) { Text("显示信息对话框") }
+
+            文本(
+                文本 = Greeting().platform(),
+            )
 
         }
         if (显示信息对话框){

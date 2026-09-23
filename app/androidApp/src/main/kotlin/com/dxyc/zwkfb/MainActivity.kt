@@ -8,15 +8,10 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.input.InputTransformation
-import androidx.compose.foundation.text.input.maxLength
-import androidx.compose.foundation.text.input.rememberTextFieldState
-import androidx.compose.material.SecureTextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.dxyc.zwkfb.ui.theme.AppTheme
-import com.mikepenz.markdown.m2.Markdown
 import 安卓x.组合.基础.布局.列
 import 安卓x.组合.材质3.扩展悬浮操作按钮
 import 安卓x.组合.材质3.文本
@@ -78,48 +73,9 @@ fun Home() {
 //                    }
 //                }
 
-                安全文本字段()
 
-//                val content =
-//                    """
-//                        # 这是一个标题
-//                        ## 这是一个二级标题
-//                        ```kotlin
-//                        fun App() {
-//                            MaterialTheme {
-//                                Column(
-//                                    modifier = Modifier
-//                                        .safeContentPadding()
-//                                        .fillMaxSize(),
-//                                    horizontalAlignment = Alignment.CenterHorizontally,
-//                                ) {
-//                                    轮廓安全文本字段限制长度为100()
-//                                    Button(
-//                                        onClick = {
-//                                            显示信息对话框 = true
-//                                        }
-//                                    ) { Text("显示信息对话框") }
-//                                }
-//                            }
-//                        }
-//                        ```
-//                    """.trimIndent()
-//
-//                Markdown(
-//                    content = content
-//                )
 //                App()
             }
         }
     }
-}
-
-@Composable
-fun 安全文本字段(
-    
-){
-    SecureTextField(
-        state = rememberTextFieldState("13311"),
-        inputTransformation = InputTransformation.maxLength(20)
-    )
 }

@@ -11,7 +11,6 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -84,15 +83,6 @@ fun 系统语言设置界面(
     modifier: Modifier = Modifier,
 ){
     Column (modifier = modifier.fillMaxSize()) {
-
-        ListItem(
-            headlineContent = { Text("Two line list item with trailing") },
-            supportingContent = { Text("Secondary text") },
-            trailingContent = { Text("meta") },
-            leadingContent = {
-                Icon(Icons.Filled.Favorite, contentDescription = "Localized description")
-            },
-        )
 
         Column(
             modifier = Modifier.selectableGroup().padding(16.dp),

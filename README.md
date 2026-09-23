@@ -14,7 +14,7 @@
 
 [![GitHub](https://jitpack.io/v/dxycw/zwkfb.svg)](https://jitpack.io/#dxycw/zwkfb)
 [![Kotlin](https://img.shields.io/badge/kotlin-v2.4.20-blue.svg?logo=kotlin)](http://kotlinlang.org)
-[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.13.0--alpha01-blue)](https://github.com/JetBrains/compose-multiplatform)
+[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.12.1-blue)](https://github.com/JetBrains/compose-multiplatform)
 
 ![badge-android](http://img.shields.io/badge/platform-android-6EDB8D.svg?style=flat)
 ![badge-ios](http://img.shields.io/badge/platform-ios-CDCDCD.svg?style=flat)
@@ -48,7 +48,7 @@ kotlin {
         // 多平台，
         commonMain.dependencies {
             // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb:0.4.5")
+            implementation("com.github.dxycw.zwkfb:zwkfb:0.4.6")
         }
     }
 }
@@ -119,6 +119,16 @@ kotlin {
 
 
 # 更新内容
+
+## 0.4.6
+
+* 修复 Desktop平台的 使用 “painterResource” 的 “icon” 图标显示问题；
+* 修改 将 “org.publicvalue.multiplatform.qrcode” 的软件包更改为 “com.zwkfb.qrcode”；
+* 更新 Multiplatform平台的 composeMultiplatform 依赖库版本为 1.12.1；
+* 更新 Multiplatform平台的 org.jetbrains.compose.material3:material3 依赖库版本为 1.12.0-alpha03；
+* 更新 Multiplatform平台的 org.jetbrains:markdown 依赖库版本为 0.7.14；
+* 更新 Multiplatform平台的 io.github.ismai117:KScan 依赖库版本为 0.10.0；
+* 更新 Multiplatform平台的 ktor 依赖库版本为 3.6.0；
 
 ## 0.4.5
 

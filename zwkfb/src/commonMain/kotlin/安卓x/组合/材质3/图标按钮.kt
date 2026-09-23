@@ -15,6 +15,7 @@ import androidx.compose.material3.IconButtonShapes
 import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.IconToggleButtonColors
 import androidx.compose.material3.IconToggleButtonShapes
+import androidx.compose.material3.Material3ExpressiveApi
 import androidx.compose.material3.OutlinedIconButton
 import androidx.compose.material3.OutlinedIconToggleButton
 import androidx.compose.runtime.Composable
@@ -86,6 +87,7 @@ fun 图标按钮(
  * @param 内容 此图标按钮的内容，通常为 [图标]。
  */
 @Suppress("ComposableNaming")
+@Material3ExpressiveApi
 @Composable
 fun 图标按钮(
     单击回调: () -> Unit,
@@ -128,7 +130,6 @@ fun 图标按钮(
  * @param 形状 此图标按钮的 [Shape]（形状）。
  * @param 内容 此图标按钮的内容，通常为一个 [图标]。
  */
-@Suppress("ComposableNaming")
 @Composable
 fun 图标切换按钮(
     已选中: Boolean,
@@ -172,6 +173,7 @@ fun 图标切换按钮(
  * @param 内容 此图标按钮的内容，通常为一个 [图标]。
  */
 @Suppress("ComposableNaming")
+@Material3ExpressiveApi
 @Composable
 fun 图标切换按钮(
     已选中: Boolean,
@@ -257,6 +259,7 @@ fun 填充图标按钮(
  * @param 内容 此图标按钮的内容，通常为一个 [图标]。
  */
 @Suppress("ComposableNaming")
+@Material3ExpressiveApi
 @Composable
 fun 填充图标按钮(
     单击回调: () -> Unit,
@@ -341,6 +344,7 @@ fun 填充图标切换按钮(
  * @param 内容 此图标按钮的内容，通常是一个 [图标]
  */
 @Suppress("ComposableNaming")
+@Material3ExpressiveApi
 @Composable
 fun 填充图标切换按钮(
     已选中: Boolean,
@@ -429,6 +433,7 @@ fun 填充色调图标按钮(
  * @param 内容 此图标按钮的内容，通常是一个 [图标]
  */
 @Suppress("ComposableNaming")
+@Material3ExpressiveApi
 @Composable
 fun 填充色调图标按钮(
     单击回调: () -> Unit,
@@ -519,6 +524,7 @@ fun 填充色调图标切换按钮(
  * @param 内容 此图标按钮的内容，通常是一个 [图标]。
  */
 @Suppress("ComposableNaming")
+@Material3ExpressiveApi
 @Composable
 fun 填充色调图标切换按钮(
     已选中: Boolean,
@@ -616,7 +622,7 @@ fun 轮廓图标按钮(
  * 您可以使用它来更改图标按钮的外观或在不同状态下预览图标按钮。请注意，如果提供 `null`，交互仍会在内部发生。
  * @param 内容 此图标按钮的内容，通常是一个 [图标]
  */
-@Suppress("ComposableNaming")
+@Material3ExpressiveApi
 @Composable
 fun 轮廓图标按钮(
     单击回调: () -> Unit,
@@ -708,7 +714,7 @@ fun 轮廓图标切换按钮(
  * 您可以利用它来改变图标按钮的外观或预览其在不同状态下的效果。请注意，即使传递 null，交互仍会在内部发生。
  * @param 内容 此图标按钮的内容，通常是一个 [图标]
  */
-@Suppress("ComposableNaming")
+@Material3ExpressiveApi
 @Composable
 fun 轮廓图标切换按钮(
     已选中: Boolean,
@@ -763,10 +769,10 @@ fun 图标按钮颜色集(
 
 /** 返回此 IconButtonColors 的副本，可以选择覆盖某些值。这里使用 Color.Unspecified 表示“使用源中的值”。*/
 fun IconButtonColors.复制(
-    容器颜色: Color = this.容器颜色,
-    内容颜色: Color = this.内容颜色,
-    禁用容器颜色: Color = this.禁用容器颜色,
-    禁用内容颜色: Color = this.禁用内容颜色,
+    容器颜色: Color = this.containerColor,
+    内容颜色: Color = this.contentColor,
+    禁用容器颜色: Color = this.disabledContainerColor,
+    禁用内容颜色: Color = this.disabledContentColor,
 ) =
     this.copy(
         containerColor = 容器颜色,

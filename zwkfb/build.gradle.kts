@@ -167,17 +167,22 @@ kotlin {
 
                 //===================================================================
 
+                // 是一个为 Compose Multiplatform 设计的条形码扫描库，它能让开发者用一套代码在多平台现扫码功能。
+                api("io.github.ismai117:KScan:0.10.0")
+
+                //===================================================================
+
                 // markdown项目
-                implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.5.1")
-                implementation("io.coil-kt.coil3:coil-compose:3.5.0")
-//                implementation("io.coil-kt.coil3:coil-network-okhttp:3.5.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.5.2")
+                implementation("io.coil-kt.coil3:coil-compose:3.6.3")
+//                implementation("io.coil-kt.coil3:coil-network-okhttp:3.6.3")
 
                 // Compose Markdown Multiplatform
                 implementation("io.github.feiyin0719:commonmark-ext-gfm-tables:0.0.2")
                 implementation("io.github.feiyin0719:commonmark-ext-autolink:0.0.2")
                 implementation("io.github.feiyin0719:commonmark-ext-task-list-items:0.0.2")
                 implementation("io.github.feiyin0719:commonmark-ext-html-converter:0.0.2")
-                implementation("io.coil-kt.coil3:coil-network-ktor3:3.5.0")
+//                implementation("io.coil-kt.coil3:coil-network-ktor3:3.6.3")
 
 //                // 是一个高度可定制的 Compose Multiplatform 日历库
 //                // https://github.com/kizitonwose/Calendar
@@ -243,8 +248,6 @@ kotlin {
         getByName("desktopMain")  {
             dependencies {
                 implementation(compose.desktop.currentOs)
-
-                //===================================================================
 
                 api(libs.kotlinx.coroutinesSwing)
 //                api("org.jetbrains.kotlinx:kotlinx-coroutines-javafx:1.11.0")
@@ -330,14 +333,6 @@ kotlin {
 
                 //===================================================================
 
-                compileOnly("org.jetbrains.compose.desktop:desktop:1.11.1")
-                compileOnly("org.bytedeco:javacv:1.5.14")
-                compileOnly("org.bytedeco:opencv-platform:4.14.0-1.5.14")
-                compileOnly("com.google.zxing:core:3.5.4")
-                compileOnly("com.google.zxing:javase:3.5.4")
-
-                //===================================================================
-
                 // markdown项目
                 // Compose Markdown Multiplatform
                 compileOnly("io.coil-kt.coil3:coil-network-okhttp:3.5.0")
@@ -349,7 +344,7 @@ kotlin {
             dependencies {
                 // markdown项目
                 // Compose Markdown Multiplatform
-                implementation("io.ktor:ktor-client-darwin:3.5.2")
+                implementation("io.ktor:ktor-client-darwin:3.6.0")
             }
         }
 
@@ -359,7 +354,7 @@ kotlin {
 
                 // markdown项目
                 // Compose Markdown Multiplatform
-                implementation("io.ktor:ktor-client-js-js:3.5.2")
+                implementation("io.ktor:ktor-client-js-js:3.6.0")
             }
         }
 
@@ -367,7 +362,7 @@ kotlin {
             dependencies {
                 // markdown项目
                 // Compose Markdown Multiplatform
-                implementation("io.ktor:ktor-client-js-wasm-js:3.5.2")
+                implementation("io.ktor:ktor-client-js-wasm-js:3.6.0")
             }
         }
 

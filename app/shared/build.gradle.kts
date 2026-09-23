@@ -59,8 +59,6 @@ kotlin {
 
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
-            implementation("dev.icerock.moko:permissions-camera:0.20.1")
-            implementation("dev.icerock.moko:permissions-compose:0.20.1")
         }
 
         commonMain.dependencies {
@@ -142,11 +140,6 @@ kotlin {
 //            implementation("io.coil-kt.coil3:coil-network-ktor3:3.5.0")
 //            implementation("io.coil-kt.coil3:coil-svg:3.5.0")
 
-            // about libs
-            api("com.mikepenz:aboutlibraries-compose-core:15.0.3")
-            api("com.mikepenz:aboutlibraries-compose-m3:15.0.3")
-            api("com.mikepenz:aboutlibraries-core:15.0.3")
-
         }
 
         commonTest {
@@ -155,10 +148,7 @@ kotlin {
             }
         }
 
-        iosMain.dependencies {
-            implementation("dev.icerock.moko:permissions-camera:0.20.1")
-            implementation("dev.icerock.moko:permissions-compose:0.20.1")
-        }
+        iosMain.dependencies {}
 
         jsMain.dependencies {
             implementation(libs.wrappers.browser)

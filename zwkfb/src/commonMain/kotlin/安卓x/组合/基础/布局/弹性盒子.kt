@@ -1,6 +1,7 @@
 package 安卓x.组合.基础.布局
 
 import androidx.annotation.FloatRange
+import androidx.compose.foundation.layout.ExperimentalFlexBoxApi
 import androidx.compose.foundation.layout.FlexAlignContent
 import androidx.compose.foundation.layout.FlexAlignItems
 import androidx.compose.foundation.layout.FlexAlignSelf
@@ -84,6 +85,7 @@ import androidx.compose.ui.unit.Dp
  */
 @Suppress("ComposableNaming")
 @Composable
+@ExperimentalFlexBoxApi
 inline fun 弹性盒子(
     修饰符: Modifier = Modifier,
     配置: FlexBoxConfig = FlexBoxConfig,
@@ -105,6 +107,7 @@ inline fun 弹性盒子(
  */
 @LayoutScopeMarker
 @Immutable
+@ExperimentalFlexBoxApi
 interface 弹性盒子范围 {
 
     /**
@@ -138,6 +141,7 @@ interface 弹性盒子范围 {
  *
  * @see FlexBoxConfigScope.direction
  */
+@ExperimentalFlexBoxApi
 object 弹性方向 {
 
     /**
@@ -173,6 +177,7 @@ object 弹性方向 {
  *
  * @see FlexBoxConfigScope.wrap
  */
+@ExperimentalFlexBoxApi
 object 弹性换行 {
 
     /**
@@ -204,6 +209,7 @@ object 弹性换行 {
  * @see FlexBoxConfigScope.alignItems
  * @see FlexAlignSelf
  */
+@ExperimentalFlexBoxApi
 object 弹性对齐项集 {
 
     /** 子项对齐到其所在行的交叉轴起点边缘。 */
@@ -236,6 +242,7 @@ object 弹性对齐项集 {
  * @see FlexConfigScope.alignSelf
  * @see FlexAlignItems
  */
+@ExperimentalFlexBoxApi
 object 弹性对齐自身 {
 
     /** 继承容器的 [FlexBoxConfigScope.alignItems] 对齐方式。这是默认值。*/
@@ -270,6 +277,7 @@ object 弹性对齐自身 {
  *
  * @see FlexBoxConfigScope.alignContent
  */
+@ExperimentalFlexBoxApi
 object 弹性对齐内容 {
 
     /** 将各行尽可能靠近容器的 `cross-start`（交叉轴起点）边缘放置。*/
@@ -303,6 +311,7 @@ object 弹性对齐内容 {
  *
  * @see FlexBoxConfigScope.justifyContent
  */
+@ExperimentalFlexBoxApi
 object 弹性主轴内容 {
 
     /** 将子项放置到尽可能靠近其所在行的 `main-start`（主轴起点）边缘的位置。*/
@@ -340,6 +349,7 @@ object 弹性主轴内容 {
  *
  * @see FlexConfigScope.basis
  */
+@ExperimentalFlexBoxApi
 object 弹性基础 {
 
     /**
@@ -387,6 +397,7 @@ object 弹性基础 {
  * @see FlexBox
  */
 @Stable
+@ExperimentalFlexBoxApi
 fun interface 弹性盒子配置 {
 
     /** 将配置应用到给定的 [FlexBoxConfigScope]。此方法由布局系统在测量阶段调用，而非组合阶段。*/
@@ -414,6 +425,7 @@ fun interface 弹性盒子配置 {
     }
 }
 
+@ExperimentalFlexBoxApi
 internal class CombinedFlexBoxConfig(vararg val configs: 弹性盒子配置) : 弹性盒子配置 {
     override fun FlexBoxConfigScope.配置() {
         configs.forEach { config -> with(config) { 配置() } }
@@ -438,6 +450,7 @@ internal class CombinedFlexBoxConfig(vararg val configs: 弹性盒子配置) : �
  *
  * @see FlexBoxConfig
  */
+@ExperimentalFlexBoxApi
 sealed interface 弹性盒子配置范围 : Density { // FlexBoxConfigScope
 
     /**
@@ -605,6 +618,7 @@ sealed interface 弹性盒子配置范围 : Density { // FlexBoxConfigScope
  *
  * @see Constraints
  */
+@ExperimentalFlexBoxApi
 val FlexBoxConfigScope.约束: Constraints
     get() = this.constraints
 
@@ -621,6 +635,7 @@ val FlexBoxConfigScope.约束: Constraints
  * @param 值 弹性方向。默认值为 [FlexDirection.Row]。
  * @see FlexDirection
  */
+@ExperimentalFlexBoxApi
 fun FlexBoxConfigScope.方向(值: FlexDirection) = this.direction(value = 值)
 
 /**
@@ -633,6 +648,7 @@ fun FlexBoxConfigScope.方向(值: FlexDirection) = this.direction(value = 值)
  * @param 值 换行行为。默认值为 [FlexWrap.NoWrap]。
  * @see FlexWrap
  */
+@ExperimentalFlexBoxApi
 fun FlexBoxConfigScope.换行(值: FlexWrap) = this.wrap(value = 值)
 
 /**
@@ -650,6 +666,7 @@ fun FlexBoxConfigScope.换行(值: FlexWrap) = this.wrap(value = 值)
  * @param 值 主轴内容对齐方式的值。默认值为 [FlexJustifyContent.Start]。
  * @see FlexJustifyContent
  */
+@ExperimentalFlexBoxApi
 fun FlexBoxConfigScope.主轴内容(值: FlexJustifyContent) = this.justifyContent(value = 值)
 
 /**
@@ -667,6 +684,7 @@ fun FlexBoxConfigScope.主轴内容(值: FlexJustifyContent) = this.justifyConte
  * @see FlexAlignItems
  * @see FlexConfigScope.alignSelf
  */
+@ExperimentalFlexBoxApi
 fun FlexBoxConfigScope.对齐项集(值: FlexAlignItems) = this.alignItems(value = 值)
 
 /**
@@ -678,6 +696,7 @@ fun FlexBoxConfigScope.对齐项集(值: FlexAlignItems) = this.alignItems(value
  * @param 对齐线 要使用的对齐线。
  * @see AlignmentLine
  */
+@ExperimentalFlexBoxApi
 fun FlexBoxConfigScope.对齐项集(对齐线: AlignmentLine) = this.alignItems(alignmentLine = 对齐线)
 
 /**
@@ -689,6 +708,7 @@ fun FlexBoxConfigScope.对齐项集(对齐线: AlignmentLine) = this.alignItems(
  * @param 对齐线块 一个从 [Measured] 子项计算基线位置的函数。
  * @see Measured
  */
+@ExperimentalFlexBoxApi
 fun FlexBoxConfigScope.对齐项集(对齐线块: (Measured) -> Int) = this.alignItems(alignmentLineBlock = 对齐线块)
 
 /**
@@ -707,6 +727,7 @@ fun FlexBoxConfigScope.对齐项集(对齐线块: (Measured) -> Int) = this.alig
  * @see FlexAlignContent
  * @see FlexBoxConfigScope.wrap
  */
+@ExperimentalFlexBoxApi
 fun FlexBoxConfigScope.对齐内容(值: FlexAlignContent) = this.alignContent(value = 值)
 
 /**
@@ -719,6 +740,7 @@ fun FlexBoxConfigScope.对齐内容(值: FlexAlignContent) = this.alignContent(v
  * @see FlexBoxConfigScope.columnGap
  * @see FlexBoxConfigScope.gap
  */
+@ExperimentalFlexBoxApi
 fun FlexBoxConfigScope.行间隙(值: Dp) = this.rowGap(value = 值)
 
 /**
@@ -731,6 +753,7 @@ fun FlexBoxConfigScope.行间隙(值: Dp) = this.rowGap(value = 值)
  * @see FlexBoxConfigScope.rowGap
  * @see FlexBoxConfigScope.gap
  */
+@ExperimentalFlexBoxApi
 fun FlexBoxConfigScope.列间隙(值: Dp) = this.columnGap(value = 值)
 
 /**
@@ -742,6 +765,7 @@ fun FlexBoxConfigScope.列间隙(值: Dp) = this.columnGap(value = 值)
  * @see FlexBoxConfigScope.rowGap
  * @see FlexBoxConfigScope.columnGap
  */
+@ExperimentalFlexBoxApi
 fun FlexBoxConfigScope.间隙(全: Dp) = this.gap(all = 全)
 
 /**
@@ -752,6 +776,7 @@ fun FlexBoxConfigScope.间隙(全: Dp) = this.gap(all = 全)
  * @see FlexBoxConfigScope.rowGap
  * @see FlexBoxConfigScope.columnGap
  */
+@ExperimentalFlexBoxApi
 fun FlexBoxConfigScope.间隙(行: Dp, 列: Dp) = this.gap(row = 行, column = 列)
 
 //=====================================================================================
@@ -769,6 +794,7 @@ fun FlexBoxConfigScope.间隙(行: Dp, 列: Dp) = this.gap(row = 行, column = �
  * @see FlexBoxScope.flex
  */
 @Stable
+@ExperimentalFlexBoxApi
 fun interface 弹性配置 {
 
     /** 将配置应用到给定的 [FlexConfigScope]。此方法由布局系统在测量阶段调用，而非组合阶段。*/
@@ -795,6 +821,7 @@ fun interface 弹性配置 {
 
 }
 
+@ExperimentalFlexBoxApi
 internal class CombinedFlexConfig(vararg val configs: 弹性配置) : 弹性配置 {
     override fun FlexConfigScope.配置() {
         configs.forEach { config -> with(config) { 配置() } }
@@ -818,6 +845,7 @@ internal class CombinedFlexConfig(vararg val configs: 弹性配置) : 弹性配�
  *
  * @see FlexConfig
  */
+@ExperimentalFlexBoxApi
 sealed interface 弹性配置范围 : Density {
 
     /**
@@ -960,32 +988,36 @@ sealed interface 弹性配置范围 : Density {
  * 对应于 [Constraints.maxWidth]，对于 [FlexDirection.Column] / [FlexDirection.ColumnReverse]
  * 对应于 [Constraints.maxHeight]。可用于基于容器可用空间实现响应式子项尺寸。
  */
-val FlexConfigScope.弹性盒子主轴最大像素: Int
-    get() = this.flexBoxMainAxisMaxPx
+@ExperimentalFlexBoxApi
+val FlexConfigScope.弹性盒子主轴最大: Int
+    get() = this.flexBoxMainAxisMax
 
 /**
  * FlexBox 容器沿主轴的最小尺寸。 对于 [FlexDirection.Row] / [FlexDirection.RowReverse] 对应于
  * [Constraints.minWidth]，对于 [FlexDirection.Column] / [FlexDirection.ColumnReverse]
  * 对应于 [Constraints.minHeight]。
  */
-val FlexConfigScope.弹性盒子主轴最小像素: Int
-    get() = this.flexBoxMainAxisMinPx
+@ExperimentalFlexBoxApi
+val FlexConfigScope.弹性盒子主轴最小: Int
+    get() = this.flexBoxMainAxisMin
 
 /**
  * FlexBox 容器沿交叉轴的最大尺寸。 对于 [FlexDirection.Row] / [FlexDirection.RowReverse] 对应于
  * [Constraints.maxHeight]，对于 [FlexDirection.Column] / [FlexDirection.ColumnReverse]
  * 对应于 [Constraints.maxWidth]。
  */
-val FlexConfigScope.弹性盒子交叉轴最大像素: Int
-    get() = this.flexBoxCrossAxisMaxPx
+@ExperimentalFlexBoxApi
+val FlexConfigScope.弹性盒子交叉轴最大: Int
+    get() = this.flexBoxCrossAxisMax
 
 /**
  * FlexBox 容器沿交叉轴的最小尺寸。对于 [FlexDirection.Row] / [FlexDirection.RowReverse]
  * 对应于 [Constraints.minHeight]，对于 [FlexDirection.Column] / [FlexDirection.ColumnReverse]
  * 对应于 [Constraints.minWidth]。
  */
-val FlexConfigScope.弹性盒子交叉轴最小像素: Int
-    get() = this.flexBoxCrossAxisMinPx
+@ExperimentalFlexBoxApi
+val FlexConfigScope.弹性盒子交叉轴最小: Int
+    get() = this.flexBoxCrossAxisMin
 
 /**
  * 为此特定子项覆盖容器的 [FlexBoxConfigScope.alignItems] 设置。
@@ -1003,6 +1035,7 @@ val FlexConfigScope.弹性盒子交叉轴最小像素: Int
  * @see FlexAlignSelf
  * @see FlexBoxConfigScope.alignItems
  */
+@ExperimentalFlexBoxApi
 fun FlexConfigScope.对齐自身(值: FlexAlignSelf)
      = this.alignSelf(value = 值)
 
@@ -1012,6 +1045,7 @@ fun FlexConfigScope.对齐自身(值: FlexAlignSelf)
  * @param 对齐线 要使用的对齐线（例如，[FirstBaseline]（首基线）、[LastBaseline]（末基线））。
  * @see AlignmentLine
  */
+@ExperimentalFlexBoxApi
 fun FlexConfigScope.对齐自身(对齐线: AlignmentLine)
      = this.alignSelf(alignmentLine = 对齐线)
 
@@ -1020,6 +1054,7 @@ fun FlexConfigScope.对齐自身(对齐线: AlignmentLine)
  *
  * @param 对齐线块 一个从 [Measured] 子项计算基线的函数。
  */
+@ExperimentalFlexBoxApi
 fun FlexConfigScope.对齐自身(对齐线块: (Measured) -> Int)
     = this.alignSelf(alignmentLineBlock = 对齐线块)
 
@@ -1034,6 +1069,7 @@ fun FlexConfigScope.对齐自身(对齐线块: (Measured) -> Int)
  *
  * @param 值 顺序值。默认值为 0。
  */
+@ExperimentalFlexBoxApi
 fun FlexConfigScope.顺序(值: Int)
     = this.order(value = 值)
 
@@ -1048,6 +1084,7 @@ fun FlexConfigScope.顺序(值: Int)
  * @see FlexConfigScope.shrink
  * @see FlexConfigScope.basis
  */
+@ExperimentalFlexBoxApi
 fun FlexConfigScope.增长(@FloatRange(from = 0.0) 值: Float)
     = this.grow(value = 值)
 
@@ -1064,6 +1101,7 @@ fun FlexConfigScope.增长(@FloatRange(from = 0.0) 值: Float)
  * @see FlexConfigScope.grow
  * @see FlexConfigScope.basis
  */
+@ExperimentalFlexBoxApi
 fun FlexConfigScope.收缩(@FloatRange(from = 0.0) 值: Float)
     = this.shrink(value = 值)
 
@@ -1079,6 +1117,7 @@ fun FlexConfigScope.收缩(@FloatRange(from = 0.0) 值: Float)
  * @param 值 基准大小值。默认值为 [FlexBasis.Auto]
  * @see FlexBasis
  */
+@ExperimentalFlexBoxApi
 fun FlexConfigScope.基础(值: FlexBasis)
     = this.basis(value = 值)
 
@@ -1088,6 +1127,7 @@ fun FlexConfigScope.基础(值: FlexBasis)
  * @param 值 以 Dp 为单位的基准大小。
  * @see FlexBasis.Dp
  */
+@ExperimentalFlexBoxApi
 fun FlexConfigScope.基础(值: Dp)
     = this.basis(value = 值)
 
@@ -1097,6 +1137,7 @@ fun FlexConfigScope.基础(值: Dp)
  * @param 值 一个介于 0.0 和 1.0 之间的值，代表容器大小的比例分数。
  * @see FlexBasis.Percent
  */
+@ExperimentalFlexBoxApi
 fun FlexConfigScope.基础(@FloatRange(from = 0.0, to = 1.0) 值: Float)
      = this.basis(value = 值)
 
@@ -1105,16 +1146,19 @@ fun FlexConfigScope.基础(@FloatRange(from = 0.0, to = 1.0) 值: Float)
 
 
 /** 将两个 [FlexBoxConfig] 对象合并在一起。位于"右侧"的配置将按属性逐一覆盖其左侧的配置。*/
+@ExperimentalFlexBoxApi
 fun 弹性盒子配置(第一: FlexBoxConfig, 第二: FlexBoxConfig): FlexBoxConfig =
     FlexBoxConfig(first = 第一, second = 第二)
 
 
 /** 将三个 [FlexBoxConfig] 对象合并在一起。位于"右侧"的配置将按属性逐一覆盖其左侧的配置。*/
+@ExperimentalFlexBoxApi
 fun 弹性盒子配置(第一: FlexBoxConfig, 第二: FlexBoxConfig, 第三: FlexBoxConfig): FlexBoxConfig =
     FlexBoxConfig(first = 第一, second = 第二, third = 第三)
 
 
 /** 将多个 [FlexBoxConfig] 对象合并在一起。位于"右侧"的配置将按属性逐一覆盖其左侧的配置。*/
+@ExperimentalFlexBoxApi
 fun 弹性盒子配置(vararg 配置集: FlexBoxConfig): FlexBoxConfig =
     FlexBoxConfig(configs = 配置集)
 
@@ -1123,16 +1167,19 @@ fun 弹性盒子配置(vararg 配置集: FlexBoxConfig): FlexBoxConfig =
 
 
 /** 将两个 [FlexConfig] 对象合并在一起。位于"右侧"的配置将按属性逐一覆盖其左侧的配置。*/
+@ExperimentalFlexBoxApi
 fun 弹性配置(第一: FlexConfig, 第二: FlexConfig): FlexConfig =
     FlexConfig(first = 第一, second = 第二)
 
 
 /** 将三个 [FlexConfig] 对象合并在一起。位于"右侧"的配置将按属性逐一覆盖其左侧的配置。*/
+@ExperimentalFlexBoxApi
 fun 弹性配置(第一: FlexConfig, 第二: FlexConfig, 第三: FlexConfig): FlexConfig =
     FlexConfig(first = 第一, second = 第二, third = 第三)
 
 
 /** 将多个 [FlexConfig] 对象合并在一起。位于"右侧"的配置将按属性逐一覆盖其左侧的配置。*/
+@ExperimentalFlexBoxApi
 fun 弹性配置(vararg 配置集: FlexConfig): FlexConfig =
     FlexConfig(configs = 配置集)
 

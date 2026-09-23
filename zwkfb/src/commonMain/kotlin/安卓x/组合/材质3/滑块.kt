@@ -3,7 +3,6 @@ package 安卓x.组合.材质3
 import androidx.annotation.IntRange
 import androidx.compose.foundation.MutatePriority
 import androidx.compose.foundation.gestures.DragScope
-import androidx.compose.foundation.gestures.Orientation.Vertical
 import androidx.compose.foundation.interaction.Interaction
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.material3.SliderDefaults.drawStopIndicator
@@ -95,12 +94,12 @@ fun 滑块(
  * @param 颜色集 用于解析此滑块在不同状态下所使用颜色的 [SliderColors]。请参阅 [SliderDefaults.colors]。
  * @param 交互源 表示此滑块 [Interaction] 流的 [MutableInteractionSource]。您可以创建并传入自己通过
  * remember 保存的实例，以观察 [Interaction] 并在不同状态下自定义此滑块的外观/行为。
- * @param 值范围 此滑块可取的数值范围。传入的 [值] 将被强制约束到此范围内。
  * @param 步数 如果为正数，则指定 [值范围] 端点之间的离散允许值数量。例如，从 0 到 10 的范围配合 4 个 [步数]，
  * 允许 4 个均匀分布在 0 和 10 之间的值（即 2、4、6、8）。如果 [步数] 为 0，滑块将表现为连续模式，允许范围内的任意值。
  * 不可为负数。
  * @param 滑块 要显示在滑块上的滑钮（thumb），它放置在轨道上方。该 lambda 接收一个 [SliderState]，用于获取当前激活的轨道。
  * @param 轨道 要显示在滑块上的轨道，它放置在滑钮下方。该 lambda 接收一个 [SliderState]，用于获取当前激活的轨道。
+ * @param 值范围 此滑块可取的数值范围。传入的 [值] 将被强制约束到此范围内。
  */
 @Suppress("ComposableNaming")
 @Composable
@@ -112,7 +111,6 @@ fun 滑块(
     值改变完成回调: (() -> Unit)? = null,
     颜色集: SliderColors = SliderDefaults.colors(),
     交互源: MutableInteractionSource = remember { MutableInteractionSource() },
-    值范围: ClosedFloatingPointRange<Float> = 0f..1f,
     @IntRange(from = 0) 步数: Int = 0,
     滑块: @Composable (SliderState) -> Unit = {
         SliderDefaults.Thumb(
@@ -124,6 +122,7 @@ fun 滑块(
     轨道: @Composable (SliderState) -> Unit = { sliderState ->
         SliderDefaults.Track(colors = 颜色集, enabled = 已启用, sliderState = sliderState)
     },
+    值范围: ClosedFloatingPointRange<Float> = 0f..1f,
 ) =
     Slider(
         value = 值,
@@ -158,7 +157,6 @@ fun 滑块(
  * @param 滑块 要显示在滑块上的滑钮（thumb），它放置在轨道上方。该 lambda 接收一个 [SliderState]，用于获取当前激活的轨道。
  * @param 轨道 要显示在滑块上的轨道，它放置在滑钮下方。该 lambda 接收一个 [SliderState]，用于获取当前激活的轨道。
  */
-@Suppress("ComposableNaming")
 @Composable
 fun 滑块(
     状态: SliderState,
@@ -199,7 +197,7 @@ fun 滑块(
  * @param 状态 包含滑块当前值的 [SliderState]。
  * @param 修饰符 要应用于此滑块的 [Modifier]。
  * @param 已启用 控制此滑块的启用状态。当为 false 时，此组件不会响应用户输入，并且会在视觉上显示为禁用状态，同时对无障碍服务也呈禁用状态。
- * @param 从上到下 控制此滑块的方向。默认为从上到下。
+ * @param 反转方向 控制此滑块的方向。默认为从上到下。
  * @param 颜色集 用于解析此滑块在不同状态下所使用颜色的 [SliderColors]。请参阅 [SliderDefaults.colors]。
  * @param 交互源 表示此滑块 [Interaction] 流的 [MutableInteractionSource]。您可以创建并传入自己通过
  * remember 保存的实例，以观察 [Interaction] 并在不同状态下自定义此滑块的外观/行为。
@@ -207,19 +205,19 @@ fun 滑块(
  * @param 轨道 要显示在滑块上的轨道，它放置在滑钮下方。该 lambda 接收一个 [SliderState]，用于获取当前激活的轨道。
  */
 @Suppress("ComposableNaming")
-@JvmName("VerticalSliderNew")
+@ExperimentalMaterial3ExpressiveApi
 @Composable
 fun 垂直滑块(
     状态: SliderState,
     修饰符: Modifier = Modifier,
     已启用: Boolean = true,
-    从上到下: Boolean = false,
+    反向方向: Boolean = false,
     颜色集: SliderColors = SliderDefaults.colors(),
     交互源: MutableInteractionSource = remember { MutableInteractionSource() },
-    滑块: @Composable (SliderState) -> Unit = { _ ->
+    滑块: @Composable (SliderState) -> Unit = { sliderState ->
         SliderDefaults.Thumb(
             interactionSource = 交互源,
-            isVertical = true,
+            sliderState = sliderState,
             colors = 颜色集,
             enabled = 已启用,
             thumbSize = VerticalThumbSize,
@@ -238,7 +236,7 @@ fun 垂直滑块(
         state = 状态,
         modifier = 修饰符,
         enabled = 已启用,
-        topToBottom = 从上到下,
+        reverseDirection = 反向方向,
         colors = 颜色集,
         interactionSource = 交互源,
         thumb = 滑块,
@@ -306,8 +304,8 @@ fun 范围滑块(
  * @param 值改变完成回调 在数值变化结束时调用的 lambda。此回调不应用于更新范围滑块的值（请改用 [值改变回调]），
  * 而是用于获知用户何时通过结束拖动或点击完成了新值的选择。
  * @param 颜色集 用于确定范围滑块各部分在不同状态下颜色的 [SliderColors]。请参阅 [SliderDefaults.colors] 进行自定义。
- * @param 开始滑块起始交互源 表示起始滑钮 [Interaction] 流的 [MutableInteractionSource]。您可以创建并传入自己通过 remember 保存的实例进行观察。
- * @param 结束滑块起始交互源 表示结束滑钮 [Interaction] 流的 [MutableInteractionSource]。您可以创建并传入自己通过 remember 保存的实例进行观察。
+ * @param 开始起始交互源 表示起始滑钮 [Interaction] 流的 [MutableInteractionSource]。您可以创建并传入自己通过 remember 保存的实例进行观察。
+ * @param 结束起始交互源 表示结束滑钮 [Interaction] 流的 [MutableInteractionSource]。您可以创建并传入自己通过 remember 保存的实例进行观察。
  * @param 步数 如果为正数，则指定 [值范围] 端点之间的离散允许值数量。例如，从 0 到 10 的范围配合 4 个 [步数]，
  * 允许 4 个均匀分布在 0 和 10 之间的值（即 2、4、6、8）。如果 [步数] 为 0，滑块将表现为连续模式，允许范围内的任意值。
  * 不可为负数。
@@ -324,21 +322,20 @@ fun 范围滑块(
     修饰符: Modifier = Modifier,
     已启用: Boolean = true,
     值范围: ClosedFloatingPointRange<Float> = 0f..1f,
-    @IntRange(from = 0) 步数: Int = 0,
     值改变完成回调: (() -> Unit)? = null,
     颜色集: SliderColors = SliderDefaults.colors(),
-    开始滑块起始交互源: MutableInteractionSource = remember { MutableInteractionSource() },
-    结束滑块起始交互源: MutableInteractionSource = remember { MutableInteractionSource() },
+    开始起始交互源: MutableInteractionSource = remember { MutableInteractionSource() },
+    结束起始交互源: MutableInteractionSource = remember { MutableInteractionSource() },
     开始滑块: @Composable (RangeSliderState) -> Unit = {
         SliderDefaults.Thumb(
-            interactionSource = 开始滑块起始交互源,
+            interactionSource = 开始起始交互源,
             colors = 颜色集,
             enabled = 已启用,
         )
     },
     结束滑块: @Composable (RangeSliderState) -> Unit = {
         SliderDefaults.Thumb(
-            interactionSource = 结束滑块起始交互源,
+            interactionSource = 结束起始交互源,
             colors = 颜色集,
             enabled = 已启用,
         )
@@ -350,6 +347,7 @@ fun 范围滑块(
             rangeSliderState = rangeSliderState,
         )
     },
+    @IntRange(from = 0) 步数: Int = 0,
 ) =
     RangeSlider(
         value = 值,
@@ -359,8 +357,8 @@ fun 范围滑块(
         valueRange = 值范围,
         onValueChangeFinished = 值改变完成回调,
         colors = 颜色集,
-        startThumbInteractionSource = 开始滑块起始交互源,
-        endThumbInteractionSource = 结束滑块起始交互源,
+        startInteractionSource = 开始起始交互源,
+        endInteractionSource = 结束起始交互源,
         startThumb = 开始滑块,
         endThumb = 结束滑块,
         track = 轨道,
@@ -381,9 +379,9 @@ fun 范围滑块(
  * @param 修饰符 范围滑块布局的修饰符。
  * @param 已启用 组件是否启用以及是否可以与之交互
  * @param 颜色集 用于确定范围滑块各部分在不同状态下颜色的 [SliderColors]。请参阅 [SliderDefaults.colors] 进行自定义。
- * @param 开始滑块起始交互源 表示起始滑钮 [Interaction] 流的 [MutableInteractionSource]。您可以创建并传入自己通过
+ * @param 开始起始交互源 表示起始滑钮 [Interaction] 流的 [MutableInteractionSource]。您可以创建并传入自己通过
  * remember 保存的实例进行观察。
- * @param 结束滑块起始交互源 表示结束滑钮 [Interaction] 流的 [MutableInteractionSource]。您可以创建并传入自己通过
+ * @param 结束起始交互源 表示结束滑钮 [Interaction] 流的 [MutableInteractionSource]。您可以创建并传入自己通过
  * remember 保存的实例进行观察。
  * @param 开始滑块 要显示在范围滑块上的起始滑钮。该 lambda 接收一个 [RangeSliderState]，用于获取当前激活的轨道。
  * @param 结束滑块 要显示在范围滑块上的结束滑钮。该 lambda 接收一个 [RangeSliderState]，用于获取当前激活的轨道。
@@ -396,18 +394,18 @@ fun 范围滑块(
     修饰符: Modifier = Modifier,
     已启用: Boolean = true,
     颜色集: SliderColors = SliderDefaults.colors(),
-    开始滑块起始交互源: MutableInteractionSource = remember { MutableInteractionSource() },
-    结束滑块起始交互源: MutableInteractionSource = remember { MutableInteractionSource() },
+    开始起始交互源: MutableInteractionSource = remember { MutableInteractionSource() },
+    结束起始交互源: MutableInteractionSource = remember { MutableInteractionSource() },
     开始滑块: @Composable (RangeSliderState) -> Unit = {
         SliderDefaults.Thumb(
-            interactionSource = 开始滑块起始交互源,
+            interactionSource = 开始起始交互源,
             colors = 颜色集,
             enabled = 已启用,
         )
     },
     结束滑块: @Composable (RangeSliderState) -> Unit = {
         SliderDefaults.Thumb(
-            interactionSource = 结束滑块起始交互源,
+            interactionSource = 结束起始交互源,
             colors = 颜色集,
             enabled = 已启用,
         )
@@ -425,8 +423,8 @@ fun 范围滑块(
         modifier = 修饰符,
         enabled = 已启用,
         colors = 颜色集,
-        startThumbInteractionSource = 开始滑块起始交互源,
-        endThumbInteractionSource = 结束滑块起始交互源,
+        startInteractionSource = 开始起始交互源,
+        endInteractionSource = 结束起始交互源,
         startThumb = 开始滑块,
         endThumb = 结束滑块,
         track = 轨道,
@@ -524,14 +522,6 @@ object 滑块默认值 { // SliderDefaults
      * @param 滑块大小 滑钮的大小。
      */
     @Suppress("ComposableNaming")
-    @Deprecated(
-        "Maintained for binary compatibility. Use the overload that takes isVertical instead.",
-        replaceWith =
-            ReplaceWith(
-                "Thumb(interactionSource, sliderState.isVertical, modifier, colors, enabled, thumbSize)"
-            ),
-        level = DeprecationLevel.WARNING,
-    )
     @ExperimentalMaterial3ExpressiveApi
     @Composable
     fun 滑块(
@@ -545,38 +535,6 @@ object 滑块默认值 { // SliderDefaults
         SliderDefaults.Thumb(
             interactionSource = 交互源,
             sliderState = 滑块状态,
-            modifier = 修饰符,
-            colors = 颜色集,
-            enabled = 已启用,
-            thumbSize = 滑块大小,
-        )
-
-
-    /**
-     * [Slider]、[VerticalSlider] 和 [RangeSlider] 的默认滑钮。
-     *
-     * @param 交互源 表示此滑钮 [Interaction] 流的 [MutableInteractionSource]。
-     * 您可以创建并传入自己通过 remember 保存的实例进行观察。
-     * @param 是否可视 这个滑块正在使用的滑块是否是垂直滑块。
-     * @param 修饰符 要应用于滑钮的 [Modifier]。
-     * @param 颜色集 用于解析此滑钮在不同状态下所使用颜色的 [SliderColors]。请参阅 [SliderDefaults.colors]。
-     * @param 已启用 控制此滑块的启用状态。当为 false 时，此组件不会响应用户输入，并且会在视觉上显示为禁用状态，
-     * 同时对无障碍服务也呈禁用状态。
-     * @param 滑块大小 滑钮的大小。
-     */
-    @Suppress("ComposableNaming")
-    @Composable
-    fun 滑块(
-        交互源: MutableInteractionSource,
-        是否可视: Boolean,
-        修饰符: Modifier = Modifier,
-        颜色集: SliderColors = SliderDefaults.colors(),
-        已启用: Boolean = true,
-        滑块大小: DpSize = if (是否可视) VerticalThumbSize else ThumbSize,
-    ) =
-        SliderDefaults.Thumb(
-            interactionSource = 交互源,
-            isVertical = 是否可视,
             modifier = 修饰符,
             colors = 颜色集,
             enabled = 已启用,
@@ -973,6 +931,7 @@ val SliderColors.禁用非激活刻度颜色: Color
 //========================================================================================
 
 
+
 internal val ThumbWidth = SliderTokens.HandleWidth
 private val ThumbHeight = SliderTokens.HandleHeight
 private val ThumbSize = DpSize(ThumbWidth, ThumbHeight)
@@ -1061,6 +1020,17 @@ var SliderState.值: Float
         this.value = newVal
     }
 
+suspend fun SliderState.拖动(
+    dragPriority: MutatePriority,
+    block: suspend DragScope.() -> Unit,
+): Unit =
+    this.drag(
+        dragPriority = dragPriority,
+        block = block
+    )
+
+fun SliderState.发送原始增量(delta: Float) =
+    this.dispatchRawDelta(delta)
 
 /** 用于更新数值的回调。 */
 var SliderState.值改变回调: ((Float) -> Unit)?
@@ -1078,11 +1048,6 @@ var SliderState.是否自动吸附: Boolean
         this.shouldAutoSnap = value
     }
 
-
-/** 滑块是否是垂直的。 */
-val SliderState.是否可视: Boolean
-    get() = this.isVertical
-
 /** 滑钮当前所处轨道的分数位置。 */
 val SliderState.强制约束值分数: Float
     get() = this.coercedValueAsFraction
@@ -1098,20 +1063,17 @@ object 滑块状态 {
     /**
      * [SliderState] 的默认 [保存器] 实现。
      *
-     * @param 步数 如果为正，则指定 valueRange 端点之间允许的离散值的数量。
      * @param 值改变完成回调 在数值变化结束时调用的 lambda。此回调不应用于更新范围滑块的值（请改用 [值改变回调]），
      * 而是用于获知用户何时通过结束拖动或点击完成了新值的选择。
      * @param 值范围 滑块值可取的数值范围。[值] 将被强制约束到此范围内。
      */
     fun 保存器(
-        步数: Int,
-        值范围: ClosedFloatingPointRange<Float>,
         值改变完成回调: (() -> Unit)?,
+        值范围: ClosedFloatingPointRange<Float>,
     ): Saver<SliderState, *> =
         SliderState.Saver(
-            steps = 步数,
-            valueRange = 值范围,
             onValueChangeFinished = 值改变完成回调,
+            valueRange = 值范围,
         )
 
 }
@@ -1211,20 +1173,17 @@ object 范围滑块状态{
     /**
      * [RangeSliderState] 的默认 [保存器] 实现。
      *
-     * @param 步数 如果为正，则指定 [值范围] 端点之间的离散允许值数量。
-     * @param 值范围 范围滑块值可取的数值范围。[激活范围开始] 和 [激活范围结束] 将被强制约束到此范围内。
      * @param 值改变完成回调 在数值变化结束时调用的 lambda。此回调不应用于更新范围滑块的值（请改用 [值改变回调]），
      *   而是用于获知用户何时通过结束拖动或点击完成了新值的选择。
+     * @param 值范围 范围滑块值可取的数值范围。[激活范围开始] 和 [激活范围结束] 将被强制约束到此范围内。
      */
     fun 保存器(
-        步数: Int,
-        值范围: ClosedFloatingPointRange<Float>,
         值改变完成回调: (() -> Unit)?,
+        值范围: ClosedFloatingPointRange<Float>,
     ): Saver<RangeSliderState, *> =
         RangeSliderState.Saver(
-            steps = 步数,
-            valueRange = 值范围,
             onValueChangeFinished = 值改变完成回调,
+            valueRange = 值范围
         )
 }
 
@@ -1257,7 +1216,3 @@ fun 记住范围滑块状态(
         onValueChangeFinished = 值改变完成回调,
         valueRange = 值范围,
     )
-
-
-
-
