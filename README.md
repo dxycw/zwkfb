@@ -80,17 +80,17 @@ kotlin {
 >
 >* 项目>=0.4.7版本：
 >
->  1、删除 com.composables:ui 依赖库；
+>   1、删除 com.composables:ui 依赖库；
 >
->  2、从本版本发布开始请使用 Jetpack Compose Multiplatform 的新项目模板。
+>   2、从本版本发布开始请使用 Jetpack Compose Multiplatform 的新项目模板。
 >
->  3、如果使用 org.jetbrains.kotlinx:kotlinx-serialization-json 依赖库[官方教程](https://github.com/Kotlin/kotlinx.serialization)，请在项目中添加以下插件项：
+>   3、如果使用 org.jetbrains.kotlinx:kotlinx-serialization-json 依赖库[官方教程](https://github.com/Kotlin/kotlinx.serialization)，请在项目中添加以下插件项：
 >
->  ```kotlin
->  plugins {
->      kotlin("plugin.serialization") version "${和项目kotlin的版本一样}"
->  }
->  ```
+>    ```kotlin
+>    plugins {
+>       kotlin("plugin.serialization") version "${和项目kotlin的版本一样}"
+>    }
+>   ```
 
 
 # 更新内容
