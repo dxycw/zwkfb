@@ -10,7 +10,7 @@ class JsPlatform: Platform {
         ?.let { (startIndex) -> userAgent.substring(startIndex).substringBefore(" ") }
         ?: "Unknown"
 
-    override val platform: String = "js"
+    override val platform: String = "Js"
 }
 
 actual fun getPlatform(): Platform = JsPlatform()

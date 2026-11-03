@@ -1,44 +1,21 @@
 package com.dxyc.zwkfb
 
-import androidx.compose.material3.Icon
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.BitmapPainter
-import androidx.compose.ui.graphics.toAwtImage
-import androidx.compose.ui.graphics.toComposeImageBitmap
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.KeyShortcut
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.window.MenuBar
-import androidx.compose.ui.window.Tray
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
 import com.dxyc.zwkfb.组件.CloseConfirmDialog
-import com.formdev.flatlaf.FlatLightLaf
 import java.awt.Insets
-import javax.imageio.ImageIO
 import javax.swing.UIManager
 
-
-//fun main() = application {
-//    Window(
-//        onCloseRequest = ::exitApplication,
-//        state = WindowState(position = WindowPosition.Aligned(Alignment.Center)),
-//        title = "中文开发包",
-////        icon = compose_multiplatform,
-//    ) {
-//        App()
-////        视频播放器()
-//    }
-//}
 
 fun main() = application {
 
@@ -133,6 +110,7 @@ fun main() = application {
                 }
             }
             App()
+//            视频播放器()
             if (showCloseDialog) {
                 CloseConfirmDialog(
                     onDismiss = {
