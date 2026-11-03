@@ -69,13 +69,23 @@ kotlin {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+
+
+            implementation("org.jetbrains.androidx.navigationevent:navigationevent-compose:1.1.0")
         }
+
+        getByName("desktopMain").dependencies {
+
+        }
+
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
+
         jsMain.dependencies {
             implementation(libs.wrappers.browser)
         }
+
         getByName("androidDeviceTest").dependencies {
             implementation(libs.androidx.testRunner)
         }

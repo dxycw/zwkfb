@@ -18,7 +18,9 @@ kotlin {
     android {
         namespace = "com.zwkfb"
         compileSdk {
-            version = release(37)
+            version = release(37) {
+                minorApiLevel = 1 // 指定次要 API 级别为 1，即 37.1
+            }
         }
         minSdk = 24
 
