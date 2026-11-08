@@ -146,11 +146,11 @@ kotlin {
 //                // 文档顶部的 YAML 元数据
 //                api(libs.feiyin0719.commonmark.ext.yaml.front.matter)
 
-//                // 是 JetBrains 官方用 Kotlin 编写的 Markdown 解析库
-//                api(libs.jetbrains.markdown)
-//                // 是 Kotlin Multiplatform 语法高亮引擎
-//                api(libs.snipme.highlights)
-//
+                // 是 JetBrains 官方用 Kotlin 编写的 Markdown 解析库
+                api(libs.jetbrains.markdown)
+                // 是 Kotlin Multiplatform 语法高亮引擎
+                api(libs.snipme.highlights)
+
                 // 是由 Mike Penz 开发的一个 Kotlin Multiplatform（KMP）Markdown 渲染库
                 api(libs.mikepenz.multiplatform.markdown.renderer)
                 // 是由 Mike Penz 开发的一个 Kotlin Multiplatform（KMP）Markdown 渲染库的 M2 版本

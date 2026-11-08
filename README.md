@@ -48,7 +48,7 @@ kotlin {
         // 多平台，
         commonMain.dependencies {
             // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb:0.4.8")
+            implementation("com.github.dxycw.zwkfb:zwkfb:0.4.9")
         }
     }
 }
@@ -109,6 +109,7 @@ kotlin {
 * 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
 * 更新 composeMultiplatform 版本为 1.13.0-beta02；
 * 更新 Multiplatform平台的 org.jetbrains.compose.material3:material3 依赖库版本为 1.13.0-beta02；
+* 更新 Multiplatform平台的 dev.snipme:highlights 依赖库版本为 1.2.0；
 * 更新 Desktop平台的 com.formdev:flatlaf 依赖库版本为 3.8；
 * 更新 Desktop平台的 com.formdev:flatlaf-extras 依赖库版本为 3.8；
 * 更新 Desktop平台的 com.formdev:flatlaf-intellij-themes 依赖库版本为 3.8；
