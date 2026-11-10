@@ -95,27 +95,19 @@ kotlin {
 >
 >* 项目>=0.5.0版本：
 >
->   1、发布到 Maven Central 仓库；
->   
->   2、从本版本开始不会发布到 JitPack 仓库(除非特殊需求)；
->
->   3、不推荐使用JitPack 仓库，因为JitPack 仓库的版本是不稳定的，可能会有错误。
->
->* 项目>=0.4.8版本：
->
 >   1、从本版本发布开始请使用 Jetpack Compose Multiplatform 的新项目模板；
 >
->   2、本版本没有内容只有库；
+>   2、发布到 Maven Central 仓库；
+>   
+>   3、从本版本开始不会发布到 JitPack 仓库(除非特殊需求)；
 >
->   3、composeMultiplatform 版本为 1.13.0-*， Desktop的Window函数的icon使用 painterResource("drawable/...")不能用报错，这是 composeMultiplatform 1.13.0 版本的一个 bug。
+>   4、本版本没有内容只有库；
 >
->* 项目>=0.4.7版本：
+>   5、不推荐使用JitPack 仓库，因为JitPack 仓库的版本是不稳定的，可能会有错误。
 >
->   1、删除 com.composables:ui 依赖库；
+>   6、composeMultiplatform 推荐和本项目相同， composeMultiplatform版本为 1.13.0-*， Desktop的Window函数的icon使用 painterResource("drawable/...")不能用报错，这是 composeMultiplatform 1.13.0 版本的一个 bug。
 >
->   2、从本版本发布开始请使用 Jetpack Compose Multiplatform 的新项目模板。
->
->   3、如果使用 org.jetbrains.kotlinx:kotlinx-serialization-json 依赖库[官方教程](https://github.com/Kotlin/kotlinx.serialization)，请在项目中添加以下插件项：
+>   7、如果使用 org.jetbrains.kotlinx:kotlinx-serialization-json 依赖库[官方教程](https://github.com/Kotlin/kotlinx.serialization)，请在项目中添加以下插件项：
 >
 >    ```kotlin
 >    plugins {
@@ -130,6 +122,9 @@ kotlin {
 
 * 发布到 Maven Central 仓库；
 * 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 本版本没有内容只有库；
+* 从本版本开始不会发布到 JitPack 仓库(除非特殊需求)；
+* composeMultiplatform 推荐和本项目相同；
 
 
 # 老版本更新内容
