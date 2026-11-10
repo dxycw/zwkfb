@@ -88,7 +88,7 @@ kotlin {
 
 **4、打开本项目所有平台的[打包体积压缩](%E6%96%87%E6%A1%A3/%E6%89%93%E5%8C%85%E4%BD%93%E7%A7%AF%E5%8E%8B%E7%BC%A9.md)；**
 
-**5、打开本项目所有平台的[示例代码：](本项目所有平台[示例代码](https://gitee.com/dxycw/zwkfb-jiaocheng)；)**
+**5、打开本项目所有平台[示例代码](https://gitee.com/dxycw/zwkfb-jiaocheng)；**
 
 
 > [!CAUTION]
