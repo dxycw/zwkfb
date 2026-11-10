@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.composeCompiler)
     id("com.google.osdetector") version "1.7.3" // desktop的生成标准化分类器
 
+    id("com.vanniktech.maven.publish") version "0.37.0" // 使用最新稳定版
     id("maven-publish")
 }
 
@@ -392,4 +393,43 @@ kotlin {
 
 dependencies {
     androidRuntimeClasspath(libs.compose.uiTooling)
+}
+
+mavenPublishing {
+    // 指向 Central Portal（不是旧的 OSSRH）
+    publishToMavenCentral()
+
+    // 自动签名所有 publication
+    signAllPublications()
+
+    coordinates(
+        groupId = "io.github.dxycw",
+        artifactId = "zwkfb",
+        version = "0.5.0" // 从 gradle.properties 或版本目录读取更佳
+    )
+
+    pom {
+        name.set("zwkfb")
+        description.set("用于Kotlin多平台项目（Android、iOS、Desktop (Windows, MacOS 和 Linux)和 Web）的“zwkfb”中文开发包，使用Jetpack Compose Multiplatform开发。 注意：本库是本作者个人私库（不公开分享本库，不建议他人使用），如果想使用本库可以在项目中使用依赖库或克隆分支（可以自己新建一个分支修改本库，不可提交到本库），请不要上传提交，请勿私自外传本项目。")
+        url.set("https://github.com/dxycw/zwkfb")
+
+        licenses {
+            license {
+                name.set("Apache-2.0")
+                url.set("https://www.apache.org/licenses/LICENSE-2.0")
+            }
+        }
+        developers {
+            developer {
+                id.set("dxycw")
+                name.set("zwkfb")
+                email.set("3293666408@qq.com")
+            }
+        }
+        scm {
+            connection.set("scm:git:git://github.com/dxycw/zwkfb.git")
+            developerConnection.set("scm:git:ssh://github.com/dxycw/zwkfb.git")
+            url.set("https://github.com/dxycw/zwkfb")
+        }
+    }
 }

@@ -48,7 +48,7 @@ kotlin {
         // 多平台，
         commonMain.dependencies {
             // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb:0.4.9")
+            implementation("com.github.dxycw.zwkfb:zwkfb:0.5.0")
         }
     }
 }
@@ -103,142 +103,10 @@ kotlin {
 
 # 更新内容
 
-## 0.4.9
+## 0.5.0
 
-* 重置项目，重写函数组件；
-* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
-* 更新 composeMultiplatform 版本为 1.13.0-beta02；
-* 更新 Multiplatform平台的 org.jetbrains.compose.material3:material3 依赖库版本为 1.13.0-beta02；
-* 更新 Multiplatform平台的 dev.snipme:highlights 依赖库版本为 1.2.0；
-* 更新 Desktop平台的 com.formdev:flatlaf 依赖库版本为 3.8；
-* 更新 Desktop平台的 com.formdev:flatlaf-extras 依赖库版本为 3.8；
-* 更新 Desktop平台的 com.formdev:flatlaf-intellij-themes 依赖库版本为 3.8；
-* 更新 AGP 版本为 9.5.1；
+* 发布到 Maven Central 仓库（测试）；
 
-## 0.4.8
-
-* 重置项目，重写函数组件；
-* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
-* 更新 composeMultiplatform 版本为 1.13.0-beta01；
-* 更新 Multiplatform平台的 org.jetbrains.compose.material3:material3 依赖库版本为 1.13.0-beta01；
-* 更新 Multiplatform平台的 org.jetbrains.androidx.navigation3:navigation3-ui 依赖库版本为 1.2.0；
-* 更新 Multiplatform平台的 org.jetbrains.kotlinx:kotlinx-serialization-json 依赖库版本为 1.12.0；
-* 更新 Multiplatform平台的 io.github.generalio.multiweb:webview-compose 依赖库版本为 0.2.12；
-* 更新 Multiplatform平台的 org.jetbrains:markdown 依赖库版本为 0.7.18；
-* 更新 Multiplatform平台的 com.mikepenz:multiplatform-markdown-renderer 依赖库版本为 0.46.0；
-* 更新 Multiplatform平台的 com.mikepenz:multiplatform-markdown-renderer-m2 依赖库版本为 0.46.0；
-* 更新 Multiplatform平台的 com.mikepenz:multiplatform-markdown-renderer-m3 依赖库版本为 0.46.0；
-* 更新 Multiplatform平台的 com.mikepenz:multiplatform-markdown-renderer-coil3 依赖库版本为 0.46.0；
-* 更新 Multiplatform平台的 com.mikepenz:multiplatform-markdown-renderer-code 依赖库版本为 0.46.0；
-* 更新 Web的js平台的 org.jetbrains.kotlin-wrappers:kotlin-browser 依赖库版本为 2026.11.0；
-* 更新 Multiplatform平台的 org.jetbrains.androidx.navigation:navigation-compose 依赖库版本为 2.10.0；
-* 更新 kotlin 和 kotlinStdlib 版本为 2.4.21；
-* 更新 ktor 版本为 3.6.1；
-* 更新 AGP 版本为 9.5.0；
-* 更新 Gradle 版本为 9.8.2；
-
-## 0.4.7
-
-* 重置项目，老项目发布到github仓库失败重写；
-* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
-* 添加 Multiplatform平台的 四个“列表项()”、三个“分段列表项()” 函数组件；
-* 修改 部分代码的位置，优化代码结构；
-* 添加 Multiplatform平台的 io.github.kdroidfilter:composemediaplayer 依赖库版本为 0.11.4；
-* 添加 Multiplatform平台的 io.github.kdroidfilter:composemediaplayer-audio 依赖库版本为 0.11.4；
-* 更新 Multiplatform平台的 org.jetbrains.androidx.navigation3:navigation3-ui 依赖库版本为 1.1.2；
-* 更新 Web的js平台的 org.jetbrains.kotlin-wrappers:kotlin-browser 依赖库版本为 2026.9.2；
-* 删除 Multiplatform平台的 com.iffly.compose.markdown.multiplatform 依赖库内容；
-* 删除 Multiplatform平台的 com.zwkfb.qrcode 依赖库内容；
-* 删除 Multiplatform平台的 com.composables:ui 依赖库；
-* 删除 Multiplatform平台的 暂时删除 io.github.feiyin0719:commonmark 依赖库；
-
-## 0.4.6
-
-* 修复 Desktop平台的 使用 “painterResource” 的 “icon” 图标显示问题；
-* 修改 将 “org.publicvalue.multiplatform.qrcode” 的软件包更改为 “com.zwkfb.qrcode”；
-* 更新 Multiplatform平台的 composeMultiplatform 依赖库版本为 1.12.1；
-* 更新 Multiplatform平台的 org.jetbrains.compose.material3:material3 依赖库版本为 1.12.0-alpha03；
-* 更新 Multiplatform平台的 org.jetbrains:markdown 依赖库版本为 0.7.14；
-* 更新 Multiplatform平台的 io.github.ismai117:KScan 依赖库版本为 0.10.0；
-* 更新 Multiplatform平台的 ktor 依赖库版本为 3.6.0；
-
-## 0.4.5
-
-* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
-* 添加 Multiplatform平台的 “凸起切换按钮默认值”、“填充色调切换按钮默认值”、“轮廓切换按钮默认值”、“时间输入默认值”、“菜单默认值” 对象类；
-* 删除 Multiplatform平台的 新版本不能使用的代码；
-* 修改 Multiplatform平台的 “切换按钮”、“图标按钮”、“导航栏”、“工具提示框”、“顶部应用栏”、“颜色方案”、“辅助芯片”、“可选中下拉菜单项”、“可选择下拉菜单项”、“可选择菜单项颜色集”、“材质主题”、“警告对话框”、“滑块”、“搜索栏” 组件函数；
-* 更新 Multiplatform平台的 composeMultiplatform 依赖库版本为 1.13.0-alpha01；
-* 更新 Multiplatform平台的 org.jetbrains.compose.material3:material3 依赖库版本为 1.13.0-alpha01；
-* 更新 Multiplatform平台的 org.jetbrains.androidx.navigation:navigation-compose 依赖库版本为 2.10.0-beta01；
-* 更新 Multiplatform平台的 org.jetbrains.androidx.navigation3:navigation3-ui 依赖库版本为 1.2.0-beta01；
-* 更新 Multiplatform平台的 org.jetbrains:markdown 依赖库版本为 0.7.12；
-* 更新 Web的js平台的 org.jetbrains.kotlin-wrappers:kotlin-browser 依赖库版本为 2026.9.0；
-* 更新 kotlin 和 kotlinStdlib 版本为 2.4.20；
-* 更新 AGP 版本为 9.4.1；
-
-## 0.4.4
-
-* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
-* 添加 Multiplatform平台的 自定义的 “加载对话框”、“自定义加载对话框” 函数组件；
-* 添加 Multiplatform平台的 io.github.generalio.multiweb:webview-compose 依赖库版本为 0.2.9；
-* 添加 Multiplatform平台的 io.github.ismoy:imagepickerkmp 依赖库版本为 1.1.7；
-* 添加 Multiplatform平台的 io.github.ismoy:imagepickerkmp-scanner 依赖库版本为 1.0.0；
-* 更新 Multiplatform平台的 org.jetbrains:markdown 依赖库版本为 0.7.10；
-* 更新 AGP 版本为 9.4.0；
-
-## 0.4.3
-
-* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
-* 优化 把一些依赖库不编译到包里面，减少打包体积大小；
-* 更新 Multiplatform平台的 composeMultiplatform 依赖库版本为 1.12.0；
-* 删除 除 com.mikepenz:multiplatform-markdown-renderer-coil2 依赖库内容的其他依赖库（因为 coil2 在多平台里面使用报错）；
-* 添加 Multiplatform平台的 com.mikepenz:multiplatform-markdown-renderer 依赖库版本为 0.45.0；
-* 添加 Multiplatform平台的 com.mikepenz:multiplatform-markdown-renderer-m2 依赖库版本为 0.45.0；
-* 添加 Multiplatform平台的 com.mikepenz:multiplatform-markdown-renderer-m3 依赖库版本为 0.45.0；
-* 添加 Multiplatform平台的 com.mikepenz:multiplatform-markdown-renderer-coil3 依赖库版本为 0.45.0；
-* 添加 Multiplatform平台的 com.mikepenz:multiplatform-markdown-renderer-code 依赖库版本为 0.45.0；
-
-## 0.4.2
-
-* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
-* 添加 Multiplatform平台的 “标签()” 函数组件；
-* 添加 Android平台的 自定义的 “相机扫码()”、“扫码相册手电筒布局()”、“扫码相册手电筒缩放布局()” 函数组件；
-* 添加 Android平台的 “res-drawable”添加“smx.png”图片；
-* 修改 部分代码的位置；
-* 添加 把 “io.github.ismai117:KScan:0.9.2” 和 “io.github.kalinjul.easyqrscan:scanner:0.7.2” 依赖库内容添加到项目中（注意：这两个依赖库是临时添加后续会移除）；
-* 添加 Multiplatform平台的 com.composables:ui 依赖库版本为 0.2.0；
-* 更新 Gradle 版本为 9.7.1；
-
-## 0.4.1
-
-* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
-* 添加 Multiplatform平台的 “垂直拖拽手柄()” 函数组件；
-* 添加 Multiplatform平台的 “拖拽手柄颜色集()”、“拖拽手柄形状集()”、“拖拽手柄大小集()” 函数；
-* 添加 Multiplatform平台的 “垂直拖拽手柄默认值” 对象类；
-* 添加 Multiplatform平台的 DragHandleColors “颜色”、“按压颜色”、“拖拽颜色” 函数属性；
-* 添加 Multiplatform平台的 DragHandleShapes “形状”、“按压形状”、“拖拽形状” 函数属性；
-* 添加 Multiplatform平台的 DragHandleSizes “大小”、“按压大小”、“拖拽大小” 函数属性；
-* 添加 Multiplatform平台的 自定义的 “箱子空()”、两个“动画可见性()”、“信息对话框()”、“图像()” 函数组件；
-* 添加 Multiplatform平台的 自定义的 “图像集” 对象类；
-* 添加 Multiplatform平台的 自定义的 “图像集.轮廓.空盒子” 图像；
-* 添加 Android平台的 自定义的 “默认浏览器()”、“默认进度条浏览器()”、“图像()” 函数组件；
-* 添加 Desktop平台的 自定义的 “图像()” 函数组件；
-
-## 0.4.0
-
-* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
-* 添加 Multiplatform平台的 “遮罩()” 函数组件；
-* 添加 Multiplatform平台的 “遮罩默认值” 对象类；
-* 添加 Multiplatform平台的 图标集.圆角 “菜单”、“设置” 属性函数；
-* 添加 Multiplatform平台的 图标集.双色 “菜单”、“设置” 属性函数；
-* 添加 Multiplatform平台的 图标集.锐角 “菜单”、“设置” 属性函数；
-* 添加 Multiplatform平台的 “科特林.标准”；
-* 修复 Android平台的 “res”不能使用的Bug；
-* 添加 Android平台的 “res”的“anim”内容；
-* 更新 Multiplatform平台的 composeMultiplatform 依赖库版本为 1.12.0-rc01；
-* 更新 Multiplatform平台的 org.jetbrains:markdown 依赖库版本为 0.7.9；
-* 更新 “kotlin”、“kotlinStdlib” 版本为 2.4.10；
 
 # 老版本更新内容
 
@@ -246,3 +114,4 @@ kotlin {
 * [0.1.x系列更新日志](%E6%96%87%E6%A1%A3/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97/0.1.x%E7%B3%BB%E5%88%97%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97.md)
 * [0.2.x系列更新日志](%E6%96%87%E6%A1%A3/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97/0.2.x%E7%B3%BB%E5%88%97%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97.md)
 * [0.3.x系列更新日志](%E6%96%87%E6%A1%A3/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97/0.3.x%E7%B3%BB%E5%88%97%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97.md)
+* [0.4.x系列更新日志](%E6%96%87%E6%A1%A3/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97/0.4.x%E7%B3%BB%E5%88%97%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97.md)
