@@ -32,6 +32,25 @@
 
 **1、在项目中添加依赖项的方法：**
 
+- Maven Central 仓库：
+
+```kotlin
+
+// 在项目的 build.gradle.kts 文件中添加依赖项
+kotlin {
+    sourceSets {
+        // 多平台，
+        commonMain.dependencies {
+            // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
+            implementation("io.github.dxycw:zwkfb:0.5.0")
+        }
+    }
+}
+
+```
+
+- JitPack 仓库：
+
 ```kotlin
 
 // 在项目的 settings.gradle.kts 文件中添加 JitPack 仓库
@@ -49,7 +68,7 @@ kotlin {
         // 多平台，
         commonMain.dependencies {
             // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb:0.5.0")
+            implementation("com.github.dxycw.zwkfb:zwkfb:0.4.9")
         }
     }
 }
@@ -62,22 +81,25 @@ kotlin {
 |-----------------------------------|----------|
 | Android                           | ✅️       |
 | Desktop (Windows, MacOS, Linux)   | ✅️       |
-| IOS (iosArm64, iosSimulatorArm64) | ❌️       |
-| Web (WasmJS, JS)                  | ❌️       |
+| IOS (iosArm64, iosSimulatorArm64) | ✅️       |
+| Web (WasmJS, JS)                  | ✅️       |
 
-**3、使用的依赖库：**
+**3、打开本项目所有平台的[使用的依赖库](%E6%96%87%E6%A1%A3/%E4%BD%BF%E7%94%A8%E7%9A%84%E4%BE%9D%E8%B5%96%E5%BA%93.md)；**
 
-* 本项目所有平台[使用的依赖库](%E6%96%87%E6%A1%A3/%E4%BD%BF%E7%94%A8%E7%9A%84%E4%BE%9D%E8%B5%96%E5%BA%93.md)；
+**4、打开本项目所有平台的[打包体积压缩](%E6%96%87%E6%A1%A3/%E6%89%93%E5%8C%85%E4%BD%93%E7%A7%AF%E5%8E%8B%E7%BC%A9.md)；**
 
-**4、打包体积压缩：**
+**5、打开本项目所有平台的[示例代码：](本项目所有平台[示例代码](https://gitee.com/dxycw/zwkfb-jiaocheng)；)**
 
-* 本项目所有平台[打包体积压缩](%E6%96%87%E6%A1%A3/%E6%89%93%E5%8C%85%E4%BD%93%E7%A7%AF%E5%8E%8B%E7%BC%A9.md)；
-
-**5、示例代码：**
-
-* 本项目所有平台[示例代码](https://gitee.com/dxycw/zwkfb-jiaocheng)；
 
 > [!CAUTION]
+>
+>* 项目>=0.5.0版本：
+>
+>   1、发布到 Maven Central 仓库；
+>   
+>   2、从本版本开始不会发布到 JitPack 仓库(除非特殊需求)；
+>
+>   3、不推荐使用JitPack 仓库，因为JitPack 仓库的版本是不稳定的，可能会有错误。
 >
 >* 项目>=0.4.8版本：
 >
@@ -106,7 +128,8 @@ kotlin {
 
 ## 0.5.0
 
-* 发布到 Maven Central 仓库（测试）；
+* 发布到 Maven Central 仓库；
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
 
 
 # 老版本更新内容
