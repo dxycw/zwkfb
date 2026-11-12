@@ -96,12 +96,13 @@ kotlin {
 * 修改 “publish.yml” 文件，修复发布到 Maven Central 仓库的问题。
 * 本版本没有内容只有库；
 * 删除 发布到 JitPack 仓库；
-* 删除 com.mikepenz:multiplatform-markdown-renderer 依赖库；
-* 删除 com.mikepenz:multiplatform-markdown-renderer-m2 依赖库；
-* 删除 com.mikepenz:multiplatform-markdown-renderer-m3 依赖库；
-* 删除 com.mikepenz:multiplatform-markdown-renderer-coil2 依赖库内容；
-* 删除 com.mikepenz:multiplatform-markdown-renderer-coil3 依赖库；
-* 删除 com.mikepenz:multiplatform-markdown-renderer-code 依赖库；
+* 删除 Multiplatform平台的 com.mikepenz:multiplatform-markdown-renderer 依赖库；
+* 删除 Multiplatform平台的 com.mikepenz:multiplatform-markdown-renderer-m2 依赖库；
+* 删除 Multiplatform平台的 com.mikepenz:multiplatform-markdown-renderer-m3 依赖库；
+* 删除 Multiplatform平台的 com.mikepenz:multiplatform-markdown-renderer-coil2 依赖库内容；
+* 删除 Multiplatform平台的 com.mikepenz:multiplatform-markdown-renderer-coil3 依赖库；
+* 删除 Multiplatform平台的 com.mikepenz:multiplatform-markdown-renderer-code 依赖库；
+* 添加 Multiplatform平台的 io.github.dxycw:markdown 依赖库版本为 1.1.0；
 
 ## 0.5.0
 
