@@ -394,7 +394,7 @@ mavenPublishing {
     coordinates(
         groupId = "io.github.dxycw",
         artifactId = "zwkfb",
-        version = "0.5.0" // 从 gradle.properties 或版本目录读取更佳
+        version = "0.5.1" // 从 gradle.properties 或版本目录读取更佳
     )
 
     pom {
