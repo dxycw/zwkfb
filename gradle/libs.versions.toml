@@ -29,7 +29,7 @@ generalio-multiweb = "0.2.12"
 feiyin0719-commonmark = "0.0.2"
 jetbrains-markdown = "0.7.18"
 snipme-highlights = "1.2.0"
-mikepenz-markdown-renderer = "0.46.0"
+dxycw-markdown = "1.1.0"
 kdroidfilter-composemediaplayer = "0.11.4"
 ismoy-imagepickerkmp = "1.1.7"
 ismoy-imagepickerkmp-scanner = "1.0.0"
@@ -93,11 +93,7 @@ feiyin0719-commonmark-ext-yaml-front-matter = { module = "io.github.feiyin0719:c
 jetbrains-markdown = { module = "org.jetbrains:markdown", version.ref = "jetbrains-markdown" }
 snipme-highlights = { module = "dev.snipme:highlights", version.ref = "snipme-highlights" }
 ## ----------------------------------------------------------------
-mikepenz-multiplatform-markdown-renderer = { module = "com.mikepenz:multiplatform-markdown-renderer", version.ref = "mikepenz-markdown-renderer" }
-mikepenz-multiplatform-markdown-renderer-m2 = { module = "com.mikepenz:multiplatform-markdown-renderer-m2", version.ref = "mikepenz-markdown-renderer" }
-mikepenz-multiplatform-markdown-renderer-m3 = { module = "com.mikepenz:multiplatform-markdown-renderer-m3", version.ref = "mikepenz-markdown-renderer" }
-mikepenz-multiplatform-markdown-renderer-coil3 = { module = "com.mikepenz:multiplatform-markdown-renderer-coil3", version.ref = "mikepenz-markdown-renderer" }
-mikepenz-multiplatform-markdown-renderer-code = { module = "com.mikepenz:multiplatform-markdown-renderer-code", version.ref = "mikepenz-markdown-renderer" }
+dxycw-markdown = { module = "io.github.dxycw:markdown", version.ref = "dxycw-markdown" }
 ## ----------------------------------------------------------------
 kdroidfilter-composemediaplayer = { module = "io.github.kdroidfilter:composemediaplayer", version.ref = "kdroidfilter-composemediaplayer" }
 kdroidfilter-composemediaplayer-audio = { module = "io.github.kdroidfilter:composemediaplayer-audio", version.ref = "kdroidfilter-composemediaplayer" }

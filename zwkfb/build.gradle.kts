@@ -11,7 +11,6 @@ plugins {
     id("com.google.osdetector") version "1.7.3" // desktop的生成标准化分类器
 
     id("com.vanniktech.maven.publish") version "0.37.0" // 使用最新稳定版
-    id("maven-publish")
 }
 
 kotlin {
@@ -152,19 +151,6 @@ kotlin {
                 // 是 Kotlin Multiplatform 语法高亮引擎
                 api(libs.snipme.highlights)
 
-                // 是由 Mike Penz 开发的一个 Kotlin Multiplatform（KMP）Markdown 渲染库
-                api(libs.mikepenz.multiplatform.markdown.renderer)
-                // 是由 Mike Penz 开发的一个 Kotlin Multiplatform（KMP）Markdown 渲染库的 M2 版本
-                api(libs.mikepenz.multiplatform.markdown.renderer.m2)
-                // 是由 Mike Penz 开发的一个 Kotlin Multiplatform（KMP）Markdown 渲染库的 M3 版本
-                api(libs.mikepenz.multiplatform.markdown.renderer.m3)
-                // 是由 Mike Penz 开发的一个 Kotlin Multiplatform（KMP）Markdown 渲染库的 Coil2 版本
-//                api("com.mikepenz:multiplatform-markdown-renderer-coil2:0.46.0")
-                // 是由 Mike Penz 开发的一个 Kotlin Multiplatform（KMP）Markdown 渲染库的 Coil3 版本
-                api(libs.mikepenz.multiplatform.markdown.renderer.coil3)
-                // 是由 Mike Penz 开发的一个 Kotlin Multiplatform（KMP）Markdown 渲染库的 Code 版本
-                api(libs.mikepenz.multiplatform.markdown.renderer.code)
-
 //                // KMP Markdown
 //                api("io.github.huarangmeng:markdown-parser:1.5.3")
 //                api("io.github.huarangmeng:markdown-runtime:1.5.3")
@@ -179,6 +165,9 @@ kotlin {
 //
 //                // Compose Rich Editor
 //                api("com.mohamedrejeb.richeditor:richeditor-compose:1.1.0")
+
+                // 是一个为 Compose Multiplatform 设计的 Markdown 解析器，它能让开发者用一套代码在多平台现 Markdown 解析功能。
+                api(libs.dxycw.markdown)
 
                 //===================================================================
 

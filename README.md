@@ -13,7 +13,6 @@
 **一款强大的Kotlin多平台“zwkfb”中文开发包，适用于 Compose Multiplatform 的 Kotlin 多平台项目。**
 
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.dxycw/zwkfb?label=Maven%20Central&color=orange)](https://central.sonatype.com/artifact/io.github.dxycw/zwkfb)
-[![GitHub](https://jitpack.io/v/dxycw/zwkfb.svg)](https://jitpack.io/#dxycw/zwkfb)
 [![Kotlin](https://img.shields.io/badge/kotlin-v2.4.21-blue.svg?logo=kotlin)](http://kotlinlang.org)
 [![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.13.0--beta02-blue)](https://github.com/JetBrains/compose-multiplatform)
 
@@ -32,8 +31,6 @@
 
 **1、在项目中添加依赖项的方法：**
 
-- Maven Central 仓库：
-
 ```kotlin
 
 // 在项目的 build.gradle.kts 文件中添加依赖项
@@ -42,38 +39,13 @@ kotlin {
         // 多平台，
         commonMain.dependencies {
             // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-            implementation("io.github.dxycw:zwkfb:0.5.0")
+            implementation("io.github.dxycw:zwkfb:0.5.1")
         }
     }
 }
 
 ```
 
-- JitPack 仓库：
-
-```kotlin
-
-// 在项目的 settings.gradle.kts 文件中添加 JitPack 仓库
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        mavenCentral()
-        maven { url = uri("https://jitpack.io") }  // 添加 JitPack 仓库
-    }
-}
-
-// 在项目的 build.gradle.kts 文件中添加依赖项
-kotlin {
-    sourceSets {
-        // 多平台，
-        commonMain.dependencies {
-            // 如果使用多平台 Jetpack Compose Multiplatform 项目，请添加以下依赖项
-            implementation("com.github.dxycw.zwkfb:zwkfb:0.4.9")
-        }
-    }
-}
-
-```
 
 **2、目前可以使用的平台：**
 
@@ -117,6 +89,19 @@ kotlin {
 
 
 # 更新内容
+
+## 0.5.1
+
+* 优化 项目文档，完善使用方法、平台支持、依赖库等信息；
+* 修改 “publish.yml” 文件，修复发布到 Maven Central 仓库的问题。
+* 本版本没有内容只有库；
+* 删除 发布到 JitPack 仓库；
+* 删除 com.mikepenz:multiplatform-markdown-renderer 依赖库；
+* 删除 com.mikepenz:multiplatform-markdown-renderer-m2 依赖库；
+* 删除 com.mikepenz:multiplatform-markdown-renderer-m3 依赖库；
+* 删除 com.mikepenz:multiplatform-markdown-renderer-coil2 依赖库内容；
+* 删除 com.mikepenz:multiplatform-markdown-renderer-coil3 依赖库；
+* 删除 com.mikepenz:multiplatform-markdown-renderer-code 依赖库；
 
 ## 0.5.0
 

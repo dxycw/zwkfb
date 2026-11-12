@@ -17,6 +17,7 @@ import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
 import com.dxyc.zwkfb.组件.CloseConfirmDialog
+import com.dxyc.zwkfb.组件.视频播放器
 import com.formdev.flatlaf.FlatLightLaf
 import java.awt.Insets
 import javax.swing.UIManager
@@ -125,7 +126,7 @@ fun main() = application {
 //                }
 //            }
             App()
-//            视频播放器()
+            视频播放器()
             if (showCloseDialog) {
                 CloseConfirmDialog(
                     onDismiss = {

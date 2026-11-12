@@ -36,7 +36,7 @@ import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
 import androidx.window.core.layout.WindowSizeClass
-
+import com.mikepenz.markdown.m3.Markdown
 
 @Composable
 @Preview
@@ -55,8 +55,11 @@ fun App() {
                     显示信息对话框 = true
                 }
             ) { Text("显示信息对话框") }
-            AdaptiveLayoutExample()
+//            AdaptiveLayoutExample()
+            Markdown("# 你好")
+
         }
+
 
         if (显示信息对话框){
 //            信息对话框(

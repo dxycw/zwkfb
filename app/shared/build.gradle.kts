@@ -29,11 +29,13 @@ kotlin {
         browser()
         binaries.executable()
     }
+
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
         browser()
         binaries.executable()
     }
+
     android {
        namespace = "com.dxyc.zwkfb.app.shared"
        compileSdk {
@@ -57,6 +59,7 @@ kotlin {
            instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
        }
     }
+
     sourceSets {
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)

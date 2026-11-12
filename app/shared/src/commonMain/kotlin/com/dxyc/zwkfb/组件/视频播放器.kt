@@ -30,10 +30,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import com.dxyc.zwkfb.formatTime
 import io.github.kdroidfilter.composemediaplayer.VideoPlayerSurface
 import io.github.kdroidfilter.composemediaplayer.rememberVideoPlayerState
 
+@Suppress("ComposableNaming")
 @Composable
 fun 视频播放器() {
 
@@ -104,6 +104,7 @@ fun 视频播放器() {
     }
 }
 
+@Suppress("ComposableNaming")
 @Composable
 fun 视频播放器Preview() {
     val playerState = rememberVideoPlayerState()

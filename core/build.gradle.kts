@@ -10,15 +10,21 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
 
-    jvm("desktop")
+    jvm("desktop") {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
+        }
+    }
 
     js {
         browser()
+        binaries.executable()
     }
 
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
         browser()
+        binaries.executable()
     }
 
     android {
@@ -79,6 +85,12 @@ kotlin {
 //                // 是 Kotlin Multiplatform 语法高亮引擎
 //                exclude("dev.snipme", "highlights")
 
+                //============================================================================
+
+                // 是一个为 Compose Multiplatform 设计的 Markdown 解析器，它能让开发者用一套代码在多平台现 Markdown 解析功能。
+                // 如果注销掉，com.mikepenz的multiplatform-markdown-renderer不能用
+//                exclude("io.github.dxycw", "markdown")
+
 //                // 是由 Mike Penz 开发的一个 Kotlin Multiplatform（KMP）Markdown 渲染库
 //                exclude("com.mikepenz", "multiplatform-markdown-renderer")
                 // 是由 Mike Penz 开发的一个 Kotlin Multiplatform（KMP）Markdown 渲染库的 M2 版本
@@ -90,10 +102,12 @@ kotlin {
                 // 是由 Mike Penz 开发的一个 Kotlin Multiplatform（KMP）Markdown 渲染库的 Code 版本
                 exclude("com.mikepenz", "multiplatform-markdown-renderer-code")
 
-                // 是一个为 Compose Multiplatform 设计的视频播放库，它能让开发者用一套代码在多平台现视频播放功能。
-                exclude("io.github.kdroidfilter", "composemediaplayer")
-                // 是一个为 Compose Multiplatform 设计的音频播放库，它能让开发者用一套代码在多平台现音频播放功能。
-                exclude("io.github.kdroidfilter", "composemediaplayer-audio")
+                //============================================================================
+
+//                // 是一个为 Compose Multiplatform 设计的视频播放库，它能让开发者用一套代码在多平台现视频播放功能。
+//                exclude("io.github.kdroidfilter", "composemediaplayer")
+//                // 是一个为 Compose Multiplatform 设计的音频播放库，它能让开发者用一套代码在多平台现音频播放功能。
+//                exclude("io.github.kdroidfilter", "composemediaplayer-audio")
 
                 // Photo — 相机拍摄与图库图片选择
                 exclude("io.github.ismoy", "imagepickerkmp")

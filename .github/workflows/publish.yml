@@ -1,19 +1,13 @@
 name: Publish to Maven Central
-
 on:
-#  release:
-#    types: [released, prereleased]
-  # 或者 tag 触发：
-  push:
-    tags:
-      - 'v*'
+  release:
+    types: [published] # 在 GitHub 发布 Release 时触发
 
 jobs:
   publish:
     runs-on: macos-latest   # iOS target 需要 macOS 编译
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up JDK
         uses: actions/setup-java@v4
